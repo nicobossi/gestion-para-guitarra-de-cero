@@ -4,7 +4,10 @@
     // File Layout
     //"rootDir": "./src",
     "outDir": "./dist",
-
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     // See also https://aka.ms/tsconfig/module
     "module": "ESNext",
     "moduleResolution": "node",
