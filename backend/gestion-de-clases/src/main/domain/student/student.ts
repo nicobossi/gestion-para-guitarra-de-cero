@@ -6,20 +6,20 @@ export class Student {
     private name : string;
     private surname : string;
     private phone : number;
-    private dateAssistance : Date;
+    private submissionDate : Date;
     private secondName : string | undefined;
 
     constructor(
         name : string, 
         surname : string, 
         phone : number,
-        dateAssistance : Date,
+        submissionDate : Date,
         secondName? : string
     ) {
         this.name = name;
         this.surname = surname;
         this.phone = phone; 
-        this.dateAssistance = dateAssistance;
+        this.submissionDate = submissionDate;
         this.secondName = secondName;
     }
 
@@ -35,8 +35,8 @@ export class Student {
         return this.secondName;
     }
 
-    get getDateAssistance() : Date {
-        return this.dateAssistance;
+    get getSubmissionDate() : Date {
+        return this.submissionDate;
     }
 
     get getPhoneNumber() : number {

@@ -4,11 +4,11 @@ import { Student } from "@/main/domain/student/student";
 describe("test to student", () => {
 
     let nicolas : Student;
-    let fechaDeAsistencia : Date;
+    let fechaDePresentacion : Date;
 
     beforeEach(() => {
-        fechaDeAsistencia = new Date(2026, 1, 18, 16, 4);
-        nicolas = new Student("Nicolás", "Bossi", 1162870692, fechaDeAsistencia, "Fernando");
+        fechaDePresentacion = new Date(2026, 1, 18, 16, 4);
+        nicolas = new Student("Nicolás", "Bossi", 1162870692, fechaDePresentacion, "Fernando");
     });
 
     test("a student have a name", () => {
@@ -24,12 +24,12 @@ describe("test to student", () => {
     });
 
     test("a student have not a second name", () => {
-        const alejandro = new Student("Alejandro", "Romero", 12345678, fechaDeAsistencia);
+        const alejandro = new Student("Alejandro", "Romero", 12345678, fechaDePresentacion);
         expect(alejandro.getSecondName).toBeUndefined();
     });
 
     test("a student have a date assistance", () => {
-        expect(fechaDeAsistencia).toBe(nicolas.getDateAssistance);
+        expect(fechaDePresentacion).toBe(nicolas.getSubmissionDate);
     });
 
     test("a student have a phone number", () => {
