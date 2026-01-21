@@ -1,10 +1,6 @@
-import express, { json } from "express";
+import app from "./src/main/app";
+import "dotenv/config";  
 
-
-
-const app = express();
 const PORT = 3000;
-
-app.use(json());
 
 app.listen(PORT, () => console.log("Listen in port: " + PORT));

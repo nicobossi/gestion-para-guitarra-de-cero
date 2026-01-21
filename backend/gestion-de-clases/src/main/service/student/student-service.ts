@@ -12,11 +12,12 @@ export class StudentServiceImpl implements StudentService {
     }
     
     async income(student: Student) : Promise<Student> {
+        
         try {
             return await this.dao.save(student);
         }
         catch(error : unknown) {
-            throw new Error("aa");
+            throw new Error("Hubo un error inesperado");
         }
     }
     
