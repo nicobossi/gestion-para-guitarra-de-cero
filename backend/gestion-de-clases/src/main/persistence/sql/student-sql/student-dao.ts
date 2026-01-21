@@ -3,9 +3,10 @@ import type { StudentEntityMapper } from "@/main/dto/entity-mappers/student/stud
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import type { Alumno, PrismaClient } from "resources/generated/prisma/client";
 import { RepeatEntityException } from "../repeat-entity-exception";
+import type { StudentDao as StudentDao } from "./student-dao.i";
 
 
-export class StudentDao {
+export class StudentDaoImpl implements StudentDao {
 
     private readonly client : PrismaClient;
     private readonly mapper : StudentEntityMapper;
@@ -22,26 +23,23 @@ export class StudentDao {
             return this.mapper.toModel(addedStudent);
         }
         catch(error : unknown) {
-            throw this.handleError(error, student);
+            throw this.handleError(error);
         }
     }
 
-    private handleError(error : unknown, student : Student) {
+    private handleError(error : unknown) : Error | undefined {
         
         if(error instanceof PrismaClientKnownRequestError) {
-            if(error.code === 'P2002') return new RepeatEntityException(this.errorMessage(student));
+            if(error.code === 'P2002') return new RepeatEntityException(error.message);
+        }
+        else {
+            return new Error("Hubo un error desconocido");
         }
     }
-
-    private errorMessage(student : Student): string {
-        return "el estudiante con el id " + student.getId + " ya se encuentra registrado" ;
-    }
-
 
     private async add(student : Student) : Promise<Alumno> {
         return await this.client.alumno.create({
             data: this.mapper.toSql(student)
-            }
-        );
+        });
     }
 }

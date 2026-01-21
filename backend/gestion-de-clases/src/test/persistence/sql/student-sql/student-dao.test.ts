@@ -1,5 +1,5 @@
 import { Student } from "@/main/domain/student/student";
-import type { StudentDao } from "@/main/persistence/sql/student-sql/student-sql";
+import type { StudentDaoImpl } from "@/main/persistence/sql/student-sql/student-dao";
 import studentDao from "@/main/routes/dependecy/student/student-dao";
 import clearAll from "./clear-all";
 import { RepeatEntityException } from "@/main/persistence/sql/repeat-entity-exception";
@@ -7,7 +7,7 @@ import { RepeatEntityException } from "@/main/persistence/sql/repeat-entity-exce
 
 describe("tests to student DAO", () => {
 
-    let dao : StudentDao = studentDao;
+    const dao : StudentDaoImpl = studentDao;
     let student : Student;
     let submissionDate : Date;
     
@@ -26,10 +26,8 @@ describe("tests to student DAO", () => {
 
         const addedStudent : Student = await dao.save(student);
         const sameStudentAdded = async () => await dao.save(addedStudent);
-        expect(sameStudentAdded()).rejects.toThrow(RepeatEntityException);
-    })
+        await expect(sameStudentAdded()).rejects.toThrow(RepeatEntityException);
+    });
 
-    afterEach(() => {
-        clearAll();
-    }); 
+    afterEach(async () => await clearAll()); 
 });
