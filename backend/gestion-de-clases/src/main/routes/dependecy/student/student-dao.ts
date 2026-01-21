@@ -1,6 +1,6 @@
 import { StudentEntityMapper } from "@/main/dto/entity-mappers/student/student-mapper";
 import { StudentDao } from "@/main/persistence/sql/student-sql/student-sql";
-import client from "resources/context";
+import client from "resources/client";
 
 
 const mapper = new StudentEntityMapper();

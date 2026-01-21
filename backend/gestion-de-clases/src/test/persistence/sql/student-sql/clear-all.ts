@@ -1,4 +1,4 @@
-import client from "resources/context"
+import client from "resources/client"
 
 
 
