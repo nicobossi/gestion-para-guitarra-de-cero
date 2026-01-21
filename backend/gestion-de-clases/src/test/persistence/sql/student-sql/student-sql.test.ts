@@ -2,6 +2,7 @@ import { Student } from "@/main/domain/student/student";
 import type { StudentDao } from "@/main/persistence/sql/student-sql/student-sql";
 import studentDao from "@/main/routes/dependecy/student/student-dao";
 import clearAll from "./clear-all";
+import { RepeatEntityException } from "@/main/persistence/sql/repeat-entity-exception";
 
 
 describe("tests to student DAO", () => {
@@ -20,6 +21,13 @@ describe("tests to student DAO", () => {
         const addedStudent : Student = await dao.save(student);
         expect(addedStudent.getId).toBeDefined();
     });
+
+    test("a student is not added with id repeat", async () => {
+
+        const addedStudent : Student = await dao.save(student);
+        const sameStudentAdded = async () => await dao.save(addedStudent);
+        expect(sameStudentAdded()).rejects.toThrow(RepeatEntityException);
+    })
 
     afterEach(() => {
         clearAll();
