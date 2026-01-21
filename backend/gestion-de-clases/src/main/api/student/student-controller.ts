@@ -21,10 +21,10 @@ export class StudentController {
             const addedStudent : Student = await this.service.income(student);
             return res.status(201).json(this.mapper.modelToDto(addedStudent));
         }
-        catch(error : unknown) {    
+        catch(error : unknown) {  
             return res.status(400).send({
                 message: "El alumno ya se encuentra registrado"
-            })
+            });
         }
     }
 }

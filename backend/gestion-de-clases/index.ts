@@ -1,5 +1,5 @@
-import app from "./src/main/app";
-import "dotenv/config";  
+import "dotenv/config"; 
+import app from "./src/main/app"; 
 
 const PORT = 3000;
 

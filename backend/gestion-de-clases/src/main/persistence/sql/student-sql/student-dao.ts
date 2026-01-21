@@ -13,7 +13,7 @@ export class StudentDaoImpl implements StudentDao {
 
     constructor(client : PrismaClient, mapper : StudentMapper) {
         this.client = client;
-        this.mapper = mapper
+        this.mapper = mapper;
     }
     
     async save(student : Student) : Promise<Student> {        
@@ -29,16 +29,19 @@ export class StudentDaoImpl implements StudentDao {
 
     private handleError(error : unknown) : Error | undefined {
         
-        console.log(error)
         if(error instanceof PrismaClientKnownRequestError) {
             if(error.code === 'P2002') return new RepeatEntityException(error.message);
         }
-        return new Error("Hubo un error desconocido");
+        return new Error(this.uknowErrorMessage());
     }
 
     private async add(student : Student) : Promise<Alumno> {
         return await this.client.alumno.create({
             data: this.mapper.toSql(student)
         });
+    }
+
+    private uknowErrorMessage() : string {
+        return "Hubo un error inesperado en la base de datos";
     }
 }
