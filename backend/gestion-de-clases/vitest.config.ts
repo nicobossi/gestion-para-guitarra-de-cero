@@ -3,7 +3,7 @@ import { defineConfig } from 'vitest/config'
 import dotenv from 'dotenv'
 
 dotenv.config({
-  path: path.resolve(__dirname, 'resources/.env'),
+  path: path.resolve(__dirname, '.env.test'),
 })
 
 export default defineConfig({
