@@ -3,6 +3,7 @@
 
 export class Student {
     
+    private id? : number | undefined;
     private name : string;
     private surname : string;
     private phone : number;
@@ -14,13 +15,15 @@ export class Student {
         surname : string, 
         phone : number,
         submissionDate : Date,
-        secondName? : string
+        secondName? : string,
+        id? : number
     ) {
         this.name = name;
         this.surname = surname;
         this.phone = phone; 
         this.submissionDate = submissionDate;
         this.secondName = secondName;
+        this.id = id;
     }
 
     get getName() : string {
@@ -41,5 +44,9 @@ export class Student {
 
     get getPhoneNumber() : number {
         return this.phone;
+    }
+
+    get getId() : number | undefined {
+        return this.id;
     }
 }
