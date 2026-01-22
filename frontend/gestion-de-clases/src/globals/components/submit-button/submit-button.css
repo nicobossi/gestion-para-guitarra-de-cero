@@ -1,0 +1,11 @@
+
+
+
+.submit-button {
+    width: 90%;
+    max-width: 320px;
+    height: 42px;
+    border-radius: 10px;
+    border-style: none;
+    color: #FFFF;
+}

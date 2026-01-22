@@ -1,4 +1,5 @@
 import RegisterInput from "../register-input/RegisterInput";
+import SumbitButton from "../submit-button/SubmitButton";
 import type { FormContainerProps } from "./form-container";
 import './form-container.css'
 
@@ -13,6 +14,7 @@ const FormContainer = ({inputsData, onSubmit} : FormContainerProps) => {
                     key = {input.id} />
                 )
             }
+            <SumbitButton onSubmit={onSubmit} /> 
             </form>
         </div>
     )

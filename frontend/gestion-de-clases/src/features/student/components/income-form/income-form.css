@@ -6,3 +6,7 @@
     width: 100%;
     height: 100%;
 }
+
+.student-income_form-container .submit-button {
+    background: linear-gradient(60deg, #6879D7, #C6CAF0);
+}
