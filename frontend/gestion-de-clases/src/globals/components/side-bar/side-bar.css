@@ -2,5 +2,6 @@
 
 
 .side-bar {
+    max-width: 250px;
     background-color: var(--dark-color);
 }
