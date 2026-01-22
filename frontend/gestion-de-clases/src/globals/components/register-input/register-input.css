@@ -1,0 +1,10 @@
+
+
+.register-input {
+    width: 90%;
+    max-width: 320px;
+    height: 42px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border-style: none;
+}

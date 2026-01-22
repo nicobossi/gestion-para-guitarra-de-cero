@@ -1,0 +1,16 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #273678;
+    --dark-color: #111A40;
+    --payment-gradient: radial-gradient(#FFF6CF, #F8DA59);
+    --student-color: #EFF0FB;
+    --payment-color: #E4F2FC;
+    --fee-color: #F1F1F1;
+    --lesson-color: #F1EFFA;
+}

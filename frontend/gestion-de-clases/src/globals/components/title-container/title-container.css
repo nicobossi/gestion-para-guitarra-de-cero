@@ -1,0 +1,5 @@
+
+.title-container {
+    display: grid;
+    place-items: center;
+}
