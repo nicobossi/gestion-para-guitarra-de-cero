@@ -51,7 +51,7 @@ export class StudentMapper {
             secondName: student.getSecondName,
             surname: student.getSurname,
             phone: student.getPhoneNumber, 
-            submissionDate: student.getSubmissionDate.toString()
+            submissionDate: student.getSubmissionDate.toISOString()
         }
 
         // ver como mostrar la fecha para el frontend modificando el tupo studentResponseDto

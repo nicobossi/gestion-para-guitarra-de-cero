@@ -1,5 +1,5 @@
 import { Student } from "@/main/domain/student/student";
-import type { StudentDaoImpl } from "@/main/persistence/sql/student-sql/student-dao";
+import type { StudentDaoImpl } from "@/main/persistence/sql/student/student-dao";
 import studentDao from "@/main/routes/student/student-dao";
 import clearAll from "./clear-all";
 import { RepeatEntityException } from "@/main/persistence/sql/repeat-entity-exception";
