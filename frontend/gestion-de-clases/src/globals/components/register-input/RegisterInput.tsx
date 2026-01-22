@@ -1,6 +1,5 @@
-import './register-input.css'
 import type { RegisterInputProps } from "./register-input";
-
+import './register-input.css'
 
 const RegisterInput = ({inputData} : RegisterInputProps) => {
     return (

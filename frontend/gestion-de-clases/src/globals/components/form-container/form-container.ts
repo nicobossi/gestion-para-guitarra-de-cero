@@ -1,7 +1,8 @@
 import type { InputData } from "@/globals/types/input"
 
 
-type FormContainerProps = {
+export type FormContainerProps = {
+    title : string
     inputsData : InputData[] 
     onSubmit : (student : unknown) => void
 }
