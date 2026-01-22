@@ -18,14 +18,14 @@ describe("tests to student DAO", () => {
 
     test("a student is added", async () => {
         
-        const addedStudent : Student = await dao.save(student);
-        expect(addedStudent.getId).toBeDefined();
+        const studentAdded : Student = await dao.save(student);
+        expect(studentAdded.getId).toBeDefined();
     });
 
     test("a student is not added with id repeat", async () => {
 
-        const addedStudent : Student = await dao.save(student);
-        const sameStudentAdded = async () => await dao.save(addedStudent);
+        const studentAdded : Student = await dao.save(student);
+        const sameStudentAdded = async () => await dao.save(studentAdded);
         await expect(sameStudentAdded()).rejects.toThrow(RepeatEntityException);
     });
 

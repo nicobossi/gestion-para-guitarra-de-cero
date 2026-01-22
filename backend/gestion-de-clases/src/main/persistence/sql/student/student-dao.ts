@@ -1,8 +1,6 @@
 import type { Student } from "@/main/domain/student/student";
 import type { StudentMapper } from "@/main/dto/student/student-mapper";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import type { Alumno, PrismaClient } from "resources/generated/prisma/client";
-import { RepeatEntityException } from "../repeat-entity-exception";
 import type { StudentDao as StudentDao } from "./student-dao.i";
 import { HandlerPrismaError } from "../handler-exception/handler-exception";
 

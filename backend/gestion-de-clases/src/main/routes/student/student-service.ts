@@ -1,8 +1,8 @@
 import { StudentServiceImpl } from "@/main/service/student/student-service";
-import studentDao from "./student-dao";
+import studentRepository from "./student-repository";
 
 
 
-const service = new StudentServiceImpl(studentDao);
+const service = new StudentServiceImpl(studentRepository);
 
 export default service;
