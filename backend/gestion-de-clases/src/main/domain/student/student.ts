@@ -1,3 +1,4 @@
+import { ManyPhoneException } from "./many-phone-exception";
 
 
 
@@ -48,5 +49,13 @@ export class Student {
 
     get getId() : number | undefined {
         return this.id;
+    }
+
+    manyPhoneException() : ManyPhoneException {
+        return new ManyPhoneException(this.manyPhoneExceptionMessage());
+    }
+
+    private manyPhoneExceptionMessage(): string {
+        return "El alumno " + this.getName + " no puede tener el celular " + this.phone + " porque ya se encuentra registrado";
     }
 }

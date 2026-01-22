@@ -5,7 +5,6 @@ import type { StudentDao as StudentSqlDao } from "../../sql/student/student-dao.
 import type { LessonSqlDao } from "../../sql/lesson/lesson-dao.i";
 
 
-
 export class StudentRepositoryImpl implements StudentRepository {
 
     private readonly studentSqlDao : StudentSqlDao;
@@ -16,8 +15,13 @@ export class StudentRepositoryImpl implements StudentRepository {
         this.lessonSqlDao = lessonSqlDao;
     }
 
-    incomingWithLesson(student: Student, lessons: Lesson[]) : Student {
-        throw new Error("Method not implemented.");
+    async income(student: Student): Promise<Student> {
+        return await this.studentSqlDao.save(student);
+    }
+
+    async resumeLessons(student: Student, lessons: Lesson[]) : Promise<Student> {
+        this.lessonSqlDao.saveMany(lessons);
+        return await this.studentSqlDao.save(student); // hay que hacer otro mensaje para que lo devuelvacon sus clases
     }
 
 }

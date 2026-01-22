@@ -5,5 +5,6 @@ import type { Student } from "@/main/domain/student/student";
 
 
 export interface StudentRepository {
-    incomingWithLesson(student : Student, lessons : Lesson[]) : Student
+    income(student : Student) : Promise<Student>
+    resumeLessons(student : Student, lessons : Lesson[]) : Promise<Student>
 }
