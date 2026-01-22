@@ -20,5 +20,5 @@ describe("tests to student service", () => {
         expect(addedStudent.getId).toBeDefined();
     })
 
-    afterEach(async () => await clearAll()); 
+    afterEach(() => clearAll()); 
 });

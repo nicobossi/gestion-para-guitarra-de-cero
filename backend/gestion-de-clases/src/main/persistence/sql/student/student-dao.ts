@@ -4,16 +4,19 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import type { Alumno, PrismaClient } from "resources/generated/prisma/client";
 import { RepeatEntityException } from "../repeat-entity-exception";
 import type { StudentDao as StudentDao } from "./student-dao.i";
+import { HandlerPrismaError } from "../handler-exception/handler-exception";
 
 
 export class StudentDaoImpl implements StudentDao {
 
     private readonly client : PrismaClient;
     private readonly mapper : StudentMapper;
+    private readonly handlerError : HandlerPrismaError;
 
     constructor(client : PrismaClient, mapper : StudentMapper) {
         this.client = client;
         this.mapper = mapper;
+        this.handlerError = new HandlerPrismaError();
     }
     
     async save(student : Student) : Promise<Student> {        
@@ -23,25 +26,13 @@ export class StudentDaoImpl implements StudentDao {
             return this.mapper.toModel(addedStudent);
         }
         catch(error : unknown) {
-            throw this.handleError(error);
+            throw this.handlerError.handleCreateError(error);
         }
-    }
-
-    private handleError(error : unknown) : Error | undefined {
-        
-        if(error instanceof PrismaClientKnownRequestError) {
-            if(error.code === 'P2002') return new RepeatEntityException(error.message);
-        }
-        return new Error(this.uknowErrorMessage());
     }
 
     private async add(student : Student) : Promise<Alumno> {
         return await this.client.alumno.create({
             data: this.mapper.toSql(student)
         });
-    }
-
-    private uknowErrorMessage() : string {
-        return "Hubo un error inesperado en la base de datos";
     }
 }

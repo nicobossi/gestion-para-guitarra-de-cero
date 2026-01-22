@@ -29,5 +29,5 @@ describe("tests to student DAO", () => {
         await expect(sameStudentAdded()).rejects.toThrow(RepeatEntityException);
     });
 
-    afterEach(async () => await clearAll()); 
+    afterEach(() => clearAll()); 
 });
