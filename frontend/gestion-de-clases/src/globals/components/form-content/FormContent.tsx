@@ -1,15 +1,16 @@
-import { useForm } from "react-hook-form";
 import SumbitButton from "../submit-button/SubmitButton";
 import type { FormContentProps } from "./form-content";
 import './form-content.css'
 import RegisterInput from "../register-input/RegisterInput";
+import useData from "@/globals/hooks/useData";
+import type { FieldValues } from "react-hook-form";
 
 
-const FormContent = ({inputsData, onSubmit} : FormContentProps) => {
+function FormContent<T extends FieldValues>({inputsData, onSubmit} : FormContentProps<T>) {
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useData<T>();
 
-    const eventSubmit = (data : unknown) => onSubmit(data);
+    const eventSubmit = (data : T) => onSubmit(data);
 
     return (
         <div className = "form-content">
@@ -22,7 +23,7 @@ const FormContent = ({inputsData, onSubmit} : FormContentProps) => {
                     error = {errors[input.name]}
                     />
                 )}
-                <SumbitButton /> 
+            <SumbitButton /> 
             </form>
         </div>
     )

@@ -1,7 +1,7 @@
 import type { InputData } from "@/globals/types/input"
 
 
-type FormContentProps = {
+type FormContentProps<T> = {
     inputsData : InputData[] 
-    onSubmit : (student : unknown) => void
+    onSubmit : (data : T) => void
 }

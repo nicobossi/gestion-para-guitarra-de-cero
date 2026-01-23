@@ -1,17 +1,19 @@
 import './income-form.css'
-import incomeInputsData from './inputs-data'
 import type { IncomeFormContainerProps } from './income-form'
 import FormContainer from '@/globals/components/form-container/FormContainer'
+import TitleContainer from '@/globals/components/title-container/TitleContainer'
+import FormContent from '@/globals/components/form-content/FormContent'
+import incomeInputsData from './inputs-data'
+import type { Entrant } from '@/globals/types/student'
 
 const IncomeFormContainer = ({onSubmit} : IncomeFormContainerProps) => {
 
     return (
         <section className = 'student-income_form-container'>
-            <FormContainer 
-                inputsData = {incomeInputsData}
-                onSubmit = {onSubmit}
-                title = 'Ingresar Alumno'
-            />
+            <FormContainer>
+                <TitleContainer title = "Ingresar Alumno" />
+                <FormContent<Entrant> inputsData = {incomeInputsData} onSubmit={onSubmit} />
+            </FormContainer>
         </section>
     )
 }

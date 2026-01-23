@@ -1,5 +1,7 @@
+import type { Entrant } from "@/globals/types/student"
+
 
 
 export type IncomeFormContainerProps = {
-    onSubmit: (student : unknown) => void
+    onSubmit: (incomer : Entrant) => void
 }

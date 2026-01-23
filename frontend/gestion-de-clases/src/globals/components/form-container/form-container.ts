@@ -1,8 +1,6 @@
-import type { InputData } from "@/globals/types/input"
+import type { ReactNode } from "react"
 
 
 export type FormContainerProps = {
-    title : string
-    inputsData : InputData[] 
-    onSubmit : (student : unknown) => void
+    children : ReactNode
 }
