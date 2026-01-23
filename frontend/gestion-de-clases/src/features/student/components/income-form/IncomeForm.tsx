@@ -3,8 +3,6 @@ import incomeInputsData from './inputs-data'
 import type { IncomeFormContainerProps } from './income-form'
 import FormContainer from '@/globals/components/form-container/FormContainer'
 
-
-
 const IncomeFormContainer = ({onSubmit} : IncomeFormContainerProps) => {
 
     return (
@@ -13,7 +11,7 @@ const IncomeFormContainer = ({onSubmit} : IncomeFormContainerProps) => {
                 inputsData = {incomeInputsData}
                 onSubmit = {onSubmit}
                 title = 'Ingresar Alumno'
-                />
+            />
         </section>
     )
 }

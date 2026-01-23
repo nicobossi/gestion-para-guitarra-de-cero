@@ -1,10 +1,9 @@
 import './submit-button.css'
-import type { SubmitButtonProps } from './submit-button';
 
 
-const SumbitButton = ({onSubmit} : SubmitButtonProps) => {
+const SumbitButton = () => {
     return (
-        <button className = "submit-button" onClick = {onSubmit}>Ingresar</button>
+        <button className = "submit-button">Ingresar</button>
     )
 }
 

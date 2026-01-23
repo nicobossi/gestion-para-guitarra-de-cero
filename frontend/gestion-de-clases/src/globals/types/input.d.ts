@@ -6,4 +6,5 @@ export type InputData = {
     name : string
     placeholder : string
     isRequired : boolean
+    errorMessage? : string
 }

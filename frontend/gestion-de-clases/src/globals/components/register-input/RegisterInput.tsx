@@ -1,16 +1,19 @@
 import type { RegisterInputProps } from "./register-input";
 import './register-input.css'
 
-const RegisterInput = ({inputData} : RegisterInputProps) => {
+const RegisterInput = ({inputData, register, error} : RegisterInputProps) => {
     return (
-        <input className = 'register-input'
-            id = {inputData.id}
-            name = {inputData.name}
-            type = {inputData.type}
-            placeholder = {inputData.placeholder}
-            required = {inputData.isRequired} 
-        >
-        </input>
+        <div className="input-container">
+            <input className = {error ? "register-input_error" : "register-input"}
+                {...register(inputData.name, {required: inputData.isRequired})}
+                id = {inputData.id}
+                name = {inputData.name}
+                type = {inputData.type}
+                placeholder = {inputData.placeholder}
+            >
+            </input>
+            {error && <p className = "error-message">{inputData.errorMessage}</p>}
+        </div>
     )
 }
 
