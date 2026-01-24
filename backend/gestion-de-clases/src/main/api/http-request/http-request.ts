@@ -12,7 +12,7 @@ export class ValidatorMiddleware {
         this.httpResponse = httpResponse;
     }
 
-    validate<T extends Maybe<AnyObject>>(schema : ObjectSchema<T>) : RequestHandler {
+    validate(schema : ObjectSchema<AnyObject>) : RequestHandler {
         return async (req, res, next) => {
             try {
                 await schema.validate(req.body);
