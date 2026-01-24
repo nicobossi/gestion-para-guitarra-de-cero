@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import studentRouter from "./api/student/student-router";
+import studentRouter from "./api/student/student.router";
 import cors from 'cors'
 
 

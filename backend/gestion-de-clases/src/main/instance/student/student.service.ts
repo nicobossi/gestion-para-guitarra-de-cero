@@ -1,4 +1,4 @@
-import { StudentServiceImpl } from "@/main/service/student/student-service";
+import { StudentServiceImpl } from "@/main/service/student/student.service";
 import studentRepository from "./student.repository";
 
 

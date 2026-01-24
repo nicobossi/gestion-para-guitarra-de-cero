@@ -1,7 +1,9 @@
-import type { StudentRequestDto } from "./request-dto";
 
-
-
-export type StudentResponseDto = StudentRequestDto & {
+export type StudentResponseDto = {
     id: number | undefined
+    name : string
+    secondName : string | undefined
+    surname : string,
+    phone : string,
+    submissionDate : Date
 }

@@ -17,7 +17,7 @@ export class HttpResponse {
         return res.status(400).json(data);
     }
 
-    SERVER_ERROR<T>(res : Response<T>, data : T): unknown {
+    SERVER_ERROR<T>(res : Response<T>, data : T): Response<T> {
         return res.status(500).json(data);
     }
 }

@@ -1,5 +1,5 @@
-import { ValidatorMiddleware } from "@/main/api/http-request/http-request";
-import { HttpResponse } from "@/main/api/http-response/http-response";
+import { ValidatorMiddleware } from "@/main/api/middleware/validator.middleware";
+import { HttpResponse } from "@/main/api/http-response";
 
 
 const httpResponse = new HttpResponse();

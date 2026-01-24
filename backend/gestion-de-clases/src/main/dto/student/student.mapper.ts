@@ -1,7 +1,7 @@
 import { Student } from "@/main/domain/student/student";
 import type { Alumno } from "resources/generated/prisma/client";
 import type { AlumnoCreateInput } from "resources/generated/prisma/models";
-import type { StudentRequestDto } from "./types/request-dto";
+import type { StudentRequestDto } from "./types/request.dto";
 import type { StudentResponseDto } from "./types/response.dto";
 
 
@@ -30,16 +30,11 @@ export class StudentMapper {
 
     dtoToModel(studentRequest : StudentRequestDto) : Student {
 
-        const submissionDate = new Date(studentRequest.submissionDate);
-
-        if (isNaN(submissionDate.getTime())) throw new Error('Invalid date format')
-        // instalar yup para no hacer esta asquerosidad
-
         return new Student(
             studentRequest.name,
             studentRequest.surname,
             Number.parseInt(studentRequest.phone),
-            submissionDate,
+            studentRequest.submissionDate,
             studentRequest.secondName
         )
     }

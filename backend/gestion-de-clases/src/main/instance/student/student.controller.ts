@@ -1,7 +1,7 @@
-import { StudentController } from "@/main/api/student/student-controller";
+import { StudentController } from "@/main/api/student/student.controller";
 import service from "./student.service";
-import { StudentMapper as StudentMapper } from "@/main/dto/student/student-mapper";
-import { HttpResponse } from "@/main/api/http-response/http-response";
+import { StudentMapper as StudentMapper } from "@/main/dto/student/student.mapper";
+import { HttpResponse } from "@/main/api/http-response";
 
 
 const mapper = new StudentMapper();

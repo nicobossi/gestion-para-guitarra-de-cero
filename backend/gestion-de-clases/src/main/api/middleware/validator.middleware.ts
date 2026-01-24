@@ -1,6 +1,6 @@
 import type { RequestHandler } from "express";
 import { ValidationError, type AnyObject, type Maybe, type ObjectSchema } from "yup";
-import type { HttpResponse } from "../http-response/http-response";
+import type { HttpResponse } from "../http-response";
 
 
 

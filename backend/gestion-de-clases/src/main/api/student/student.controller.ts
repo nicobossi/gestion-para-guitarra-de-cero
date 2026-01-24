@@ -1,9 +1,9 @@
 import type { Student } from "@/main/domain/student/student";
-import type { StudentMapper } from "@/main/dto/student/student-mapper";
+import type { StudentMapper } from "@/main/dto/student/student.mapper";
 import type { StudentResponseDto } from "@/main/dto/student/types/response.dto";
-import type { StudentService } from "@/main/service/student/student-service.i";
+import type { StudentService } from "@/main/service/student/student.service.i";
 import type { Request, Response } from "express-serve-static-core";
-import type { HttpResponse } from "../http-response/http-response";
+import type { HttpResponse } from "../http-response";
 
 export class StudentController {
 
@@ -17,7 +17,7 @@ export class StudentController {
         this.httpResponse = httpResponse;
     }
 
-    async post(req : Request, res : Response<StudentResponseDto | {message : string}>) {        
+    async post(req : Request, res : Response) {        
         try {
             const student : Student = this.mapper.dtoToModel(req.body);
             const addedStudent : Student = await this.service.income(student);

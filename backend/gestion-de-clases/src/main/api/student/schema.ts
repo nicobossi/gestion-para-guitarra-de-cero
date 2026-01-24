@@ -1,4 +1,4 @@
-import type { StudentRequestDto } from "@/main/dto/student/types/request-dto";
+import type { StudentRequestDto } from "@/main/dto/student/types/request.dto";
 import { date, object, ObjectSchema, string } from "yup";
 
 const studentSchema : ObjectSchema<StudentRequestDto> = object().shape({

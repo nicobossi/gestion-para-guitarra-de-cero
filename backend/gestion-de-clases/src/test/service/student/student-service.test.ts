@@ -1,7 +1,7 @@
 import { Student } from "@/main/domain/student/student";
 import clearAll from "./clear-all";
-import type { StudentServiceImpl } from "@/main/service/student/student-service";
-import studentService from "@/main/routes/student/student-service";
+import type { StudentServiceImpl } from "@/main/service/student/student.service";
+import studentService from "@/main/instance/student/student.service";
 
 
 describe("tests to student service", () => {

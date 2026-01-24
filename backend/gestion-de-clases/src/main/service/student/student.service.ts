@@ -1,6 +1,6 @@
 import type { Student } from "@/main/domain/student/student";
-import type { StudentService } from "./student-service.i";
-import type { StudentRepository } from "@/main/persistence/repository/student/student-repository.i";
+import type { StudentService } from "./student.service.i";
+import type { StudentRepository } from "@/main/persistence/repository/student/student.repository.i";
 import { RepeatEntityException } from "@/main/persistence/sql/repeat-entity-exception";
 
 

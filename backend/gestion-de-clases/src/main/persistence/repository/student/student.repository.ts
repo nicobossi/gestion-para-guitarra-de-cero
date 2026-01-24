@@ -1,8 +1,8 @@
 import type { Lesson } from "@/main/domain/lesson/lesson";
 import type { Student } from "@/main/domain/student/student";
-import type { StudentRepository } from "./student-repository.i";
-import type { StudentDao as StudentSqlDao } from "../../sql/student/student-dao.i";
-import type { LessonSqlDao } from "../../sql/lesson/lesson-dao.i";
+import type { StudentRepository } from "./student.repository.i";
+import type { StudentDao as StudentSqlDao } from "../../sql/student/student.dao.i";
+import type { LessonSqlDao } from "../../sql/lesson/lesson.dao.i";
 
 
 export class StudentRepositoryImpl implements StudentRepository {
