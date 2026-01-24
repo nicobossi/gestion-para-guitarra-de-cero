@@ -38,7 +38,7 @@ export class StudentMapper {
         return new Student(
             studentRequest.name,
             studentRequest.surname,
-            studentRequest.phone,
+            Number.parseInt(studentRequest.phone),
             submissionDate,
             studentRequest.secondName
         )
@@ -50,8 +50,8 @@ export class StudentMapper {
             name: student.getName,
             secondName: student.getSecondName,
             surname: student.getSurname,
-            phone: student.getPhoneNumber, 
-            submissionDate: student.getSubmissionDate.toISOString()
+            phone: student.getPhoneNumber.toString(), 
+            submissionDate: student.getSubmissionDate
         }
     }
 }

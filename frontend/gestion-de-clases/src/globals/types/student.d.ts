@@ -2,10 +2,10 @@
 
 export type Entrant = {
     id?: number
-    firstName: string,
+    name: string,
     secondName: string,
     surname: string,
     phone: number,
     submissionDate : Date
-    submissionTime : string
+    submissionTime : number
 }

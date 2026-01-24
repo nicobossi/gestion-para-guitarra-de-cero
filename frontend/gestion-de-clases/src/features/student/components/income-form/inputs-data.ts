@@ -3,9 +3,9 @@ import type { InputData } from "@/globals/types/input";
 
 const incomeInputsData : InputData[] = [
     {
-        id: "firstName",
+        id: "name",
         type: "text",
-        name: "firstName",
+        name: "name",
         placeholder: "Primer nombre",
         isRequired: true,
         errorMessage: "el campo es requerido"
@@ -44,7 +44,7 @@ const incomeInputsData : InputData[] = [
     },
     {
         id: "submissionTime",
-        type: "text",
+        type: "time",
         name: "submissionTime",
         placeholder: "Horario de asistencia",
         isRequired: true,
