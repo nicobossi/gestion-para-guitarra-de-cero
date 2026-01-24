@@ -1,5 +1,5 @@
 import { StudentServiceImpl } from "@/main/service/student/student-service";
-import studentRepository from "./student-repository";
+import studentRepository from "./student.repository";
 
 
 
