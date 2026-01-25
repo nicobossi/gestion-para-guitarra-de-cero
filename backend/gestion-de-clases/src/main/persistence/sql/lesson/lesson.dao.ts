@@ -2,7 +2,7 @@ import type { Lesson } from "@/main/domain/lesson/lesson";
 import type { LessonSqlDao } from "./lesson.dao.i";
 import type { PrismaClient } from "resources/generated/prisma/client";
 import type { LessonMapper } from "@/main/dto/lesson/lesson.mapper";
-import { HandlerPrismaError } from "../handler-exception/handler-exception";
+import { HandlerPrismaError } from "../prisma/exception/handler-prisma-exception";
 
 
 

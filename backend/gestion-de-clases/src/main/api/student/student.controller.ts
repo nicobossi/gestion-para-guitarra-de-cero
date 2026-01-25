@@ -4,6 +4,7 @@ import type { StudentResponseDto } from "@/main/dto/student/types/response.dto";
 import type { StudentService } from "@/main/service/student/student.service.i";
 import type { Request, Response } from "express-serve-static-core";
 import type { HttpResponse } from "../http-response";
+import { ManyPhoneException } from "@/main/domain/student/many-phone-exception";
 
 export class StudentController {
 
@@ -25,9 +26,10 @@ export class StudentController {
             return this.httpResponse.CREATE<StudentResponseDto>(res, studentDtoResponse);
         }
         catch(error : unknown) {  
-            return this.httpResponse.BAD_REQUEST<{message : string}>(res, {
+            if(error instanceof ManyPhoneException) return this.httpResponse.BAD_REQUEST<{message : string}>(res, {
                 message: "El teléfono enviado ya se encuentra registrado"
             });
+            else throw error;
         }
     }
 }

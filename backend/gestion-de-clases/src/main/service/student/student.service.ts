@@ -18,7 +18,7 @@ export class StudentServiceImpl implements StudentService {
         }
         catch(error : unknown) {
             if(error instanceof RepeatEntityException) throw student.manyPhoneException();
-            else throw new Error("") // ver como manejar excepciones
+            else throw error;
         }
     }
 
