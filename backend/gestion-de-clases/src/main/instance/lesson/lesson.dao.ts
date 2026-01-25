@@ -1,6 +1,6 @@
-import { LessonMapper } from "@/main/dto/lesson/lesson.mapper";
-import { LessonSqlDaoImpl } from "@/main/persistence/sql/lesson/lesson.dao";
-import type { LessonSqlDao } from "@/main/persistence/sql/lesson/lesson.dao.i";
+import { LessonMapper } from "@/main/features/lesson/infraestructure/dtos/lesson.mapper";
+import { LessonSqlDaoImpl } from "@/main/features/lesson/infraestructure/persistence/sql/lesson.dao";
+import type { LessonSqlDao } from "@/main/features/lesson/infraestructure/persistence/sql/lesson.dao.i";
 import client from "resources/client";
 
 
