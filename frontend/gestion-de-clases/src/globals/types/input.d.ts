@@ -7,4 +7,5 @@ export type InputData = {
     placeholder : string
     isRequired : boolean
     errorMessage? : string
+    validators?: RegisterOptions
 }

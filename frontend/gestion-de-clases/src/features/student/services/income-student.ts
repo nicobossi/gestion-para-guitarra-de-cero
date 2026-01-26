@@ -15,27 +15,21 @@ type Student = {
 const incomeStudent = async (entrant : Entrant) : Promise<Entrant> => {
 
     try {
-
-        //const submissionDate = new Date(entrant.submissionDate);
-        //const date = new Date(submissionDate.getUTCFullYear(), submissionDate.getMonth(), submissionDate.getDay(), entrant.submissionTime);
         const student = {
-            id: entrant.id,
             name: entrant.name,
             secondName: entrant.secondName,
             surname: entrant.surname,
             phone: entrant.phone.toString(),
-            submissionDate: new Date()
+            submissionDate: entrant.submissionDate
         }
         const newStudent = await axios.post<Student>(URL_STUDENT_INCOME, student);
         const newDate : Date = new Date(newStudent.data.submissionDate)
         const newEntrant : Entrant = {
-            id: newStudent.data.id,
             name: newStudent.data.name,
             secondName: newStudent.data.secondName,
             surname: newStudent.data.surname,
             phone: Number.parseInt(newStudent.data.phone),
             submissionDate: newDate,
-            submissionTime: newDate.getHours(), // ver para mostrar horasy minutos
         }
         return newEntrant;
     }

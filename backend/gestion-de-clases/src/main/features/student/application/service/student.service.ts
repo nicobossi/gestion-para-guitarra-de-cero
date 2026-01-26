@@ -1,7 +1,7 @@
 import type { Student } from "@/main/features/student/domain/student";
 import type { StudentService } from "./student.service.i";
 import type { StudentRepository } from "@/main/features/student/infraestructure/persistence/repository/student.repository.i";
-import { RepeatEntityException } from "@/main/shared/infraestructure/persistence/exceptions/repeat-entity-exception";
+import { RepeatEntityException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
 
 
 export class StudentServiceImpl implements StudentService {

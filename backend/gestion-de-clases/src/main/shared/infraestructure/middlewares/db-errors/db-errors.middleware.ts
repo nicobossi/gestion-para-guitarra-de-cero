@@ -1,5 +1,5 @@
 import type { ErrorRequestHandler, NextFunction, Response } from "express";
-import { CredentialsException, DisconnectException, TimeException, UknowDataBaseException, UnauthorizedException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
+import { CredentialsException, DisconnectException, EntityFieldException, TimeException, UknowDataBaseException, UnauthorizedException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
 import type { HttpResponse } from "../../http/http-response/http-response";
 
 
@@ -18,6 +18,7 @@ export class DbErrorMiddelware {
             if(error instanceof TimeException) return this.httpResponse.SERVER_TIMEOUT(res, {message: error.message});
             if(error instanceof UknowDataBaseException) return this.httpResponse.SERVER_ERROR(res, {message: error.message});
             if(error instanceof UnauthorizedException) return this.httpResponse.UNAUTHORIZED(res, {message: error.message});
+            if(error instanceof EntityFieldException) return this.httpResponse.BAD_REQUEST(res, {message: error.message})
         }
     }
 }

@@ -5,7 +5,7 @@ const RegisterInput = ({inputData, register, error} : RegisterInputProps) => {
     return (
         <div className="input-container">
             <input className = {error ? "register-input_error" : "register-input"}
-                {...register(inputData.name, {required: inputData.isRequired})}
+                {...register(inputData.name, inputData.validators)}
                 id = {inputData.id}
                 name = {inputData.name}
                 type = {inputData.type}

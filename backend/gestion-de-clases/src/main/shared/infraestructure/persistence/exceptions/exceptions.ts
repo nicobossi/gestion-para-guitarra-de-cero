@@ -36,6 +36,13 @@ export class UnauthorizedException extends Error {
     }
 }
 
+export class EntityFieldException extends Error {
+
+    constructor(message : string) {
+        super(message);
+    }
+}
+
 export class RepeatEntityException extends Error {
 
     constructor(message : string) {

@@ -13,7 +13,7 @@ export class StudentMapper {
             secondName: student.getSecondName ? student.getSecondName : null,
             surname: student.getSurname,
             phone: student.getPhoneNumber, 
-            submissionDate: student.getSubmissionDate
+            submissionDate: student.getSubmissionDate.toISOString()
         }
     }
 

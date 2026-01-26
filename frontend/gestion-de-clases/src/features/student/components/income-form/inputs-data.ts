@@ -8,7 +8,10 @@ const incomeInputsData : InputData[] = [
         name: "name",
         placeholder: "Primer nombre",
         isRequired: true,
-        errorMessage: "el campo es requerido"
+        errorMessage: "el campo es requerido",
+        validators: {
+            required: true,
+        }
     },
     {
         id: "secondName",
@@ -16,7 +19,6 @@ const incomeInputsData : InputData[] = [
         name: "secondName",
         placeholder: "Segundo nombre",
         isRequired: false
-
     },
     {
         id: "surname",
@@ -24,7 +26,10 @@ const incomeInputsData : InputData[] = [
         name: "surname",
         placeholder: "Apellido",
         isRequired: true,
-        errorMessage: "el campo es requerido"
+        errorMessage: "el campo es requerido",
+        validators: {
+            required: true,
+        }
     },
     {
         id: "phone",
@@ -32,24 +37,23 @@ const incomeInputsData : InputData[] = [
         name: "phone",
         placeholder: "Teléfono",
         isRequired: true,
-        errorMessage: "el campo es requerido"
+        errorMessage: "el campo es requerido",
+        validators: {
+            required: true,
+        }
     },
     {
         id: "submissionDate",
-        type: "date",
+        type: "datetime-local",
         name: "submissionDate",
         placeholder: "Fecha de asistencia",
         isRequired: true,
-        errorMessage: "el campo es requerido"
+        errorMessage: "el campo es requerido",
+        validators: {
+            required: true,
+            valueAsDate: true
+        }
     },
-    {
-        id: "submissionTime",
-        type: "time",
-        name: "submissionTime",
-        placeholder: "Horario de asistencia",
-        isRequired: true,
-        errorMessage: "el campo es requerido"
-    }
 ]
 
 export default incomeInputsData;

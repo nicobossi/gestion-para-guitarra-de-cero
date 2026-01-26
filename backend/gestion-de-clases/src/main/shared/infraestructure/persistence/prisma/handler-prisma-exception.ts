@@ -1,15 +1,17 @@
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
+import { PrismaClientKnownRequestError, PrismaClientValidationError } from "@prisma/client/runtime/client";
 import codeErrorHandler from "./code-error.handler";
-import { UknowDataBaseException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
+import { EntityFieldException, UknowDataBaseException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
 
 
 export class HandlerPrismaError {
 
     handleCreateError(error : unknown) : Error {
+        console.log(error);
         if(error instanceof PrismaClientKnownRequestError) {
             const exception = codeErrorHandler.get(error.code);
             return exception ? exception(error.message) : new UknowDataBaseException(this.untrackedErrorMessage());
         }
+        if(error instanceof PrismaClientValidationError) return new EntityFieldException(error.message);
         return new UknowDataBaseException(this.uknowErrorMessage());
     }
 

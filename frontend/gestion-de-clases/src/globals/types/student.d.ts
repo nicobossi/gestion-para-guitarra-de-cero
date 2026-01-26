@@ -7,5 +7,4 @@ export type Entrant = {
     surname: string,
     phone: number,
     submissionDate : Date
-    submissionTime : number
 }

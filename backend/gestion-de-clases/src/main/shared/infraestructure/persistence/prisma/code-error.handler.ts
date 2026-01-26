@@ -1,5 +1,4 @@
-import { CredentialsException, DisconnectException, TimeException, UknowDataBaseException, UnauthorizedException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
-import { RepeatEntityException } from "@/main/shared/infraestructure/persistence/exceptions/repeat-entity-exception";
+import { CredentialsException, DisconnectException, RepeatEntityException, TimeException, UknowDataBaseException, UnauthorizedException } from "@/main/shared/infraestructure/persistence/exceptions/exceptions";
 
 
 const codeErrorHandler : Map<string, (message : string) => Error> = new Map<string, (message : string) => Error>();
