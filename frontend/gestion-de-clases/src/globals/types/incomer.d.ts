@@ -1,5 +1,5 @@
 import type { Lesson } from "./lesson";
-import type { Entrant } from "./entrant";
+import type { Entrant } from "./student";
 
 
 

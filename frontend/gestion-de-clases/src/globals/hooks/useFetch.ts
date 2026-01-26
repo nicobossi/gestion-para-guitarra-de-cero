@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 
-const useFetchTimeout = () => {
+const useFetch = () => {
+    
     const [isError, setIsError] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    async function handleFetch(save : () => void) {
+    async function handleFetch(save : () => void, untrack : () => void) {
 
         setIsLoading(true);
 
@@ -14,7 +15,7 @@ const useFetchTimeout = () => {
             handleAssert();
         }
         catch(error : unknown) {
-            handleError(error);
+            handleError(error, untrack);
         }
     }
 
@@ -23,10 +24,11 @@ const useFetchTimeout = () => {
         setIsLoading(false);
     }
 
-    function handleError(error : unknown) {
+    function handleError(error : unknown, untrack : () => void) {
         console.log(error);
         setIsError(true);
         setIsLoading(false);
+        untrack();
     }
 
     const onLoading = () : void => {
@@ -36,4 +38,4 @@ const useFetchTimeout = () => {
     return {isLoading, isError, onLoading, handleFetch}
 }
 
-export default useFetchTimeout;
+export default useFetch;

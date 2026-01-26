@@ -1,4 +1,4 @@
-import type { Entrant } from "@/globals/types/entrant"
+import type { Entrant } from "@/globals/types/student"
 
 
 

@@ -1,37 +1,15 @@
-import type { Entrant } from "@/globals/types/student";
+import type { Student } from "@/globals/types/student";
 import { URL_STUDENT_INCOME } from "@/infraestructure/api-urls";
 import axios from "@/infraestructure/request-config";
+import requestDto from "../adapter/request.dto";
+import { responseDto, type StudentResponseDto } from "../adapter/response.dto";
 
 
-type Student = {
-    id?: number
-    name: string,
-    secondName: string,
-    surname: string,
-    phone: string,
-    submissionDate : Date
-}
-
-const incomeStudent = async (entrant : Entrant) : Promise<Entrant> => {
+const incomeStudent = async (entrant : Student) : Promise<Student> => {
 
     try {
-        const student = {
-            name: entrant.name,
-            secondName: entrant.secondName,
-            surname: entrant.surname,
-            phone: entrant.phone.toString(),
-            submissionDate: entrant.submissionDate
-        }
-        const newStudent = await axios.post<Student>(URL_STUDENT_INCOME, student);
-        const newDate : Date = new Date(newStudent.data.submissionDate)
-        const newEntrant : Entrant = {
-            name: newStudent.data.name,
-            secondName: newStudent.data.secondName,
-            surname: newStudent.data.surname,
-            phone: Number.parseInt(newStudent.data.phone),
-            submissionDate: newDate,
-        }
-        return newEntrant;
+        const newStudent = await axios.post<StudentResponseDto>(URL_STUDENT_INCOME, requestDto(entrant));
+        return responseDto(newStudent.data);
     }
     catch(error : unknown) {
         return Promise.reject(error);
