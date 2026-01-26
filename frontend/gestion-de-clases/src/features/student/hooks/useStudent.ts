@@ -1,28 +1,19 @@
 import { useState } from "react";
 import incomeStudent from "../services/income-student";
-import type { Entrant } from "@/globals/types/entrant";
+import type { Entrant } from "@/globals/types/student";
+import useFetchTimeout from "@/globals/hooks/useFetchTimeout";
 
 
 const useStudent = () => {
 
     const [student, setStudent] = useState<Entrant | null>(null);
-    const [isError, setIsError] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const {isLoading, isError, handleFetch} = useFetchTimeout();
 
     const income = async (student : Entrant) : Promise<void> => {
-        console.log(student);
-        setIsLoading(true);
-        
-        try {
-            const newStudent : Entrant = await incomeStudent(student);
-            setStudent(newStudent);
-            setIsLoading(false);
-        }
-        catch(error : unknown) {
-            console.log(error) //???
-            setIsError(true);
-            setIsLoading(false)
-        }
+
+        handleFetch(async () => {
+            setStudent(await incomeStudent(student));
+        })
     }
 
     return {student, isError, isLoading, income}
