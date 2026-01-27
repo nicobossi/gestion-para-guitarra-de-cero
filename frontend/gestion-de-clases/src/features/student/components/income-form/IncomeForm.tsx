@@ -9,7 +9,7 @@ import type { Student } from '@/globals/types/student'
 const IncomeFormContainer = ({onSubmit} : IncomeFormContainerProps) => {
 
     return (
-        <section className = 'student-income_form-container'>
+        <section className = "student-income_form-container">
             <FormContainer>
                 <TitleContainer title = "Ingresar Alumno" />
                 <FormContent<Student> inputsData = {incomeInputsData} onSubmit={onSubmit} />

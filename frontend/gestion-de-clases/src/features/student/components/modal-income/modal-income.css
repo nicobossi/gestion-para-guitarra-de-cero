@@ -1,0 +1,60 @@
+
+
+
+.modal-income_container {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-container_disable {
+    display: none;
+}
+
+.modal-container_active {
+    width: 90%;
+    max-width: 420px;
+    height: 260px;
+    border-radius: 20px;
+    background-color: #FFF;
+}
+
+.modal-income_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    border-radius: 20px 20px 0 0;
+    background: var(--payment-gradient)
+}
+
+.modal-income_header button {
+    margin-right: 5px;
+}
+
+.modal-income_header h3 {
+    margin-left: 5px;
+}
+
+.modal-income_content {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: 60%;
+}
+
+.modal-income_navegate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    border-radius: 0 0 20px 20px;
+}
+
+.modal-income_navegate a {
+    color: var(--dark-color);
+    text-decoration: none;
+}

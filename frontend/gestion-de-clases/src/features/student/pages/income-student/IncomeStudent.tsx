@@ -3,6 +3,7 @@ import IncomeFormContainer from '../../components/income-form/IncomeForm';
 import './income-student.css'
 import StudentContext from '../../context/student.context';
 import useStudent from '../../hooks/useStudent';
+import ModalIncome from '../../components/modal-income/ModalIncome';
 
 
 const IncomeStudentPage = () => {
@@ -11,10 +12,10 @@ const IncomeStudentPage = () => {
 
     return (
         <StudentContext.Provider value = {student}>
-            <section className="student-income">
+            <section className = 'student-income'>
                 <SideBar />
                 {isLoading && <p>cargando...</p>}
-                {student && <p>Modal del estudiante</p>}
+                {student && <ModalIncome />}
                 {isError && <p>Error</p>}
                 <IncomeFormContainer onSubmit = {income} />
             </section>
