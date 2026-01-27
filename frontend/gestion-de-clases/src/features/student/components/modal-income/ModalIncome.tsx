@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import './modal-income.css'
 import StudentContext from '../../context/student.context';
+import type { Student } from '@/globals/types/student';
 
 /*
     <Link to="/">Volver al Home</Link>
@@ -15,21 +16,46 @@ const ModalIncome = () => {
     return (
         <section className = "modal-income_container">
             <div className = {student ? "modal-container_active" : "modal-container_disable"}>
-                <header className = "modal-income_header">
-                    <h3>Alumno ingresado</h3>
-                    <button>Cancelar</button>
-                </header>
-                <div className = "modal-income_content">
-                    <p>
-                    El ingrestante {student?.name} {student?.secondName} {student?.surname} es un nuevo alumno ¿Desea registrar su pago?
-                    </p>
-                </div>
-                <footer className = "modal-income_navegate">
-                    <a href="">Volver al Home</a>
-                    <a href="">Registrar Pago</a>
-                </footer>
+                <ModalHeader />
+                <ModalContent student = {student!}/>
+                <ModalFooter />
             </div>
         </section>
+    )
+}
+
+const ModalHeader = () => {
+    return(
+        <header className = "modal-income_header">
+            <div>
+                <h3>Alumno ingresado</h3>
+                <button>Cancelar</button>
+            </div>
+        </header>
+    )
+}
+
+const ModalContent = ({student} : {student : Student}) => {
+    
+    return(
+        <div className = "modal-income_content">
+            <p>
+            El ingrestante {student.name} {student.secondName} {student.surname} es un nuevo alumno ¿Desea registrar su pago?
+            </p>
+        </div>
+    )
+}
+
+const ModalFooter = () => {
+    return (
+        <footer className = "modal-income_navegate">
+            <div className = "home-link">
+                <a href="">Volver a Home</a>
+            </div>
+            <div className = "payment-link">
+                <a href="">Registrar Pago</a>
+            </div>
+        </footer>
     )
 }
 
