@@ -21,15 +21,15 @@ export class HttpResponse {
         return res.status(401).json(data);
     }
 
-    SERVER_ERROR<T>(res : Response<T>, data : T) : Response<T> {
-        return res.status(500).json(data);
-    }
-
     SERVER_UNAVAILABLE<T>(res : Response<T>, data : T): Response<T> {
         return res.status(503).json(data);
     }
 
     SERVER_TIMEOUT<T>(res : Response<T>, data : T) : Response<T> {
         throw res.status(504).json(data);
+    }
+
+    SERVER_ERROR<T>(res : Response<T>, data : T, code? : number) : Response<T> {
+        return res.status(code ? code : 500).json(data);
     }
 }

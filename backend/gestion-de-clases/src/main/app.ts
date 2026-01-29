@@ -1,17 +1,17 @@
 import express, { json } from "express";
-import studentRouter from "./features/student/infraestructure/route/student.router";
 import cors from 'cors'
-import dbErrorMiddelware from "./shared/infraestructure/middlewares/db-errors/instance";
+import errorMiddelware from "./shared/infraestructure/middlewares/error-handler/instance";
+import studentRouter from "./features/student/infraestructure/route/instance";
 
 
 const app = express();
 
-app.use(cors()); //agregar origines concretos
+app.use(cors()); 
 
 app.use(json());
 
-app.use("/api/student", studentRouter());
+app.use(studentRouter.getPath, studentRouter.routes());
 
-app.use(dbErrorMiddelware.handleErrors());
+app.use(errorMiddelware.handle());
 
 export default app;

@@ -18,7 +18,7 @@ export class StudentController {
         this.httpResponse = httpResponse;
     }
 
-    async post(req : Request, res : Response) {        
+    post = async (req : Request, res : Response) => {        
         try {
             const student : Student = this.mapper.dtoToModel(req.body);
             const addedStudent : Student = await this.service.income(student);

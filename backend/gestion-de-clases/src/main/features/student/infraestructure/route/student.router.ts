@@ -1,18 +1,22 @@
-import { Router } from "express"
+import { Router, type RequestHandler } from "express"
 import studentSchema from "../schema/schema";
 import studentController from "@/main/features/student/application/controller/instance";
-import validatorMiddleware from "@/main/shared/infraestructure/middlewares/body-validator/instance";
+import bodyValidator from "@/main/shared/infraestructure/middlewares/body-validator/instance";
+import { HttpRequest } from "@/main/shared/infraestructure/http/http-request/http-request";
 
 
+export class StudentRouter {
 
-const studentRouter = () => {
+    private router : Router = Router();
+    private path : string = "/api/student";
+    private schema : RequestHandler = bodyValidator.validate(studentSchema);
 
-    const route = Router();
+    get getPath() : string {
+        return this.path;
+    }
 
-    route.post("/income", validatorMiddleware.validate(studentSchema), (req, res) => studentController.post(req, res));
-
-    return route;
-
+    routes() : Router {
+        this.router.post("/income", this.schema, HttpRequest.execute(studentController.post));
+        return this.router;
+    }
 }
-
-export default studentRouter;

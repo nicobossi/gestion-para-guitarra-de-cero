@@ -1,8 +1,6 @@
-import { BodyValidatorMiddleware } from "@/main/shared/infraestructure/middlewares/body-validator/body-validator.middleware";
-import { HttpResponse } from "@/main/shared/infraestructure/http/http-response/http-response";
+import { BodyValidatorMiddleware } from "./body-validator.middleware";
 
 
-const httpResponse = new HttpResponse();
-const validatorMiddleware = new BodyValidatorMiddleware(httpResponse);
+const bodyValidator = new BodyValidatorMiddleware();
 
-export default validatorMiddleware;
+export default bodyValidator;
