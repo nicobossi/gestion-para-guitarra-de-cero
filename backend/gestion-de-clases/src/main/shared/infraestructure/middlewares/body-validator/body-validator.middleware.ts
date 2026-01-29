@@ -3,9 +3,15 @@ import { type AnyObject, type ObjectSchema } from "yup";
 
 export class BodyValidatorMiddleware {
 
-    validate(schema : ObjectSchema<AnyObject>) : RequestHandler {
+    private readonly schema : ObjectSchema<AnyObject>
+
+    constructor(schema : ObjectSchema<AnyObject>) {
+        this.schema = schema;
+    }
+
+    validate() : RequestHandler {
         return async (req, _, next) => {
-            await schema.validate(req.body);
+            await this.schema.validate(req.body);
             next();
         }
     }

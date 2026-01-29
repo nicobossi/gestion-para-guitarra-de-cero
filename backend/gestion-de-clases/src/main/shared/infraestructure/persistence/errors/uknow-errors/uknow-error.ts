@@ -1,5 +1,5 @@
 import { DbError } from "../db-error";
-import type ErrorReason from "./errors-reason";
+import type ErrorReason from "./reason";
 
 
 export class DbUknowError extends DbError {

@@ -1,3 +1,4 @@
+import type { ModelException } from "@/main/shared/domain/exception/model-exception";
 import { ManyPhoneException } from "./many-phone-exception";
 
 
@@ -51,11 +52,11 @@ export class Student {
         return this.id;
     }
 
-    manyPhoneException() : ManyPhoneException {
+    manyPhoneException() : ModelException {
         return new ManyPhoneException(this.manyPhoneExceptionMessage());
     }
 
-    private manyPhoneExceptionMessage(): string {
+    private manyPhoneExceptionMessage() : string {
         return "El alumno " + this.getName + " no puede tener el celular " + this.phone + " porque ya se encuentra registrado";
     }
 }
