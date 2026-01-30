@@ -4,7 +4,7 @@ import FormContainer from '@/globals/components/form-container/FormContainer'
 import TitleContainer from '@/globals/components/title-container/TitleContainer'
 import FormContent from '@/globals/components/form-content/FormContent'
 import incomeInputsData from './inputs-data'
-import type { Student } from '@/globals/types/student'
+import incomerSchema from './form-data'
 
 const IncomeFormContainer = ({onSubmit} : IncomeFormContainerProps) => {
 
@@ -12,7 +12,10 @@ const IncomeFormContainer = ({onSubmit} : IncomeFormContainerProps) => {
         <section className = "student-income_form-container">
             <FormContainer>
                 <TitleContainer title = "Ingresar Alumno" />
-                <FormContent<Student> inputsData = {incomeInputsData} onSubmit={onSubmit} />
+                <FormContent 
+                    schema = {incomerSchema}
+                    inputsData = {incomeInputsData} 
+                    onSubmit = {onSubmit} />
             </FormContainer>
         </section>
     )

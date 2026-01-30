@@ -1,7 +1,9 @@
 import type { InputData } from "@/globals/types/input"
+import type { AnyObject, ObjectSchema } from "yup"
 
 
-type FormContentProps<T> = {
+type FormContentProps = {
+    schema : ObjectSchema<AnyObject>
     inputsData : InputData[] 
-    onSubmit : (data : T) => void
+    onSubmit : (data : AnyObject) => void
 }

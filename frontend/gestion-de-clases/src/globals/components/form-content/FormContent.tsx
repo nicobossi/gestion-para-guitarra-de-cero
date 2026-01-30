@@ -2,14 +2,16 @@ import SumbitButton from "../submit-button/SubmitButton";
 import type { FormContentProps } from "./form-content";
 import './form-content.css'
 import RegisterInput from "../register-input/RegisterInput";
-import { useForm, type FieldValues } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import type { AnyObject } from "yup";
 
 
-function FormContent<T extends FieldValues>({inputsData, onSubmit} : FormContentProps<T>) {
+function FormContent({schema, inputsData, onSubmit} : FormContentProps) {
 
-    const {register, handleSubmit, formState: {errors}} = useForm<T>();
+    const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)});
 
-    const eventSubmit = (data : T) => onSubmit(data);
+    const eventSubmit = (data : AnyObject) => onSubmit(data);
 
     return (
         <div className = "form-content">

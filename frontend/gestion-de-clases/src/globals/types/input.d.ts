@@ -5,6 +5,4 @@ export type InputData = {
     type : string
     name : string
     placeholder : string
-    errorMessage? : string
-    validators?: RegisterOptions
 }

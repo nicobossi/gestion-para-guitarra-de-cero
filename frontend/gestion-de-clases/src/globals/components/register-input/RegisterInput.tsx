@@ -5,14 +5,14 @@ const RegisterInput = ({inputData, register, error} : RegisterInputProps) => {
     return (
         <div className="input-container">
             <input className = {error ? "register-input_error" : "register-input"}
-                {...register(inputData.name, inputData.validators)}
+                {...register(inputData.name)}
                 id = {inputData.id}
                 name = {inputData.name}
                 type = {inputData.type}
                 placeholder = {inputData.placeholder}
             >
             </input>
-            {error && <p className = "error-message">{inputData.errorMessage}</p>}
+            {error && <p className = "error-message">{error.message}</p>}
         </div>
     )
 }
