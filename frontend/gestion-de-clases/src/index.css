@@ -9,7 +9,14 @@
 :root {
     --primary-color: #273678;
     --dark-color: #111A40;
-    --payment-gradient: radial-gradient(#FFF6CF, #F8DA59);
+    --payment-gradient: linear-gradient(
+        135deg,
+        #bf932c 0%,
+        #f5d76e 20%,
+        #fff1a8 40%,
+        #f5d76e 60%,
+        #b89430 100%
+    );
     --student-color: #EFF0FB;
     --payment-color: #E4F2FC;
     --fee-color: #F1F1F1;

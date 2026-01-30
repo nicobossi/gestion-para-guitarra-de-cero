@@ -40,7 +40,7 @@ const ModalContent = ({student} : {student : Student}) => {
     return(
         <div className = "modal-income_content">
             <p>
-            El ingrestante {student.name} {student.secondName} {student.surname} es un nuevo alumno ¿Desea registrar su pago?
+            El ingrestante {student.name} {student.secondName} {student.surname} se registro como un nuevo alumno ¿Desea registrar su pago?
             </p>
         </div>
     )

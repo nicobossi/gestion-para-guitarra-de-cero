@@ -30,7 +30,7 @@ const incomeInputsData : InputData[] = [
     },
     {
         id: "phone",
-        type: "text",
+        type: "number",
         name: "phone",
         placeholder: "Teléfono",
         errorMessage: "el campo es requerido",

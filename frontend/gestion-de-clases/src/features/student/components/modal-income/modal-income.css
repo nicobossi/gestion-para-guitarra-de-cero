@@ -39,10 +39,15 @@
 
 .modal-income_header button {
     margin-right: 5px;
+    border-style: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #FFF;
 }
 
 .modal-income_header h3 {
     margin-left: 5px;
+    color: var(--dark-color);
 }
 
 .modal-income_content {
@@ -70,8 +75,12 @@
     width: 40%;
     height: 40px;
     border-radius: 20px;
+}
+
+.payment-link:hover, .home-link:hover {
     box-shadow: 4px 4px 4px #CCC;
 }
+
 
 .modal-income_navegate .payment-link {
     background: var(--payment-gradient);
