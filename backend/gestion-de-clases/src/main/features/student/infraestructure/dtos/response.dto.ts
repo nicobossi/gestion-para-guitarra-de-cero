@@ -5,5 +5,5 @@ export type StudentResponseDto = {
     secondName : string | undefined
     surname : string,
     phone : string,
-    submissionDate : Date
+    submissionDate : string
 }

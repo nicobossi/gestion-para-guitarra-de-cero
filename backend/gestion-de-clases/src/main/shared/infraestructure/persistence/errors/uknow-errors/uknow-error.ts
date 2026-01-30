@@ -2,7 +2,7 @@ import { DbError } from "../db-error";
 import type ErrorReason from "./reason";
 
 
-export class DbUknowError extends DbError {
+export class InfraestructureDbError extends DbError {
 
     private reason : ErrorReason;
 

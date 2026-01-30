@@ -1,8 +1,8 @@
 import type { StudentDaoImpl } from "@/main/features/student/infraestructure/persistence/sql/student.dao";
 import clearAll from "./clear-all";
-import { RepeatEntityException } from "@/main/shared/infraestructure/persistence/exceptions/repeat-entity-exception";
 import studentDao from "@/main/features/student/infraestructure/persistence/sql/instance";
 import { Student } from "@/main/features/student/domain/student";
+import { RepeatEntityException } from "@/main/shared/infraestructure/persistence/errors/exceptions/exceptions";
 
 
 describe("tests to student DAO", () => {

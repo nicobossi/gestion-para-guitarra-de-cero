@@ -34,7 +34,7 @@ export class StudentMapper {
             studentRequest.name,
             studentRequest.surname,
             Number.parseInt(studentRequest.phone),
-            studentRequest.submissionDate,
+            new Date(studentRequest.submissionDate),
             studentRequest.secondName
         )
     }
@@ -46,7 +46,7 @@ export class StudentMapper {
             secondName: student.getSecondName,
             surname: student.getSurname,
             phone: student.getPhoneNumber.toString(), 
-            submissionDate: student.getSubmissionDate
+            submissionDate: student.getSubmissionDate.toString()
         }
     }
 }

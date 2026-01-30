@@ -1,16 +1,31 @@
-import { date, object, ObjectSchema, string } from "yup";
+import { object, ObjectSchema, string } from "yup";
 import type { StudentRequestDto } from "../dtos/request.dto";
 
 const studentSchema : ObjectSchema<StudentRequestDto> = object().shape({
-    name: string().required("El nombre es requerido"),
-    secondName: string(),
-    surname: string().required("El apellido es requerido"),
-    phone: string().length(10).required("El teléfono es requerido"),
-    submissionDate: date().required("La fecha de ingreso es requerida").test(
-        "time required",
-        "La fecha debe estar en formato ISO",
-        (value : Date) => value.toString().includes("T")
-    )
+    name: 
+        string().
+        required("El nombre es requerido").
+        matches(/^[\p{L}]+$/u, "Solo se permiten letras"),    
+    secondName: 
+        string().
+        matches(/^[\p{L}]+$/u, "Solo se permiten letras"),  
+    surname: 
+        string().
+        required("El apellido es requerido").
+        matches(/^[\p{L}]+$/u, "Solo se permiten letras"),  
+    phone: 
+        string().
+        length(10).
+        required("El teléfono es requerido").
+        matches(/^[0-9]+$/, "Solo se permiten números"),  
+    submissionDate: 
+        string().
+        required("La fecha de ingreso es requerida").
+        test(
+            "time required",
+            "El campo debe ser una fecha",
+            (value : string) => !isNaN(Date.parse(value))
+        )
 })
 
 export default studentSchema;

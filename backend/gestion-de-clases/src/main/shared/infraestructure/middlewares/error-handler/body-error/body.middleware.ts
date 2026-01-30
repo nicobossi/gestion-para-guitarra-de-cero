@@ -4,13 +4,23 @@ import { ValidationError } from "yup";
 import { HttpResponse } from "../../../http/http-response/http-response";
 
 
-
 export class BodyErrorMiddleware implements ErrorMiddleware {
     
-    handle(): ErrorRequestHandler {
+    handle() : ErrorRequestHandler {
         return (error, _, res, next) => {
-            if(error instanceof ValidationError) return HttpResponse.BAD_REQUEST(res, {message: error.message});
+            if(error instanceof ValidationError) return HttpResponse.BAD_REQUEST(res, this.errorsData(error));
             else next(error);
+        }
+    }
+
+    private errorsData(error: ValidationError) {
+        return error.inner.map(data => this.dataError(data));
+    }
+
+    private dataError(error: ValidationError) {
+        return {
+            field: error.path,
+            message: error.message,
         }
     }
 }
