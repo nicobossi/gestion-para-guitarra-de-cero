@@ -16,12 +16,12 @@ export class DbErrorMiddleware implements ErrorMiddleware {
     handle() : ErrorRequestHandler {
         return (error, req, res, _) => {
             if(error instanceof InfraestructureDbError) return this.errorDbResponse(res, error);
-            else return HttpResponse.SERVER_ERROR(res, {error: "Error desconocido"}, 500);
+            else return HttpResponse.ERROR(res, {error: "Error desconocido"}, 500);
         }
     }
 
     private errorDbResponse(res : Response, error : InfraestructureDbError) {
-        return HttpResponse.SERVER_ERROR(res, this.getBody(error), this.getCode(error.getReason));
+        return HttpResponse.ERROR(res, this.getBody(error), this.getCode(error.getReason));
     }
 
     private getCode(reason : ErrorReason) : number | undefined {
@@ -30,8 +30,8 @@ export class DbErrorMiddleware implements ErrorMiddleware {
 
     private getBody(error : InfraestructureDbError) {
         return {
-            message: error.message,
-            reason: ErrorReason[error.getReason]
+            reason: ErrorReason[error.getReason],
+            message: error.message
         }
     }
 }

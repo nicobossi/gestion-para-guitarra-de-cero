@@ -1,5 +1,6 @@
 import type { ModelException } from "@/main/shared/domain/exception/model-exception";
 import { ManyPhoneException } from "./many-phone-exception";
+import { CauseModelError } from "@/main/shared/infraestructure/domain/cause.error";
 
 
 
@@ -53,7 +54,7 @@ export class Student {
     }
 
     manyPhoneException() : ModelException {
-        return new ManyPhoneException(this.manyPhoneExceptionMessage());
+        return new ManyPhoneException(this.manyPhoneExceptionMessage(), CauseModelError.RepeatStudentPhone);
     }
 
     private manyPhoneExceptionMessage() : string {

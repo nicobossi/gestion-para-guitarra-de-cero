@@ -1,3 +1,4 @@
+import StudentProvider from './context/student.provider';
 import IncomeStudentPage from './pages/income-student/IncomeStudent';
 import './student.css'
 
@@ -5,7 +6,9 @@ import './student.css'
 const Student = () => {
 
     return (
-        <IncomeStudentPage />
+        <StudentProvider>
+            <IncomeStudentPage />
+        </StudentProvider>
     )
 }
 

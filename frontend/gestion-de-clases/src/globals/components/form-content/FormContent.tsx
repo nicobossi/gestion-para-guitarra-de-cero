@@ -7,11 +7,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import type { AnyObject } from "yup";
 
 
-function FormContent({schema, inputsData, onSubmit} : FormContentProps) {
+function FormContent<T extends AnyObject>({schema, inputsData, isLoading, onSubmit} : FormContentProps) {
 
     const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)});
 
-    const eventSubmit = (data : AnyObject) => onSubmit(data);
+    const eventSubmit = (data : T) => onSubmit(data);
 
     return (
         <div className = "form-content">
@@ -24,7 +24,7 @@ function FormContent({schema, inputsData, onSubmit} : FormContentProps) {
                     error = {errors[input.name]}
                     />
                 )}
-            <SumbitButton /> 
+            <SumbitButton isLoading = {isLoading}/> 
             </form>
         </div>
     )

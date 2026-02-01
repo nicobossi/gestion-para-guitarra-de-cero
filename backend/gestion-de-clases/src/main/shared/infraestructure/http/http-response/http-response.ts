@@ -29,7 +29,7 @@ export class HttpResponse {
         throw res.status(504).json(data);
     }
 
-    static SERVER_ERROR<T>(res : Response<T>, data : T, code? : number) : Response<T> {
+    static ERROR<T>(res : Response<T>, data : T, code? : number) : Response<T> {
         return res.status(code ? code : 500).json(data);
     }
 }

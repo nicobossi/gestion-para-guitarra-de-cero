@@ -1,7 +1,6 @@
-import { useContext } from 'react';
 import './modal-income.css'
-import StudentContext from '../../context/student.context';
 import type { Student } from '@/globals/types/student';
+import useStudentContext from '../../context/useStudent-validate';
 
 /*
     <Link to="/">Volver al Home</Link>
@@ -11,7 +10,7 @@ import type { Student } from '@/globals/types/student';
 
 const ModalIncome = () => {
 
-    const student = useContext(StudentContext)
+    const {student} = useStudentContext();
 
     return (
         <section className = "modal-income_container">

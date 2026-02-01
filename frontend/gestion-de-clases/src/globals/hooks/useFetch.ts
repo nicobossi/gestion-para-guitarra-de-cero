@@ -1,41 +1,43 @@
+import { ApiErrorType, type ApiError } from "@/infraestructure/api/api-error";
 import { useState } from "react";
 
 
 const useFetch = () => {
     
-    const [isError, setIsError] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<ApiError | null>(null);
 
-    async function handleFetch(save : () => void, untrack : () => void) {
+    async function handleFetch(submit : () => void, untrack : () => void) {
 
         setIsLoading(true);
 
         try {
-            await save();
+            await submit();
             handleAssert();
         }
         catch(error : unknown) {
-            handleError(error, untrack);
+            handleError(error as ApiError, untrack);
         }
     }
 
     function handleAssert() {
-        setIsError(false);
+        setError(null);
         setIsLoading(false);
     }
 
-    function handleError(error : unknown, untrack : () => void) {
-        console.log(error);
-        setIsError(true);
+    function handleError(error : ApiError, untrack : () => void) {
         setIsLoading(false);
         untrack();
+        if(error.isType(ApiErrorType.Client)) console.log(error); // navegar
+        if(error.isType(ApiErrorType.Server)) console.log(error); // navegar
+        if(error.isType(ApiErrorType.Model)) setError(error); 
     }
 
-    const onLoading = () : void => {
-        setIsLoading(true);
+    function freshError() : void {
+        setError(null);
     }
 
-    return {isLoading, isError, onLoading, handleFetch}
+    return {isLoading, error, freshError, handleFetch}
 }
 
 export default useFetch;
