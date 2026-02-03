@@ -1,4 +1,4 @@
-import { ApiErrorType, type ApiError } from "@/infraestructure/api/api-error";
+import { CauseError, type ApiError } from "@/infraestructure/api/api-error";
 import { useState } from "react";
 
 
@@ -28,9 +28,9 @@ const useFetch = () => {
     function handleError(error : ApiError, untrack : () => void) {
         setIsLoading(false);
         untrack();
-        if(error.isType(ApiErrorType.Client)) console.log(error); // navegar
-        if(error.isType(ApiErrorType.Server)) console.log(error); // navegar
-        if(error.isType(ApiErrorType.Model)) setError(error); 
+        if(error.isCause(CauseError.Client)) console.log(error); // navegar
+        if(error.isCause(CauseError.Server)) console.log(error); // navegar
+        setError(error); 
     }
 
     function freshError() : void {
