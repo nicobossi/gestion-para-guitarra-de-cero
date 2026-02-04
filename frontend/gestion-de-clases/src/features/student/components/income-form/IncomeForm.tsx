@@ -1,4 +1,4 @@
-import FormContainer from "@/globals/components/form-container/FormContainer";
+import GenericContainer from "@/globals/components/generic-container/GenericContainer";
 import TitleContainer from "@/globals/components/title-container/TitleContainer";
 import FormContent from "@/globals/components/form-content/FormContent";
 import incomerSchema from "./form-data";
@@ -14,14 +14,14 @@ const IncomeForm = () => {
 
     return (
         <section className = "student-income_form-container">
-            <FormContainer>
+            <GenericContainer>
                 <TitleContainer title = "Ingresar Alumno" />
                 <FormContent<StudentRequestDto>
                     schema = {incomerSchema}
                     inputsData = {incomeInputsData} 
                     isLoading = {isLoading}
                     onSubmit = {income} />
-            </FormContainer>
+            </GenericContainer>
         </section>
     )
 }

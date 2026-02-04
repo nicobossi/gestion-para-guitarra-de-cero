@@ -47,7 +47,7 @@
 }
 
 .phone-error-container button:hover {
-    background-color: #b71c1c;
+    background-color: var(--reintent-color);
 }
 
 .phone-error-container button:active {

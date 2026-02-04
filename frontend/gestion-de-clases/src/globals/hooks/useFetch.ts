@@ -1,9 +1,11 @@
 import { CauseError, type ApiError } from "@/infraestructure/api/api-error";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 
 const useFetch = () => {
-    
+
+    const navegate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ApiError | null>(null);
 
@@ -29,7 +31,7 @@ const useFetch = () => {
         setIsLoading(false);
         untrack();
         if(error.isCause(CauseError.Client)) console.log(error); // navegar
-        if(error.isCause(CauseError.Server)) console.log(error); // navegar
+        if(error.isCause(CauseError.Server)) navegate("/error-505") // navegar
         setError(error); 
     }
 
