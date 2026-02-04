@@ -1,4 +1,4 @@
-import type { StudentMapper } from "@/main/features/student/infraestructure/dtos/student.mapper";
+import type { StudentMapper } from "@/main/features/student/infraestructure/adapter/student.mapper";
 import type { Alumno, PrismaClient } from "resources/generated/prisma/client";
 import type { StudentDao as StudentDao } from "./student.dao.i";
 import type { Student } from "@/main/features/student/domain/student";

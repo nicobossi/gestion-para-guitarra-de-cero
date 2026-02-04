@@ -1,5 +1,5 @@
 import { StudentControllerRest } from "@/main/features/student/application/controller/student.controller";
-import { StudentMapper as StudentMapper } from "@/main/features/student/infraestructure/dtos/student.mapper";
+import { StudentMapper as StudentMapper } from "@/main/features/student/infraestructure/adapter/student.mapper";
 import service from "@/main/features/student/application/service/instance";
 
 

@@ -1,4 +1,4 @@
-import { StudentMapper } from "@/main/features/student/infraestructure/dtos/student.mapper";
+import { StudentMapper } from "@/main/features/student/infraestructure/adapter/student.mapper";
 import { StudentDaoImpl } from "@/main/features/student/infraestructure/persistence/sql/student.dao";
 import handlePrismaError from "@/main/shared/infraestructure/persistence/sql/prisma/instance";
 import client from "resources/client";

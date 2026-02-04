@@ -1,5 +1,5 @@
-import type { StudentMapper } from "@/main/features/student/infraestructure/dtos/student.mapper";
-import type { StudentResponseDto } from "@/main/features/student/infraestructure/dtos/response.dto";
+import type { StudentMapper } from "@/main/features/student/infraestructure/adapter/student.mapper";
+import type { StudentResponseDto } from "@/main/features/student/infraestructure/adapter/response.dto";
 import type { StudentService } from "@/main/features/student/application/service/student.service.i";
 import type { Request, Response } from "express-serve-static-core";
 import type { Student } from "@/main/features/student/domain/student";
