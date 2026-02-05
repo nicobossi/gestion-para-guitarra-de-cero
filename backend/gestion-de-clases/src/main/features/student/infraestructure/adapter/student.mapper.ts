@@ -10,7 +10,7 @@ export class StudentMapper {
     toSql(student : Student) : AlumnoCreateInput {
         return {
             firstName: student.getName,
-            secondName: student.getSecondName ? student.getSecondName : null,
+            secondName: student.getSecondName,
             surname: student.getSurname,
             phone: student.getPhoneNumber, 
             submissionDate: student.getSubmissionDate

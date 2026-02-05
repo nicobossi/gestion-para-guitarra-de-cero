@@ -1,8 +1,8 @@
 
 export type StudentResponseDto = {
-    id: number | undefined
+    id?: number
     name : string
-    secondName : string | undefined
+    secondName? : string
     surname : string,
     phone : string,
     submissionDate : string

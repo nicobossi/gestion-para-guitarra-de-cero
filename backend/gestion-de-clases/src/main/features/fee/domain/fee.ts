@@ -5,7 +5,7 @@ export class Fee {
     private amount : number;
     private paymentLapse : PaymentLapse;
     private applicationDate : Date;
-    private id : number | undefined 
+    private readonly id? : number;
 
     constructor(amount : number, paymentLapse : PaymentLapse, applicationDate : Date, id? : number) {
         this.amount = amount;

@@ -6,12 +6,12 @@ import { CauseModelError } from "@/main/shared/infraestructure/domain/cause.erro
 
 export class Student {
     
-    private id? : number | undefined;
+    private readonly id? : number;
     private name : string;
     private surname : string;
     private phone : number;
     private submissionDate : Date;
-    private secondName : string | undefined;
+    private secondName? : string;
 
     constructor(
         name : string, 
