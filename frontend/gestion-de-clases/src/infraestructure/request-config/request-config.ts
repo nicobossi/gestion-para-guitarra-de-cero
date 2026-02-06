@@ -1,5 +1,5 @@
 import axios from "axios";
-import config from "./config";
+import handleError from "./config";
 
 const api = axios.create({
     baseURL: "http://localhost:3000"
@@ -7,7 +7,7 @@ const api = axios.create({
 
 api.interceptors.response.use(
     response => response,
-    (error : unknown) => config(error)
+    (error : unknown) => handleError(error)
 )
 
 export default api;

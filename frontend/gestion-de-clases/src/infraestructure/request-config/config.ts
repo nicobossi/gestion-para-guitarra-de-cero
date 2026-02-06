@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { ApiError, CauseError } from "../api/api-error";
 
 
-function config(error : unknown) {
+function handleError(error : unknown) {
     if(error instanceof AxiosError) {
             
         if(!error.response) {
@@ -25,4 +25,4 @@ function config(error : unknown) {
     else return Promise.reject(error);
 }
 
-export default config;
+export default handleError;
