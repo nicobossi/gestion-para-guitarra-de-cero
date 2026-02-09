@@ -1,5 +1,5 @@
-import type { Alumno } from "resources/generated/prisma/client";
-import type { AlumnoCreateInput } from "resources/generated/prisma/models";
+import type { StudentPrisma } from "resources/generated/prisma/client";
+import type { StudentCreateInput } from "resources/generated/prisma/models";
 import type { StudentResponseDto } from "./response.dto";
 import { Student } from "@/main/features/student/domain/student";
 import type { StudentRequestDto } from "./request.dto";
@@ -7,7 +7,7 @@ import type { StudentRequestDto } from "./request.dto";
 
 export class StudentMapper {
 
-    toSql(student : Student) : AlumnoCreateInput {
+    toSql(student : Student) : StudentCreateInput {
         return {
             firstName: student.getName,
             secondName: student.getSecondName ? student.getSecondName : null,
@@ -17,7 +17,7 @@ export class StudentMapper {
         }
     }
 
-    toModel(student : Alumno) : Student {
+    toModel(student : StudentPrisma) : Student {
         return new Student(
             student.firstName,
             student.surname,

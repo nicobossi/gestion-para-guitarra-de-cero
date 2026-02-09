@@ -13,11 +13,13 @@ datasource db {
   provider = "postgresql"
 }
 
-model Alumno {
+model Student {
   id Int @id @default(autoincrement())
-  firstName String 
-  secondName String?
+  firstName String @map("first_name")
+  secondName String? @map("second_name")
   surname String 
   phone Int @unique
-  submissionDate DateTime
+  submissionDate DateTime @map("submission_date")
+
+  @@map("student")
 }

@@ -1,5 +1,5 @@
 import type { StudentMapper } from "@/main/features/student/infraestructure/adapter/student.mapper";
-import type { Alumno, PrismaClient } from "resources/generated/prisma/client";
+import type { StudentPrisma, PrismaClient } from "resources/generated/prisma/client";
 import type { StudentDao as StudentDao } from "./student.dao.i";
 import type { Student } from "@/main/features/student/domain/student";
 import type { HandlerPrismaError } from "@/main/shared/infraestructure/persistence/sql/prisma/handler-error";
@@ -27,8 +27,8 @@ export class StudentDaoImpl implements StudentDao {
         }
     }
 
-    private async add(student : Student) : Promise<Alumno> {
-        return await this.client.alumno.create({
+    private async add(student : Student) : Promise<StudentPrisma> {
+        return await this.client.student.create({
             data: this.mapper.toSql(student)
         });
     }
