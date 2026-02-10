@@ -14,6 +14,8 @@ export default defineConfig({
     },
   },
   test: {
+    isolate: true,
+    fileParallelism: false,
     environment: 'node',
     globals: true,
     include: ['src/test/**/*.test.ts'],
