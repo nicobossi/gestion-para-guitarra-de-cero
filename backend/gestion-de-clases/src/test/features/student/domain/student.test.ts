@@ -37,13 +37,13 @@ describe("test to student", () => {
         expect(1162870692).toBe(nicolas.getPhoneNumber);
     });
 
-    test("a student must have a 10-digit phone number", () => {
+    test("A student cannot have a cell phone with fewer than 10 characters", () => {
         const alejandro = () => new Student("Alejandro", "Romero", 12345678, fechaDePresentacion);
 
         expect(alejandro).toThrow(InvalidPhoneException);
     })
 
-    test("a student must have a 10-digit phone number", () => {
+    test("A student cannot have a cell phone with more than 10 characters", () => {
         const carlos = () => new Student("Alejandro", "Romero", 12345678777, fechaDePresentacion);
 
         expect(carlos).toThrow(InvalidPhoneException);

@@ -16,7 +16,7 @@ describe("tests to student service", () => {
     });
 
     test("a student is incoming", async () => {
-        const addedStudent : Student = await service.income(student);
+        const addedStudent = await service.income(student);
         expect(addedStudent.getId).toBeDefined();
     })
 

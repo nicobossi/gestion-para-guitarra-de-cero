@@ -26,14 +26,14 @@ describe("test to fee DAO", () => {
     test("a fee is not added when exist same id", async () => {
         const addedFee = await dao.save(fee);
         const addedDuplicate = async () => await dao.save(addedFee);
-        await expect(addedDuplicate()).rejects.toThrow(RepeatEntityException);
+        await expect(addedDuplicate).rejects.toThrow(RepeatEntityException);
     })
 
     test("a fee is not add when exist same amount", async () => {
         await dao.save(fee);
         const feeWithSameAmount = new Fee(200, PaymentLapse.Biweekly, applicationDate);
         const addedDuplicate = async () => await dao.save(feeWithSameAmount);
-        expect(addedDuplicate()).rejects.toThrow(RepeatEntityException);
+        expect(addedDuplicate).rejects.toThrow(RepeatEntityException);
     })
 
     afterEach(() => clearAll())

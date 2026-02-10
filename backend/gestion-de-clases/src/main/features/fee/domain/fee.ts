@@ -1,4 +1,6 @@
 import type { PaymentLapse } from "resources/generated/prisma/enums";
+import { RepeatAmountException } from "./repeat-amount-exception";
+import { CauseModelError } from "@/main/shared/infraestructure/domain/cause.error";
 
 export class Fee {
     
@@ -28,5 +30,13 @@ export class Fee {
 
     get getId() : number | undefined {
         return this.id;
+    }
+
+    repeatAmountException() : RepeatAmountException {
+        return new RepeatAmountException(this.repeatAmountMessage(), CauseModelError.RepeatFeeAmount);
+    }
+
+    private repeatAmountMessage() : string {
+        return "Una cuota no puede tener un monto repetido"
     }
 }
