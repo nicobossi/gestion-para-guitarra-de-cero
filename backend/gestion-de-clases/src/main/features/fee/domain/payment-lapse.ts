@@ -2,6 +2,6 @@
 
 
 export enum PaymentLapse {
-    Monthly = "monthly",
-    Biweekly = "biweekly"
+    Monthly = 'MONTHLY',
+    Biweekly = 'BIWEEKLY'
 }

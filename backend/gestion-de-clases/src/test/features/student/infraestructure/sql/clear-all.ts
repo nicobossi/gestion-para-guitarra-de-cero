@@ -3,7 +3,7 @@ import client from "resources/client"
 
 
 const clearAll = async () => {
-    await client.alumno.deleteMany();
+    await client.student.deleteMany();
 }
 
 

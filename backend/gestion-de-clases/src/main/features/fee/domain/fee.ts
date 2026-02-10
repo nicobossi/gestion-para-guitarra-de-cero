@@ -1,4 +1,4 @@
-import type { PaymentLapse } from "./payment-lapse";
+import type { PaymentLapse } from "resources/generated/prisma/enums";
 
 export class Fee {
     
