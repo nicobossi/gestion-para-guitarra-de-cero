@@ -1,6 +1,7 @@
 import type { ModelException } from "@/main/shared/domain/exception/model-exception";
 import { ManyPhoneException } from "./many-phone-exception";
 import { CauseModelError } from "@/main/shared/infraestructure/domain/cause.error";
+import { InvalidPhoneException } from "./invalid-phone-exception";
 
 
 
@@ -23,10 +24,24 @@ export class Student {
     ) {
         this.name = name;
         this.surname = surname;
+        this.setPhone(phone);
         this.phone = phone; 
         this.submissionDate = submissionDate;
         this.secondName = secondName;
         this.id = id;
+    }
+
+    private setPhone(phone : number) : void {
+
+        if(phone.toString().length !== 10) {
+            throw new InvalidPhoneException(this.invalidPhoneMessage(), CauseModelError.InvalidPhone);
+        }
+
+        this.phone = phone;
+    }
+
+    private invalidPhoneMessage() : string {
+        return "El teléfono debe tener 10 caracteres";
     }
 
     get getName() : string {

@@ -1,3 +1,4 @@
+import { InvalidPhoneException } from "@/main/features/student/domain/invalid-phone-exception";
 import { Student } from "@/main/features/student/domain/student";
 
 
@@ -24,7 +25,7 @@ describe("test to student", () => {
     });
 
     test("a student have not a second name", () => {
-        const alejandro = new Student("Alejandro", "Romero", 12345678, fechaDePresentacion);
+        const alejandro = new Student("Alejandro", "Romero", 1234567808, fechaDePresentacion);
         expect(alejandro.getSecondName).toBeUndefined();
     });
 
@@ -35,4 +36,16 @@ describe("test to student", () => {
     test("a student have a phone number", () => {
         expect(1162870692).toBe(nicolas.getPhoneNumber);
     });
+
+    test("a student must have a 10-digit phone number", () => {
+        const alejandro = () => new Student("Alejandro", "Romero", 12345678, fechaDePresentacion);
+
+        expect(alejandro).toThrow(InvalidPhoneException);
+    })
+
+    test("a student must have a 10-digit phone number", () => {
+        const carlos = () => new Student("Alejandro", "Romero", 12345678777, fechaDePresentacion);
+
+        expect(carlos).toThrow(InvalidPhoneException);
+    })
 })
