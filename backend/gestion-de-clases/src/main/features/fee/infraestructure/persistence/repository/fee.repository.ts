@@ -12,8 +12,8 @@ export class FeeRepositoryImpl implements FeeRepository {
         this.dao = dao;
     }
 
-    add(fee : Fee) : Promise<Fee> {
-        return this.dao.save(fee);
+    async add(fee : Fee) : Promise<Fee> {
+        return await this.dao.save(fee);
     }
     
 }

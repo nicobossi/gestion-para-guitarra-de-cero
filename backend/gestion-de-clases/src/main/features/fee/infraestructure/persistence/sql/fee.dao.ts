@@ -29,7 +29,7 @@ export class FeeDaoImpl implements FeeDao {
     }
 
     private async add(fee: Fee) : Promise<FeePrisma> {
-        return this.client.fee.create({
+        return await this.client.fee.create({
             data: this.mapper.toSql(fee)
         })
     }

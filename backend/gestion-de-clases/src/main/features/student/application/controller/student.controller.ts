@@ -1,9 +1,8 @@
 import type { StudentMapper } from "@/main/features/student/infraestructure/adapter/student.mapper";
-import type { StudentResponseDto } from "@/main/features/student/infraestructure/adapter/response.dto";
 import type { StudentService } from "@/main/features/student/application/service/student.service.i";
 import type { Request, Response } from "express-serve-static-core";
-import type { Student } from "@/main/features/student/domain/student";
 import { HttpResponse } from "@/main/shared/infraestructure/http/http-response/http-response";
+
 
 export class StudentControllerRest {
 
@@ -17,9 +16,9 @@ export class StudentControllerRest {
 
     post = async (req : Request, res : Response) => {    
 
-        const student : Student = this.mapper.dtoToModel(req.body);
-        const addedStudent : Student = await this.service.income(student);
-        const studentDtoResponse : StudentResponseDto = this.mapper.modelToDto(addedStudent);
+        const student = this.mapper.dtoToModel(req.body);
+        const addedStudent = await this.service.income(student);
+        const studentDtoResponse = this.mapper.modelToDto(addedStudent);
         return HttpResponse.CREATE(res, studentDtoResponse);
     }
 }
