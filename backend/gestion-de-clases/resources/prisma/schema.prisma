@@ -23,3 +23,17 @@ model Student {
 
   @@map("student")
 }
+
+model Fee {
+  id Int @id @default(autoincrement())
+  amount Int @unique
+  applicationDate DateTime @map("application_date")
+  paymentLapse PaymentLapse @map("payment_lapse")
+
+  @@map("fee")
+}
+
+enum PaymentLapse {
+  MONTHLY
+  BIWEEKLY
+}

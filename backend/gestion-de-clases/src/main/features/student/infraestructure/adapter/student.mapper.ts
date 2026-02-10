@@ -1,8 +1,8 @@
-import type { StudentPrisma } from "resources/generated/prisma/client";
 import type { StudentCreateInput } from "resources/generated/prisma/models";
 import type { StudentResponseDto } from "./response.dto";
 import { Student } from "@/main/features/student/domain/student";
 import type { StudentRequestDto } from "./request.dto";
+import type { StudentPrisma } from "@/main/shared/infraestructure/persistence/sql/prisma/types";
 
 
 export class StudentMapper {
