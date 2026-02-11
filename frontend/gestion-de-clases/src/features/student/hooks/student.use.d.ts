@@ -8,5 +8,6 @@ export interface UseStudent extends UseAddData<Student> {
     error : ApiError | null 
     isLoading : boolean
     freshError : () => void
+    freshData : () => void
     add : (student : Student) => void
 }

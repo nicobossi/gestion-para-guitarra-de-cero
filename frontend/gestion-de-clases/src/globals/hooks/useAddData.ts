@@ -15,7 +15,11 @@ const useAddData = <T>(income : (incomer : T) => Promise<T>) => {
         )
     }
 
-    return {data, error, freshError, isLoading, add}
+    const freshData = () : void =>  {
+        setData(null);
+    }
+
+    return {data, error, freshError, freshData, isLoading, add}
 
 }
 

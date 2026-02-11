@@ -7,6 +7,13 @@
     height: 100%;
 }
 
+.fee-add_form-container .fee-add_min-container {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 80%;
+}
+
 .fee-add_form-container .submit-button {
     color: #111;
     background: var(--payment-gradient);

@@ -11,12 +11,13 @@ type FeeProviderProps = {
 
 const FeeProvider = ({children} : FeeProviderProps) => {
 
-    const {data, error, freshError, isLoading, add} = useAddData<Fee>(saveFee);
+    const {data, error, freshError, freshData, isLoading, add} = useAddData<Fee>(saveFee);
 
     const useFee : UseFee = {
         data,
         error,
         freshError,
+        freshData,
         isLoading,
         add
     }

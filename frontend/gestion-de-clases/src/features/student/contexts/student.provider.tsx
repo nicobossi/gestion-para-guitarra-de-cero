@@ -11,13 +11,14 @@ type StudentProviderProp = {
 
 const StudentProvider = ({children} : StudentProviderProp) => {
 
-    const {data, error, freshError, isLoading, add} = useAddData<Student>(incomeStudent);
+    const {data, error, freshError, freshData, isLoading, add} = useAddData<Student>(incomeStudent);
 
     const value : UseStudent = {
         data,
         error,
         isLoading,
         freshError,
+        freshData,
         add
     } 
 

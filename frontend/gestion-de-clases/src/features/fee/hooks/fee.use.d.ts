@@ -9,5 +9,6 @@ export interface UseFee extends UseAddData<Fee> {
     error : ApiError | null 
     isLoading : boolean
     freshError : () => void
+    freshData : () => void
     add : (fee : Fee) => void
 }

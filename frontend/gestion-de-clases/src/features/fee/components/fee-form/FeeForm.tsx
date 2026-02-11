@@ -12,14 +12,16 @@ const FeeForm = () => {
 
     return (
         <section className = "fee-add_form-container">
-            <GenericContainer>
-                <TitleContainer title = "Cuota" />
-                <FormContent 
-                    schema = {feeSchema}
-                    inputsData = {inputsData}
-                    isLoading = {isLoading}
-                    onSubmit = {add}/>
-            </GenericContainer>
+            <div className = "fee-add_min-container">
+                <GenericContainer>
+                    <TitleContainer title = "Cuota" />
+                    <FormContent 
+                        schema = {feeSchema}
+                        inputsData = {inputsData}
+                        isLoading = {isLoading}
+                        onSubmit = {add}/>
+                </GenericContainer>
+            </div>
         </section>
     )
 }

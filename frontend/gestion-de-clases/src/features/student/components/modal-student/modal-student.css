@@ -24,12 +24,16 @@
     width: 40%;
     height: 40px;
     border-radius: 20px;
+    transition: transform 0.2s ease;
 }
 
 .payment-link:hover, .home-link:hover {
-    box-shadow: 4px 4px 4px #CCC;
+    transform: translateY(-4px);
 }
 
+.payment-link, .home-link:active {
+    transform: translateY(1px);
+}
 
 .modal-income_navegate .payment-link {
     background: var(--payment-gradient);
@@ -46,3 +50,4 @@
     color: var(--dark-color);
     text-decoration: none;
 }
+
