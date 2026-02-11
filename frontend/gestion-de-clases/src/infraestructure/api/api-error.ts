@@ -29,9 +29,12 @@ export class ApiError {
     }
 }
 
-export enum CauseError {
-    RepeatStudentPhone,
-    Server,
-    Client,
-    RepeatAmount,
-}
+export const CauseError = {
+    RepeatStudentPhone: 'Repeat Student Phone',
+    RepeatAmount: 'Repeat Amount',
+    Server: 'Server',
+    Client: 'Client'
+} as const 
+
+export type CauseError = typeof CauseError[keyof typeof CauseError];
+
