@@ -22,45 +22,6 @@
     background-color: #FFF;
 }
 
-.modal-income_header {
-    display: grid;
-    place-items: center;
-    height: 20%;
-    border-radius: 20px 20px 0 0;
-    background: var(--payment-gradient)
-}
-
-.modal-income_header div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 96%;
-}
-
-.modal-income_header button {
-    margin-right: 5px;
-    border-style: none;
-    cursor: pointer;
-    background-color: transparent;
-    color: #FFF;
-}
-
-.modal-income_header h3 {
-    margin-left: 5px;
-    color: var(--dark-color);
-}
-
-.modal-income_content {
-    display: grid;
-    place-items: center;
-    text-align: center;
-    height: 60%;
-}
-
-.modal-income_content p {
-    width: 90%;
-}
-
 .modal-income_navegate {
     display: flex;
     justify-content: space-evenly;

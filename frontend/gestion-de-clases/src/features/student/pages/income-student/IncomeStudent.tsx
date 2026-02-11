@@ -12,7 +12,7 @@ const IncomeStudentPage = () => {
     return (
         <section className = 'student-income'>
             <SideBar />
-            {student && <ModalIncome />}
+            {student && <ModalIncome student = {student} />}
             <IncomeContent />
         </section>
     )

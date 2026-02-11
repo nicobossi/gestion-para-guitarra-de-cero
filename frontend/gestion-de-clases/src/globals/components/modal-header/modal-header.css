@@ -1,0 +1,29 @@
+
+
+.modal_header {
+    display: grid;
+    place-items: center;
+    height: 20%;
+    border-radius: 20px 20px 0 0;
+    background: var(--payment-gradient)
+}
+
+.modal_header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+}
+
+.modal_header h3 {
+    margin-left: 5px;
+    color: var(--dark-color);
+}
+
+.modal_header button {
+    margin-right: 5px;
+    border-style: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #FFF;
+}

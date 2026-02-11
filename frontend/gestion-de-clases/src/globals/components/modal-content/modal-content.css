@@ -1,0 +1,11 @@
+
+.modal-income_content {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: 60%;
+}
+
+.modal-income_content p {
+    width: 90%;
+}
