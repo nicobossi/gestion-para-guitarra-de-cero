@@ -1,7 +1,6 @@
-import GenericContainer from '@/globals/components/generic-container/GenericContainer'
 import './phone-error-container.css'
-import TitleContainer from '@/globals/components/title-container/TitleContainer'
 import useStudentContext from '../../context/useStudent-validate'
+import ErrorContainer from '@/globals/components/error-container/ErrorContainer'
 
 
 const PhoneErrorContainer = () => {
@@ -10,13 +9,10 @@ const PhoneErrorContainer = () => {
 
     return (
         <div className = 'phone-error-container'>
-            <GenericContainer>
-                <TitleContainer title = "Ingreso Fallido" />
-                <div className = 'phone-error-content'>
-                    <p>El celular ya se encuentra agendado por otro estudiante</p>
-                    <button type="button" onClick = {freshError}>Volver a intentar</button>
-                </div>
-            </GenericContainer>
+            <ErrorContainer 
+                content = "El celular ya se encuentra agendado por otro estudiante"
+                onSubmit = {freshError}
+            />
         </div>
     )
 }
