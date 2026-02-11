@@ -20,6 +20,10 @@ export class ApiError {
         return this.message
     }
 
+    setCause(cause : CauseError) {
+        this.cause = cause;
+    }
+
     isCause(cause : CauseError) : boolean {
         return cause == this.cause
     }

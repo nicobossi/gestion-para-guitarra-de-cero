@@ -14,8 +14,10 @@ const saveFee = async (fee : Fee) : Promise<Fee> => {
         return responseDto(addedFee.data);
     }
     catch(error : unknown) {
-        if(error instanceof ApiError && error.getStatus === 409) 
-            return Promise.reject(new ApiError(error.getStatus, error.getMessage, CauseError.RepeatAmount));
+        if(error instanceof ApiError && error.getStatus === 409) {
+            error.setCause(CauseError.RepeatAmount)
+            return Promise.reject(error);
+        }
         else throw error;
     }
 }

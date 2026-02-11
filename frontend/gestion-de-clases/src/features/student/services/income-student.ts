@@ -13,8 +13,10 @@ const incomeStudent = async (entrant : Student) : Promise<Student> => {
         return responseDto(newStudent.data);
     }
     catch(error : unknown) {
-        if(error instanceof ApiError && error.getStatus == 409) 
-            return Promise.reject(new ApiError(error.getStatus, error.getMessage, CauseError.RepeatStudentPhone));
+        if(error instanceof ApiError && error.getStatus == 409) {
+            error.setCause(CauseError.RepeatStudentPhone)
+            return Promise.reject(error);
+        }
         throw error;
     }
 }
