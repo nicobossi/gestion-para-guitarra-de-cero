@@ -1,6 +1,6 @@
 import { CauseError } from '@/infraestructure/api/api-error';
 import useStudentContext from '../../contexts/useStudent-validate'
-import IncomeForm from '../income-form/IncomeForm'
+import StudentForm from '../income-form/IncomeForm'
 import PhoneErrorContainer from '../phone-error-container/PhoneErrorContainer';
 
 
@@ -11,8 +11,8 @@ const IncomeContent = () => {
     const isError = () : boolean | undefined => error?.isCause(CauseError.RepeatStudentPhone);
 
     return (
-        <section className = "student-income_form-container">
-            {isError() ? <PhoneErrorContainer /> : <IncomeForm />}
+        <section>
+            {isError() ? <PhoneErrorContainer /> : <StudentForm />}
         </section>
     )
 }

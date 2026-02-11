@@ -29,4 +29,5 @@ export enum CauseError {
     RepeatStudentPhone,
     Server,
     Client,
+    RepeatAmount,
 }

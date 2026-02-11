@@ -8,7 +8,7 @@ import './income-form.css'
 import type { StudentRequestDto } from "../../adapter/request.dto";
 
 
-const IncomeForm = () => {
+const StudentForm = () => {
 
     const {add, isLoading} = useStudentContext();
 
@@ -26,4 +26,4 @@ const IncomeForm = () => {
     )
 }
 
-export default IncomeForm;
+export default StudentForm;

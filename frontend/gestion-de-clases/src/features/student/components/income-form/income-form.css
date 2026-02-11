@@ -10,6 +10,7 @@
 
 .student-income_form-container .submit-button {
     background: linear-gradient(60deg, #6879D7, #C6CAF0);
+    transition: color 0.2s ease, border 0.2s ease, transform 0.3s ease;
 }
 
 .student-income_form-container .submit-button:hover {

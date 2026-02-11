@@ -27,7 +27,7 @@ const incomerSchema : ObjectSchema<StudentRequestDto> = object().shape({
         required("el campo es requerido"). 
         test(
             "time required",
-            "El campo debe ser una fecha",
+            "El valor debe ser una fecha",
             (value : string) => !isNaN(Date.parse(value))
         )
 })
