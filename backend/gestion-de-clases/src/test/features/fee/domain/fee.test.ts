@@ -1,5 +1,5 @@
 import { Fee } from "@/main/features/fee/domain/fee";
-import { PaymentLapse } from "@/main/features/fee/domain/payment-lapse";
+import { PaymentLapse } from "@/main/shared/domain/types/payment-lapse";
 
 
 
@@ -9,7 +9,7 @@ describe("test to fee", () => {
     let applicationDate : Date = new Date();
 
     beforeEach(() => {
-        fee = new Fee(40000, PaymentLapse.Monthly, applicationDate, 3);
+        fee = new Fee(40000, PaymentLapse.MONTHLY, applicationDate, 3);
     })
 
     test("a fee have an amount", () => {
@@ -17,7 +17,7 @@ describe("test to fee", () => {
     })
 
     test("a fee have a payment lapse", () => {
-        expect(fee.getPaymentLapse).toBe(PaymentLapse.Monthly);
+        expect(fee.getPaymentLapse).toBe(PaymentLapse.MONTHLY);
     })
 
     test("a fee have an application date", () => {
@@ -25,7 +25,7 @@ describe("test to fee", () => {
     })
 
     test("a fee have not an id", () => {
-        const fee = new Fee(40000, PaymentLapse.Monthly, applicationDate);
+        const fee = new Fee(40000, PaymentLapse.MONTHLY, applicationDate);
         expect(fee.getId).not.toBe(3);
     })
 

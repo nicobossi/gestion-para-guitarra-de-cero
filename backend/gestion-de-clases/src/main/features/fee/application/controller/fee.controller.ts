@@ -5,7 +5,7 @@ import { HttpResponse } from "@/main/shared/infraestructure/http/http-response/h
 
 
 
-export class FeeController {
+export class FeeControllerRest {
 
     private readonly service : FeeService;
     private readonly mapper : FeeMapper;

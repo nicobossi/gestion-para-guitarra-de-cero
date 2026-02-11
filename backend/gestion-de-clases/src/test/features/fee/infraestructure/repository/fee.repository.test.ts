@@ -1,8 +1,8 @@
 import { Fee } from "@/main/features/fee/domain/fee";
-import { PaymentLapse } from "resources/generated/prisma/enums";
 import clearAll from "./clear-all";
 import feeRepository from "@/main/features/fee/infraestructure/persistence/repository/instance";
 import type { FeeRepository } from "@/main/features/fee/infraestructure/persistence/repository/fee.repository.i";
+import { PaymentLapse } from "@/main/shared/domain/types/payment-lapse";
 
 
 

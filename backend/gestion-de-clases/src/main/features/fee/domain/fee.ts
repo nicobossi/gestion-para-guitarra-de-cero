@@ -1,4 +1,4 @@
-import type { PaymentLapse } from "resources/generated/prisma/enums";
+import type { PaymentLapse } from "@/main/shared/domain/types/payment-lapse";
 import { RepeatAmountException } from "./repeat-amount-exception";
 import { CauseModelError } from "@/main/shared/infraestructure/domain/cause.error";
 

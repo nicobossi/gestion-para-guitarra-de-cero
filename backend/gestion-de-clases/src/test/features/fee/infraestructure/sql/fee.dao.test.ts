@@ -1,10 +1,9 @@
 import { Fee } from "@/main/features/fee/domain/fee";
 import clearAll from "./clear-all"
-import { PaymentLapse } from "@/main/features/fee/domain/payment-lapse";
 import feeDao from "@/main/features/fee/infraestructure/persistence/sql/instance";
 import type { FeeDao } from "@/main/features/fee/infraestructure/persistence/sql/fee.dao.i";
 import { RepeatEntityException } from "@/main/shared/infraestructure/persistence/errors/exceptions/exceptions";
-
+import { PaymentLapse } from "@/main/shared/domain/types/payment-lapse";
 
 
 describe("test to fee DAO", () => {
@@ -15,7 +14,7 @@ describe("test to fee DAO", () => {
 
     beforeEach(() => {
         applicationDate = new Date();
-        fee = new Fee(200, PaymentLapse.Monthly, applicationDate);
+        fee = new Fee(200, PaymentLapse.MONTHLY, applicationDate);
     })
 
     test("a fee is added", async () => {
@@ -31,7 +30,7 @@ describe("test to fee DAO", () => {
 
     test("a fee is not add when exist same amount", async () => {
         await dao.save(fee);
-        const feeWithSameAmount = new Fee(200, PaymentLapse.Biweekly, applicationDate);
+        const feeWithSameAmount = new Fee(200, PaymentLapse.BIWEEKLY, applicationDate);
         const addedDuplicate = async () => await dao.save(feeWithSameAmount);
         expect(addedDuplicate).rejects.toThrow(RepeatEntityException);
     })

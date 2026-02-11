@@ -28,7 +28,7 @@ export class FeeMapper {
         return new Fee(
             requestDto.amount,
             requestDto.paymentLapse,
-            requestDto.applicationDate
+            new Date(requestDto.applicationDate)
         )
     }
 
@@ -36,7 +36,7 @@ export class FeeMapper {
         return {
             id: fee.getId,
             amount: fee.getAmount,
-            applicationDate: fee.getApplicationDate,
+            applicationDate: fee.getApplicationDate.toString(),
             paymentLapse: fee.getPaymentLapse
         }
     }

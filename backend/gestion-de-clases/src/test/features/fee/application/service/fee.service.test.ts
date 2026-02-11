@@ -1,8 +1,8 @@
 import { Fee } from "@/main/features/fee/domain/fee";
-import { PaymentLapse } from "resources/generated/prisma/enums";
 import clearAll from "./clear-all";
 import feeService from "@/main/features/fee/application/service/instance";
 import { RepeatAmountException } from "@/main/features/fee/domain/repeat-amount-exception";
+import { PaymentLapse } from "@/main/shared/domain/types/payment-lapse";
 
 
 
