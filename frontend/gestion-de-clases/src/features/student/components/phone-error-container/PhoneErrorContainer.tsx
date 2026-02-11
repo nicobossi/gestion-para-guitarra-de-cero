@@ -1,5 +1,5 @@
 import './phone-error-container.css'
-import useStudentContext from '../../context/useStudent-validate'
+import useStudentContext from '../../contexts/useStudent-validate'
 import ErrorContainer from '@/globals/components/error-container/ErrorContainer'
 
 

@@ -2,7 +2,7 @@ import SideBar from '@/globals/components/side-bar/SideBar';
 import IncomeContent from '../../components/income-content/IncomeContent';
 import './income-student.css'
 import ModalIncome from '../../components/modal-income/ModalIncome';
-import useStudentContext from '../../context/useStudent-validate';
+import useStudentContext from '../../contexts/useStudent-validate';
 
 
 const IncomeStudentPage = () => {

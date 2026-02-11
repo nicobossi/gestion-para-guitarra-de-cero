@@ -2,17 +2,15 @@ import { useContext } from "react"
 import StudentContext from "./student.context"
 
 
-
-
 const useStudentContext = () => {
 
-    const context = useContext(StudentContext)
+    const value = useContext(StudentContext)
 
-    if(!context) {
+    if(!value) {
         throw new Error("El componente no puede utilizar el context");
     }
 
-    return context;
+    return value;
 }
 
 export default useStudentContext;

@@ -3,7 +3,7 @@ import TitleContainer from "@/globals/components/title-container/TitleContainer"
 import FormContent from "@/globals/components/form-content/FormContent";
 import incomerSchema from "./form-data";
 import incomeInputsData from "./inputs-data";
-import useStudentContext from "../../context/useStudent-validate";
+import useStudentContext from "../../contexts/useStudent-validate";
 import './income-form.css'
 import type { StudentRequestDto } from "../../adapter/request.dto";
 
