@@ -10,18 +10,6 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal-container_disable {
-    display: none;
-}
-
-.modal-container_active {
-    width: 90%;
-    max-width: 420px;
-    height: 260px;
-    border-radius: 20px;
-    background-color: #FFF;
-}
-
 .modal-income_navegate {
     display: flex;
     justify-content: space-evenly;

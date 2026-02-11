@@ -3,6 +3,7 @@ import ModalHeader from '@/globals/components/modal-header/ModelHeader';
 import ModalContent from '@/globals/components/modal-content/ModalContent';
 import { Link } from 'react-router';
 import type { ModalIncomeProps } from './modal-income';
+import ModalContainer from '@/globals/components/modal-container/ModalContainer';
 
 /*
     <Link to="/">Registrar Pago</Link>
@@ -12,13 +13,13 @@ const ModalIncome = ({student} : ModalIncomeProps) => {
 
     return (
         <section className = "modal-income_container">
-            <div className = {student ? "modal-container_active" : "modal-container_disable"}>
+            <ModalContainer data = {student}>
                 <ModalHeader 
                     title = "Alumno ingresado" />
                 <ModalContent 
                     content = {`El ingrestante ${student.name} ${student.secondName} ${student.surname} se registro como un nuevo alumno ¿Desea registrar su pago?`} />
                 <ModalFooter />
-            </div>
+            </ModalContainer>
         </section>
     )
 }
