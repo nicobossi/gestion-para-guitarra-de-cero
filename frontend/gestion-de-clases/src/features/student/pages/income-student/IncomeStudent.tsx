@@ -7,12 +7,12 @@ import useStudentContext from '../../contexts/useStudent-validate';
 
 const IncomeStudentPage = () => {
 
-    const {student} = useStudentContext();
+    const {data} = useStudentContext();
 
     return (
         <section className = 'student-income'>
             <SideBar />
-            {student && <ModalIncome student = {student} />}
+            {data && <ModalIncome student = {data} />}
             <IncomeContent />
         </section>
     )

@@ -10,7 +10,7 @@ import type { StudentRequestDto } from "../../adapter/request.dto";
 
 const IncomeForm = () => {
 
-    const {income, isLoading} = useStudentContext();
+    const {add, isLoading} = useStudentContext();
 
     return (
         <section className = "student-income_form-container">
@@ -20,7 +20,7 @@ const IncomeForm = () => {
                     schema = {incomerSchema}
                     inputsData = {incomeInputsData} 
                     isLoading = {isLoading}
-                    onSubmit = {income} />
+                    onSubmit = {add} />
             </GenericContainer>
         </section>
     )
