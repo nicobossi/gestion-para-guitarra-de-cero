@@ -7,7 +7,7 @@ const useFeeContext = () => {
 
     const value = useContext(FeeContext);
 
-    if(!value) throw Error("El componente no está suscrito al contexto");
+    if(!value) throw new Error("El componente no está suscrito al contexto");
 
     return value;
 }

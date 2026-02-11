@@ -14,7 +14,7 @@ const ModalFee = ({fee} : ModalFeeProps) => {
                 <ModalHeader 
                     title = 'Cuota ingresada'/>
                 <ModalContent 
-                    content = {`$La cuota con el monto de ${fee.amount} fue ingresada exitosamente, ¿Desea volver al home?`} />
+                    content = {`La cuota con el monto de $${fee.amount} fue ingresada exitosamente, ¿Desea volver al home?`} />
                 <ModalFooter />
             </ModalContainer>
         </section>

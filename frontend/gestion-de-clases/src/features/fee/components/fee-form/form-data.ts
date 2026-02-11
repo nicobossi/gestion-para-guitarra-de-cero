@@ -1,12 +1,15 @@
 import { object, string, type ObjectSchema } from "yup";
-import type { FeeRequestDto } from "../../adapter/request.dto";
-import { PaymentLapse } from "@/globals/types/payment-lapse";
+import type { FeeSchema } from "../../adapter/schema";
 
 
-const feeSchema : ObjectSchema<FeeRequestDto> = object().shape({
+const feeSchema : ObjectSchema<FeeSchema> = object().shape({
     amount: 
         string().
-        required("El campo es requerido"),
+        required("El campo es requerido"). 
+        test(
+            "test to amount", 
+            "El monto debe ser positivo", 
+            (value : string) => Number.parseInt(value) > 0),
     applicationDate: 
         string(). 
         required("El campo es requerido"). 
@@ -18,7 +21,8 @@ const feeSchema : ObjectSchema<FeeRequestDto> = object().shape({
     paymentLapse: 
         string(). 
         required("El campo es requerido"). 
-        oneOf([PaymentLapse.MONTHLY, PaymentLapse.BIWEEKLY], "El campo puede tener solo " + PaymentLapse.MONTHLY + " o " + PaymentLapse.BIWEEKLY)
+        transform((value : string) => value.toLowerCase()).
+        oneOf(["mensual", "quincenal"], "El lapso de pago puede ser solo mensual o quincenal")
 })
 
 export default feeSchema;

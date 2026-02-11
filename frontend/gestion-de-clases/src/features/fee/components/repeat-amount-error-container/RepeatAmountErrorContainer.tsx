@@ -1,10 +1,10 @@
-import useStudentContext from "@/features/student/contexts/useStudent-validate";
 import ErrorContainer from "@/globals/components/error-container/ErrorContainer";
 import './repeat-amount-error-container.css'
+import useFeeContext from "../../contexts/fee-validate";
 
 const RepeatAmountErrorContainer = () => {
 
-    const {freshError} = useStudentContext();
+    const {freshError} = useFeeContext();
 
     return (
         <div className = 'repeat-amount-error-container'>
