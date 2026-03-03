@@ -1,10 +1,19 @@
+import { useState } from 'react';
 import './side-bar.css'
+import pagesData from './pages-data';
+import NavegatorPage from '../navegator-pages/NavegatorPages';
 
 
 const SideBar = () => {
-    return (
-        <aside className='side-bar'>
 
+    const [isVisible, setIsVisible] = useState<boolean>(false); 
+
+    const onVisible = () => setIsVisible(prevIsVisible => !prevIsVisible);
+
+    return (
+        <aside className={isVisible ? 'active_side-dar' : 'side-bar'}>
+            <button onClick={onVisible}>click</button>
+            {isVisible && <NavegatorPage pages={pagesData} />}
         </aside>
     )   
 }
