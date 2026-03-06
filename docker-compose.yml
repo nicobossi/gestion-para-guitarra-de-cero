@@ -1,0 +1,15 @@
+services: 
+  backend:
+    build: "./backend/gestion-de-clases"
+    ports: 
+      - "3000:3000"
+    env_file:
+      - .env.backend
+    depends_on:
+      - sql
+  sql:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env.db

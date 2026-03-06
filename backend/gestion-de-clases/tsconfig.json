@@ -9,7 +9,7 @@
       "@/*": ["src/*"]
     },
     // See also https://aka.ms/tsconfig/module
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "target": "ES2023",
     "strict": true,
@@ -34,7 +34,7 @@
     // "noPropertyAccessFromIndexSignature": true,
 
     // Recommended Options
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
