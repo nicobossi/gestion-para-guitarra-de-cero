@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Student {
+  id Int @id @default(autoincrement())
+  firstName String @map("first_name")
+  secondName String? @map("second_name")
+  surname String 
+  phone Int @unique
+  submissionDate DateTime @map("submission_date")
+
+  @@map("student")
+}
+
+model Fee {
+  id Int @id @default(autoincrement())
+  amount Int @unique
+  applicationDate DateTime @map("application_date")
+  paymentLapse PaymentLapse @map("payment_lapse")
+
+  @@map("fee")
+}
+
+enum PaymentLapse {
+  MONTHLY
+  BIWEEKLY
+}
