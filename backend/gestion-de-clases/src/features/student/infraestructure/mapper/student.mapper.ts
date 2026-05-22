@@ -1,16 +1,20 @@
-import { StudentCreateInput } from '../../../../../generated/prisma/models';
+import {
+    StudentCreateInput,
+    StudentModel,
+} from '../../../../../generated/prisma/models';
 import { Student } from '../../domain/student';
 import { CreateStudent } from './dtos/request/create-student-request';
 import { StudentResponseDto } from './dtos/response/student-response';
 
 export class StudentMapper {
-    static sqlToModel(sqlStudent: StudentCreateInput): Student {
+    static sqlToModel(sqlStudent: StudentModel): Student {
         return new Student(
             sqlStudent.firstName,
             sqlStudent.surname,
             sqlStudent.phone,
             new Date(sqlStudent.submissionDate),
             sqlStudent.secondName ?? undefined,
+            sqlStudent.id,
         );
     }
 
