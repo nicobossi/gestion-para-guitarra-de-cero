@@ -1,3 +1,5 @@
+import { InvalidPhoneException } from './invalid-phone-exception';
+
 export class Student {
     private readonly id?: number;
     private name: string;
@@ -16,23 +18,20 @@ export class Student {
     ) {
         this.name = name;
         this.surname = surname;
-        //this.setPhone(phone);
+        this.setPhone(phone);
         this.phone = phone;
         this.submissionDate = submissionDate;
         this.secondName = secondName;
         this.id = id;
     }
 
-    /*private setPhone(phone: number): void {
+    private setPhone(phone: number): void {
         if (phone.toString().length !== 10) {
-            throw new InvalidPhoneException(
-                this.invalidPhoneMessage(),
-                CauseModelError.InvalidPhone,
-            );
+            throw new InvalidPhoneException(this.invalidPhoneMessage());
         }
 
         this.phone = phone;
-    }*/
+    }
 
     private invalidPhoneMessage(): string {
         return 'El teléfono debe tener 10 caracteres';
