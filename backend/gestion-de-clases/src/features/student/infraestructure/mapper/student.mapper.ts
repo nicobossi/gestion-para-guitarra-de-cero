@@ -1,5 +1,6 @@
 import { StudentCreateInput } from '../../../../../generated/prisma/models';
 import { Student } from '../../domain/student';
+import { CreateStudent } from './dtos/request/create-student-request';
 import { StudentResponseDto } from './dtos/response/student-response';
 
 export class StudentMapper {
@@ -22,6 +23,17 @@ export class StudentMapper {
             submissionDate: student.getSubmissionDate,
         };
     }
+
+    static dtoToModel(dto: CreateStudent): Student {
+        return new Student(
+            dto.name,
+            dto.surname,
+            parseInt(dto.phone),
+            new Date(dto.submissionDate),
+            dto.secondName ?? undefined,
+        );
+    }
+
     static modelToDto(student: Student): StudentResponseDto {
         return {
             id: student.getId!,

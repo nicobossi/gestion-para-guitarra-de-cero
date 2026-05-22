@@ -14,6 +14,7 @@ export class StudentRepository {
             });
             return StudentMapper.sqlToModel(createdStudent);
         } catch (error: unknown) {
+            console.error('Error creating student:', error);
             throw new Error('Error creating student');
         }
     }
