@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { StudentController } from './student.controller';
 import { StudentService } from '../../application/student.service';
 import { StudentRepository } from '../persistence/student.repository';
-import { SqlClient } from '../../../../shared/infraestructure/persistence/prisma.service';
+import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
 
 describe('StudentController', () => {
     let controller: StudentController;

@@ -25,18 +25,6 @@ export class Student {
         this.id = id;
     }
 
-    private setPhone(phone: number): void {
-        if (phone.toString().length !== 10) {
-            throw new InvalidPhoneException(this.invalidPhoneMessage());
-        }
-
-        this.phone = phone;
-    }
-
-    private invalidPhoneMessage(): string {
-        return 'El teléfono debe tener 10 caracteres';
-    }
-
     get getName(): string {
         return this.name;
     }
@@ -61,20 +49,15 @@ export class Student {
         return this.id;
     }
 
-    /*manyPhoneException(): ModelException {
-        return new ManyPhoneException(
-            this.manyPhoneExceptionMessage(),
-            CauseModelError.RepeatStudentPhone,
-        );
+    private setPhone(phone: number): void {
+        if (phone.toString().length !== 10) {
+            throw new InvalidPhoneException(this.invalidPhoneMessage());
+        }
+
+        this.phone = phone;
     }
 
-    private manyPhoneExceptionMessage(): string {
-        return (
-            'El alumno ' +
-            this.getName +
-            ' no puede tener el celular ' +
-            this.phone +
-            ' porque ya se encuentra registrado'
-        );
-    }*/
+    private invalidPhoneMessage(): string {
+        return 'El teléfono debe tener 10 caracteres';
+    }
 }
