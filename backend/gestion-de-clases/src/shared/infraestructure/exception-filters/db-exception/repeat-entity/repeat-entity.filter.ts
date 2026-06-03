@@ -1,6 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
-import { RepeatEntityException } from '../../persistence/errors/repeat-entity-exception';
 import { Request, Response } from 'express';
+import { RepeatEntityException } from '../../../persistence/errors/repeat-entity-exception';
 
 @Catch(RepeatEntityException)
 export class RepeatEntityFilter implements ExceptionFilter {
