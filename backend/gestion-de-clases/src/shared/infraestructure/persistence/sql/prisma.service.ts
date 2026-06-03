@@ -1,4 +1,10 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import {
+    ServiceUnavailableException,
+    GatewayTimeoutException,
+    Injectable,
+    OnModuleDestroy,
+    OnModuleInit,
+} from '@nestjs/common';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../../../../../generated/prisma/client';
 import {
@@ -11,8 +17,6 @@ import { DbError } from '../errors/db-error';
 import { NotRegisterError } from '../errors/not-register-error';
 import { CredentialsError } from '../errors/credentials-error';
 import { RepeatEntityException } from '../errors/repeat-entity-exception';
-import { DisconnectError } from '../errors/disconnect-error';
-import { MuchTimeError } from '../errors/much-time-error';
 import { DenegateError } from '../errors/denegate-error';
 
 @Injectable()
@@ -52,9 +56,9 @@ export class SqlClient
         const mapError: Map<string, DbError> = new Map<string, DbError>();
         mapError.set('P2002', new RepeatEntityException());
         mapError.set('P1000', new CredentialsError());
-        mapError.set('P1001', new DisconnectError());
-        mapError.set('P1002', new MuchTimeError());
-        mapError.set('P1008', new MuchTimeError());
+        mapError.set('P1001', new ServiceUnavailableException());
+        mapError.set('P1002', new GatewayTimeoutException());
+        mapError.set('P1008', new GatewayTimeoutException());
         mapError.set('P1010', new DenegateError());
         return mapError;
     }
