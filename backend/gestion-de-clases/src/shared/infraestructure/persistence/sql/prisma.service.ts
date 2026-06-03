@@ -4,6 +4,8 @@ import {
     Injectable,
     OnModuleDestroy,
     OnModuleInit,
+    InternalServerErrorException,
+    ForbiddenException,
 } from '@nestjs/common';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../../../../../generated/prisma/client';
@@ -11,13 +13,11 @@ import {
     PrismaClientKnownRequestError,
     PrismaClientValidationError,
 } from '@prisma/client/runtime/client';
-import { UnknownError } from '../errors/uknow-error';
 import { ValidationError } from '../errors/validation-error';
 import { DbError } from '../errors/db-error';
 import { NotRegisterError } from '../errors/not-register-error';
 import { CredentialsError } from '../errors/credentials-error';
 import { RepeatEntityException } from '../errors/repeat-entity-exception';
-import { DenegateError } from '../errors/denegate-error';
 
 @Injectable()
 export class SqlClient
@@ -44,7 +44,7 @@ export class SqlClient
             return this.findError(error.code);
         else if (error instanceof PrismaClientValidationError)
             return new ValidationError();
-        return new UnknownError();
+        return new InternalServerErrorException();
     }
 
     private findError(code: string): DbError {
@@ -59,7 +59,7 @@ export class SqlClient
         mapError.set('P1001', new ServiceUnavailableException());
         mapError.set('P1002', new GatewayTimeoutException());
         mapError.set('P1008', new GatewayTimeoutException());
-        mapError.set('P1010', new DenegateError());
+        mapError.set('P1010', new ForbiddenException());
         return mapError;
     }
 }
