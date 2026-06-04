@@ -1,4 +1,3 @@
-import { Injectable } from '@nestjs/common';
 import {
     StudentCreateInput,
     StudentModel,
@@ -7,7 +6,6 @@ import { Student } from '../../domain/student';
 import { CreateStudent } from './dtos/request/create-student-request';
 import { StudentResponseDto } from './dtos/response/student-response';
 
-@Injectable()
 export class StudentMapper {
     static sqlToModel(sqlStudent: StudentModel): Student {
         return new Student(

@@ -6,9 +6,11 @@ import { TimeoutFilterException } from './shared/infraestructure/exception-filte
 import { DisconectFilter } from './shared/infraestructure/exception-filters/db-exception/disconect/disconect.filter';
 import { FailCredentialsFilter } from './shared/infraestructure/exception-filters/db-exception/fail-credentials/fail-credentials.filter';
 import { ForbiddenFilter } from './shared/infraestructure/exception-filters/authorization/forbidden/forbidden.filter';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
+    app.useGlobalPipes(new ValidationPipe());
     app.useGlobalFilters(
         new RepeatEntityFilter(),
         new DisconectFilter(),
