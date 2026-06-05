@@ -1,12 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FeeRepository } from './fee.repository';
+import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
 
-describe('FeeService', () => {
+describe('FeeRepository', () => {
     let service: FeeRepository;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [FeeRepository],
+            providers: [FeeRepository, SqlClient],
         }).compile();
 
         service = module.get<FeeRepository>(FeeRepository);
