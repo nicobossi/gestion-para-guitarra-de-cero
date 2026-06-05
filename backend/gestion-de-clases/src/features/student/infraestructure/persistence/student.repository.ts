@@ -21,7 +21,6 @@ export class StudentRepository {
     async clearAll(): Promise<void> {
         try {
             await this.sql.student.deleteMany();
-            await this.sql.$disconnect();
         } catch (error: unknown) {
             throw this.sql.handleError(error);
         }
