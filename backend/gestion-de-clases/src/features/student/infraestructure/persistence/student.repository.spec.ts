@@ -24,4 +24,8 @@ describe('StudentRepository', () => {
         const createdStudent = await repository.income(student);
         expect(createdStudent.getId).toBeDefined();
     });
+
+    afterEach(async () => {
+        await repository.clearAll();
+    });
 });

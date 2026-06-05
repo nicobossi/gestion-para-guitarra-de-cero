@@ -17,4 +17,12 @@ export class StudentRepository {
             throw this.sql.handleError(error);
         }
     }
+
+    async clearAll(): Promise<void> {
+        try {
+            await this.sql.student.deleteMany();
+        } catch (error: unknown) {
+            throw this.sql.handleError(error);
+        }
+    }
 }
