@@ -19,8 +19,7 @@ describe('StudentRepository', () => {
         process.env.DATABASE_URL = container.getConnectionUri();
         execSync('pnpm prisma migrate deploy', {
             env: {
-                ...process.env,
-                DATABASE_URL: container.getConnectionUri(),
+                DATABASE_URL: process.env.DATABASE_URL,
             },
         });
     });
