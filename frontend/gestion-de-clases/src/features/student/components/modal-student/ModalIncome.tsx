@@ -21,7 +21,7 @@ const ModalStudent = ({student} : ModalIncomeProps) => {
                     onSubmit = {freshData}
                     title = "Alumno ingresado" />
                 <ModalContent 
-                    content = {`El ingrestante ${student.name} ${student.secondName} ${student.surname} se registro como un nuevo alumno ¿Desea registrar su pago?`} />
+                    content = {`El ingrestante ${student.name} ${student.secondName ?? ''} ${student.surname} se registro como un nuevo alumno ¿Desea registrar su pago?`} />
                 <ModalFooter />
             </ModalContainer>
         </section>

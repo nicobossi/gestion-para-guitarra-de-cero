@@ -1,6 +1,7 @@
 import {
     IsDateString,
     IsNotEmpty,
+    IsOptional,
     IsPhoneNumber,
     IsString,
 } from 'class-validator';
@@ -22,6 +23,7 @@ export class CreateStudent {
     @IsDateString()
     submissionDate!: Date;
 
+    @IsOptional()
     @IsString()
     secondName?: string;
 }
