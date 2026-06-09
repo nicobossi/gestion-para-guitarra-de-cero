@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FeeRepository } from './fee.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
-import {
-    PostgreSqlContainer,
-    StartedPostgreSqlContainer,
-} from '@testcontainers/postgresql';
-import { execSync } from 'child_process';
+import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { Fee } from '../../domain/fee';
 import { PaymentLapse } from '../../domain/payment-lapse';
 import { RepeatEntityException } from '../../../../shared/infraestructure/persistence/errors/repeat-entity-exception';
+import {
+    createDatabaseToContainer,
+    createSqlContainer,
+} from '../../../../../test/containers/sql';
 
 describe('FeeRepository', () => {
     let fee: Fee;
@@ -16,13 +16,8 @@ describe('FeeRepository', () => {
     let container: StartedPostgreSqlContainer;
 
     beforeAll(async () => {
-        container = await new PostgreSqlContainer('postgres:17').start();
-        process.env.DATABASE_URL = container.getConnectionUri();
-        execSync('pnpm prisma migrate deploy', {
-            env: {
-                DATABASE_URL: process.env.DATABASE_URL,
-            },
-        });
+        container = await createSqlContainer().start();
+        createDatabaseToContainer(container);
     });
 
     beforeEach(async () => {

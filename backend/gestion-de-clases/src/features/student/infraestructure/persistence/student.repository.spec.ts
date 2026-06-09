@@ -3,11 +3,11 @@ import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
 import { Student } from '../../domain/student';
 import { RepeatEntityException } from '../../../../shared/infraestructure/persistence/errors/repeat-entity-exception';
+import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import {
-    PostgreSqlContainer,
-    StartedPostgreSqlContainer,
-} from '@testcontainers/postgresql';
-import { execSync } from 'child_process';
+    createDatabaseToContainer,
+    createSqlContainer,
+} from '../../../../../test/containers/sql';
 
 describe('StudentRepository', () => {
     let container: StartedPostgreSqlContainer;
@@ -15,13 +15,8 @@ describe('StudentRepository', () => {
     let student: Student;
 
     beforeAll(async () => {
-        container = await new PostgreSqlContainer('postgres:17').start();
-        process.env.DATABASE_URL = container.getConnectionUri();
-        execSync('pnpm prisma migrate deploy', {
-            env: {
-                DATABASE_URL: process.env.DATABASE_URL,
-            },
-        });
+        container = await createSqlContainer().start();
+        createDatabaseToContainer(container);
     });
 
     beforeEach(async () => {
