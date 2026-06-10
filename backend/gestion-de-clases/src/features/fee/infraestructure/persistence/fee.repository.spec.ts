@@ -9,6 +9,7 @@ import {
     createDatabaseToContainer,
     createSqlContainer,
 } from '../../../../../test/containers/sql';
+import { clearSqlContainer } from '../../../../../test/containers/tear-down';
 
 describe('FeeRepository', () => {
     let fee: Fee;
@@ -47,7 +48,7 @@ describe('FeeRepository', () => {
     });
 
     afterEach(async () => {
-        await repository.clearAll();
+        await clearSqlContainer();
     });
 
     afterAll(async () => {

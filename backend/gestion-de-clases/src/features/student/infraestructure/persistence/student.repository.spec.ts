@@ -8,6 +8,7 @@ import {
     createDatabaseToContainer,
     createSqlContainer,
 } from '../../../../../test/containers/sql';
+import { clearSqlContainer } from '../../../../../test/containers/tear-down';
 
 describe('StudentRepository', () => {
     let container: StartedPostgreSqlContainer;
@@ -47,7 +48,7 @@ describe('StudentRepository', () => {
     });
 
     afterEach(async () => {
-        await repository.clearAll();
+        await clearSqlContainer();
     });
 
     afterAll(async () => {

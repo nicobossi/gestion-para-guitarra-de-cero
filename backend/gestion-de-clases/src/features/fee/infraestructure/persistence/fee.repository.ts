@@ -17,12 +17,4 @@ export class FeeRepository {
             throw this.sql.handleError(error);
         }
     }
-
-    async clearAll(): Promise<void> {
-        try {
-            await this.sql.fee.deleteMany();
-        } catch (error: unknown) {
-            throw this.sql.handleError(error);
-        }
-    }
 }
