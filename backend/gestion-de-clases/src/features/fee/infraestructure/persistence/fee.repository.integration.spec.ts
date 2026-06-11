@@ -11,7 +11,7 @@ import {
 import { clearSqlContainer } from '../../../../../test/containers/tear-down';
 import { RepeatAmountException } from '../../domain/repeat-amount-exception';
 
-describe('FeeRepository', () => {
+describe('Integration FeeRepository', () => {
     let fee: Fee;
     let repository: FeeRepository;
     let container: StartedPostgreSqlContainer;
