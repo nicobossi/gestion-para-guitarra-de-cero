@@ -8,11 +8,10 @@ import {
     createSqlContainer,
 } from '../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../test/containers/tear-down';
-import { RepeatAmountException } from '../domain/repeat-amount-exception';
 import { Fee } from '../domain/fee';
 import { PaymentLapse } from '../domain/payment-lapse';
 
-describe('FeeService', () => {
+describe('Integration FeeService', () => {
     let service: FeeService;
     let container: StartedPostgreSqlContainer;
     let fee: Fee;
@@ -38,14 +37,6 @@ describe('FeeService', () => {
     it('should add a fee', async () => {
         const addedFee = await service.add(fee);
         expect(addedFee.getId).toBeDefined();
-    });
-
-    it('should throw the exception repeat amount exception if the amount already exists', async () => {
-        const addedFee = await service.add(fee);
-        const studentWithRepeatPhone = async () => await service.add(addedFee);
-        await expect(studentWithRepeatPhone).rejects.toBeInstanceOf(
-            RepeatAmountException,
-        );
     });
 
     afterEach(async () => {

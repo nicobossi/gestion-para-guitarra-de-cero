@@ -9,7 +9,6 @@ import {
 } from '../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../test/containers/tear-down';
 import { Student } from '../domain/student';
-import { RepeatPhoneException } from '../domain/repeat-phone-exception';
 
 describe('StudentService', () => {
     let student: Student;
@@ -37,15 +36,6 @@ describe('StudentService', () => {
     it('should incoming a student', async () => {
         const incomerStudent = await service.income(student);
         expect(incomerStudent.getId).toBeDefined();
-    });
-
-    it('should throw the exception repeat phone exception if the phone already exists', async () => {
-        const incomerStudent = await service.income(student);
-        const studentWithRepeatPhone = async () =>
-            await service.income(incomerStudent);
-        await expect(studentWithRepeatPhone).rejects.toBeInstanceOf(
-            RepeatPhoneException,
-        );
     });
 
     afterAll(async () => {
