@@ -2,13 +2,13 @@ import { Test } from '@nestjs/testing';
 import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
 import { Student } from '../../domain/student';
-import { RepeatFieldException } from '../../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import {
     createDatabaseToContainer,
     createSqlContainer,
 } from '../../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../../test/containers/tear-down';
+import { RepeatPhoneException } from '../../domain/repeat-phone-exception';
 
 describe('StudentRepository', () => {
     let container: StartedPostgreSqlContainer;
@@ -43,7 +43,7 @@ describe('StudentRepository', () => {
         const studentWithRepeatPhone = async () =>
             await repository.income(createdStudent);
         await expect(studentWithRepeatPhone).rejects.toBeInstanceOf(
-            RepeatFieldException,
+            RepeatPhoneException,
         );
     });
 
