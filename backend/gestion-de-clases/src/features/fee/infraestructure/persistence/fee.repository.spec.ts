@@ -4,12 +4,12 @@ import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/pr
 import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { Fee } from '../../domain/fee';
 import { PaymentLapse } from '../../domain/payment-lapse';
-import { RepeatFieldException } from '../../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 import {
     createDatabaseToContainer,
     createSqlContainer,
 } from '../../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../../test/containers/tear-down';
+import { RepeatAmountException } from '../../domain/repeat-amount-exception';
 
 describe('FeeRepository', () => {
     let fee: Fee;
@@ -39,11 +39,11 @@ describe('FeeRepository', () => {
         expect(addedFee.getId).toBeDefined();
     });
 
-    it('should throw the exception repeat entity exception if the amount already exists', async () => {
+    it('should throw the exception repeat amount exception if the amount already exists', async () => {
         const addedFee = await repository.add(fee);
         const feeWithRepeatAmount = async () => await repository.add(addedFee);
         await expect(feeWithRepeatAmount).rejects.toBeInstanceOf(
-            RepeatFieldException,
+            RepeatAmountException,
         );
     });
 
