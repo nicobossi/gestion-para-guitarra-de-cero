@@ -8,13 +8,12 @@ export class StudentRepository {
     constructor(private readonly sql: SqlClient) {}
 
     async income(student: Student): Promise<Student> {
-        return await this.sql.execute(() => this.add(student));
+        return await this.sql.execute(() => this.save(student));
     }
 
-    async add(student: Student): Promise<Student> {
-        const createdStudent = await this.sql.student.create({
-            data: StudentMapper.modelToSql(student),
-        });
+    private async save(student: Student): Promise<Student> {
+        const dto = StudentMapper.modelToSql(student);
+        const createdStudent = await this.sql.student.create({ data: dto });
         return StudentMapper.sqlToModel(createdStudent);
     }
 }

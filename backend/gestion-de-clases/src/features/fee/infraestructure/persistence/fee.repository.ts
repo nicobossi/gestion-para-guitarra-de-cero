@@ -8,13 +8,12 @@ export class FeeRepository {
     constructor(private readonly sql: SqlClient) {}
 
     async add(fee: Fee): Promise<Fee> {
-        try {
-            const createdFee = await this.sql.fee.create({
-                data: FeeMapper.modelToSql(fee),
-            });
-            return FeeMapper.sqlToModel(createdFee);
-        } catch (error: unknown) {
-            throw this.sql.handleError(error);
-        }
+        return await this.sql.execute(() => this.save(fee));
+    }
+
+    private async save(fee: Fee): Promise<Fee> {
+        const dto = FeeMapper.modelToSql(fee);
+        const createdFee = await this.sql.fee.create({ data: dto });
+        return FeeMapper.sqlToModel(createdFee);
     }
 }
