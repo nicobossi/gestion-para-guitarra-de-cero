@@ -17,7 +17,7 @@ import { ValidationError } from '../errors/validation-error';
 import { DbError } from '../errors/db-error';
 import { NotRegisterError } from '../errors/not-register-error';
 import { CredentialsError } from '../errors/credentials-error';
-import { RepeatEntityException } from '../errors/repeat-entity-exception';
+import { RepeatFieldException } from '../errors/repeat-field-exception';
 
 @Injectable()
 export class SqlClient
@@ -39,6 +39,14 @@ export class SqlClient
         await this.$connect();
     }
 
+    async execute<T>(ex: () => T): Promise<T> {
+        try {
+            return await ex();
+        } catch (error) {
+            throw this.handleError(error);
+        }
+    }
+
     handleError(error: unknown): DbError {
         if (error instanceof PrismaClientKnownRequestError)
             return this.findError(error.code);
@@ -54,7 +62,7 @@ export class SqlClient
 
     private getErrors(): Map<string, DbError> {
         const mapError: Map<string, DbError> = new Map<string, DbError>();
-        mapError.set('P2002', new RepeatEntityException());
+        mapError.set('P2002', new RepeatFieldException());
         mapError.set('P1000', new CredentialsError());
         mapError.set('P1001', new ServiceUnavailableException());
         mapError.set('P1002', new GatewayTimeoutException());

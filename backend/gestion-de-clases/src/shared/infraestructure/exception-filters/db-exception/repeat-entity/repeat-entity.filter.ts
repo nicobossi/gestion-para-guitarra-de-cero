@@ -1,10 +1,10 @@
 import { Catch } from '@nestjs/common';
-import { RepeatEntityException } from '../../../persistence/errors/repeat-entity-exception';
+import { RepeatFieldException } from '../../../persistence/errors/repeat-field-exception';
 import { FilterExceptionDbData } from '../response-data';
 import { DbFilterException } from '../db-filter-exception';
 
-@Catch(RepeatEntityException)
-export class RepeatEntityFilter extends DbFilterException<RepeatEntityException> {
+@Catch(RepeatFieldException)
+export class RepeatEntityFilter extends DbFilterException<RepeatFieldException> {
     protected responseData(): FilterExceptionDbData {
         return {
             status: 400,

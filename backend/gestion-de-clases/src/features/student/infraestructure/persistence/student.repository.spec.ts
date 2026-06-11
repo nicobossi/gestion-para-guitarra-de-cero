@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
 import { Student } from '../../domain/student';
-import { RepeatEntityException } from '../../../../shared/infraestructure/persistence/errors/repeat-entity-exception';
+import { RepeatFieldException } from '../../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import {
     createDatabaseToContainer,
@@ -43,7 +43,7 @@ describe('StudentRepository', () => {
         const studentWithRepeatPhone = async () =>
             await repository.income(createdStudent);
         await expect(studentWithRepeatPhone).rejects.toBeInstanceOf(
-            RepeatEntityException,
+            RepeatFieldException,
         );
     });
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Fee } from '../domain/fee';
-import { RepeatEntityException } from '../../../shared/infraestructure/persistence/errors/repeat-entity-exception';
+import { RepeatFieldException } from '../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 import { FeeRepository } from '../infraestructure/persistence/fee.repository';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class FeeService {
         try {
             return await this.repository.add(fee);
         } catch (error) {
-            if (error instanceof RepeatEntityException) {
+            if (error instanceof RepeatFieldException) {
                 throw fee.repeatAmountException();
             } else throw error;
         }

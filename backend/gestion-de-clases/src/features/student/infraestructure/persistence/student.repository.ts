@@ -8,13 +8,13 @@ export class StudentRepository {
     constructor(private readonly sql: SqlClient) {}
 
     async income(student: Student): Promise<Student> {
-        try {
-            const createdStudent = await this.sql.student.create({
-                data: StudentMapper.modelToSql(student),
-            });
-            return StudentMapper.sqlToModel(createdStudent);
-        } catch (error: unknown) {
-            throw this.sql.handleError(error);
-        }
+        return await this.sql.execute(() => this.add(student));
+    }
+
+    async add(student: Student): Promise<Student> {
+        const createdStudent = await this.sql.student.create({
+            data: StudentMapper.modelToSql(student),
+        });
+        return StudentMapper.sqlToModel(createdStudent);
     }
 }

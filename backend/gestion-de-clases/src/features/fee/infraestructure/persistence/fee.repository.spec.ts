@@ -4,7 +4,7 @@ import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/pr
 import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { Fee } from '../../domain/fee';
 import { PaymentLapse } from '../../domain/payment-lapse';
-import { RepeatEntityException } from '../../../../shared/infraestructure/persistence/errors/repeat-entity-exception';
+import { RepeatFieldException } from '../../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 import {
     createDatabaseToContainer,
     createSqlContainer,
@@ -43,7 +43,7 @@ describe('FeeRepository', () => {
         const addedFee = await repository.add(fee);
         const feeWithRepeatAmount = async () => await repository.add(addedFee);
         await expect(feeWithRepeatAmount).rejects.toBeInstanceOf(
-            RepeatEntityException,
+            RepeatFieldException,
         );
     });
 
