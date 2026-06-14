@@ -19,6 +19,31 @@ export class StudentRepository {
         }
     }
 
+    async getWithFullname(
+        name: string,
+        surname: string,
+        secondName?: string,
+    ): Promise<Student[]> {
+        return this.sql.execute(() =>
+            this.withFullname(name, surname, secondName),
+        );
+    }
+
+    private async withFullname(
+        name: string,
+        surname: string,
+        secondName?: string,
+    ): Promise<Student[]> {
+        const students = await this.sql.student.findMany({
+            where: {
+                firstName: name,
+                surname: surname,
+                secondName: secondName,
+            },
+        });
+        return students.map((student) => StudentMapper.sqlToModel(student));
+    }
+
     private async save(student: Student): Promise<Student> {
         const dto = StudentMapper.modelToSql(student);
         const createdStudent = await this.sql.student.create({ data: dto });

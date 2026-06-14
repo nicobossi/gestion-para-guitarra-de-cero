@@ -59,4 +59,19 @@ describe('Unit StudentRepository', () => {
             TimeoutFilterException,
         );
     });
+
+    it('should get students with full name', async () => {
+        mockSql.execute
+            .mockResolvedValueOnce(incomerStudent)
+            .mockResolvedValueOnce([incomerStudent]);
+        await repository.income(student);
+        const students = await repository.getWithFullname(
+            incomerStudent.getName,
+            incomerStudent.getSurname,
+            incomerStudent.getSecondName,
+        );
+        expect(students[0].getName).toBe(incomerStudent.getName);
+        expect(students[0].getSurname).toBe(incomerStudent.getSurname);
+        expect(students[0].getSecondName).toBe(incomerStudent.getSecondName);
+    });
 });

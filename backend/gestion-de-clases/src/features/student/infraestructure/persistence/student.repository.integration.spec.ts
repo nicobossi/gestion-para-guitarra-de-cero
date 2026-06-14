@@ -47,6 +47,18 @@ describe('StudentRepository', () => {
         );
     });
 
+    it('should get students with full name', async () => {
+        await repository.income(student);
+        const students = await repository.getWithFullname(
+            student.getName,
+            student.getSurname,
+            student.getSecondName,
+        );
+        expect(students[0].getName).toBe(student.getName);
+        expect(students[0].getSurname).toBe(student.getSurname);
+        expect(students[0].getSecondName).toBe(student.getSecondName);
+    });
+
     afterEach(async () => {
         await clearSqlContainer();
     });
