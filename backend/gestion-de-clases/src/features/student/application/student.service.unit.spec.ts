@@ -2,8 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Student } from '../domain/student';
 import { StudentService } from './student.service';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
-import { StudentNotFound } from './student-not-found';
-import { StudentsWithSameFullname } from './students-with-same-fullname';
+import { StudentNotFound } from './exceptions/student-not-found';
+import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 
 describe('Unit FeeService', () => {
     let service: StudentService;
@@ -51,6 +51,12 @@ describe('Unit FeeService', () => {
         expect(studentWithName.getName).toBe(student.getName);
         expect(studentWithName.getSurname).toBe(student.getSurname);
         expect(studentWithName.getSecondName).toBe(student.getSecondName);
+
+        expect(mockRepository.getWithFullname).toHaveBeenCalledWith(
+            student.getName,
+            student.getSurname,
+            student.getSecondName,
+        );
     });
 
     it('should catch a exception for empty list', async () => {

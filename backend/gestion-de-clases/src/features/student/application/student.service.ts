@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Student } from '../domain/student';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
-import { StudentNotFound } from './student-not-found';
-import { StudentsWithSameFullname } from './students-with-same-fullname';
+import { StudentNotFound } from './exceptions/student-not-found';
+import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 @Injectable()
 export class StudentService {
     constructor(private readonly studentRepository: StudentRepository) {}
