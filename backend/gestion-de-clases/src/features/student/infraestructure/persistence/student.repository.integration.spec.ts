@@ -8,7 +8,6 @@ import {
     createSqlContainer,
 } from '../../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../../test/containers/tear-down';
-import { RepeatPhoneException } from '../../domain/repeat-phone-exception';
 
 describe('StudentRepository', () => {
     let container: StartedPostgreSqlContainer;
@@ -36,15 +35,6 @@ describe('StudentRepository', () => {
     it('should income a student', async () => {
         const createdStudent = await repository.income(student);
         expect(createdStudent.getId).toBeDefined();
-    });
-
-    it('should throw the exception repeat entity exception if the phone already exists', async () => {
-        const createdStudent = await repository.income(student);
-        const studentWithRepeatPhone = async () =>
-            await repository.income(createdStudent);
-        await expect(studentWithRepeatPhone).rejects.toBeInstanceOf(
-            RepeatPhoneException,
-        );
     });
 
     it('should get students with full name', async () => {

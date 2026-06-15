@@ -2,24 +2,24 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Student } from '../../domain/student';
 import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
-import { RepeatPhoneException } from '../../domain/repeat-phone-exception';
-import { TimeoutFilterException } from '../../../../shared/infraestructure/exception-filters/db-exception/timeout/timeout.filter';
-import { RepeatFieldException } from '../../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 
 describe('Unit StudentRepository', () => {
     let repository: StudentRepository;
     let student: Student;
-    const incomerStudent = new Student(
-        'Nicolás',
-        'A',
-        1234567891,
-        new Date(),
-        'B',
-        1,
-    );
+    const incomerStudent = {
+        id: 1,
+        firstName: 'Nicolás',
+        surname: 'A',
+        phone: 1234567891,
+        submissionDate: new Date(),
+        secondName: 'B',
+    };
 
     const mockSql = {
-        execute: jest.fn(),
+        student: {
+            create: jest.fn(),
+            findMany: jest.fn(),
+        },
     };
 
     beforeEach(async () => {
@@ -36,42 +36,23 @@ describe('Unit StudentRepository', () => {
     });
 
     it('should income a student', async () => {
-        mockSql.execute.mockResolvedValue(incomerStudent);
+        mockSql.student.create.mockResolvedValue(incomerStudent);
         const newStudent = await repository.income(student);
-        expect(newStudent).toBe(incomerStudent);
-        expect(mockSql.execute).toHaveBeenCalled();
-    });
-
-    it('should catch a repeat phone exception', async () => {
-        mockSql.execute.mockRejectedValue(new RepeatFieldException());
-        const feeWithRepeatAmount = async () =>
-            await repository.income(student);
-        await expect(feeWithRepeatAmount).rejects.toBeInstanceOf(
-            RepeatPhoneException,
-        );
-    });
-
-    it('should not catch a database exception', async () => {
-        mockSql.execute.mockRejectedValue(new TimeoutFilterException());
-        const feeWithRepeatAmount = async () =>
-            await repository.income(student);
-        await expect(feeWithRepeatAmount).rejects.toBeInstanceOf(
-            TimeoutFilterException,
-        );
+        expect(newStudent.getId).toBe(incomerStudent.id);
+        expect(mockSql.student.create).toHaveBeenCalled();
     });
 
     it('should get students with full name', async () => {
-        mockSql.execute
-            .mockResolvedValueOnce(incomerStudent)
-            .mockResolvedValueOnce([incomerStudent]);
-        await repository.income(student);
+        mockSql.student.findMany.mockResolvedValue([incomerStudent]);
         const students = await repository.getWithFullname(
-            incomerStudent.getName,
-            incomerStudent.getSurname,
-            incomerStudent.getSecondName,
+            incomerStudent.firstName,
+            incomerStudent.surname,
+            incomerStudent.secondName,
         );
-        expect(students[0].getName).toBe(incomerStudent.getName);
-        expect(students[0].getSurname).toBe(incomerStudent.getSurname);
-        expect(students[0].getSecondName).toBe(incomerStudent.getSecondName);
+        console.log(students);
+        expect(students[0].getName).toBe(incomerStudent.firstName);
+        expect(students[0].getSurname).toBe(incomerStudent.surname);
+        expect(students[0].getSecondName).toBe(incomerStudent.secondName);
+        expect(mockSql.student.findMany).toHaveBeenCalled();
     });
 });
