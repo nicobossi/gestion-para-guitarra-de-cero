@@ -1,10 +1,10 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
-import { RepeatAmountException } from '../../domain/repeat-amount-exception';
 import { Request, Response } from 'express';
+import { RepeatFieldException } from '../../../../shared/infraestructure/persistence/errors/repeat-field-exception';
 
-@Catch(RepeatAmountException)
+@Catch(RepeatFieldException)
 export class RepeatAmountFilter implements ExceptionFilter {
-    catch(_: RepeatAmountException, host: ArgumentsHost) {
+    catch(_: RepeatFieldException, host: ArgumentsHost) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         const request = ctx.getRequest<Request>();

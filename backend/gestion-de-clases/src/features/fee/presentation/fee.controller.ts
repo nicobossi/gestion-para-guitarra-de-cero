@@ -2,13 +2,13 @@ import { Body, Controller, HttpCode, Post, UseFilters } from '@nestjs/common';
 import { FeeService } from '../application/fee.service';
 import { FeeMapper } from '../infraestructure/mapper/fee.mapper';
 import { CreateFee } from '../infraestructure/mapper/dto/request/create-fee';
-import { RepeatFieldException } from '../../../shared/infraestructure/persistence/errors/repeat-field-exception';
+import { RepeatAmountFilter } from '../infraestructure/exception-filter/repeat-amount.filter';
 
 @Controller('api/fee')
 export class FeeController {
     constructor(private readonly feeService: FeeService) {}
 
-    @UseFilters(RepeatFieldException)
+    @UseFilters(RepeatAmountFilter)
     @Post('add')
     @HttpCode(201)
     async add(@Body() dto: CreateFee) {
