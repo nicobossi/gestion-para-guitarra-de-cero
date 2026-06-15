@@ -4,8 +4,9 @@ import { StudentService } from './student.service';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
 import { StudentNotFound } from './exceptions/student-not-found';
 import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
+import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 
-describe('Unit FeeService', () => {
+describe('Unit StudentService', () => {
     let service: StudentService;
     let student: Student;
     const incomerStudent = new Student(
@@ -23,7 +24,7 @@ describe('Unit FeeService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [StudentService, StudentRepository],
+            providers: [StudentService, StudentRepository, UnitOfWork],
         })
             .overrideProvider(StudentRepository)
             .useValue(mockRepository)

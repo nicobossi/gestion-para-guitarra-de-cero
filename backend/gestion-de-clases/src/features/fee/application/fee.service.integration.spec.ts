@@ -10,6 +10,7 @@ import {
 import { clearSqlContainer } from '../../../../test/containers/tear-down';
 import { Fee } from '../domain/fee';
 import { PaymentLapse } from '../domain/payment-lapse';
+import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 
 describe('Integration FeeService', () => {
     let service: FeeService;
@@ -23,7 +24,7 @@ describe('Integration FeeService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [FeeService, FeeRepository, SqlClient],
+            providers: [FeeService, FeeRepository, UnitOfWork, SqlClient],
         }).compile();
 
         service = module.get<FeeService>(FeeService);

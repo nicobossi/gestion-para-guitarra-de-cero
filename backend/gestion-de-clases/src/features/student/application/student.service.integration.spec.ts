@@ -11,6 +11,7 @@ import { clearSqlContainer } from '../../../../test/containers/tear-down';
 import { Student } from '../domain/student';
 import { StudentNotFound } from './exceptions/student-not-found';
 import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
+import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 
 describe('StudentService', () => {
     let student: Student;
@@ -24,7 +25,12 @@ describe('StudentService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [StudentService, StudentRepository, SqlClient],
+            providers: [
+                StudentService,
+                StudentRepository,
+                UnitOfWork,
+                SqlClient,
+            ],
         }).compile();
 
         student = new Student('Carlos', 'Brockhampton', 1234567891, new Date());

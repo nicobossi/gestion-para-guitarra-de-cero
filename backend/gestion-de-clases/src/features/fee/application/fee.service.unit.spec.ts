@@ -3,6 +3,7 @@ import { Fee } from '../domain/fee';
 import { PaymentLapse } from '../domain/payment-lapse';
 import { FeeService } from './fee.service';
 import { FeeRepository } from '../infraestructure/persistence/fee.repository';
+import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 
 describe('Unit FeeService', () => {
     let service: FeeService;
@@ -14,7 +15,7 @@ describe('Unit FeeService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [FeeService, FeeRepository],
+            providers: [FeeService, FeeRepository, UnitOfWork],
         })
             .overrideProvider(FeeRepository)
             .useValue(mockRepository)
