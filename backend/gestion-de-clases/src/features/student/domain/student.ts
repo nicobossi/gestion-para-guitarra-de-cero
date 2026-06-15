@@ -1,5 +1,4 @@
 import { InvalidPhoneException } from './invalid-phone-exception';
-import { RepeatPhoneException } from './repeat-phone-exception';
 
 export class Student {
     private readonly id?: number;
@@ -60,11 +59,5 @@ export class Student {
 
     private invalidPhoneMessage(): string {
         return 'El teléfono debe tener 10 caracteres';
-    }
-
-    repeatPhoneException() {
-        return new RepeatPhoneException(
-            'El número de teléfono ya está registrado para otro estudiante.',
-        );
     }
 }

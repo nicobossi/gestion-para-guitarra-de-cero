@@ -1,6 +1,4 @@
 import { PaymentLapse } from './payment-lapse';
-import { RepeatAmountException } from './repeat-amount-exception';
-
 export class Fee {
     private amount: number;
     private paymentLapse: PaymentLapse;
@@ -33,13 +31,5 @@ export class Fee {
 
     get getId(): number | undefined {
         return this.id;
-    }
-
-    repeatAmountException(): RepeatAmountException {
-        return new RepeatAmountException(this.repeatAmountMessage());
-    }
-
-    private repeatAmountMessage(): string {
-        return 'Una cuota no puede tener un monto repetido';
     }
 }
