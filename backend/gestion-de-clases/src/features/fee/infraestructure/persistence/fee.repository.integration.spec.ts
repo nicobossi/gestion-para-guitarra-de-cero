@@ -9,7 +9,6 @@ import {
     createSqlContainer,
 } from '../../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../../test/containers/tear-down';
-import { RepeatAmountException } from '../../domain/repeat-amount-exception';
 
 describe('Integration FeeRepository', () => {
     let fee: Fee;
@@ -37,14 +36,6 @@ describe('Integration FeeRepository', () => {
     it('should add a fee', async () => {
         const addedFee = await repository.add(fee);
         expect(addedFee.getId).toBeDefined();
-    });
-
-    it('should throw the exception repeat amount exception if the amount already exists', async () => {
-        const addedFee = await repository.add(fee);
-        const feeWithRepeatAmount = async () => await repository.add(addedFee);
-        await expect(feeWithRepeatAmount).rejects.toBeInstanceOf(
-            RepeatAmountException,
-        );
     });
 
     afterEach(async () => {

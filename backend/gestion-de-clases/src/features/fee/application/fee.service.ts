@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { Fee } from '../domain/fee';
 import { FeeRepository } from '../infraestructure/persistence/fee.repository';
+import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 
 @Injectable()
 export class FeeService {
-    constructor(private readonly repository: FeeRepository) {}
+    constructor(
+        private readonly repository: FeeRepository,
+        private readonly unitOfWork: UnitOfWork,
+    ) {}
     async add(fee: Fee): Promise<Fee> {
-        return await this.repository.add(fee);
+        const addFee = () => this.repository.add(fee);
+        return this.unitOfWork.execute(addFee);
     }
 }
