@@ -1,18 +1,22 @@
+import { Calender } from './calender';
 import { InvalidPhoneException } from './invalid-phone-exception';
+import { Lesson } from './lesson';
 
 export class Student {
     private readonly id?: number;
+    private lessons: Lesson[] = [];
     private name: string;
     private surname: string;
     private phone: number;
-    private submissionDate: Date;
+    private firstLessonDate: Date;
     private secondName?: string;
+    private calender = new Calender();
 
     constructor(
         name: string,
         surname: string,
         phone: number,
-        submissionDate: Date,
+        firstLessonDate: Date,
         secondName?: string,
         id?: number,
     ) {
@@ -20,9 +24,30 @@ export class Student {
         this.surname = surname;
         this.setPhone(phone);
         this.phone = phone;
-        this.submissionDate = submissionDate;
+        this.firstLessonDate = firstLessonDate;
         this.secondName = secondName;
         this.id = id;
+    }
+
+    payment(): Lesson[] {
+        if (this.haveLessons()) {
+            const lastLessonDate = this.lessons[3].getAttendanceDate;
+            const firstLessonOfMonthDate =
+                this.calender.nextDate(lastLessonDate);
+            this.lessons = this.newLessons(firstLessonOfMonthDate);
+            return this.lessons.map((lesson) => lesson);
+        } else {
+            this.lessons = this.newLessons(this.firstLessonDate);
+            return this.lessons.map((lesson) => lesson);
+        }
+    }
+
+    private haveLessons() {
+        return this.lessons.length > 0;
+    }
+
+    private newLessons(date: Date): Lesson[] {
+        return this.calender.registerLessons(date);
     }
 
     get getName(): string {
@@ -38,7 +63,7 @@ export class Student {
     }
 
     get getSubmissionDate(): Date {
-        return this.submissionDate;
+        return this.firstLessonDate;
     }
 
     get getPhoneNumber(): number {

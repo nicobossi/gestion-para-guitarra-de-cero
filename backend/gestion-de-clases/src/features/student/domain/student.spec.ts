@@ -6,7 +6,7 @@ describe('test to student', () => {
     let fechaDePresentacion: Date;
 
     beforeEach(() => {
-        fechaDePresentacion = new Date(2026, 1, 18, 16, 4);
+        fechaDePresentacion = new Date(2026, 0, 1);
         nicolas = new Student(
             'Nicolás',
             'Bossi',
@@ -63,5 +63,43 @@ describe('test to student', () => {
             );
 
         expect(carlos).toThrow(InvalidPhoneException);
+    });
+
+    test('should create four lesson', () => {
+        const lessons = nicolas.payment();
+        expect(lessons.length).toBe(4);
+    });
+
+    test('should create four lesson for week', () => {
+        const lessons = nicolas.payment();
+        const firstWeek =
+            lessons[1].getAttendanceDate.getDate() -
+            lessons[0].getAttendanceDate.getDate();
+        const secondWeek =
+            lessons[2].getAttendanceDate.getDate() -
+            lessons[1].getAttendanceDate.getDate();
+        const threeWeek =
+            lessons[3].getAttendanceDate.getDate() -
+            lessons[2].getAttendanceDate.getDate();
+
+        expect(firstWeek).toBe(7);
+        expect(secondWeek).toBe(7);
+        expect(threeWeek).toBe(7);
+    });
+
+    test('should have the first lesson in submission date', () => {
+        const lessons = nicolas.payment();
+        const firstLessonDate = lessons[0].getAttendanceDate;
+        expect(firstLessonDate).toBe(nicolas.getSubmissionDate);
+    });
+
+    test('should be a week gap between the last class and the first class of the next payment', () => {
+        const firstLesson = nicolas.payment();
+        const secondLessons = nicolas.payment();
+        console.log(firstLesson, secondLessons);
+        const gapWeek =
+            secondLessons[0].getAttendanceDate.getDate() -
+            firstLesson[3].getAttendanceDate.getDate();
+        expect(gapWeek).toBe(7);
     });
 });
