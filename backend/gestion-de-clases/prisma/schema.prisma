@@ -20,6 +20,8 @@ model Student {
   surname String 
   phone Int @unique
   submissionDate DateTime @map("submission_date")
+  
+  lessons Lesson[]
 
   @@map("student")
 }
@@ -31,6 +33,17 @@ model Fee {
   paymentLapse PaymentLapse @map("payment_lapse")
 
   @@map("fee")
+}
+
+model Lesson {
+  id Int @id @default(autoincrement())
+  isCancel Boolean 
+  attendanceDate DateTime
+  studentId Int
+  
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@map("lesson")
 }
 
 enum PaymentLapse {

@@ -10,4 +10,5 @@
  */
 export type * from './models/Student.js'
 export type * from './models/Fee.js'
+export type * from './models/Lesson.js'
 export type * from './commonInputTypes.js'

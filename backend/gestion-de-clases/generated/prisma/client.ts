@@ -49,3 +49,8 @@ export type Student = Prisma.StudentModel
  * 
  */
 export type Fee = Prisma.FeeModel
+/**
+ * Model Lesson
+ * 
+ */
+export type Lesson = Prisma.LessonModel
