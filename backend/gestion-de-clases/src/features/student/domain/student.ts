@@ -1,5 +1,6 @@
 import { Calender } from './calender';
-import { InvalidPhoneException } from './invalid-phone-exception';
+import { InvalidLessons } from './exception/invalid-lessons';
+import { InvalidPhoneException } from './exception/invalid-phone-exception';
 import { Lesson } from './lesson';
 
 export class Student {
@@ -9,7 +10,7 @@ export class Student {
     private surname: string;
     private phone: number;
     private firstLessonDate: Date;
-    private secondName?: string;
+    private secondName: string | null;
     private calender = new Calender();
 
     constructor(
@@ -17,8 +18,9 @@ export class Student {
         surname: string,
         phone: number,
         firstLessonDate: Date,
-        secondName?: string,
+        secondName: string | null = null,
         id?: number,
+        lessons?: Lesson[],
     ) {
         this.name = name;
         this.surname = surname;
@@ -27,27 +29,42 @@ export class Student {
         this.firstLessonDate = firstLessonDate;
         this.secondName = secondName;
         this.id = id;
+        this.setLesson(lessons);
+    }
+    private setLesson(lessons?: Lesson[]) {
+        if (lessons) {
+            if (lessons.length != 4) {
+                throw new InvalidLessons();
+            }
+            this.lessons = lessons;
+        }
     }
 
     payment(): Lesson[] {
         if (this.haveLessons()) {
-            const lastLessonDate = this.lessons[3].getAttendanceDate;
-            const firstLessonOfMonthDate =
-                this.calender.nextDate(lastLessonDate);
-            this.lessons = this.newLessons(firstLessonOfMonthDate);
-            return this.lessons.map((lesson) => lesson);
+            this.lessons = this.renewLessons(this.firtsNextMonthDate());
+            return this.getLessons;
         } else {
-            this.lessons = this.newLessons(this.firstLessonDate);
-            return this.lessons.map((lesson) => lesson);
+            this.lessons = this.renewLessons(this.firstLessonDate);
+            return this.getLessons;
         }
+    }
+
+    private renewLessons(date: Date): Lesson[] {
+        return this.calender.registerLessons(date);
+    }
+
+    private firtsNextMonthDate() {
+        const lastLessonDate = this.lessons[3].getAttendanceDate;
+        return this.calender.nextDate(lastLessonDate);
+    }
+
+    get getLessons(): Lesson[] {
+        return this.lessons.map((lesson) => lesson);
     }
 
     private haveLessons() {
         return this.lessons.length > 0;
-    }
-
-    private newLessons(date: Date): Lesson[] {
-        return this.calender.registerLessons(date);
     }
 
     get getName(): string {
@@ -58,7 +75,7 @@ export class Student {
         return this.surname;
     }
 
-    get getSecondName(): string | undefined {
+    get getSecondName(): string | null {
         return this.secondName;
     }
 

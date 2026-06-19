@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Student } from '../../domain/student';
 import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
+import { Lesson } from '../../domain/lesson';
 
 describe('Unit StudentRepository', () => {
     let repository: StudentRepository;
@@ -14,11 +15,26 @@ describe('Unit StudentRepository', () => {
         submissionDate: new Date(),
         secondName: 'B',
     };
+    const studentWithLessons = {
+        id: 1,
+        firstName: 'Nicolás',
+        surname: 'A',
+        phone: 1234567891,
+        submissionDate: new Date(),
+        secondName: 'B',
+        lessons: [
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+        ],
+    };
 
     const mockSql = {
         student: {
             create: jest.fn(),
             findMany: jest.fn(),
+            update: jest.fn(),
         },
     };
 
@@ -49,10 +65,17 @@ describe('Unit StudentRepository', () => {
             incomerStudent.surname,
             incomerStudent.secondName,
         );
-        console.log(students);
         expect(students[0].getName).toBe(incomerStudent.firstName);
         expect(students[0].getSurname).toBe(incomerStudent.surname);
         expect(students[0].getSecondName).toBe(incomerStudent.secondName);
         expect(mockSql.student.findMany).toHaveBeenCalled();
+    });
+
+    it('should add a student with yours four lessons', async () => {
+        mockSql.student.update.mockResolvedValue(studentWithLessons);
+        const lessons = student.payment();
+        const updateStudent = await repository.renewMonth(student, lessons);
+        expect(updateStudent.getLessons.length).toBe(4);
+        expect(mockSql.student.update).toHaveBeenCalled();
     });
 });

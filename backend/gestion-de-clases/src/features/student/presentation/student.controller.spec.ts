@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { StudentController } from './student.controller';
 import { StudentService } from '../application/student.service';
 import { Student } from '../domain/student';
-import { CreateStudent } from '../infraestructure/mapper/dtos/request/create-student-request';
+import { CreateStudent } from '../infraestructure/dtos/income/create-student-request';
 
 describe('StudentController', () => {
     let controller: StudentController;

@@ -1,4 +1,6 @@
-import { InvalidPhoneException } from './invalid-phone-exception';
+import { InvalidLessons } from './exception/invalid-lessons';
+import { InvalidPhoneException } from './exception/invalid-phone-exception';
+import { Lesson } from './lesson';
 import { Student } from './student';
 
 describe('test to student', () => {
@@ -35,7 +37,7 @@ describe('test to student', () => {
             1234567808,
             fechaDePresentacion,
         );
-        expect(alejandro.getSecondName).toBeUndefined();
+        expect(alejandro.getSecondName).toBeNull();
     });
 
     test('a student have a date assistance', () => {
@@ -96,10 +98,64 @@ describe('test to student', () => {
     test('should be a week gap between the last class and the first class of the next payment', () => {
         const firstLesson = nicolas.payment();
         const secondLessons = nicolas.payment();
-        console.log(firstLesson, secondLessons);
         const gapWeek =
             secondLessons[0].getAttendanceDate.getDate() -
             firstLesson[3].getAttendanceDate.getDate();
         expect(gapWeek).toBe(7);
+    });
+
+    test('should initially have a lessons', () => {
+        const lessons = [
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+        ];
+        const nicolas = new Student(
+            'Nicolás',
+            'Romero',
+            1234567877,
+            fechaDePresentacion,
+            'Matias',
+            1,
+            lessons,
+        );
+        expect(nicolas.getLessons.length).toBe(4);
+    });
+
+    test('should not have fewer than 4 classes', () => {
+        const emptyLessons = [];
+        const nicolas = () =>
+            new Student(
+                'Nicolás',
+                'Romero',
+                1234567877,
+                fechaDePresentacion,
+                'Matias',
+                1,
+                emptyLessons,
+            );
+        expect(nicolas).toThrow(InvalidLessons);
+    });
+
+    test('should not have more than 4 classes', () => {
+        const emptyLessons = [
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+            new Lesson(new Date()),
+        ];
+        const nicolas = () =>
+            new Student(
+                'Nicolás',
+                'Romero',
+                1234567877,
+                fechaDePresentacion,
+                'Matias',
+                1,
+                emptyLessons,
+            );
+        expect(nicolas).toThrow(InvalidLessons);
     });
 });

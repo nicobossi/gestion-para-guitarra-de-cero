@@ -1,12 +1,12 @@
 import {
     StudentCreateInput,
     StudentModel,
-} from '../../../../../generated/prisma/models';
-import { Student } from '../../domain/student';
-import { CreateStudent } from './dtos/request/create-student-request';
-import { StudentResponseDto } from './dtos/response/student-response';
+} from '../../../../../../generated/prisma/models';
+import { Student } from '../../../domain/student';
+import { CreateStudent } from './create-student-request';
+import { CreateStudentResponse } from './create-student-response';
 
-export class StudentMapper {
+export class IncomeStudent {
     static sqlToModel(sqlStudent: StudentModel): Student {
         return new Student(
             sqlStudent.firstName,
@@ -38,12 +38,12 @@ export class StudentMapper {
         );
     }
 
-    static modelToDto(student: Student): StudentResponseDto {
+    static modelToDto(student: Student): CreateStudentResponse {
         return {
             id: student.getId!,
             name: student.getName,
             surname: student.getSurname,
-            secondName: student.getSecondName,
+            secondName: student.getSecondName ?? undefined,
             phone: student.getPhoneNumber,
             submissionDate: student.getSubmissionDate,
         };

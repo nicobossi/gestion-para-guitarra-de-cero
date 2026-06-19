@@ -20,4 +20,13 @@ describe('Unit Lesson', () => {
         expect(lesson.getAttendanceDate.getDay()).toBe(date.getDay());
         expect(lesson.getAttendanceDate.getTime()).toBe(date.getTime());
     });
+
+    test('should not initially have a id', () => {
+        expect(lesson.getId).toBeUndefined();
+    });
+
+    test('should have a id', () => {
+        const lesson = new Lesson(attendanceDate, 1);
+        expect(lesson.getId).toBe(1);
+    });
 });
