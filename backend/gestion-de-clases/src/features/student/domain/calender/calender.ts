@@ -1,4 +1,4 @@
-import { Lesson } from './lesson';
+import { Lesson } from '../lesson/lesson';
 
 export class Calender {
     registerLessons(firstLessonDate: Date): Lesson[] {

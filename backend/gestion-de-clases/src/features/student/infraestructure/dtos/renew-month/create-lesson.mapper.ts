@@ -2,7 +2,7 @@ import {
     LessonCreateInput,
     LessonModel,
 } from '../../../../../../generated/prisma/models';
-import { Lesson } from '../../../domain/lesson';
+import { Lesson } from '../../../domain/lesson/lesson';
 
 export class CreateLesson {
     static modelToSql(lessons: Lesson[], id: number): LessonCreateInput[] {

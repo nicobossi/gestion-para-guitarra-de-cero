@@ -1,17 +1,19 @@
-import { Calender } from './calender';
-import { InvalidLessons } from './exception/invalid-lessons';
-import { InvalidPhoneException } from './exception/invalid-phone-exception';
-import { Lesson } from './lesson';
+import { Calender } from '../calender/calender';
+import { InvalidPhoneException } from '../exception/invalid-phone-exception';
+import { Lesson } from '../lesson/lesson';
+import { StateProvider } from './state-provider';
+import { StudentState } from './student-state';
 
 export class Student {
     private readonly id?: number;
-    private lessons: Lesson[] = [];
+    private lessons: Lesson[];
     private name: string;
     private surname: string;
     private phone: number;
     private firstLessonDate: Date;
     private secondName: string | null;
     private calender = new Calender();
+    private state: StudentState;
 
     constructor(
         name: string,
@@ -22,6 +24,7 @@ export class Student {
         id?: number,
         lessons?: Lesson[],
     ) {
+        this.state = StateProvider.provide(lessons);
         this.name = name;
         this.surname = surname;
         this.setPhone(phone);
@@ -29,42 +32,30 @@ export class Student {
         this.firstLessonDate = firstLessonDate;
         this.secondName = secondName;
         this.id = id;
-        this.setLesson(lessons);
-    }
-    private setLesson(lessons?: Lesson[]) {
-        if (lessons) {
-            if (lessons.length != 4) {
-                throw new InvalidLessons();
-            }
-            this.lessons = lessons;
-        }
+        this.lessons = this.addLessons(lessons);
     }
 
     payment(): Lesson[] {
-        if (this.haveLessons()) {
-            this.lessons = this.renewLessons(this.firtsNextMonthDate());
-            return this.getLessons;
-        } else {
-            this.lessons = this.renewLessons(this.firstLessonDate);
-            return this.getLessons;
-        }
+        this.lessons = this.state.payment(this);
+        this.state = StateProvider.provide(this.lessons);
+        return this.getLessons;
     }
 
-    private renewLessons(date: Date): Lesson[] {
+    renewLessons(date: Date): Lesson[] {
         return this.calender.registerLessons(date);
     }
 
-    private firtsNextMonthDate() {
+    firtsNextMonthDate() {
         const lastLessonDate = this.lessons[3].getAttendanceDate;
         return this.calender.nextDate(lastLessonDate);
     }
 
-    get getLessons(): Lesson[] {
-        return this.lessons.map((lesson) => lesson);
+    private addLessons(lessons?: Lesson[]) {
+        return this.state.addLessons(lessons);
     }
 
-    private haveLessons() {
-        return this.lessons.length > 0;
+    get getLessons(): Lesson[] {
+        return this.lessons.map((lesson) => lesson);
     }
 
     get getName(): string {
@@ -79,7 +70,7 @@ export class Student {
         return this.secondName;
     }
 
-    get getSubmissionDate(): Date {
+    get getFirstLessonDate(): Date {
         return this.firstLessonDate;
     }
 

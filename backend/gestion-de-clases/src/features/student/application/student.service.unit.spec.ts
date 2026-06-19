@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Student } from '../domain/student';
+import { Student } from '../domain/student/student';
 import { StudentService } from './student.service';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
 import { StudentNotFound } from './exceptions/student-not-found';

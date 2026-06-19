@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Student } from '../domain/student';
+import { Student } from '../domain/student/student';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
 import { StudentNotFound } from './exceptions/student-not-found';
 import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';

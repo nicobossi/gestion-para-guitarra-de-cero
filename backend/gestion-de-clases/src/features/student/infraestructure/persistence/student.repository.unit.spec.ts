@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Student } from '../../domain/student';
+import { Student } from '../../domain/student/student';
 import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
-import { Lesson } from '../../domain/lesson';
+import { Lesson } from '../../domain/lesson/lesson';
 
 describe('Unit StudentRepository', () => {
     let repository: StudentRepository;

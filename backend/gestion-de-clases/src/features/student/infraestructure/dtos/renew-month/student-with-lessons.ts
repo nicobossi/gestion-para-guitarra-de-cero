@@ -1,5 +1,5 @@
 import { StudentGetPayload } from '../../../../../../generated/prisma/models';
-import { Student } from '../../../domain/student';
+import { Student } from '../../../domain/student/student';
 import { CreateLesson } from './create-lesson.mapper';
 
 type StudentWithLessonsUpdate = StudentGetPayload<{

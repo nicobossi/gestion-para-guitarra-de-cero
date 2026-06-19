@@ -1,6 +1,6 @@
-import { InvalidLessons } from './exception/invalid-lessons';
-import { InvalidPhoneException } from './exception/invalid-phone-exception';
-import { Lesson } from './lesson';
+import { InvalidLessons } from '../exception/invalid-lessons';
+import { InvalidPhoneException } from '../exception/invalid-phone-exception';
+import { Lesson } from '../lesson/lesson';
 import { Student } from './student';
 
 describe('test to student', () => {
@@ -41,7 +41,7 @@ describe('test to student', () => {
     });
 
     test('a student have a date assistance', () => {
-        expect(fechaDePresentacion).toBe(nicolas.getSubmissionDate);
+        expect(fechaDePresentacion).toBe(nicolas.getFirstLessonDate);
     });
 
     test('a student have a phone number', () => {
@@ -92,7 +92,7 @@ describe('test to student', () => {
     test('should have the first lesson in submission date', () => {
         const lessons = nicolas.payment();
         const firstLessonDate = lessons[0].getAttendanceDate;
-        expect(firstLessonDate).toBe(nicolas.getSubmissionDate);
+        expect(firstLessonDate).toBe(nicolas.getFirstLessonDate);
     });
 
     test('should be a week gap between the last class and the first class of the next payment', () => {
@@ -124,7 +124,7 @@ describe('test to student', () => {
     });
 
     test('should not have fewer than 4 classes', () => {
-        const emptyLessons = [];
+        const emptyLessons = [new Lesson(new Date())];
         const nicolas = () =>
             new Student(
                 'Nicolás',

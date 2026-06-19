@@ -2,7 +2,7 @@ import {
     StudentCreateInput,
     StudentModel,
 } from '../../../../../../generated/prisma/models';
-import { Student } from '../../../domain/student';
+import { Student } from '../../../domain/student/student';
 import { CreateStudent } from './create-student-request';
 import { CreateStudentResponse } from './create-student-response';
 
@@ -24,7 +24,7 @@ export class IncomeStudent {
             surname: student.getSurname,
             secondName: student.getSecondName,
             phone: student.getPhoneNumber,
-            submissionDate: student.getSubmissionDate,
+            submissionDate: student.getFirstLessonDate,
         };
     }
 
@@ -45,7 +45,7 @@ export class IncomeStudent {
             surname: student.getSurname,
             secondName: student.getSecondName ?? undefined,
             phone: student.getPhoneNumber,
-            submissionDate: student.getSubmissionDate,
+            submissionDate: student.getFirstLessonDate,
         };
     }
 }

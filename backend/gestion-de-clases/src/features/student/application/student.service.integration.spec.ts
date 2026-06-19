@@ -8,7 +8,7 @@ import {
     createSqlContainer,
 } from '../../../../test/containers/sql';
 import { clearSqlContainer } from '../../../../test/containers/tear-down';
-import { Student } from '../domain/student';
+import { Student } from '../domain/student/student';
 import { StudentNotFound } from './exceptions/student-not-found';
 import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';

@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { StudentRepository } from './student.repository';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
-import { Student } from '../../domain/student';
+import { Student } from '../../domain/student/student';
 import { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import {
     createDatabaseToContainer,
