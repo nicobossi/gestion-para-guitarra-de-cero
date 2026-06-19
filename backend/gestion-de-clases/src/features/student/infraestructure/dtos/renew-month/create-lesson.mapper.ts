@@ -1,23 +1,24 @@
 import {
-    LessonCreateInput,
     LessonModel,
+    LessonUncheckedCreateWithoutStudentInput,
 } from '../../../../../../generated/prisma/models';
 import { Lesson } from '../../../domain/lesson/lesson';
 
 export class CreateLesson {
-    static modelToSql(lessons: Lesson[], id: number): LessonCreateInput[] {
-        return lessons.map<LessonCreateInput>((lesson) =>
-            CreateLesson.lessonToSql(lesson, id),
+    static modelToSql(
+        lessons: Lesson[],
+    ): LessonUncheckedCreateWithoutStudentInput[] {
+        return lessons.map<LessonUncheckedCreateWithoutStudentInput>((lesson) =>
+            CreateLesson.lessonToSql(lesson),
         );
     }
 
-    static lessonToSql(lesson: Lesson, id: number): LessonCreateInput {
+    static lessonToSql(
+        lesson: Lesson,
+    ): LessonUncheckedCreateWithoutStudentInput {
         return {
             isCancel: lesson.getIsCancel,
             attendanceDate: lesson.getAttendanceDate,
-            student: {
-                connect: { id: id },
-            },
         };
     }
 

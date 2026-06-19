@@ -5,6 +5,12 @@ import { StudentState } from './student-state';
 
 export class StateProvider {
     static provide(lessons?: Lesson[]): StudentState {
-        return !lessons ? new IncomerState() : new RenewState();
+        return StateProvider.isIncomer(lessons)
+            ? new IncomerState()
+            : new RenewState();
+    }
+
+    private static isIncomer(lessons?: Lesson[]) {
+        return !lessons || lessons.length == 0;
     }
 }

@@ -42,11 +42,71 @@ describe('StudentRepository', () => {
         const students = await repository.getWithFullname(
             student.getName,
             student.getSurname,
-            student.getSecondName,
+            student.getSecondName!,
         );
         expect(students[0].getName).toBe(student.getName);
         expect(students[0].getSurname).toBe(student.getSurname);
         expect(students[0].getSecondName).toBe(student.getSecondName);
+    });
+
+    it('should add a student with yours four lessons', async () => {
+        const incomerStudent = await repository.income(student);
+        const lessons = incomerStudent.payment();
+        const updateStudent = await repository.renewMonth(
+            incomerStudent,
+            lessons,
+        );
+        expect(updateStudent.getLessons.length).toBe(4);
+    });
+
+    it('should add a student with yours four lessons and return a student with last four lessons', async () => {
+        const incomerStudent = await repository.income(student);
+        const firstLessons = incomerStudent.payment();
+        const newStudent = await repository.renewMonth(
+            incomerStudent,
+            firstLessons,
+        );
+        const secondLessons = newStudent.payment();
+        const updateStudent = await repository.renewMonth(
+            incomerStudent,
+            secondLessons,
+        );
+        expect(updateStudent.getLessons.length).toBe(4);
+        expect(updateStudent.getLessons[0].getAttendanceDate.getTime()).toBe(
+            secondLessons[0].getAttendanceDate.getTime(),
+        );
+    });
+
+    it('should get students with yours lessons', async () => {
+        const incomerStudent = await repository.income(student);
+        const lessons = student.payment();
+        await repository.renewMonth(incomerStudent, lessons);
+        const students = await repository.getWithFullname(
+            student.getName,
+            student.getSurname,
+            student.getSecondName!,
+        );
+        expect(students[0].getLessons.length).toBe(lessons.length);
+    });
+
+    it('should get students with yours lessons and return a student with last four lessons', async () => {
+        const incomerStudent = await repository.income(student);
+        const firstLessons = incomerStudent.payment();
+        const newStudent = await repository.renewMonth(
+            incomerStudent,
+            firstLessons,
+        );
+        const secondLessons = newStudent.payment();
+        await repository.renewMonth(incomerStudent, secondLessons);
+        const students = await repository.getWithFullname(
+            student.getName,
+            student.getSurname,
+            student.getSecondName!,
+        );
+        expect(students[0].getLessons.length).toBe(4);
+        expect(students[0].getLessons[0].getAttendanceDate.getTime()).toBe(
+            secondLessons[0].getAttendanceDate.getTime(),
+        );
     });
 
     afterEach(async () => {

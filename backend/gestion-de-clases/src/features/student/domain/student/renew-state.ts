@@ -11,6 +11,12 @@ export class RenewState implements StudentState {
         if (lessons.length != 4) {
             throw new InvalidLessons();
         }
-        return lessons;
+        return this.orderLessons(lessons);
+    }
+    private orderLessons(lessons: Lesson[]) {
+        return lessons.sort(
+            (a, b) =>
+                a.getAttendanceDate.getTime() - b.getAttendanceDate.getTime(),
+        );
     }
 }

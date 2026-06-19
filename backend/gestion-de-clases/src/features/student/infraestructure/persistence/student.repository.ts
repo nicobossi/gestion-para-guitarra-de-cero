@@ -27,13 +27,22 @@ export class StudentRepository {
                 surname: surname,
                 secondName: secondName,
             },
+            include: {
+                lessons: {
+                    orderBy: {
+                        attendanceDate: 'desc',
+                    },
+                    take: 4,
+                },
+            },
         });
-        return students.map((student) => IncomeStudent.sqlToModel(student));
-        // Cambiar el mapper para que devuelva las clases y modificar la consulta para que incluya las 4 últimas
+        return students.map((student) =>
+            StudentWithLessons.sqlToModel(student),
+        );
     }
 
     async renewMonth(student: Student, lessons: Lesson[]): Promise<Student> {
-        const newLessons = CreateLesson.modelToSql(lessons, student.getId!);
+        const newLessons = CreateLesson.modelToSql(lessons);
         const newStudent = await this.sql.student.update({
             where: { id: student.getId },
             data: {
@@ -44,7 +53,12 @@ export class StudentRepository {
                 },
             },
             include: {
-                lessons: true,
+                lessons: {
+                    orderBy: {
+                        attendanceDate: 'desc',
+                    },
+                    take: 4,
+                },
             },
         });
         return StudentWithLessons.sqlToModel(newStudent);

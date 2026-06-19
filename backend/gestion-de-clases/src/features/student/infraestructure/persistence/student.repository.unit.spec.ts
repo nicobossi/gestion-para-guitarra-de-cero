@@ -59,7 +59,7 @@ describe('Unit StudentRepository', () => {
     });
 
     it('should get students with full name', async () => {
-        mockSql.student.findMany.mockResolvedValue([incomerStudent]);
+        mockSql.student.findMany.mockResolvedValue([studentWithLessons]);
         const students = await repository.getWithFullname(
             incomerStudent.firstName,
             incomerStudent.surname,
@@ -68,6 +68,17 @@ describe('Unit StudentRepository', () => {
         expect(students[0].getName).toBe(incomerStudent.firstName);
         expect(students[0].getSurname).toBe(incomerStudent.surname);
         expect(students[0].getSecondName).toBe(incomerStudent.secondName);
+        expect(mockSql.student.findMany).toHaveBeenCalled();
+    });
+
+    it('should get students with yours lessons', async () => {
+        mockSql.student.findMany.mockResolvedValue([studentWithLessons]);
+        const students = await repository.getWithFullname(
+            incomerStudent.firstName,
+            incomerStudent.surname,
+            incomerStudent.secondName,
+        );
+        expect(students[0].getLessons.length).toBe(4);
         expect(mockSql.student.findMany).toHaveBeenCalled();
     });
 
