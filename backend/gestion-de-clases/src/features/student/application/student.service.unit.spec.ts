@@ -5,6 +5,7 @@ import { StudentRepository } from '../infraestructure/persistence/student.reposi
 import { StudentNotFound } from './exceptions/student-not-found';
 import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
+import { Lesson } from '../domain/lesson/lesson';
 
 describe('Unit StudentService', () => {
     let service: StudentService;
@@ -17,9 +18,24 @@ describe('Unit StudentService', () => {
         'B',
         1,
     );
+    const studentWithLessons = new Student(
+        'Nicolás',
+        'A',
+        1234567891,
+        new Date(),
+        'B',
+        1,
+        [
+            new Lesson(new Date(2026, 5, 1)),
+            new Lesson(new Date(2026, 5, 8)),
+            new Lesson(new Date(2026, 5, 15)),
+            new Lesson(new Date(2026, 5, 22)),
+        ],
+    );
     const mockRepository = {
         income: jest.fn(),
         getWithFullname: jest.fn(),
+        renew: jest.fn(),
     };
 
     beforeEach(async () => {
@@ -85,5 +101,22 @@ describe('Unit StudentService', () => {
         await expect(students()).rejects.toBeInstanceOf(
             StudentsWithSameFullname,
         );
+    });
+
+    it('should get student without lessons', async () => {
+        mockRepository.getWithFullname.mockResolvedValue([incomerStudent]);
+        const students = await service.getWithFullname(
+            student.getName,
+            student.getSurname,
+            student.getSecondName,
+        );
+        expect(students.getLessons.length).toBe(0);
+    });
+
+    it('should renew the student lessons', async () => {
+        mockRepository.renew.mockResolvedValue(studentWithLessons);
+        const updateStudent = await service.renew(student);
+        expect(updateStudent.getLessons.length).toBe(4);
+        expect(mockRepository.renew).toHaveBeenCalled();
     });
 });

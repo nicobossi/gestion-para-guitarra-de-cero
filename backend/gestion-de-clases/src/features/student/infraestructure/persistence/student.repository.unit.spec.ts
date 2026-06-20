@@ -85,7 +85,7 @@ describe('Unit StudentRepository', () => {
     it('should add a student with yours four lessons', async () => {
         mockSql.student.update.mockResolvedValue(studentWithLessons);
         const lessons = student.payment();
-        const updateStudent = await repository.renewMonth(student, lessons);
+        const updateStudent = await repository.renew(student, lessons);
         expect(updateStudent.getLessons.length).toBe(4);
         expect(mockSql.student.update).toHaveBeenCalled();
     });

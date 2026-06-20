@@ -77,6 +77,24 @@ describe('StudentService', () => {
         );
     });
 
+    it('should renew the student lessons', async () => {
+        const incomer = await service.income(student);
+        const updateStudent = await service.renew(incomer);
+        expect(updateStudent.getLessons.length).toBe(4);
+    });
+
+    it('should renew with last four lessons', async () => {
+        const incomer = await service.income(student);
+        const updateStudent1 = await service.renew(incomer);
+        const renewStuden2 = await service.renew(updateStudent1);
+        console.log(updateStudent1, renewStuden2);
+        expect(renewStuden2.getLessons.length).toBe(4);
+        expect(
+            renewStuden2.getLessons[0].getAttendanceDate >
+                updateStudent1.getLessons[3].getAttendanceDate,
+        ).toBeTruthy();
+    });
+
     afterAll(async () => {
         await container.stop();
     });

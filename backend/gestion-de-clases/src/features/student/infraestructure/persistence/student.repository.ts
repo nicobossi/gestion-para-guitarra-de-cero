@@ -19,7 +19,7 @@ export class StudentRepository {
     async getWithFullname(
         name: string,
         surname: string,
-        secondName?: string,
+        secondName: string | null = null,
     ): Promise<Student[]> {
         const students = await this.sql.student.findMany({
             where: {
@@ -41,7 +41,7 @@ export class StudentRepository {
         );
     }
 
-    async renewMonth(student: Student, lessons: Lesson[]): Promise<Student> {
+    async renew(student: Student, lessons: Lesson[]): Promise<Student> {
         const newLessons = CreateLesson.modelToSql(lessons);
         const newStudent = await this.sql.student.update({
             where: { id: student.getId },

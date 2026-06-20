@@ -19,7 +19,7 @@ export class StudentService {
     async getWithFullname(
         name: string,
         surname: string,
-        secondName?: string,
+        secondName: string | null = null,
     ): Promise<Student> {
         const getStudents = () =>
             this.studentRepository.getWithFullname(name, surname, secondName);
@@ -33,5 +33,11 @@ export class StudentService {
         }
 
         return students[0];
+    }
+
+    renew(student: Student): Promise<Student> {
+        const lessons = student.payment();
+        const renew = () => this.studentRepository.renew(student, lessons);
+        return this.unitOfWork.execute(renew);
     }
 }
