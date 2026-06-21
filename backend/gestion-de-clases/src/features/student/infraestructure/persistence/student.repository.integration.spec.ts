@@ -52,29 +52,26 @@ describe('StudentRepository', () => {
     it('should add a student with yours four lessons', async () => {
         const incomerStudent = await repository.income(student);
         const lessons = incomerStudent.payment();
-        const updateStudent = await repository.renew(
-            incomerStudent,
-            lessons,
-        );
+        const updateStudent = await repository.renew(incomerStudent, lessons);
         expect(updateStudent.getLessons.length).toBe(4);
     });
 
     it('should add a student with yours four lessons and return a student with last four lessons', async () => {
         const incomerStudent = await repository.income(student);
         const firstLessons = incomerStudent.payment();
-        const newStudent = await repository.renew(
+        const updateStudent1 = await repository.renew(
             incomerStudent,
             firstLessons,
         );
-        const secondLessons = newStudent.payment();
-        const updateStudent = await repository.renew(
+        const secondLessons = updateStudent1.payment();
+        const updateStudent2 = await repository.renew(
             incomerStudent,
             secondLessons,
         );
-        expect(updateStudent.getLessons.length).toBe(4);
-        expect(updateStudent.getLessons[0].getAttendanceDate.getTime()).toBe(
+        expect(updateStudent2.getLessons[0].getAttendanceDate.getTime()).toBe(
             secondLessons[0].getAttendanceDate.getTime(),
         );
+        expect(updateStudent2.getLessons.length).toBe(4);
     });
 
     it('should get students with yours lessons', async () => {
@@ -92,21 +89,21 @@ describe('StudentRepository', () => {
     it('should get students with yours lessons and return a student with last four lessons', async () => {
         const incomerStudent = await repository.income(student);
         const firstLessons = incomerStudent.payment();
-        const newStudent = await repository.renew(
+        const updateStudent1 = await repository.renew(
             incomerStudent,
             firstLessons,
         );
-        const secondLessons = newStudent.payment();
+        const secondLessons = updateStudent1.payment();
         await repository.renew(incomerStudent, secondLessons);
         const students = await repository.getWithFullname(
             student.getName,
             student.getSurname,
             student.getSecondName,
         );
-        expect(students[0].getLessons.length).toBe(4);
         expect(students[0].getLessons[0].getAttendanceDate.getTime()).toBe(
             secondLessons[0].getAttendanceDate.getTime(),
         );
+        expect(students[0].getLessons.length).toBe(4);
     });
 
     afterEach(async () => {

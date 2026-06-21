@@ -86,13 +86,13 @@ describe('StudentService', () => {
     it('should renew with last four lessons', async () => {
         const incomer = await service.income(student);
         const updateStudent1 = await service.renew(incomer);
-        const renewStuden2 = await service.renew(updateStudent1);
-        console.log(updateStudent1, renewStuden2);
-        expect(renewStuden2.getLessons.length).toBe(4);
+        const lastLesson = updateStudent1.getLessons[3];
+        const updateStuden2 = await service.renew(updateStudent1);
+        const firstLesson = updateStuden2.getLessons[0];
         expect(
-            renewStuden2.getLessons[0].getAttendanceDate >
-                updateStudent1.getLessons[3].getAttendanceDate,
+            firstLesson.getAttendanceDate > lastLesson.getAttendanceDate,
         ).toBeTruthy();
+        expect(updateStuden2.getLessons.length).toBe(4);
     });
 
     afterAll(async () => {

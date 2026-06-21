@@ -89,10 +89,19 @@ describe('test to student', () => {
         expect(threeWeek).toBe(7);
     });
 
-    test('should have the first lesson in submission date', () => {
+    test('should have the first lesson in presentation date', () => {
         const lessons = nicolas.payment();
         const firstLessonDate = lessons[0].getAttendanceDate;
         expect(firstLessonDate).toBe(nicolas.getFirstLessonDate);
+    });
+
+    test('should exist a difference the one week', () => {
+        const firstLesson = nicolas.payment();
+        const secondLessons = nicolas.payment();
+        expect(
+            firstLesson[3].getAttendanceDate <
+                secondLessons[0].getAttendanceDate,
+        ).toBeTruthy();
     });
 
     test('should be a week gap between the last class and the first class of the next payment', () => {
