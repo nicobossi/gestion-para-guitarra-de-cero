@@ -54,6 +54,19 @@ export class Student {
         return this.state.addLessons(lessons);
     }
 
+    firstLesson(): Lesson {
+        return this.state.getLesson(this, 0);
+    }
+    secondLesson(): Lesson {
+        return this.state.getLesson(this, 1);
+    }
+    threeLesson(): Lesson {
+        return this.state.getLesson(this, 2);
+    }
+    fourLesson(): Lesson {
+        return this.state.getLesson(this, 3);
+    }
+
     get getLessons(): Lesson[] {
         return this.lessons.map((lesson) => lesson);
     }

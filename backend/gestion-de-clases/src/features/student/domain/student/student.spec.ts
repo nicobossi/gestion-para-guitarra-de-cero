@@ -67,9 +67,26 @@ describe('test to student', () => {
         expect(carlos).toThrow(InvalidPhoneException);
     });
 
+    test('should catch a exception lesson', () => {
+        const firstLesson = () => nicolas.firstLesson();
+        expect(firstLesson).toThrow(InvalidLessons);
+    });
+
     test('should create four lesson', () => {
         const lessons = nicolas.payment();
-        expect(lessons.length).toBe(4);
+        expect(lessons[0]).toBe(nicolas.firstLesson());
+        expect(lessons[1]).toBe(nicolas.secondLesson());
+        expect(lessons[2]).toBe(nicolas.threeLesson());
+        expect(lessons[3]).toBe(nicolas.fourLesson());
+    });
+
+    test('should return the first lesson', () => {
+        const firstLesson = nicolas.payment();
+        const secondLessons = nicolas.payment();
+        const gapWeek =
+            secondLessons[0].getAttendanceDate.getDate() -
+            firstLesson[3].getAttendanceDate.getDate();
+        expect(gapWeek).toBe(7);
     });
 
     test('should create four lesson for week', () => {

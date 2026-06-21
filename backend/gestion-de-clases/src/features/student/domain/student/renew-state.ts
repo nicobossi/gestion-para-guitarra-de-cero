@@ -4,12 +4,15 @@ import { Student } from './student';
 import { StudentState } from './student-state';
 
 export class RenewState implements StudentState {
+    getLesson(student: Student, index: number): Lesson {
+        return student.getLessons[index];
+    }
     payment(student: Student): Lesson[] {
         return student.renewLessons(student.firtsNextMonthDate());
     }
     addLessons(lessons: Lesson[]): Lesson[] {
         if (lessons.length != 4) {
-            throw new InvalidLessons();
+            throw new InvalidLessons('Deben ser excactamente 4 lecciones');
         }
         return this.orderLessons(lessons);
     }
