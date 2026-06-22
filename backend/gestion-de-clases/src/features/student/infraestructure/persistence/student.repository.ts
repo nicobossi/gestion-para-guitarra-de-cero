@@ -5,6 +5,7 @@ import { IncomeStudent } from '../dtos/income/income-student.mapper';
 import { CreateLesson } from '../dtos/renew-month/create-lesson.mapper';
 import { StudentWithLessons } from '../dtos/renew-month/student-with-lessons';
 import { Lesson } from '../../domain/lesson/lesson';
+import { Fullname } from '../../domain/types/full-name';
 
 @Injectable()
 export class StudentRepository {
@@ -62,5 +63,17 @@ export class StudentRepository {
             },
         });
         return StudentWithLessons.sqlToModel(newStudent);
+    }
+
+    async getAllFullNames(): Promise<Fullname[]> {
+        const fullNames = await this.sql.student.findMany({
+            distinct: ['firstName', 'secondName', 'surname'],
+            select: {
+                firstName: true,
+                secondName: true,
+                surname: true,
+            },
+        });
+        return fullNames;
     }
 }

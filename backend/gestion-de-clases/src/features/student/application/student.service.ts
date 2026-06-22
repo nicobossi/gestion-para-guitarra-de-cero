@@ -4,6 +4,7 @@ import { StudentRepository } from '../infraestructure/persistence/student.reposi
 import { StudentNotFound } from './exceptions/student-not-found';
 import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
+import { Fullname } from '../domain/types/full-name';
 @Injectable()
 export class StudentService {
     constructor(
@@ -39,5 +40,10 @@ export class StudentService {
         const lessons = student.payment();
         const renew = () => this.studentRepository.renew(student, lessons);
         return this.unitOfWork.execute(renew);
+    }
+
+    getAllFullNames(): Promise<Fullname[]> {
+        const fullNames = () => this.studentRepository.getAllFullNames();
+        return this.unitOfWork.execute(fullNames);
     }
 }

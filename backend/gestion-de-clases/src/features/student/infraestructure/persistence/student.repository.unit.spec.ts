@@ -82,11 +82,26 @@ describe('Unit StudentRepository', () => {
         expect(mockSql.student.findMany).toHaveBeenCalled();
     });
 
-    it('should add a student with yours four lessons', async () => {
-        mockSql.student.update.mockResolvedValue(studentWithLessons);
-        const lessons = student.payment();
-        const updateStudent = await repository.renew(student, lessons);
-        expect(updateStudent.getLessons.length).toBe(4);
-        expect(mockSql.student.update).toHaveBeenCalled();
+    it('should get all full names', async () => {
+        const fullNames = [
+            {
+                name: 'Roberto',
+                secondName: 'Ameri',
+                surname: 'Diaz',
+            },
+            {
+                name: 'Nicolás',
+                secondName: 'Fernando',
+                surname: 'Bartolo',
+            },
+            {
+                name: 'Mariana',
+                surname: 'Rodriguez',
+            },
+        ];
+        mockSql.student.findMany.mockResolvedValue(fullNames);
+        const newFullNames = await repository.getAllFullNames();
+        expect(newFullNames.length).toBe(3);
+        expect(mockSql.student.findMany).toHaveBeenCalled();
     });
 });

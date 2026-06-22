@@ -35,6 +35,7 @@ describe('Unit StudentService', () => {
     const mockRepository = {
         income: jest.fn(),
         getWithFullname: jest.fn(),
+        getAllFullNames: jest.fn(),
         renew: jest.fn(),
     };
 
@@ -118,5 +119,28 @@ describe('Unit StudentService', () => {
         const updateStudent = await service.renew(student);
         expect(updateStudent.getLessons.length).toBe(4);
         expect(mockRepository.renew).toHaveBeenCalled();
+    });
+
+    it('should get all full names', async () => {
+        const fullNames = [
+            {
+                name: 'Roberto',
+                secondName: 'Ameri',
+                surname: 'Diaz',
+            },
+            {
+                name: 'Nicolás',
+                secondName: 'Fernando',
+                surname: 'Bartolo',
+            },
+            {
+                name: 'Mariana',
+                surname: 'Rodriguez',
+            },
+        ];
+        mockRepository.getAllFullNames.mockResolvedValue(fullNames);
+        const newFullNames = await service.getAllFullNames();
+        expect(newFullNames.length).toBe(3);
+        expect(mockRepository.getAllFullNames).toHaveBeenCalled();
     });
 });

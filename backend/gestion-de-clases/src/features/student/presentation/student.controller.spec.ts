@@ -23,6 +23,7 @@ describe('StudentController', () => {
     };
     const mockService = {
         income: jest.fn().mockResolvedValue(student),
+        getAllFullNames: jest.fn(),
     };
 
     beforeEach(async () => {
@@ -45,5 +46,27 @@ describe('StudentController', () => {
     it('should income a student', async () => {
         await controller.income(createDto);
         expect(mockService.income).toHaveBeenCalled();
+    });
+
+    it('should get all full names', async () => {
+        const fullNames = [
+            {
+                name: 'Roberto',
+                secondName: 'Ameri',
+                surname: 'Diaz',
+            },
+            {
+                name: 'Nicolás',
+                secondName: 'Fernando',
+                surname: 'Bartolo',
+            },
+            {
+                name: 'Mariana',
+                surname: 'Rodriguez',
+            },
+        ];
+        mockService.getAllFullNames.mockResolvedValue(fullNames);
+        await controller.getAllFullNames();
+        expect(mockService.getAllFullNames).toHaveBeenCalled();
     });
 });

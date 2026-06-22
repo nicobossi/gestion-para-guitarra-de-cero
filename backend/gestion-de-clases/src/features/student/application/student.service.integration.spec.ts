@@ -95,6 +95,23 @@ describe('StudentService', () => {
         expect(updateStuden2.getLessons.length).toBe(4);
     });
 
+    it('should get all full names', async () => {
+        const john = await service.income(student);
+        const nicolas = await service.income(
+            new Student('Nicolás', 'Bossi', 1234567890, new Date(), 'Amé'),
+        );
+        const fullNames = await service.getAllFullNames();
+        const fullName1 = fullNames.find(
+            (fullName) => fullName.firstName === john.getName,
+        );
+        const fullName2 = fullNames.find(
+            (fullName) => fullName.firstName === nicolas.getName,
+        );
+        expect(fullName1).toBeDefined();
+        expect(fullName2).toBeDefined();
+        expect(fullNames.length).toBe(2);
+    });
+
     afterAll(async () => {
         await container.stop();
     });

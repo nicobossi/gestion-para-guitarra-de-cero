@@ -106,6 +106,23 @@ describe('StudentRepository', () => {
         expect(students[0].getLessons.length).toBe(4);
     });
 
+    it('should get all full names', async () => {
+        const john = await repository.income(student);
+        const nicolas = await repository.income(
+            new Student('Nicolás', 'Bossi', 1234567891, new Date(), 'Amé'),
+        );
+        const fullNames = await repository.getAllFullNames();
+        const fullName1 = fullNames.find(
+            (fullName) => fullName.firstName === john.getName,
+        );
+        const fullName2 = fullNames.find(
+            (fullName) => fullName.firstName === nicolas.getName,
+        );
+        expect(fullName1).toBeDefined();
+        expect(fullName2).toBeDefined();
+        expect(fullNames.length).toBe(2);
+    });
+
     afterEach(async () => {
         await clearSqlContainer();
     });
