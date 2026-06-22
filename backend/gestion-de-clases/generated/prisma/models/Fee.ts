@@ -212,6 +212,7 @@ export type FeeWhereInput = {
   amount?: Prisma.IntFilter<"Fee"> | number
   applicationDate?: Prisma.DateTimeFilter<"Fee"> | Date | string
   paymentLapse?: Prisma.EnumPaymentLapseFilter<"Fee"> | $Enums.PaymentLapse
+  payments?: Prisma.PaymentListRelationFilter
 }
 
 export type FeeOrderByWithRelationInput = {
@@ -219,6 +220,7 @@ export type FeeOrderByWithRelationInput = {
   amount?: Prisma.SortOrder
   applicationDate?: Prisma.SortOrder
   paymentLapse?: Prisma.SortOrder
+  payments?: Prisma.PaymentOrderByRelationAggregateInput
 }
 
 export type FeeWhereUniqueInput = Prisma.AtLeast<{
@@ -229,6 +231,7 @@ export type FeeWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.FeeWhereInput | Prisma.FeeWhereInput[]
   applicationDate?: Prisma.DateTimeFilter<"Fee"> | Date | string
   paymentLapse?: Prisma.EnumPaymentLapseFilter<"Fee"> | $Enums.PaymentLapse
+  payments?: Prisma.PaymentListRelationFilter
 }, "id" | "amount">
 
 export type FeeOrderByWithAggregationInput = {
@@ -257,6 +260,7 @@ export type FeeCreateInput = {
   amount: number
   applicationDate: Date | string
   paymentLapse: $Enums.PaymentLapse
+  payments?: Prisma.PaymentCreateNestedManyWithoutFeeInput
 }
 
 export type FeeUncheckedCreateInput = {
@@ -264,12 +268,14 @@ export type FeeUncheckedCreateInput = {
   amount: number
   applicationDate: Date | string
   paymentLapse: $Enums.PaymentLapse
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutFeeInput
 }
 
 export type FeeUpdateInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   applicationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentLapse?: Prisma.EnumPaymentLapseFieldUpdateOperationsInput | $Enums.PaymentLapse
+  payments?: Prisma.PaymentUpdateManyWithoutFeeNestedInput
 }
 
 export type FeeUncheckedUpdateInput = {
@@ -277,6 +283,7 @@ export type FeeUncheckedUpdateInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   applicationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentLapse?: Prisma.EnumPaymentLapseFieldUpdateOperationsInput | $Enums.PaymentLapse
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutFeeNestedInput
 }
 
 export type FeeCreateManyInput = {
@@ -330,10 +337,100 @@ export type FeeSumOrderByAggregateInput = {
   amount?: Prisma.SortOrder
 }
 
+export type FeeScalarRelationFilter = {
+  is?: Prisma.FeeWhereInput
+  isNot?: Prisma.FeeWhereInput
+}
+
 export type EnumPaymentLapseFieldUpdateOperationsInput = {
   set?: $Enums.PaymentLapse
 }
 
+export type FeeCreateNestedOneWithoutPaymentsInput = {
+  create?: Prisma.XOR<Prisma.FeeCreateWithoutPaymentsInput, Prisma.FeeUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.FeeCreateOrConnectWithoutPaymentsInput
+  connect?: Prisma.FeeWhereUniqueInput
+}
+
+export type FeeUpdateOneRequiredWithoutPaymentsNestedInput = {
+  create?: Prisma.XOR<Prisma.FeeCreateWithoutPaymentsInput, Prisma.FeeUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.FeeCreateOrConnectWithoutPaymentsInput
+  upsert?: Prisma.FeeUpsertWithoutPaymentsInput
+  connect?: Prisma.FeeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FeeUpdateToOneWithWhereWithoutPaymentsInput, Prisma.FeeUpdateWithoutPaymentsInput>, Prisma.FeeUncheckedUpdateWithoutPaymentsInput>
+}
+
+export type FeeCreateWithoutPaymentsInput = {
+  amount: number
+  applicationDate: Date | string
+  paymentLapse: $Enums.PaymentLapse
+}
+
+export type FeeUncheckedCreateWithoutPaymentsInput = {
+  id?: number
+  amount: number
+  applicationDate: Date | string
+  paymentLapse: $Enums.PaymentLapse
+}
+
+export type FeeCreateOrConnectWithoutPaymentsInput = {
+  where: Prisma.FeeWhereUniqueInput
+  create: Prisma.XOR<Prisma.FeeCreateWithoutPaymentsInput, Prisma.FeeUncheckedCreateWithoutPaymentsInput>
+}
+
+export type FeeUpsertWithoutPaymentsInput = {
+  update: Prisma.XOR<Prisma.FeeUpdateWithoutPaymentsInput, Prisma.FeeUncheckedUpdateWithoutPaymentsInput>
+  create: Prisma.XOR<Prisma.FeeCreateWithoutPaymentsInput, Prisma.FeeUncheckedCreateWithoutPaymentsInput>
+  where?: Prisma.FeeWhereInput
+}
+
+export type FeeUpdateToOneWithWhereWithoutPaymentsInput = {
+  where?: Prisma.FeeWhereInput
+  data: Prisma.XOR<Prisma.FeeUpdateWithoutPaymentsInput, Prisma.FeeUncheckedUpdateWithoutPaymentsInput>
+}
+
+export type FeeUpdateWithoutPaymentsInput = {
+  amount?: Prisma.IntFieldUpdateOperationsInput | number
+  applicationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentLapse?: Prisma.EnumPaymentLapseFieldUpdateOperationsInput | $Enums.PaymentLapse
+}
+
+export type FeeUncheckedUpdateWithoutPaymentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  amount?: Prisma.IntFieldUpdateOperationsInput | number
+  applicationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentLapse?: Prisma.EnumPaymentLapseFieldUpdateOperationsInput | $Enums.PaymentLapse
+}
+
+
+/**
+ * Count Type FeeCountOutputType
+ */
+
+export type FeeCountOutputType = {
+  payments: number
+}
+
+export type FeeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  payments?: boolean | FeeCountOutputTypeCountPaymentsArgs
+}
+
+/**
+ * FeeCountOutputType without action
+ */
+export type FeeCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FeeCountOutputType
+   */
+  select?: Prisma.FeeCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * FeeCountOutputType without action
+ */
+export type FeeCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PaymentWhereInput
+}
 
 
 export type FeeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -341,6 +438,8 @@ export type FeeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   amount?: boolean
   applicationDate?: boolean
   paymentLapse?: boolean
+  payments?: boolean | Prisma.Fee$paymentsArgs<ExtArgs>
+  _count?: boolean | Prisma.FeeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["fee"]>
 
 export type FeeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -365,10 +464,18 @@ export type FeeSelectScalar = {
 }
 
 export type FeeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "applicationDate" | "paymentLapse", ExtArgs["result"]["fee"]>
+export type FeeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  payments?: boolean | Prisma.Fee$paymentsArgs<ExtArgs>
+  _count?: boolean | Prisma.FeeCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type FeeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type FeeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $FeePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Fee"
-  objects: {}
+  objects: {
+    payments: Prisma.$PaymentPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     amount: number
@@ -768,6 +875,7 @@ readonly fields: FeeFieldRefs;
  */
 export interface Prisma__FeeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  payments<T extends Prisma.Fee$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Fee$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -818,6 +926,10 @@ export type FeeFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
+  /**
    * Filter, which Fee to fetch.
    */
   where: Prisma.FeeWhereUniqueInput
@@ -836,6 +948,10 @@ export type FeeFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
+  /**
    * Filter, which Fee to fetch.
    */
   where: Prisma.FeeWhereUniqueInput
@@ -853,6 +969,10 @@ export type FeeFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Fee
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
   /**
    * Filter, which Fee to fetch.
    */
@@ -902,6 +1022,10 @@ export type FeeFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
+  /**
    * Filter, which Fee to fetch.
    */
   where?: Prisma.FeeWhereInput
@@ -949,6 +1073,10 @@ export type FeeFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Fee
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
   /**
    * Filter, which Fees to fetch.
    */
@@ -998,6 +1126,10 @@ export type FeeCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
+  /**
    * The data needed to create a Fee.
    */
   data: Prisma.XOR<Prisma.FeeCreateInput, Prisma.FeeUncheckedCreateInput>
@@ -1045,6 +1177,10 @@ export type FeeUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    * Omit specific fields from the Fee
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
   /**
    * The data needed to update a Fee.
    */
@@ -1112,6 +1248,10 @@ export type FeeUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
+  /**
    * The filter to search for the Fee to update in case it exists.
    */
   where: Prisma.FeeWhereUniqueInput
@@ -1138,6 +1278,10 @@ export type FeeDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
+  /**
    * Filter which Fee to delete.
    */
   where: Prisma.FeeWhereUniqueInput
@@ -1158,6 +1302,30 @@ export type FeeDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
+ * Fee.payments
+ */
+export type Fee$paymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Payment
+   */
+  select?: Prisma.PaymentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Payment
+   */
+  omit?: Prisma.PaymentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentInclude<ExtArgs> | null
+  where?: Prisma.PaymentWhereInput
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[]
+  cursor?: Prisma.PaymentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PaymentScalarFieldEnum | Prisma.PaymentScalarFieldEnum[]
+}
+
+/**
  * Fee without action
  */
 export type FeeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1169,4 +1337,8 @@ export type FeeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the Fee
    */
   omit?: Prisma.FeeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeInclude<ExtArgs> | null
 }

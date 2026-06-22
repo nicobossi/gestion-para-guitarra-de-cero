@@ -22,6 +22,7 @@ model Student {
   submissionDate DateTime @map("submission_date")
   
   lessons Lesson[]
+  payments Payment[]
 
   @@map("student")
 }
@@ -32,7 +33,22 @@ model Fee {
   applicationDate DateTime @map("application_date")
   paymentLapse PaymentLapse @map("payment_lapse")
 
+  payments Payment[]
+
   @@map("fee")
+}
+
+model Payment {
+  paymentDate DateTime @id 
+  nextPaymentDate DateTime 
+  paymentType PaymentType
+  studentId Int 
+  feeId Int
+  
+  student Student @relation(fields: [studentId], references: [id])
+  fee Fee @relation(fields: [feeId], references: [id])
+
+  @@map("payment")
 }
 
 model Lesson {
@@ -49,4 +65,9 @@ model Lesson {
 enum PaymentLapse {
   MONTHLY
   BIWEEKLY
+}
+
+enum PaymentType {
+  CASH
+  MERCADO_LIBRE
 }
