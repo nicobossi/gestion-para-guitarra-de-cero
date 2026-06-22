@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Fee } from '../domain/fee';
 import { FeeRepository } from '../infraestructure/persistence/fee.repository';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
+import { Price } from '../domain/types/price';
 
 @Injectable()
 export class FeeService {
@@ -12,5 +13,9 @@ export class FeeService {
     async add(fee: Fee): Promise<Fee> {
         const addFee = () => this.repository.add(fee);
         return this.unitOfWork.execute(addFee);
+    }
+    async getAmounts(): Promise<Price[]> {
+        const amounts = () => this.repository.getAmounts();
+        return this.unitOfWork.execute(amounts);
     }
 }

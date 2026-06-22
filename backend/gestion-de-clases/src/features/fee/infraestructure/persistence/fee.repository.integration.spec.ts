@@ -38,6 +38,15 @@ describe('Integration FeeRepository', () => {
         expect(addedFee.getId).toBeDefined();
     });
 
+    it('should get all amounts', async () => {
+        await repository.add(new Fee(200, PaymentLapse.BIWEEKLY, new Date()));
+        await repository.add(new Fee(100, PaymentLapse.BIWEEKLY, new Date()));
+        const amounts = await repository.getAmounts();
+        expect(amounts.length).toBe(2);
+        expect(amounts.find((price) => price.amount === 200)).toBeDefined();
+        expect(amounts.find((price) => price.amount === 100)).toBeDefined();
+    });
+
     afterEach(async () => {
         await clearSqlContainer();
     });

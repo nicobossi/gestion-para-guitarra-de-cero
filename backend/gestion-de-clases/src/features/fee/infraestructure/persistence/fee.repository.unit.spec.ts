@@ -17,6 +17,7 @@ describe('Unit FeeRepository', () => {
     const mockSql = {
         fee: {
             create: jest.fn(),
+            findMany: jest.fn(),
         },
     };
 
@@ -38,5 +39,17 @@ describe('Unit FeeRepository', () => {
         const newFee = await repository.add(fee);
         expect(newFee.getId).toBe(addedFee.id);
         expect(mockSql.fee.create).toHaveBeenCalled();
+    });
+
+    it('should get all amounts', async () => {
+        mockSql.fee.findMany.mockResolvedValue([
+            { amount: 100 },
+            { amount: 200 },
+        ]);
+        const amounts = await repository.getAmounts();
+        expect(amounts.length).toBe(2);
+        expect(amounts.find((price) => price.amount === 200)).toBeDefined();
+        expect(amounts.find((price) => price.amount === 100)).toBeDefined();
+        expect(mockSql.fee.findMany).toHaveBeenCalled();
     });
 });
