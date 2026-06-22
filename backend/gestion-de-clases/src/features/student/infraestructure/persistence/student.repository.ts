@@ -74,6 +74,9 @@ export class StudentRepository {
                 surname: true,
             },
         });
-        return fullNames;
+        return fullNames.map(({ secondName, ...fullName }) => ({
+            ...fullName,
+            ...(secondName !== null && { secondName }),
+        }));
     }
 }

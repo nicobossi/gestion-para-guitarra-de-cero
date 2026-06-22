@@ -1,5 +1,5 @@
 export interface Fullname {
     firstName: string;
-    secondName: string | null;
+    secondName?: string;
     surname: string;
 }
