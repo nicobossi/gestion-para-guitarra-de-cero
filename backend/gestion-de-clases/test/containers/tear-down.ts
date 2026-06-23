@@ -6,7 +6,7 @@ export const clearSqlContainer = async () => {
     }).connect();
 
     await client.query(`
-        TRUNCATE TABLE "student", "fee"
+        TRUNCATE TABLE "student", "fee", "payment", "lesson"
         RESTART IDENTITY CASCADE
     `);
 

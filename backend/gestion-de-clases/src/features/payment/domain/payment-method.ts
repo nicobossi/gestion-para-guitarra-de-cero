@@ -1,5 +1,5 @@
 export const PaymentMethod = {
-    MERCADO_PAGO: 'MERCADO_PAGO',
+    MERCADO_PAGO: 'MERCADO_LIBRE',
     CASH: 'CASH',
 } as const;
 
