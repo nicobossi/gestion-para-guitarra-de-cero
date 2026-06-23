@@ -18,6 +18,7 @@ describe('Unit FeeRepository', () => {
         fee: {
             create: jest.fn(),
             findMany: jest.fn(),
+            findUniqueOrThrow: jest.fn(),
         },
     };
 
@@ -41,10 +42,16 @@ describe('Unit FeeRepository', () => {
         expect(mockSql.fee.create).toHaveBeenCalled();
     });
 
+    it('should get a fee with your amount', async () => {
+        mockSql.fee.findUniqueOrThrow.mockResolvedValue(addedFee);
+        const newFee = await repository.getWithAmount(addedFee.amount);
+        expect(newFee.getAmount).toBe(addedFee.amount);
+    });
+
     it('should get all amounts', async () => {
         mockSql.fee.findMany.mockResolvedValue([
-            { amount: 100 },
-            { amount: 200 },
+            { amount: 100, id: 1 },
+            { amount: 200, id: 2 },
         ]);
         const amounts = await repository.getAmounts();
         expect(amounts.length).toBe(2);

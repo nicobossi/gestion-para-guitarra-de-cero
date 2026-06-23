@@ -16,8 +16,18 @@ export class FeeRepository {
 
     async getAmounts(): Promise<Price[]> {
         const amounts = await this.sql.fee.findMany({
-            select: { amount: true },
+            select: {
+                id: true,
+                amount: true,
+            },
         });
         return amounts;
+    }
+
+    async getWithAmount(amount: number): Promise<Fee> {
+        const fee = await this.sql.fee.findUniqueOrThrow({
+            where: { amount: amount },
+        });
+        return FeeMapper.sqlToModel(fee);
     }
 }

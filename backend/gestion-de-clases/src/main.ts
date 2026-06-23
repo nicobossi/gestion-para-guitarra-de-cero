@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import 'dotenv/config';
 import { RepeatEntityFilter } from './shared/infraestructure/exception-filters/db-exception/repeat-entity/repeat-entity.filter';
-import { TimeoutFilterException } from './shared/infraestructure/exception-filters/db-exception/timeout/timeout.filter';
+import { TimeoutFilter } from './shared/infraestructure/exception-filters/db-exception/timeout/timeout.filter';
 import { DisconectFilter } from './shared/infraestructure/exception-filters/db-exception/disconect/disconect.filter';
 import { FailCredentialsFilter } from './shared/infraestructure/exception-filters/db-exception/fail-credentials/fail-credentials.filter';
 import { ForbiddenFilter } from './shared/infraestructure/exception-filters/authorization/forbidden/forbidden.filter';
@@ -14,7 +14,7 @@ async function bootstrap() {
     app.useGlobalFilters(
         new RepeatEntityFilter(),
         new DisconectFilter(),
-        new TimeoutFilterException(),
+        new TimeoutFilter(),
         new FailCredentialsFilter(),
         new ForbiddenFilter(),
     );

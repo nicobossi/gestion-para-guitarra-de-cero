@@ -2,6 +2,7 @@ import {
     ForbiddenException,
     GatewayTimeoutException,
     InternalServerErrorException,
+    NotFoundException,
     ServiceUnavailableException,
 } from '@nestjs/common';
 import { DbError } from '../errors/db-error';
@@ -42,6 +43,7 @@ export class ErrorHandler {
         mapError.set('P1002', new GatewayTimeoutException());
         mapError.set('P1008', new GatewayTimeoutException());
         mapError.set('P1010', new ForbiddenException());
+        mapError.set('P2025', new NotFoundException());
         return mapError;
     }
 }

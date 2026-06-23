@@ -11,6 +11,7 @@ describe('Unit FeeService', () => {
     const addedFee = new Fee(500, PaymentLapse.BIWEEKLY, new Date(), 1);
     const mockRepository = {
         add: jest.fn(),
+        getWithAmount: jest.fn(),
     };
 
     beforeEach(async () => {
@@ -31,5 +32,11 @@ describe('Unit FeeService', () => {
         const newFee = await service.add(fee);
         expect(newFee).toBe(addedFee);
         expect(mockRepository.add).toHaveBeenCalled();
+    });
+
+    it('should get a fee with your amount', async () => {
+        mockRepository.getWithAmount.mockResolvedValue(addedFee);
+        const newFee = await service.getWithAmount(addedFee.getAmount);
+        expect(newFee.getAmount).toBe(addedFee.getAmount);
     });
 });

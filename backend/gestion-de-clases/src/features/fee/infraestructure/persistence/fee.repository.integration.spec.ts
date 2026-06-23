@@ -38,6 +38,12 @@ describe('Integration FeeRepository', () => {
         expect(addedFee.getId).toBeDefined();
     });
 
+    it('should get a fee with your amount', async () => {
+        const addedFee = await repository.add(fee);
+        const newFee = await repository.getWithAmount(addedFee.getAmount);
+        expect(newFee.getAmount).toBe(addedFee.getAmount);
+    });
+
     it('should get all amounts', async () => {
         await repository.add(new Fee(200, PaymentLapse.BIWEEKLY, new Date()));
         await repository.add(new Fee(100, PaymentLapse.BIWEEKLY, new Date()));

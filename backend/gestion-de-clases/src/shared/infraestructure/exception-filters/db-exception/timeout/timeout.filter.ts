@@ -1,9 +1,9 @@
 import { Catch, GatewayTimeoutException, HttpStatus } from '@nestjs/common';
-import { DbFilterException } from '../db-filter-exception';
+import { DbExceptionFilter } from '../db-filter-exception';
 import { FilterExceptionDbData } from '../response-data';
 
 @Catch(GatewayTimeoutException)
-export class TimeoutFilterException extends DbFilterException<GatewayTimeoutException> {
+export class TimeoutFilter extends DbExceptionFilter<GatewayTimeoutException> {
     protected responseData(): FilterExceptionDbData {
         return {
             status: HttpStatus.GATEWAY_TIMEOUT,

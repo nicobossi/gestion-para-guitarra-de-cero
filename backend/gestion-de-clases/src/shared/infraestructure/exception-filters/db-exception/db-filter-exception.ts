@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { FilterExceptionDbData } from './response-data';
 import { DbError } from '../../persistence/errors/db-error';
 
-export abstract class DbFilterException<
+export abstract class DbExceptionFilter<
     T extends DbError,
 > implements ExceptionFilter {
     catch(_: T, host: ArgumentsHost) {

@@ -1,7 +1,7 @@
-import { TimeoutFilterException } from './timeout.filter';
+import { TimeoutFilter } from './timeout.filter';
 
 describe('TimeoutFilter', () => {
     it('should be defined', () => {
-        expect(new TimeoutFilterException()).toBeDefined();
+        expect(new TimeoutFilter()).toBeDefined();
     });
 });

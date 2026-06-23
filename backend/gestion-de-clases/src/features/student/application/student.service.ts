@@ -12,7 +12,7 @@ export class StudentService {
         private readonly unitOfWork: UnitOfWork,
     ) {}
 
-    async income(student: Student): Promise<Student> {
+    income(student: Student): Promise<Student> {
         const income = () => this.studentRepository.income(student);
         return this.unitOfWork.execute(income);
     }

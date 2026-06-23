@@ -10,12 +10,16 @@ export class FeeService {
         private readonly repository: FeeRepository,
         private readonly unitOfWork: UnitOfWork,
     ) {}
-    async add(fee: Fee): Promise<Fee> {
+    add(fee: Fee): Promise<Fee> {
         const addFee = () => this.repository.add(fee);
         return this.unitOfWork.execute(addFee);
     }
-    async getAmounts(): Promise<Price[]> {
+    getAmounts(): Promise<Price[]> {
         const amounts = () => this.repository.getAmounts();
         return this.unitOfWork.execute(amounts);
+    }
+    getWithAmount(amount: number): Promise<Fee> {
+        const getWithName = () => this.repository.getWithAmount(amount);
+        return this.unitOfWork.execute(getWithName);
     }
 }
