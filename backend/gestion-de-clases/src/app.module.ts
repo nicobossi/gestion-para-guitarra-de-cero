@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { StudentModule } from './features/student/student.module';
 import { SqlModule } from './shared/infraestructure/persistence/sql/prisma.module';
 import { FeeModule } from './features/fee/fee.module';
+import { PaymentModule } from './features/payment/payment.module';
 
 @Module({
-    imports: [StudentModule, FeeModule, SqlModule],
+    imports: [StudentModule, FeeModule, PaymentModule, SqlModule],
 })
 export class AppModule {}

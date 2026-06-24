@@ -6,5 +6,6 @@ import { FeeRepository } from './infraestructure/persistence/fee.repository';
 @Module({
     providers: [FeeService, FeeRepository],
     controllers: [FeeController],
+    exports: [FeeService],
 })
 export class FeeModule {}

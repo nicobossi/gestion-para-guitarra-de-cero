@@ -3,9 +3,10 @@ import { Fee } from '../domain/fee';
 import { FeeRepository } from '../infraestructure/persistence/fee.repository';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 import { Price } from '../domain/types/price';
+import { PaymentFee } from '../../../shared/application/payment-fee';
 
 @Injectable()
-export class FeeService {
+export class FeeService implements PaymentFee {
     constructor(
         private readonly repository: FeeRepository,
         private readonly unitOfWork: UnitOfWork,
