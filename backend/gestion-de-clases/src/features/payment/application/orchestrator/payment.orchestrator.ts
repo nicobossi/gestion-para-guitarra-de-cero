@@ -11,6 +11,7 @@ import {
     RENEW_STUDENT,
     type RenewStudent,
 } from '../../../../shared/application/renew-student';
+import { Payment } from '../../domain/payment';
 
 @Injectable()
 export class RenewPaymentOrchestrator {
@@ -19,4 +20,19 @@ export class RenewPaymentOrchestrator {
         @Inject(PAYMENT_FEE) private readonly feeService: PaymentFee,
         @Inject(CREATED_PAYMENT) private readonly paymentService: CreatePayment,
     ) {}
+
+    async execute(payment: Payment) {
+        const student = await this.studentService.getWithFullname(
+            payment.getName,
+            payment.getSurname,
+            payment.getSecondName ?? null,
+        );
+        const fee = await this.feeService.getWithAmount(payment.getAmount);
+        const renewedStudent = await this.studentService.renew(student);
+        return await this.paymentService.save(
+            payment,
+            renewedStudent.getId!,
+            fee.getId!,
+        );
+    }
 }
