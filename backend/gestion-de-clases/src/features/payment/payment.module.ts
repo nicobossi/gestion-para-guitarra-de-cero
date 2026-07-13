@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PaymentRepository } from './infraestructure/persistence/payment.repository';
 import { PaymentService } from './application/service/payment.service';
-import { PaymentController } from './presentation/payment.controller';
+import { RenewPaymentController } from './presentation/renew-payment/renew-payment.controller';
 import { StudentModule } from '../student/student.module';
 import { FeeModule } from '../fee/fee.module';
 import { RenewPaymentOrchestrator } from './application/orchestrator/payment.orchestrator';
@@ -29,7 +29,7 @@ import { FeeService } from '../fee/application/fee.service';
             useExisting: FeeService,
         },
     ],
-    controllers: [PaymentController],
+    controllers: [RenewPaymentController],
     imports: [StudentModule, FeeModule],
     exports: [PaymentService, RenewPaymentOrchestrator],
 })
