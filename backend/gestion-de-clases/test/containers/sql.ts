@@ -12,6 +12,7 @@ export const createDatabaseToContainer = (
     process.env.DATABASE_URL = container.getConnectionUri();
     execSync('pnpm prisma migrate deploy', {
         env: {
+            ...process.env,
             DATABASE_URL: process.env.DATABASE_URL,
         },
     });

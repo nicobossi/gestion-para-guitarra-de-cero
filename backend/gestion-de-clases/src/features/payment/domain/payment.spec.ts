@@ -38,7 +38,6 @@ describe('Unit Payment', () => {
     test('should calculate the next payment date in 29 days', () => {
         const nextDate = new Date(paymentDate);
         nextDate.setDate(paymentDate.getDate() + 28);
-        console.log(paymentDate, payment);
         expect(payment.getNextPaymentDate.getDate()).toBe(nextDate.getDate());
     });
 });

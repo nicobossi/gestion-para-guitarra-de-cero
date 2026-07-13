@@ -30,8 +30,8 @@ export class RenewPaymentOrchestrator {
         return await this.addPayment(payment, renewedStudent, fee);
     }
 
-    async reintent(payment: Payment, getPhoneNumber: number) {
-        const student = await this.studentService.getWithPhone(getPhoneNumber);
+    async reintent(payment: Payment, phone: number) {
+        const student = await this.studentService.getWithPhone(phone);
         const fee = await this.getFee(payment);
         const renewedStudent = await this.studentService.renew(student);
         return await this.addPayment(payment, renewedStudent, fee);

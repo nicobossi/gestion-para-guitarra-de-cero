@@ -4,12 +4,19 @@ import { RenewPaymentOrchestrator } from '../../application/orchestrator/payment
 
 describe('PaymentController', () => {
     let controller: RenewPaymentController;
+    const mockRenewPaymentOrchestrator = {
+        execute: jest.fn(),
+        reintent: jest.fn(),
+    };
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [RenewPaymentOrchestrator],
             controllers: [RenewPaymentController],
-        }).compile();
+        })
+            .overrideProvider(RenewPaymentOrchestrator)
+            .useValue(mockRenewPaymentOrchestrator)
+            .compile();
 
         controller = module.get<RenewPaymentController>(RenewPaymentController);
     });
