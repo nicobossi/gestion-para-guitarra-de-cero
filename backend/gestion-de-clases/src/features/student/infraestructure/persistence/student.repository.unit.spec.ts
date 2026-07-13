@@ -34,6 +34,7 @@ describe('Unit StudentRepository', () => {
         student: {
             create: jest.fn(),
             findMany: jest.fn(),
+            findUniqueOrThrow: jest.fn(),
             update: jest.fn(),
         },
     };
@@ -103,5 +104,13 @@ describe('Unit StudentRepository', () => {
         const newFullNames = await repository.getAllFullNames();
         expect(newFullNames.length).toBe(3);
         expect(mockSql.student.findMany).toHaveBeenCalled();
+    });
+
+    it('should get a student with a your phone', async () => {
+        mockSql.student.findUniqueOrThrow.mockResolvedValue(studentWithLessons);
+        const newStudent = await repository.getWithPhone(
+            studentWithLessons.phone,
+        );
+        expect(newStudent.getPhoneNumber).toBe(1234567891);
     });
 });

@@ -123,6 +123,14 @@ describe('StudentRepository', () => {
         expect(fullNames.length).toBe(2);
     });
 
+    it('should get a student with a your phone', async () => {
+        const john = await repository.income(student);
+        const johnWithPhone = await repository.getWithPhone(
+            john.getPhoneNumber,
+        );
+        expect(johnWithPhone.getPhoneNumber).toBe(1234567890);
+    });
+
     afterEach(async () => {
         await clearSqlContainer();
     });

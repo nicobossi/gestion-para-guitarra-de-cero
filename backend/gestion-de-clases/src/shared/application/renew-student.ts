@@ -7,6 +7,7 @@ export interface RenewStudent {
         surname: string,
         secondName?: string,
     ): Promise<Student>;
+    getWithPhone(phone: number): Promise<Student>;
 }
 
 export const RENEW_STUDENT = 'RENEW_STUDENT';

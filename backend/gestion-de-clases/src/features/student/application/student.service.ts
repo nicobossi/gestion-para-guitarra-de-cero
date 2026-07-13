@@ -43,6 +43,11 @@ export class StudentService implements RenewStudent {
         return this.unitOfWork.execute(renew);
     }
 
+    getWithPhone(phone: number): Promise<Student> {
+        const getWithPhone = () => this.studentRepository.getWithPhone(phone);
+        return this.unitOfWork.execute(getWithPhone);
+    }
+
     getAllFullNames(): Promise<Fullname[]> {
         const fullNames = () => this.studentRepository.getAllFullNames();
         return this.unitOfWork.execute(fullNames);

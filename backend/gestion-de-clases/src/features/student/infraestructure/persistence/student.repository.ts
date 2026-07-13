@@ -79,4 +79,21 @@ export class StudentRepository {
             ...(secondName !== null && { secondName }),
         }));
     }
+
+    async getWithPhone(phone: number): Promise<Student> {
+        const student = await this.sql.student.findUniqueOrThrow({
+            where: {
+                phone: phone,
+            },
+            include: {
+                lessons: {
+                    orderBy: {
+                        attendanceDate: 'desc',
+                    },
+                    take: 4,
+                },
+            },
+        });
+        return StudentWithLessons.sqlToModel(student);
+    }
 }

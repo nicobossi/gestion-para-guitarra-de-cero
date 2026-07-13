@@ -36,6 +36,7 @@ describe('Unit StudentService', () => {
         income: jest.fn(),
         getWithFullname: jest.fn(),
         getAllFullNames: jest.fn(),
+        getWithPhone: jest.fn(),
         renew: jest.fn(),
     };
 
@@ -142,5 +143,13 @@ describe('Unit StudentService', () => {
         const newFullNames = await service.getAllFullNames();
         expect(newFullNames.length).toBe(3);
         expect(mockRepository.getAllFullNames).toHaveBeenCalled();
+    });
+
+    it('should get a student with a your phone', async () => {
+        mockRepository.getWithPhone.mockResolvedValue(studentWithLessons);
+        const newStudent = await service.getWithPhone(
+            studentWithLessons.getPhoneNumber,
+        );
+        expect(newStudent.getPhoneNumber).toBe(1234567891);
     });
 });

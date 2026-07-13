@@ -112,6 +112,12 @@ describe('StudentService', () => {
         expect(fullNames.length).toBe(2);
     });
 
+    it('should get a student with a your phone', async () => {
+        const john = await service.income(student);
+        const johnWithPhone = await service.getWithPhone(john.getPhoneNumber);
+        expect(johnWithPhone.getPhoneNumber).toBe(1234567891);
+    });
+
     afterAll(async () => {
         await container.stop();
     });
