@@ -1,4 +1,4 @@
-import { PaymentLapse } from '../../../../domain/payment-lapse';
+import { PaymentLapse } from '../../../domain/payment-lapse';
 
 export interface FeeResponse {
     id: number;
