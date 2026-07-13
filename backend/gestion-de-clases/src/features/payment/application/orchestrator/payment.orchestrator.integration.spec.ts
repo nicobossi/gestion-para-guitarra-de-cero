@@ -122,6 +122,16 @@ describe('Integration PaymentOrchestrator', () => {
         );
     });
 
+    test('should return a payment with your id when retrieve', async () => {
+        await studentService.income(student);
+        await feeService.add(fee);
+        const addedPayment = await orchestrator.reintent(
+            payment,
+            student.getPhoneNumber,
+        );
+        expect(addedPayment.getId).toBe(1);
+    });
+
     afterEach(async () => {
         await clearSqlContainer();
     });

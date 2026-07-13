@@ -17,6 +17,7 @@ describe('Unit PaymentOrchestratorTest', () => {
     const studentService = {
         renew: jest.fn(),
         getWithFullname: jest.fn(),
+        getWithPhone: jest.fn(),
     };
     const feeService = {
         getWithAmount: jest.fn(),
@@ -65,13 +66,12 @@ describe('Unit PaymentOrchestratorTest', () => {
             'Fernando',
             1,
         );
-        studentService.getWithFullname.mockResolvedValue(student);
-        feeService.getWithAmount.mockResolvedValue(fee);
         studentService.renew.mockResolvedValue(student);
-        paymentService.save.mockResolvedValue(payment);
     });
 
     test('should find a student with your full name', async () => {
+        studentService.getWithFullname.mockResolvedValue(student);
+        feeService.getWithAmount.mockResolvedValue(fee);
         await orchestrator.execute(payment);
         expect(studentService.getWithFullname).toHaveBeenCalledWith(
             'Nicolas',
@@ -80,23 +80,65 @@ describe('Unit PaymentOrchestratorTest', () => {
         );
     });
 
-    test('should find a fee with your amount', async () => {
+    test('should find a fee with your amount ', async () => {
+        feeService.getWithAmount.mockResolvedValue(fee);
         await orchestrator.execute(payment);
         expect(feeService.getWithAmount).toHaveBeenCalledWith(500);
     });
 
     test('should renew the lessons of the student', async () => {
+        studentService.renew.mockResolvedValue(student);
         await orchestrator.execute(payment);
         expect(studentService.renew).toHaveBeenCalled();
     });
 
     test('should create the payment', async () => {
+        paymentService.save.mockResolvedValue(payment);
         await orchestrator.execute(payment);
         expect(paymentService.save).toHaveBeenCalled();
     });
 
-    test('should return a payment with youtr id', async () => {
+    test('should return a payment with your id', async () => {
+        paymentService.save.mockResolvedValue(payment);
         const addedPayment = await orchestrator.execute(payment);
+        expect(addedPayment.getId).toBe(1);
+    });
+
+    test('should retrieve a student with your number phone', async () => {
+        studentService.getWithFullname.mockResolvedValue(student);
+        await orchestrator.reintent(payment, student.getPhoneNumber);
+        expect(studentService.getWithPhone).toHaveBeenCalledWith(
+            student.getPhoneNumber,
+        );
+    });
+
+    test('should retrieve a fee with your amount when retrieve', async () => {
+        feeService.getWithAmount.mockResolvedValue(fee);
+        await orchestrator.reintent(payment, student.getPhoneNumber);
+        expect(feeService.getWithAmount).toHaveBeenCalledWith(500);
+    });
+
+    test('should retrieve the lessons of the student when retrieve', async () => {
+        studentService.renew.mockResolvedValue(student);
+        await orchestrator.reintent(payment, student.getPhoneNumber);
+        expect(studentService.renew).toHaveBeenCalled();
+    });
+
+    test('should create the payment when retrieve', async () => {
+        paymentService.save.mockResolvedValue(payment);
+        await orchestrator.reintent(payment, student.getPhoneNumber);
+        expect(paymentService.save).toHaveBeenCalled();
+    });
+
+    test('should return a payment with your id when retrieve', async () => {
+        studentService.getWithFullname.mockResolvedValue(student);
+        feeService.getWithAmount.mockResolvedValue(fee);
+        studentService.renew.mockResolvedValue(student);
+        paymentService.save.mockResolvedValue(payment);
+        const addedPayment = await orchestrator.reintent(
+            payment,
+            student.getPhoneNumber,
+        );
         expect(addedPayment.getId).toBe(1);
     });
 });

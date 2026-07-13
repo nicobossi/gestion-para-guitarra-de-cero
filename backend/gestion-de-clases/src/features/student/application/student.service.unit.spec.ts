@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Student } from '../domain/student/student';
 import { StudentService } from './student.service';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
-import { StudentNotFound } from './exceptions/student-not-found';
+import { StudentNotFound } from '../../../shared/application/exceptions/student-not-found';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 import { Lesson } from '../domain/lesson/lesson';
 import { StudentsWithSameFullname } from '../../../shared/application/exceptions/students-with-same-fullname';

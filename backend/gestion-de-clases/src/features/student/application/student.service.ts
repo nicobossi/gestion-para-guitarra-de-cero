@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Student } from '../domain/student/student';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
-import { StudentNotFound } from './exceptions/student-not-found';
+import { StudentNotFound } from '../../../shared/application/exceptions/student-not-found';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 import { Fullname } from '../domain/types/full-name';
 import { RenewStudent } from '../../../shared/application/renew-student';

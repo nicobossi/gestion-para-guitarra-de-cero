@@ -7,6 +7,7 @@ import { DisconectFilter } from './shared/infraestructure/exception-filters/db-e
 import { FailCredentialsFilter } from './shared/infraestructure/exception-filters/db-exception/fail-credentials/fail-credentials.filter';
 import { ForbiddenFilter } from './shared/infraestructure/exception-filters/authorization/forbidden/forbidden.filter';
 import { ValidationPipe } from '@nestjs/common';
+import { NotFoundFilter } from './shared/infraestructure/exception-filters/db-exception/not-found/not-found.filter';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -17,6 +18,7 @@ async function bootstrap() {
         new TimeoutFilter(),
         new FailCredentialsFilter(),
         new ForbiddenFilter(),
+        new NotFoundFilter(),
     );
     app.enableCors({
         origin: 'http://localhost:5173',

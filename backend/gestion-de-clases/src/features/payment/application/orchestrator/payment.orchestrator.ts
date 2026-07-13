@@ -24,7 +24,14 @@ export class RenewPaymentOrchestrator {
     ) {}
 
     async execute(payment: Payment) {
-        const student = await this.getStudent(payment);
+        const student = await this.getStudentWithFullname(payment);
+        const fee = await this.getFee(payment);
+        const renewedStudent = await this.studentService.renew(student);
+        return await this.addPayment(payment, renewedStudent, fee);
+    }
+
+    async reintent(payment: Payment, getPhoneNumber: number) {
+        const student = await this.studentService.getWithPhone(getPhoneNumber);
         const fee = await this.getFee(payment);
         const renewedStudent = await this.studentService.renew(student);
         return await this.addPayment(payment, renewedStudent, fee);
@@ -46,7 +53,7 @@ export class RenewPaymentOrchestrator {
         return await this.feeService.getWithAmount(payment.getAmount);
     }
 
-    private async getStudent(payment: Payment) {
+    private async getStudentWithFullname(payment: Payment) {
         return await this.studentService.getWithFullname(
             payment.getName,
             payment.getSurname,
