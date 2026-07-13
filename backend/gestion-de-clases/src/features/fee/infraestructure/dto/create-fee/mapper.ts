@@ -1,10 +1,10 @@
 import {
     FeeCreateInput,
     FeeModel,
-} from '../../../../../generated/prisma/models';
-import { Fee } from '../../domain/fee';
-import { CreateFee } from './dto/request/create-fee';
-import { FeeResponse } from './dto/response/fee-response';
+} from '../../../../../../generated/prisma/models';
+import { Fee } from '../../../domain/fee';
+import { CreateFee } from './request';
+import { FeeResponse } from './response';
 
 export class FeeMapper {
     static modelToSql(fee: Fee): FeeCreateInput {

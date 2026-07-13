@@ -7,8 +7,8 @@ import {
     UseFilters,
 } from '@nestjs/common';
 import { FeeService } from '../application/fee.service';
-import { FeeMapper } from '../infraestructure/mapper/fee.mapper';
-import { CreateFee } from '../infraestructure/mapper/dto/request/create-fee';
+import { FeeMapper } from '../infraestructure/dto/create-fee/mapper';
+import { CreateFee } from '../infraestructure/dto/create-fee/request';
 import { RepeatAmountFilter } from '../infraestructure/exception-filter/repeat-amount.filter';
 
 @Controller('api/fee')
