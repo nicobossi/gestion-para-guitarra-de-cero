@@ -12,6 +12,8 @@ import {
     type RenewStudent,
 } from '../../../../shared/application/renew-student';
 import { Payment } from '../../domain/payment';
+import { Fee } from '../../../fee/domain/fee';
+import { Student } from '../../../student/domain/student/student';
 
 @Injectable()
 export class RenewPaymentOrchestrator {
@@ -22,17 +24,33 @@ export class RenewPaymentOrchestrator {
     ) {}
 
     async execute(payment: Payment) {
-        const student = await this.studentService.getWithFullname(
-            payment.getName,
-            payment.getSurname,
-            payment.getSecondName,
-        );
-        const fee = await this.feeService.getWithAmount(payment.getAmount);
+        const student = await this.getStudent(payment);
+        const fee = await this.getFee(payment);
         const renewedStudent = await this.studentService.renew(student);
+        return await this.addPayment(payment, renewedStudent, fee);
+    }
+
+    private async addPayment(
+        payment: Payment,
+        renewedStudent: Student,
+        fee: Fee,
+    ) {
         return await this.paymentService.save(
             payment,
             renewedStudent.getId!,
             fee.getId!,
+        );
+    }
+
+    private async getFee(payment: Payment) {
+        return await this.feeService.getWithAmount(payment.getAmount);
+    }
+
+    private async getStudent(payment: Payment) {
+        return await this.studentService.getWithFullname(
+            payment.getName,
+            payment.getSurname,
+            payment.getSecondName,
         );
     }
 }
