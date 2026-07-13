@@ -1,4 +1,4 @@
-import { Controller, HttpCode, Post, UseFilters } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post, UseFilters } from '@nestjs/common';
 import { RenewPaymentOrchestrator } from '../../application/orchestrator/payment.orchestrator';
 import { AddPayment } from '../../infraestructure/dtos/add-payment/mapper';
 import { RenewPayment } from '../../infraestructure/dtos/add-payment/request';
@@ -11,7 +11,7 @@ export class RenewPaymentController {
     @Post('renew')
     @HttpCode(201)
     @UseFilters(StudentsWithSameFullnameFilter)
-    async renewPayment(dto: RenewPayment) {
+    async renewPayment(@Body() dto: RenewPayment) {
         const payment = AddPayment.dtoToModel(dto);
         const renewedPayment = await this.renewOrchestrator.execute(payment);
         return AddPayment.modelToDto(renewedPayment);

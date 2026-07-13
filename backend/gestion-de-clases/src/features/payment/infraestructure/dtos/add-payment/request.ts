@@ -1,5 +1,5 @@
 import {
-    IsDataURI,
+    IsDateString,
     IsEnum,
     IsNotEmpty,
     IsNumber,
@@ -18,7 +18,8 @@ export class RenewPayment {
     @IsNotEmpty()
     surname!: string;
 
-    @IsDataURI()
+    @IsNotEmpty()
+    @IsDateString()
     paymentDate!: Date;
 
     @IsEnum(PaymentMethod, {

@@ -20,7 +20,7 @@ export class AddPayment {
     }
     static dtoToModel(payment: RenewPayment) {
         return new Payment(
-            payment.paymentDate,
+            new Date(payment.paymentDate),
             payment.paymentMethod,
             payment.name,
             payment.surname,
