@@ -21,6 +21,7 @@ import { PaymentModule } from '../../payment.module';
 import { FeeModule } from '../../../fee/fee.module';
 import { SqlModule } from '../../../../shared/infraestructure/persistence/sql/sql.module';
 import { PaymentLapse } from '../../../fee/domain/payment-lapse';
+import { StudentsWithSameFullname } from '../../../../shared/application/exceptions/students-with-same-fullname';
 
 describe('Integration PaymentOrchestrator', () => {
     let student: Student;
@@ -97,6 +98,28 @@ describe('Integration PaymentOrchestrator', () => {
             addedPayment.getSecondName,
         );
         expect(studentWithPayment.getLessons.length).toBe(4);
+    });
+
+    test('should catch a exception when adding students with same fullname', async () => {
+        await feeService.add(fee);
+        const student1 = new Student(
+            'Nicolás',
+            'Bossi',
+            1234567890,
+            new Date(),
+        );
+        const student2 = new Student(
+            'Nicolás',
+            'Bossi',
+            1234567891,
+            new Date(),
+        );
+        await studentService.income(student1);
+        await studentService.income(student2);
+        const addedPayment = async () => await orchestrator.execute(payment);
+        await expect(addedPayment).rejects.toBeInstanceOf(
+            StudentsWithSameFullname,
+        );
     });
 
     afterEach(async () => {

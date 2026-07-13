@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { Student } from '../domain/student/student';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
 import { StudentNotFound } from './exceptions/student-not-found';
-import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 import { Fullname } from '../domain/types/full-name';
 import { RenewStudent } from '../../../shared/application/renew-student';
+import { StudentsWithSameFullname } from '../../../shared/application/exceptions/students-with-same-fullname';
 @Injectable()
 export class StudentService implements RenewStudent {
     constructor(

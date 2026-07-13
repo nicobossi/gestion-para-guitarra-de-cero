@@ -3,9 +3,9 @@ import { Student } from '../domain/student/student';
 import { StudentService } from './student.service';
 import { StudentRepository } from '../infraestructure/persistence/student.repository';
 import { StudentNotFound } from './exceptions/student-not-found';
-import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
 import { Lesson } from '../domain/lesson/lesson';
+import { StudentsWithSameFullname } from '../../../shared/application/exceptions/students-with-same-fullname';
 
 describe('Unit StudentService', () => {
     let service: StudentService;

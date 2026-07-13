@@ -13,7 +13,7 @@ export class StudentWithLessons {
             student.surname,
             student.phone,
             student.submissionDate,
-            student.secondName,
+            student.secondName ?? undefined,
             student.id,
             CreateLesson.sqlToModel(student.lessons),
         );

@@ -15,10 +15,7 @@ export class RenewPayment {
     name!: string;
 
     @IsString()
-    secondName?: string;
-
-    @IsString()
-    @IsOptional()
+    @IsNotEmpty()
     surname!: string;
 
     @IsDataURI()
@@ -32,4 +29,8 @@ export class RenewPayment {
     @IsNumber()
     @IsPositive()
     amount!: number;
+
+    @IsString()
+    @IsOptional()
+    secondName?: string;
 }

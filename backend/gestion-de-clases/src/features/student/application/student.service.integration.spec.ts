@@ -10,8 +10,8 @@ import {
 import { clearSqlContainer } from '../../../../test/containers/tear-down';
 import { Student } from '../domain/student/student';
 import { StudentNotFound } from './exceptions/student-not-found';
-import { StudentsWithSameFullname } from './exceptions/students-with-same-fullname';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
+import { StudentsWithSameFullname } from '../../../shared/application/exceptions/students-with-same-fullname';
 
 describe('StudentService', () => {
     let student: Student;
