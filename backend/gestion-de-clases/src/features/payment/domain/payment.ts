@@ -1,13 +1,13 @@
+import { FullName } from '../../../shared/domain/full-name/full-name';
 import { PaymentMethod } from './payment-method';
 
 export class Payment {
     private date: Date;
     private nextPaymentDate: Date;
     private method: PaymentMethod;
-    private firstName: string;
-    private secondName?: string;
-    private surname: string;
     private amount: number;
+    private fullName: FullName;
+    private id?: number;
 
     constructor(
         date: Date,
@@ -16,14 +16,14 @@ export class Payment {
         surname: string,
         amount: number,
         secondName?: string,
+        id?: number,
     ) {
+        this.fullName = new FullName(firstName, surname, secondName);
         this.date = date;
         this.method = method;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.surname = surname;
         this.amount = amount;
         this.nextPaymentDate = this.calculateNextDate(date);
+        this.id = id;
     }
     private calculateNextDate(date: Date): Date {
         const nextDate = new Date(date);
@@ -45,15 +45,18 @@ export class Payment {
         return this.date;
     }
     get getSurname() {
-        return this.surname;
+        return this.fullName.getLastName;
     }
     get getSecondName() {
-        return this.secondName;
+        return this.fullName.getSecondName;
     }
     get getName() {
-        return this.firstName;
+        return this.fullName.getFirstName;
     }
     get getPaymentMethod() {
         return this.method;
+    }
+    get getId() {
+        return this.id;
     }
 }

@@ -21,7 +21,7 @@ export class StudentService implements RenewStudent {
     async getWithFullname(
         name: string,
         surname: string,
-        secondName: string | null = null,
+        secondName?: string,
     ): Promise<Student> {
         const getStudents = () =>
             this.studentRepository.getWithFullname(name, surname, secondName);

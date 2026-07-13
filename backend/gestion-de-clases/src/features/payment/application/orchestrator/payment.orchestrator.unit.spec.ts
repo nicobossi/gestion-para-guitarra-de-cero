@@ -63,6 +63,7 @@ describe('Unit PaymentOrchestratorTest', () => {
             'Bossi',
             500,
             'Fernando',
+            1,
         );
         studentService.getWithFullname.mockResolvedValue(student);
         feeService.getWithAmount.mockResolvedValue(fee);
@@ -92,5 +93,10 @@ describe('Unit PaymentOrchestratorTest', () => {
     test('should create the payment', async () => {
         await orchestrator.execute(payment);
         expect(paymentService.save).toHaveBeenCalled();
+    });
+
+    test('should return a payment with youtr id', async () => {
+        const addedPayment = await orchestrator.execute(payment);
+        expect(addedPayment.getId).toBe(1);
     });
 });

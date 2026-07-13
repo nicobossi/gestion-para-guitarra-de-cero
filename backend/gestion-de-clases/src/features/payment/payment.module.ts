@@ -31,5 +31,6 @@ import { FeeService } from '../fee/application/fee.service';
     ],
     controllers: [PaymentController],
     imports: [StudentModule, FeeModule],
+    exports: [PaymentService, RenewPaymentOrchestrator],
 })
 export class PaymentModule {}

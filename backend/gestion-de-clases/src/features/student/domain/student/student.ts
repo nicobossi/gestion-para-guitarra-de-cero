@@ -1,3 +1,4 @@
+import { FullName } from '../../../../shared/domain/full-name/full-name';
 import { Calender } from '../calender/calender';
 import { InvalidPhoneException } from '../exception/invalid-phone-exception';
 import { Lesson } from '../lesson/lesson';
@@ -7,30 +8,26 @@ import { StudentState } from './student-state';
 export class Student {
     private readonly id?: number;
     private lessons: Lesson[];
-    private name: string;
-    private surname: string;
     private phone: number;
     private firstLessonDate: Date;
-    private secondName: string | null;
     private calender = new Calender();
     private state: StudentState;
+    private readonly fullName: FullName;
 
     constructor(
         name: string,
         surname: string,
         phone: number,
         firstLessonDate: Date,
-        secondName: string | null = null,
+        secondName?: string,
         id?: number,
         lessons?: Lesson[],
     ) {
+        this.fullName = new FullName(name, surname, secondName);
         this.state = StateProvider.provide(lessons);
-        this.name = name;
-        this.surname = surname;
         this.setPhone(phone);
         this.phone = phone;
         this.firstLessonDate = firstLessonDate;
-        this.secondName = secondName;
         this.id = id;
         this.lessons = this.addLessons(lessons);
     }
@@ -71,16 +68,16 @@ export class Student {
         return this.lessons.map((lesson) => lesson);
     }
 
-    get getName(): string {
-        return this.name;
+    get getName() {
+        return this.fullName.getFirstName;
     }
 
-    get getSurname(): string {
-        return this.surname;
+    get getSurname() {
+        return this.fullName.getLastName;
     }
 
-    get getSecondName(): string | null {
-        return this.secondName;
+    get getSecondName() {
+        return this.fullName.getSecondName;
     }
 
     get getFirstLessonDate(): Date {

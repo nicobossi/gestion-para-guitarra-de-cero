@@ -5,7 +5,7 @@ export interface RenewStudent {
     getWithFullname(
         name: string,
         surname: string,
-        secondName: string | null,
+        secondName?: string,
     ): Promise<Student>;
 }
 

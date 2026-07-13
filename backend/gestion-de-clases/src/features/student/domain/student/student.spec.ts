@@ -37,7 +37,7 @@ describe('test to student', () => {
             1234567808,
             fechaDePresentacion,
         );
-        expect(alejandro.getSecondName).toBeNull();
+        expect(alejandro.getSecondName).toBeUndefined();
     });
 
     test('a student have a date assistance', () => {

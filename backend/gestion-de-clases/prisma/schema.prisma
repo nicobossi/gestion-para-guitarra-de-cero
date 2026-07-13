@@ -39,7 +39,8 @@ model Fee {
 }
 
 model Payment {
-  paymentDate DateTime @id 
+  id Int @id @default(autoincrement())
+  paymentDate DateTime
   nextPaymentDate DateTime 
   paymentType PaymentType
   studentId Int 

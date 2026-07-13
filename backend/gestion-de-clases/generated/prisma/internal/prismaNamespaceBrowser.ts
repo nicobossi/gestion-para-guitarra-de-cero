@@ -96,6 +96,7 @@ export type FeeScalarFieldEnum = (typeof FeeScalarFieldEnum)[keyof typeof FeeSca
 
 
 export const PaymentScalarFieldEnum = {
+  id: 'id',
   paymentDate: 'paymentDate',
   nextPaymentDate: 'nextPaymentDate',
   paymentType: 'paymentType',

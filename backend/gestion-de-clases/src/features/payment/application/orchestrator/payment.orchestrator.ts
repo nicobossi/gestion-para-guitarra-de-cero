@@ -25,7 +25,7 @@ export class RenewPaymentOrchestrator {
         const student = await this.studentService.getWithFullname(
             payment.getName,
             payment.getSurname,
-            payment.getSecondName ?? null,
+            payment.getSecondName,
         );
         const fee = await this.feeService.getWithAmount(payment.getAmount);
         const renewedStudent = await this.studentService.renew(student);

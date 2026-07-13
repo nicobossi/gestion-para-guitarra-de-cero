@@ -27,16 +27,19 @@ export type AggregatePayment = {
 }
 
 export type PaymentAvgAggregateOutputType = {
+  id: number | null
   studentId: number | null
   feeId: number | null
 }
 
 export type PaymentSumAggregateOutputType = {
+  id: number | null
   studentId: number | null
   feeId: number | null
 }
 
 export type PaymentMinAggregateOutputType = {
+  id: number | null
   paymentDate: Date | null
   nextPaymentDate: Date | null
   paymentType: $Enums.PaymentType | null
@@ -45,6 +48,7 @@ export type PaymentMinAggregateOutputType = {
 }
 
 export type PaymentMaxAggregateOutputType = {
+  id: number | null
   paymentDate: Date | null
   nextPaymentDate: Date | null
   paymentType: $Enums.PaymentType | null
@@ -53,6 +57,7 @@ export type PaymentMaxAggregateOutputType = {
 }
 
 export type PaymentCountAggregateOutputType = {
+  id: number
   paymentDate: number
   nextPaymentDate: number
   paymentType: number
@@ -63,16 +68,19 @@ export type PaymentCountAggregateOutputType = {
 
 
 export type PaymentAvgAggregateInputType = {
+  id?: true
   studentId?: true
   feeId?: true
 }
 
 export type PaymentSumAggregateInputType = {
+  id?: true
   studentId?: true
   feeId?: true
 }
 
 export type PaymentMinAggregateInputType = {
+  id?: true
   paymentDate?: true
   nextPaymentDate?: true
   paymentType?: true
@@ -81,6 +89,7 @@ export type PaymentMinAggregateInputType = {
 }
 
 export type PaymentMaxAggregateInputType = {
+  id?: true
   paymentDate?: true
   nextPaymentDate?: true
   paymentType?: true
@@ -89,6 +98,7 @@ export type PaymentMaxAggregateInputType = {
 }
 
 export type PaymentCountAggregateInputType = {
+  id?: true
   paymentDate?: true
   nextPaymentDate?: true
   paymentType?: true
@@ -184,6 +194,7 @@ export type PaymentGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 export type PaymentGroupByOutputType = {
+  id: number
   paymentDate: Date
   nextPaymentDate: Date
   paymentType: $Enums.PaymentType
@@ -215,6 +226,7 @@ export type PaymentWhereInput = {
   AND?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
   OR?: Prisma.PaymentWhereInput[]
   NOT?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
+  id?: Prisma.IntFilter<"Payment"> | number
   paymentDate?: Prisma.DateTimeFilter<"Payment"> | Date | string
   nextPaymentDate?: Prisma.DateTimeFilter<"Payment"> | Date | string
   paymentType?: Prisma.EnumPaymentTypeFilter<"Payment"> | $Enums.PaymentType
@@ -225,6 +237,7 @@ export type PaymentWhereInput = {
 }
 
 export type PaymentOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   paymentDate?: Prisma.SortOrder
   nextPaymentDate?: Prisma.SortOrder
   paymentType?: Prisma.SortOrder
@@ -235,19 +248,21 @@ export type PaymentOrderByWithRelationInput = {
 }
 
 export type PaymentWhereUniqueInput = Prisma.AtLeast<{
-  paymentDate?: Date | string
+  id?: number
   AND?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
   OR?: Prisma.PaymentWhereInput[]
   NOT?: Prisma.PaymentWhereInput | Prisma.PaymentWhereInput[]
+  paymentDate?: Prisma.DateTimeFilter<"Payment"> | Date | string
   nextPaymentDate?: Prisma.DateTimeFilter<"Payment"> | Date | string
   paymentType?: Prisma.EnumPaymentTypeFilter<"Payment"> | $Enums.PaymentType
   studentId?: Prisma.IntFilter<"Payment"> | number
   feeId?: Prisma.IntFilter<"Payment"> | number
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   fee?: Prisma.XOR<Prisma.FeeScalarRelationFilter, Prisma.FeeWhereInput>
-}, "paymentDate">
+}, "id">
 
 export type PaymentOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   paymentDate?: Prisma.SortOrder
   nextPaymentDate?: Prisma.SortOrder
   paymentType?: Prisma.SortOrder
@@ -264,6 +279,7 @@ export type PaymentScalarWhereWithAggregatesInput = {
   AND?: Prisma.PaymentScalarWhereWithAggregatesInput | Prisma.PaymentScalarWhereWithAggregatesInput[]
   OR?: Prisma.PaymentScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PaymentScalarWhereWithAggregatesInput | Prisma.PaymentScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"Payment"> | number
   paymentDate?: Prisma.DateTimeWithAggregatesFilter<"Payment"> | Date | string
   nextPaymentDate?: Prisma.DateTimeWithAggregatesFilter<"Payment"> | Date | string
   paymentType?: Prisma.EnumPaymentTypeWithAggregatesFilter<"Payment"> | $Enums.PaymentType
@@ -280,6 +296,7 @@ export type PaymentCreateInput = {
 }
 
 export type PaymentUncheckedCreateInput = {
+  id?: number
   paymentDate: Date | string
   nextPaymentDate: Date | string
   paymentType: $Enums.PaymentType
@@ -296,6 +313,7 @@ export type PaymentUpdateInput = {
 }
 
 export type PaymentUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   paymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextPaymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentType?: Prisma.EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
@@ -304,6 +322,7 @@ export type PaymentUncheckedUpdateInput = {
 }
 
 export type PaymentCreateManyInput = {
+  id?: number
   paymentDate: Date | string
   nextPaymentDate: Date | string
   paymentType: $Enums.PaymentType
@@ -318,6 +337,7 @@ export type PaymentUpdateManyMutationInput = {
 }
 
 export type PaymentUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   paymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextPaymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentType?: Prisma.EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
@@ -336,6 +356,7 @@ export type PaymentOrderByRelationAggregateInput = {
 }
 
 export type PaymentCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   paymentDate?: Prisma.SortOrder
   nextPaymentDate?: Prisma.SortOrder
   paymentType?: Prisma.SortOrder
@@ -344,11 +365,13 @@ export type PaymentCountOrderByAggregateInput = {
 }
 
 export type PaymentAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
   feeId?: Prisma.SortOrder
 }
 
 export type PaymentMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   paymentDate?: Prisma.SortOrder
   nextPaymentDate?: Prisma.SortOrder
   paymentType?: Prisma.SortOrder
@@ -357,6 +380,7 @@ export type PaymentMaxOrderByAggregateInput = {
 }
 
 export type PaymentMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   paymentDate?: Prisma.SortOrder
   nextPaymentDate?: Prisma.SortOrder
   paymentType?: Prisma.SortOrder
@@ -365,6 +389,7 @@ export type PaymentMinOrderByAggregateInput = {
 }
 
 export type PaymentSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
   feeId?: Prisma.SortOrder
 }
@@ -465,6 +490,7 @@ export type PaymentCreateWithoutStudentInput = {
 }
 
 export type PaymentUncheckedCreateWithoutStudentInput = {
+  id?: number
   paymentDate: Date | string
   nextPaymentDate: Date | string
   paymentType: $Enums.PaymentType
@@ -501,6 +527,7 @@ export type PaymentScalarWhereInput = {
   AND?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
   OR?: Prisma.PaymentScalarWhereInput[]
   NOT?: Prisma.PaymentScalarWhereInput | Prisma.PaymentScalarWhereInput[]
+  id?: Prisma.IntFilter<"Payment"> | number
   paymentDate?: Prisma.DateTimeFilter<"Payment"> | Date | string
   nextPaymentDate?: Prisma.DateTimeFilter<"Payment"> | Date | string
   paymentType?: Prisma.EnumPaymentTypeFilter<"Payment"> | $Enums.PaymentType
@@ -516,6 +543,7 @@ export type PaymentCreateWithoutFeeInput = {
 }
 
 export type PaymentUncheckedCreateWithoutFeeInput = {
+  id?: number
   paymentDate: Date | string
   nextPaymentDate: Date | string
   paymentType: $Enums.PaymentType
@@ -549,6 +577,7 @@ export type PaymentUpdateManyWithWhereWithoutFeeInput = {
 }
 
 export type PaymentCreateManyStudentInput = {
+  id?: number
   paymentDate: Date | string
   nextPaymentDate: Date | string
   paymentType: $Enums.PaymentType
@@ -563,6 +592,7 @@ export type PaymentUpdateWithoutStudentInput = {
 }
 
 export type PaymentUncheckedUpdateWithoutStudentInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   paymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextPaymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentType?: Prisma.EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
@@ -570,6 +600,7 @@ export type PaymentUncheckedUpdateWithoutStudentInput = {
 }
 
 export type PaymentUncheckedUpdateManyWithoutStudentInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   paymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextPaymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentType?: Prisma.EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
@@ -577,6 +608,7 @@ export type PaymentUncheckedUpdateManyWithoutStudentInput = {
 }
 
 export type PaymentCreateManyFeeInput = {
+  id?: number
   paymentDate: Date | string
   nextPaymentDate: Date | string
   paymentType: $Enums.PaymentType
@@ -591,6 +623,7 @@ export type PaymentUpdateWithoutFeeInput = {
 }
 
 export type PaymentUncheckedUpdateWithoutFeeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   paymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextPaymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentType?: Prisma.EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
@@ -598,6 +631,7 @@ export type PaymentUncheckedUpdateWithoutFeeInput = {
 }
 
 export type PaymentUncheckedUpdateManyWithoutFeeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   paymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextPaymentDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   paymentType?: Prisma.EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
@@ -607,6 +641,7 @@ export type PaymentUncheckedUpdateManyWithoutFeeInput = {
 
 
 export type PaymentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   paymentDate?: boolean
   nextPaymentDate?: boolean
   paymentType?: boolean
@@ -617,6 +652,7 @@ export type PaymentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 }, ExtArgs["result"]["payment"]>
 
 export type PaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   paymentDate?: boolean
   nextPaymentDate?: boolean
   paymentType?: boolean
@@ -627,6 +663,7 @@ export type PaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 }, ExtArgs["result"]["payment"]>
 
 export type PaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   paymentDate?: boolean
   nextPaymentDate?: boolean
   paymentType?: boolean
@@ -637,6 +674,7 @@ export type PaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 }, ExtArgs["result"]["payment"]>
 
 export type PaymentSelectScalar = {
+  id?: boolean
   paymentDate?: boolean
   nextPaymentDate?: boolean
   paymentType?: boolean
@@ -644,7 +682,7 @@ export type PaymentSelectScalar = {
   feeId?: boolean
 }
 
-export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"paymentDate" | "nextPaymentDate" | "paymentType" | "studentId" | "feeId", ExtArgs["result"]["payment"]>
+export type PaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "paymentDate" | "nextPaymentDate" | "paymentType" | "studentId" | "feeId", ExtArgs["result"]["payment"]>
 export type PaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   fee?: boolean | Prisma.FeeDefaultArgs<ExtArgs>
@@ -665,6 +703,7 @@ export type $PaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     fee: Prisma.$FeePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     paymentDate: Date
     nextPaymentDate: Date
     paymentType: $Enums.PaymentType
@@ -753,8 +792,8 @@ export interface PaymentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * // Get first 10 Payments
    * const payments = await prisma.payment.findMany({ take: 10 })
    * 
-   * // Only select the `paymentDate`
-   * const paymentWithPaymentDateOnly = await prisma.payment.findMany({ select: { paymentDate: true } })
+   * // Only select the `id`
+   * const paymentWithIdOnly = await prisma.payment.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends PaymentFindManyArgs>(args?: Prisma.SelectSubset<T, PaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -798,9 +837,9 @@ export interface PaymentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   ]
    * })
    * 
-   * // Create many Payments and only return the `paymentDate`
-   * const paymentWithPaymentDateOnly = await prisma.payment.createManyAndReturn({
-   *   select: { paymentDate: true },
+   * // Create many Payments and only return the `id`
+   * const paymentWithIdOnly = await prisma.payment.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -889,9 +928,9 @@ export interface PaymentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   ]
    * })
    * 
-   * // Update zero or more Payments and only return the `paymentDate`
-   * const paymentWithPaymentDateOnly = await prisma.payment.updateManyAndReturn({
-   *   select: { paymentDate: true },
+   * // Update zero or more Payments and only return the `id`
+   * const paymentWithIdOnly = await prisma.payment.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1095,6 +1134,7 @@ export interface Prisma__PaymentClient<T, Null = never, ExtArgs extends runtime.
  * Fields of the Payment model
  */
 export interface PaymentFieldRefs {
+  readonly id: Prisma.FieldRef<"Payment", 'Int'>
   readonly paymentDate: Prisma.FieldRef<"Payment", 'DateTime'>
   readonly nextPaymentDate: Prisma.FieldRef<"Payment", 'DateTime'>
   readonly paymentType: Prisma.FieldRef<"Payment", 'PaymentType'>

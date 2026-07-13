@@ -36,6 +36,7 @@ export class AddPayment {
             surname,
             amount,
             secondName,
+            sql.id,
         );
     }
 }
