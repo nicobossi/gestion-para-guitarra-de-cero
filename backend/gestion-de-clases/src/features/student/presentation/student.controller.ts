@@ -8,8 +8,8 @@ import {
 } from '@nestjs/common';
 import { StudentService } from '../application/student.service';
 import { RepeatPhoneFilter } from '../infraestructure/exception-filters/repeat-phone/repeat-phone.filter';
-import { CreateStudent } from '../infraestructure/dtos/income/create-student-request';
-import { IncomeStudent } from '../infraestructure/dtos/income/income-student.mapper';
+import { CreateStudent } from '../infraestructure/dtos/income/request';
+import { IncomeStudent } from '../infraestructure/dtos/income/mapper';
 import { Fullname } from '../domain/types/full-name';
 
 @Controller('api/student')

@@ -3,8 +3,8 @@ import {
     StudentModel,
 } from '../../../../../../generated/prisma/models';
 import { Student } from '../../../domain/student/student';
-import { CreateStudent } from './create-student-request';
-import { CreateStudentResponse } from './create-student-response';
+import { CreateStudent } from './request';
+import { CreateStudentResponse } from './response';
 
 export class IncomeStudent {
     static sqlToModel(sqlStudent: StudentModel): Student {

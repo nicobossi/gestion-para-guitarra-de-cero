@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Student } from '../../domain/student/student';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
-import { IncomeStudent } from '../dtos/income/income-student.mapper';
-import { CreateLesson } from '../dtos/renew-month/create-lesson.mapper';
-import { StudentWithLessons } from '../dtos/renew-month/student-with-lessons';
+import { IncomeStudent } from '../dtos/income/mapper';
+import { CreateLesson } from '../dtos/renew-month/lesson-mapper';
+import { StudentWithLessons } from '../dtos/renew-month/student-mapper';
 import { Lesson } from '../../domain/lesson/lesson';
 import { Fullname } from '../../domain/types/full-name';
 

@@ -1,6 +1,6 @@
 import { StudentGetPayload } from '../../../../../../generated/prisma/models';
 import { Student } from '../../../domain/student/student';
-import { CreateLesson } from './create-lesson.mapper';
+import { CreateLesson } from './lesson-mapper';
 
 type StudentWithLessonsUpdate = StudentGetPayload<{
     include: { lessons: true };
@@ -13,7 +13,7 @@ export class StudentWithLessons {
             student.surname,
             student.phone,
             student.submissionDate,
-            student.secondName,
+            student.secondName ?? undefined,
             student.id,
             CreateLesson.sqlToModel(student.lessons),
         );

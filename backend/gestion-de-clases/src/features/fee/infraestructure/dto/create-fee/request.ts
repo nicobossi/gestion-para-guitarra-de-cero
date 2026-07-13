@@ -1,5 +1,5 @@
 import { IsDateString, IsEnum, IsNotEmpty, IsPositive } from 'class-validator';
-import { PaymentLapse } from '../../../../domain/payment-lapse';
+import { PaymentLapse } from '../../../domain/payment-lapse';
 
 export class CreateFee {
     @IsNotEmpty()
