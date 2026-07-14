@@ -13,12 +13,12 @@ function handleError(error : unknown) {
         const status = error.response.status
     
         if(status >= 400 && status < 500) {
-            const apiError = new ApiError(status, error.message, CauseError.Client);
+            const apiError = new ApiError(status, error.response.data, CauseError.Client);
             return Promise.reject(apiError);
         }
     
         if(status >= 500) {
-            const apiError = new ApiError(status, error.message, CauseError.Server);
+            const apiError = new ApiError(status, error.response.data, CauseError.Server);
             return Promise.reject(apiError);
         }
     }

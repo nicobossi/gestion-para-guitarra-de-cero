@@ -8,12 +8,14 @@ import { FailCredentialsFilter } from './shared/infraestructure/exception-filter
 import { ForbiddenFilter } from './shared/infraestructure/exception-filters/authorization/forbidden/forbidden.filter';
 import { ValidationPipe } from '@nestjs/common';
 import { NotFoundFilter } from './shared/infraestructure/exception-filters/db-exception/not-found/not-found.filter';
+import { InvalidInserErrorFilter } from './shared/infraestructure/exception-filters/db-exception/invalid-insert-error/invalid-insert-error.filter';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.useGlobalPipes(new ValidationPipe());
     app.useGlobalFilters(
         new RepeatEntityFilter(),
+        new InvalidInserErrorFilter(),
         new DisconectFilter(),
         new TimeoutFilter(),
         new FailCredentialsFilter(),

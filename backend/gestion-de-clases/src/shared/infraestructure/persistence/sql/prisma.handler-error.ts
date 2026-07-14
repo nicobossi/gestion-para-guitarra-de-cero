@@ -13,7 +13,7 @@ import {
 import { RepeatFieldException } from '../errors/repeat-field-exception';
 import { CredentialsError } from '../errors/credentials-error';
 import { NotRegisterError } from '../errors/not-register-error';
-import { ValidationError } from '../errors/validation-error';
+import { InvalidInsertError } from '../errors/validation-error';
 
 export class ErrorHandler {
     private readonly mapError: Map<string, DbError>;
@@ -26,7 +26,7 @@ export class ErrorHandler {
         if (error instanceof PrismaClientKnownRequestError)
             return this.findError(error.code);
         else if (error instanceof PrismaClientValidationError)
-            return new ValidationError();
+            return new InvalidInsertError();
         return new InternalServerErrorException();
     }
 
