@@ -10,7 +10,7 @@ export class FeeMapper {
     static modelToSql(fee: Fee): FeeCreateInput {
         return {
             amount: fee.getAmount,
-            applicationDate: fee.getApplicationDate,
+            applicationDate: new Date(fee.getApplicationDate),
             paymentLapse: fee.getPaymentLapse,
         };
     }
