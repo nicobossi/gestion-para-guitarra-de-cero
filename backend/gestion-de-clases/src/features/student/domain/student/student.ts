@@ -29,7 +29,7 @@ export class Student {
         this.phone = phone;
         this.firstLessonDate = firstLessonDate;
         this.id = id;
-        this.lessons = this.addLessons(lessons);
+        this.lessons = this.getInitLessons(lessons);
     }
 
     payment(): Lesson[] {
@@ -47,8 +47,8 @@ export class Student {
         return this.calender.nextDate(lastLessonDate);
     }
 
-    private addLessons(lessons?: Lesson[]) {
-        return this.state.addLessons(lessons);
+    private getInitLessons(lessons?: Lesson[]) {
+        return this.state.getInitLessons(lessons);
     }
 
     firstLesson(): Lesson {

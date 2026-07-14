@@ -10,7 +10,7 @@ export class RenewState implements StudentState {
     payment(student: Student): Lesson[] {
         return student.renewLessons(student.firtsNextMonthDate());
     }
-    addLessons(lessons: Lesson[]): Lesson[] {
+    getInitLessons(lessons: Lesson[]): Lesson[] {
         if (lessons.length != 4) {
             throw new InvalidLessons('Deben ser excactamente 4 lecciones');
         }
