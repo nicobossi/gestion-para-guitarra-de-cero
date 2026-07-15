@@ -1,6 +1,6 @@
 import { FullName } from '../../../../shared/domain/full-name/full-name';
+import { NumberPhone } from '../../../../shared/domain/number-phone/number-phone';
 import { Calender } from '../calender/calender';
-import { InvalidPhoneException } from '../exception/invalid-phone-exception';
 import { Lesson } from '../lesson/lesson';
 import { StateProvider } from './state-provider';
 import { StudentState } from './student-state';
@@ -8,7 +8,7 @@ import { StudentState } from './student-state';
 export class Student {
     private readonly id?: number;
     private lessons: Lesson[];
-    private phone: number;
+    private phone: NumberPhone;
     private firstLessonDate: Date;
     private calender = new Calender();
     private state: StudentState;
@@ -17,7 +17,7 @@ export class Student {
     constructor(
         name: string,
         surname: string,
-        phone: number,
+        phone: string,
         firstLessonDate: Date,
         secondName?: string,
         id?: number,
@@ -25,20 +25,19 @@ export class Student {
     ) {
         this.fullName = new FullName(name, surname, secondName);
         this.state = StateProvider.provide(lessons);
-        this.setPhone(phone);
-        this.phone = phone;
+        this.phone = new NumberPhone(phone);
         this.firstLessonDate = firstLessonDate;
         this.id = id;
         this.lessons = this.getInitLessons(lessons);
     }
 
-    payment(): Lesson[] {
+    payment() {
         this.lessons = this.state.payment(this);
         this.state = StateProvider.provide(this.lessons);
         return this.getLessons;
     }
 
-    renewLessons(date: Date): Lesson[] {
+    renewLessons(date: Date) {
         return this.calender.registerLessons(date);
     }
 
@@ -51,20 +50,20 @@ export class Student {
         return this.state.getInitLessons(lessons);
     }
 
-    firstLesson(): Lesson {
+    firstLesson() {
         return this.state.getLesson(this, 0);
     }
-    secondLesson(): Lesson {
+    secondLesson() {
         return this.state.getLesson(this, 1);
     }
-    threeLesson(): Lesson {
+    threeLesson() {
         return this.state.getLesson(this, 2);
     }
-    fourLesson(): Lesson {
+    fourLesson() {
         return this.state.getLesson(this, 3);
     }
 
-    get getLessons(): Lesson[] {
+    get getLessons() {
         return this.lessons.map((lesson) => lesson);
     }
 
@@ -80,27 +79,15 @@ export class Student {
         return this.fullName.getSecondName;
     }
 
-    get getFirstLessonDate(): Date {
+    get getFirstLessonDate() {
         return this.firstLessonDate;
     }
 
-    get getPhoneNumber(): number {
-        return this.phone;
+    get getPhoneNumber() {
+        return this.phone.getPhone;
     }
 
-    get getId(): number | undefined {
+    get getId() {
         return this.id;
-    }
-
-    private setPhone(phone: number): void {
-        if (phone.toString().length !== 10) {
-            throw new InvalidPhoneException(this.invalidPhoneMessage());
-        }
-
-        this.phone = phone;
-    }
-
-    private invalidPhoneMessage(): string {
-        return 'El teléfono debe tener 10 caracteres';
     }
 }

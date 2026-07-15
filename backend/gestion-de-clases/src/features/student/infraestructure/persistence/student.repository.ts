@@ -80,7 +80,7 @@ export class StudentRepository {
         }));
     }
 
-    async getWithPhone(phone: number): Promise<Student> {
+    async getWithPhone(phone: string): Promise<Student> {
         const student = await this.sql.student.findUniqueOrThrow({
             where: {
                 phone: phone,

@@ -1,5 +1,5 @@
+import { InvalidPhoneException } from '../../../../shared/domain/number-phone/invalid-phone-exception';
 import { InvalidLessons } from '../exception/invalid-lessons';
-import { InvalidPhoneException } from '../exception/invalid-phone-exception';
 import { Lesson } from '../lesson/lesson';
 import { Student } from './student';
 
@@ -12,7 +12,7 @@ describe('test to student', () => {
         nicolas = new Student(
             'Nicolás',
             'Bossi',
-            1162870692,
+            '+541134567890',
             fechaDePresentacion,
             'Fernando',
         );
@@ -34,7 +34,7 @@ describe('test to student', () => {
         const alejandro = new Student(
             'Alejandro',
             'Romero',
-            1234567808,
+            '+541134567890',
             fechaDePresentacion,
         );
         expect(alejandro.getSecondName).toBeUndefined();
@@ -45,12 +45,17 @@ describe('test to student', () => {
     });
 
     test('a student have a phone number', () => {
-        expect(1162870692).toBe(nicolas.getPhoneNumber);
+        expect('+541134567890').toBe(nicolas.getPhoneNumber);
     });
 
     test('A student cannot have a cell phone with fewer than 10 characters', () => {
         const alejandro = () =>
-            new Student('Alejandro', 'Romero', 12345678, fechaDePresentacion);
+            new Student(
+                'Alejandro',
+                'Romero',
+                '+5434567890',
+                fechaDePresentacion,
+            );
 
         expect(alejandro).toThrow(InvalidPhoneException);
     });
@@ -60,7 +65,7 @@ describe('test to student', () => {
             new Student(
                 'Alejandro',
                 'Romero',
-                12345678777,
+                '+5411345678890',
                 fechaDePresentacion,
             );
 
@@ -140,7 +145,7 @@ describe('test to student', () => {
         const nicolas = new Student(
             'Nicolás',
             'Romero',
-            1234567877,
+            '+541134567890',
             fechaDePresentacion,
             'Matias',
             1,
@@ -155,7 +160,7 @@ describe('test to student', () => {
             new Student(
                 'Nicolás',
                 'Romero',
-                1234567877,
+                '+541134567890',
                 fechaDePresentacion,
                 'Matias',
                 1,
@@ -176,7 +181,7 @@ describe('test to student', () => {
             new Student(
                 'Nicolás',
                 'Romero',
-                1234567877,
+                '+541134567890',
                 fechaDePresentacion,
                 'Matias',
                 1,

@@ -18,7 +18,7 @@ model Student {
   firstName String @map("first_name")
   secondName String? @map("second_name")
   surname String 
-  phone Int @unique
+  phone String @unique
   submissionDate DateTime @map("submission_date")
   
   lessons Lesson[]

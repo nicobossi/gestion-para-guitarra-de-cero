@@ -3,6 +3,6 @@ export interface CreateStudentResponse {
     name: string;
     surname: string;
     secondName?: string;
-    phone: number;
+    phone: string;
     submissionDate: Date;
 }

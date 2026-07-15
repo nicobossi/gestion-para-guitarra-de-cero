@@ -13,7 +13,7 @@ describe('Unit StudentService', () => {
     const incomerStudent = new Student(
         'Nicolás',
         'A',
-        1234567891,
+        '+541134567890',
         new Date(),
         'B',
         1,
@@ -21,7 +21,7 @@ describe('Unit StudentService', () => {
     const studentWithLessons = new Student(
         'Nicolás',
         'A',
-        1234567891,
+        '+541134567890',
         new Date(),
         'B',
         1,
@@ -49,7 +49,7 @@ describe('Unit StudentService', () => {
             .compile();
 
         service = module.get<StudentService>(StudentService);
-        student = new Student('Nicolás', 'A', 1234567891, new Date(), 'B');
+        student = new Student('Nicolás', 'A', '+541134567890', new Date(), 'B');
         jest.clearAllMocks();
     });
 
@@ -150,6 +150,6 @@ describe('Unit StudentService', () => {
         const newStudent = await service.getWithPhone(
             studentWithLessons.getPhoneNumber,
         );
-        expect(newStudent.getPhoneNumber).toBe(1234567891);
+        expect(newStudent.getPhoneNumber).toBe('+541134567890');
     });
 });

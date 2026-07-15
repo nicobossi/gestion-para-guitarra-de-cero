@@ -25,7 +25,13 @@ describe('StudentRepository', () => {
         }).compile();
 
         repository = module.get<StudentRepository>(StudentRepository);
-        student = new Student('John', 'Dee', 1234567890, new Date(), 'Michael');
+        student = new Student(
+            'John',
+            'Dee',
+            '+541134567890',
+            new Date(),
+            'Michael',
+        );
     });
 
     it('should be defined', () => {
@@ -109,7 +115,7 @@ describe('StudentRepository', () => {
     it('should get all full names', async () => {
         const john = await repository.income(student);
         const nicolas = await repository.income(
-            new Student('Nicolás', 'Bossi', 1234567891, new Date(), 'Amé'),
+            new Student('Nicolás', 'Bossi', '+541134567891', new Date(), 'Amé'),
         );
         const fullNames = await repository.getAllFullNames();
         const fullName1 = fullNames.find(
@@ -128,7 +134,7 @@ describe('StudentRepository', () => {
         const johnWithPhone = await repository.getWithPhone(
             john.getPhoneNumber,
         );
-        expect(johnWithPhone.getPhoneNumber).toBe(1234567890);
+        expect(johnWithPhone.getPhoneNumber).toBe('+541134567890');
     });
 
     afterEach(async () => {

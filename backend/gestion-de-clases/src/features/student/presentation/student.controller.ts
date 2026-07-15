@@ -11,12 +11,13 @@ import { RepeatPhoneFilter } from '../infraestructure/exception-filters/repeat-p
 import { CreateStudent } from '../infraestructure/dtos/income/request';
 import { IncomeStudent } from '../infraestructure/dtos/income/mapper';
 import { Fullname } from '../domain/types/full-name';
+import { InvalidPhoneFilter } from '../infraestructure/exception-filters/invalid-phone/invalid-phone.filter';
 
 @Controller('api/student')
 export class StudentController {
     constructor(private readonly studentService: StudentService) {}
 
-    @UseFilters(RepeatPhoneFilter)
+    @UseFilters(RepeatPhoneFilter, InvalidPhoneFilter)
     @Post('income')
     @HttpCode(201)
     async income(@Body() dto: CreateStudent) {

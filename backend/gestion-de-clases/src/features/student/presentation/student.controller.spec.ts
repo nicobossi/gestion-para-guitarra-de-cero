@@ -9,7 +9,7 @@ describe('StudentController', () => {
     const student = new Student(
         'Nicolás',
         'Brockhampton',
-        1234567891,
+        '+541134567890',
         new Date(),
         'Carlos',
         1,
@@ -18,7 +18,7 @@ describe('StudentController', () => {
         name: 'Nicolás',
         surname: 'Brockhampton',
         secondName: 'Carlos',
-        phone: '1234567891',
+        phone: '+541134567890',
         submissionDate: new Date(),
     };
     const mockService = {

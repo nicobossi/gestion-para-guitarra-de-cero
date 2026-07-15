@@ -3,7 +3,6 @@ import {
     Controller,
     HttpCode,
     Param,
-    ParseIntPipe,
     Post,
     UseFilters,
 } from '@nestjs/common';
@@ -30,7 +29,7 @@ export class RenewPaymentController {
     @HttpCode(201)
     async reintent(
         @Body() dto: RenewPayment,
-        @Param('phone', ParseIntPipe) phoneNumber: number,
+        @Param('phone') phoneNumber: string,
     ) {
         const payment = AddPayment.dtoToModel(dto);
         const renewedPayment = await this.renewOrchestrator.reintent(

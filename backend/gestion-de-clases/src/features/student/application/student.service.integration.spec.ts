@@ -33,7 +33,12 @@ describe('StudentService', () => {
             ],
         }).compile();
 
-        student = new Student('Carlos', 'Brockhampton', 1234567891, new Date());
+        student = new Student(
+            'Carlos',
+            'Brockhampton',
+            '+541134567890',
+            new Date(),
+        );
         service = module.get<StudentService>(StudentService);
     });
 
@@ -65,7 +70,7 @@ describe('StudentService', () => {
     it('should catch a exception for students with same full name', async () => {
         const newStudent = await service.income(student);
         await service.income(
-            new Student('Carlos', 'Brockhampton', 1234569891, new Date()),
+            new Student('Carlos', 'Brockhampton', '+541134567891', new Date()),
         );
         const students = async () =>
             await service.getWithFullname(
@@ -98,7 +103,7 @@ describe('StudentService', () => {
     it('should get all full names', async () => {
         const john = await service.income(student);
         const nicolas = await service.income(
-            new Student('Nicolás', 'Bossi', 1234567890, new Date(), 'Amé'),
+            new Student('Nicolás', 'Bossi', '+541134567891', new Date(), 'Amé'),
         );
         const fullNames = await service.getAllFullNames();
         const fullName1 = fullNames.find(
@@ -115,7 +120,7 @@ describe('StudentService', () => {
     it('should get a student with a your phone', async () => {
         const john = await service.income(student);
         const johnWithPhone = await service.getWithPhone(john.getPhoneNumber);
-        expect(johnWithPhone.getPhoneNumber).toBe(1234567891);
+        expect(johnWithPhone.getPhoneNumber).toBe('+541134567890');
     });
 
     afterAll(async () => {

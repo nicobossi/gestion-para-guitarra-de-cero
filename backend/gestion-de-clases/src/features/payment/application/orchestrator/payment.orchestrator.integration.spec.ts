@@ -61,7 +61,7 @@ describe('Integration PaymentOrchestrator', () => {
         );
         studentService = module.get<StudentService>(RENEW_STUDENT);
         feeService = module.get<FeeService>(PAYMENT_FEE);
-        student = new Student('Nicolás', 'Bossi', 1234567890, new Date());
+        student = new Student('Nicolás', 'Bossi', '+541134567890', new Date());
         fee = new Fee(100, PaymentLapse.MONTHLY, new Date());
         payment = new Payment(
             new Date(),
@@ -105,13 +105,13 @@ describe('Integration PaymentOrchestrator', () => {
         const student1 = new Student(
             'Nicolás',
             'Bossi',
-            1234567890,
+            '+541134567890',
             new Date(),
         );
         const student2 = new Student(
             'Nicolás',
             'Bossi',
-            1234567891,
+            '+541134567891',
             new Date(),
         );
         await studentService.income(student1);

@@ -51,7 +51,7 @@ describe('Unit PaymentOrchestratorTest', () => {
         student = new Student(
             'Nicolas',
             'Bossi',
-            1234567890,
+            '+541134567890',
             new Date(2023, 0, 1),
             'Fernando',
             1,

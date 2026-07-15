@@ -28,12 +28,10 @@ export type AggregateStudent = {
 
 export type StudentAvgAggregateOutputType = {
   id: number | null
-  phone: number | null
 }
 
 export type StudentSumAggregateOutputType = {
   id: number | null
-  phone: number | null
 }
 
 export type StudentMinAggregateOutputType = {
@@ -41,7 +39,7 @@ export type StudentMinAggregateOutputType = {
   firstName: string | null
   secondName: string | null
   surname: string | null
-  phone: number | null
+  phone: string | null
   submissionDate: Date | null
 }
 
@@ -50,7 +48,7 @@ export type StudentMaxAggregateOutputType = {
   firstName: string | null
   secondName: string | null
   surname: string | null
-  phone: number | null
+  phone: string | null
   submissionDate: Date | null
 }
 
@@ -67,12 +65,10 @@ export type StudentCountAggregateOutputType = {
 
 export type StudentAvgAggregateInputType = {
   id?: true
-  phone?: true
 }
 
 export type StudentSumAggregateInputType = {
   id?: true
-  phone?: true
 }
 
 export type StudentMinAggregateInputType = {
@@ -194,7 +190,7 @@ export type StudentGroupByOutputType = {
   firstName: string
   secondName: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date
   _count: StudentCountAggregateOutputType | null
   _avg: StudentAvgAggregateOutputType | null
@@ -226,7 +222,7 @@ export type StudentWhereInput = {
   firstName?: Prisma.StringFilter<"Student"> | string
   secondName?: Prisma.StringNullableFilter<"Student"> | string | null
   surname?: Prisma.StringFilter<"Student"> | string
-  phone?: Prisma.IntFilter<"Student"> | number
+  phone?: Prisma.StringFilter<"Student"> | string
   submissionDate?: Prisma.DateTimeFilter<"Student"> | Date | string
   lessons?: Prisma.LessonListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
@@ -245,7 +241,7 @@ export type StudentOrderByWithRelationInput = {
 
 export type StudentWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  phone?: number
+  phone?: string
   AND?: Prisma.StudentWhereInput | Prisma.StudentWhereInput[]
   OR?: Prisma.StudentWhereInput[]
   NOT?: Prisma.StudentWhereInput | Prisma.StudentWhereInput[]
@@ -279,7 +275,7 @@ export type StudentScalarWhereWithAggregatesInput = {
   firstName?: Prisma.StringWithAggregatesFilter<"Student"> | string
   secondName?: Prisma.StringNullableWithAggregatesFilter<"Student"> | string | null
   surname?: Prisma.StringWithAggregatesFilter<"Student"> | string
-  phone?: Prisma.IntWithAggregatesFilter<"Student"> | number
+  phone?: Prisma.StringWithAggregatesFilter<"Student"> | string
   submissionDate?: Prisma.DateTimeWithAggregatesFilter<"Student"> | Date | string
 }
 
@@ -287,7 +283,7 @@ export type StudentCreateInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
   lessons?: Prisma.LessonCreateNestedManyWithoutStudentInput
   payments?: Prisma.PaymentCreateNestedManyWithoutStudentInput
@@ -298,7 +294,7 @@ export type StudentUncheckedCreateInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutStudentInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutStudentInput
@@ -308,7 +304,7 @@ export type StudentUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lessons?: Prisma.LessonUpdateManyWithoutStudentNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutStudentNestedInput
@@ -319,7 +315,7 @@ export type StudentUncheckedUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutStudentNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutStudentNestedInput
@@ -330,7 +326,7 @@ export type StudentCreateManyInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
 }
 
@@ -338,7 +334,7 @@ export type StudentUpdateManyMutationInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -347,7 +343,7 @@ export type StudentUncheckedUpdateManyInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -362,7 +358,6 @@ export type StudentCountOrderByAggregateInput = {
 
 export type StudentAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
 }
 
 export type StudentMaxOrderByAggregateInput = {
@@ -385,7 +380,6 @@ export type StudentMinOrderByAggregateInput = {
 
 export type StudentSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
 }
 
 export type StudentScalarRelationFilter = {
@@ -401,16 +395,16 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 export type StudentCreateNestedOneWithoutPaymentsInput = {
@@ -445,7 +439,7 @@ export type StudentCreateWithoutPaymentsInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
   lessons?: Prisma.LessonCreateNestedManyWithoutStudentInput
 }
@@ -455,7 +449,7 @@ export type StudentUncheckedCreateWithoutPaymentsInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
   lessons?: Prisma.LessonUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -480,7 +474,7 @@ export type StudentUpdateWithoutPaymentsInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lessons?: Prisma.LessonUpdateManyWithoutStudentNestedInput
 }
@@ -490,7 +484,7 @@ export type StudentUncheckedUpdateWithoutPaymentsInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lessons?: Prisma.LessonUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -499,7 +493,7 @@ export type StudentCreateWithoutLessonsInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
   payments?: Prisma.PaymentCreateNestedManyWithoutStudentInput
 }
@@ -509,7 +503,7 @@ export type StudentUncheckedCreateWithoutLessonsInput = {
   firstName: string
   secondName?: string | null
   surname: string
-  phone: number
+  phone: string
   submissionDate: Date | string
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -534,7 +528,7 @@ export type StudentUpdateWithoutLessonsInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payments?: Prisma.PaymentUpdateManyWithoutStudentNestedInput
 }
@@ -544,7 +538,7 @@ export type StudentUncheckedUpdateWithoutLessonsInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   secondName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surname?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   submissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -648,7 +642,7 @@ export type $StudentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     firstName: string
     secondName: string | null
     surname: string
-    phone: number
+    phone: string
     submissionDate: Date
   }, ExtArgs["result"]["student"]>
   composites: {}
@@ -1079,7 +1073,7 @@ export interface StudentFieldRefs {
   readonly firstName: Prisma.FieldRef<"Student", 'String'>
   readonly secondName: Prisma.FieldRef<"Student", 'String'>
   readonly surname: Prisma.FieldRef<"Student", 'String'>
-  readonly phone: Prisma.FieldRef<"Student", 'Int'>
+  readonly phone: Prisma.FieldRef<"Student", 'String'>
   readonly submissionDate: Prisma.FieldRef<"Student", 'DateTime'>
 }
     

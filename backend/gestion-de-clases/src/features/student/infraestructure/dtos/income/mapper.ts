@@ -32,9 +32,9 @@ export class IncomeStudent {
         return new Student(
             dto.name,
             dto.surname,
-            parseInt(dto.phone),
+            dto.phone,
             new Date(dto.submissionDate),
-            dto.secondName ?? undefined,
+            dto.secondName,
         );
     }
 
@@ -43,7 +43,7 @@ export class IncomeStudent {
             id: student.getId!,
             name: student.getName,
             surname: student.getSurname,
-            secondName: student.getSecondName ?? undefined,
+            secondName: student.getSecondName,
             phone: student.getPhoneNumber,
             submissionDate: student.getFirstLessonDate,
         };

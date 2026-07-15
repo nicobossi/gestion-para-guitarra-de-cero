@@ -11,7 +11,7 @@ describe('Unit StudentRepository', () => {
         id: 1,
         firstName: 'Nicolás',
         surname: 'A',
-        phone: 1234567891,
+        phone: '+541134567890',
         submissionDate: new Date(),
         secondName: 'B',
     };
@@ -19,7 +19,7 @@ describe('Unit StudentRepository', () => {
         id: 1,
         firstName: 'Nicolás',
         surname: 'A',
-        phone: 1234567891,
+        phone: '+541134567890',
         submissionDate: new Date(),
         secondName: 'B',
         lessons: [
@@ -48,7 +48,7 @@ describe('Unit StudentRepository', () => {
             .compile();
 
         repository = module.get<StudentRepository>(StudentRepository);
-        student = new Student('Nicolás', 'A', 1234567891, new Date(), 'B');
+        student = new Student('Nicolás', 'A', '+541134567890', new Date(), 'B');
         jest.clearAllMocks();
     });
 
@@ -111,6 +111,6 @@ describe('Unit StudentRepository', () => {
         const newStudent = await repository.getWithPhone(
             studentWithLessons.phone,
         );
-        expect(newStudent.getPhoneNumber).toBe(1234567891);
+        expect(newStudent.getPhoneNumber).toBe('+541134567890');
     });
 });
