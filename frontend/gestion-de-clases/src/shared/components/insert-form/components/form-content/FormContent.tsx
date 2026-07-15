@@ -1,10 +1,10 @@
-import SumbitButton from "../submit-button/SubmitButton";
 import type { FormContentProps } from "./form-content";
 import './form-content.css'
-import RegisterInput from "../register-input/RegisterInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { AnyObject } from "yup";
+import RegisterInput from "./components/register-input/RegisterInput";
+import SumbitButton from "./components/submit-button/SubmitButton";
 
 
 function FormContent<T extends AnyObject>({schema, inputsData, isLoading, onSubmit} : FormContentProps) {
