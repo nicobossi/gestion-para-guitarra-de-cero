@@ -1,13 +1,14 @@
-import StudentProvider from './pages/income-student/context/student.provider';
-import IncomeStudentPage from './pages/income-student/IncomeStudent';
+import { Route, Routes } from 'react-router';
+import IncomePanel from './pages/income-student/IncomeStudent';
+import { INCOME } from '@/globals/routes/student';
 
 
 const Student = () => {
 
     return (
-        <StudentProvider>
-            <IncomeStudentPage />
-        </StudentProvider>
+        <Routes>
+            <Route path = {INCOME} element = {<IncomePanel />} />
+        </Routes>
     )
 }
 

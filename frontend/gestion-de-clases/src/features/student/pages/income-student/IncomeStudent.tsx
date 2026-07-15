@@ -3,14 +3,23 @@ import IncomeContent from './components/income-content/IncomeContent';
 import './income-student.css'
 import useStudentContext from './context/useStudent-validate';
 import ModalStudent from './components/modal-student/ModalIncome';
+import StudentProvider from './context/student.provider';
 
+const IncomePanel = () => {
 
-const IncomeStudentPage = () => {
+    return (
+        <StudentProvider>
+            <PageContent />
+        </StudentProvider>
+    )
+}
+
+const PageContent = () => {
 
     const {data} = useStudentContext();
 
     return (
-        <section className = 'student-income'>
+        <section className='student-income'>
             <SideBar />
             {data && <ModalStudent student = {data} />}
             <IncomeContent />
@@ -18,4 +27,4 @@ const IncomeStudentPage = () => {
     )
 }
 
-export default IncomeStudentPage;
+export default IncomePanel;
