@@ -1,5 +1,6 @@
-import { FEE_ROUTE, STUDENT_ROUTE } from "@/globals/routes/routes"
 import type { PageData } from "./types/page-data"
+import { ADD, MAIN_ROUTE_FEE } from "@/globals/routes/fee";
+import { INCOME, MAIN_ROUTE_STUDENT } from "@/globals/routes/student";
 
 
 const pagesData : PageData[] = [
@@ -8,7 +9,7 @@ const pagesData : PageData[] = [
         links: [
             {
                 linkName: "Ingreso",
-                link: STUDENT_ROUTE
+                path: `${MAIN_ROUTE_STUDENT + INCOME}`
             }
         ]
     },
@@ -17,7 +18,7 @@ const pagesData : PageData[] = [
         links: [
             {
                 linkName: "Ingreso",
-                link: FEE_ROUTE
+                path: `${MAIN_ROUTE_FEE + ADD}`
             }
         ]
     }

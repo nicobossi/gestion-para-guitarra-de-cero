@@ -1,4 +1,4 @@
-import NavItem from "../nav-item/NavItem";
+import NavItem from "./components/nav-item/NavItem";
 import type { NavegatorPageProps } from "./navegator-pages";
 import './navegator-pages.css';
 

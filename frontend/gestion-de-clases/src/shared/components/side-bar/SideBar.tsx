@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './side-bar.css'
 import pagesData from './pages-data';
-import NavegatorPage from '../navegator-pages/NavegatorPages';
-
+import NavegatorPage from './components/navegator-pages/NavegatorPages';
 
 const SideBar = () => {
 
