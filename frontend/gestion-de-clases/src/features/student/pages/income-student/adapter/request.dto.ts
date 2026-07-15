@@ -11,7 +11,7 @@ const requestDto = (student : Student) : StudentRequestDto => {
         name: student.name,
         secondName: student.secondName,
         surname: student.surname,
-        phone: student.phone.toString(),
+        phone: "0" + student.phone.toString(),
         submissionDate: student.submissionDate.toString()
     }
 }
