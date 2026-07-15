@@ -1,6 +1,6 @@
 import ErrorContainer from "@/shared/components/error-container/ErrorContainer";
 import './repeat-amount-error-container.css'
-import useFeeContext from "../../contexts/fee-validate";
+import useFeeContext from "../../../../contexts/fee-validate";
 
 const RepeatAmountErrorContainer = () => {
 

@@ -1,5 +1,5 @@
 import { object, string, type ObjectSchema } from "yup";
-import type { FeeSchema } from "../../adapter/schema";
+import type { FeeSchema } from "../../pages/add-fee/adapter/schema";
 
 
 const feeSchema : ObjectSchema<FeeSchema> = object().shape({

@@ -1,5 +1,5 @@
-import FeeProvider from "./contexts/fee.provider";
 import AddFeePage from "./pages/add-fee/AddFeePage";
+import FeeProvider from "./pages/add-fee/contexts/fee.provider";
 
 
 

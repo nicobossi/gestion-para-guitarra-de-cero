@@ -1,8 +1,8 @@
 import SideBar from '@/shared/components/side-bar/SideBar';
-import useFeeContext from '../../contexts/fee-validate';
 import './add-fee-page.css';
-import ModalFee from '../../components/modal-fee/ModalFee';
-import IncomeFee from '../../components/income-fee/IncomeFee';
+import ModalFee from './components/modal-fee/ModalFee';
+import IncomeFee from './components/income-fee/IncomeFee';
+import useFeeContext from './contexts/fee-validate';
 
 const AddFeePage = () => {
 

@@ -1,10 +1,10 @@
 import TitleContainer from '@/shared/components/title-container/TitleContainer';
 import FormContent from '@/shared/components/form-content/FormContent';
-import useFeeContext from '../../contexts/fee-validate';
 import inputsData from './inputs-data';
 import feeSchema from './form-data';
 import GenericContainer from '@/shared/components/generic-container/GenericContainer';
 import './fee-form.css'
+import useFeeContext from '../../../../contexts/fee-validate';
 
 const FeeForm = () => {
 
