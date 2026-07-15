@@ -1,6 +1,6 @@
 import type { UseAddData } from "@/globals/types/add-data"
 import type { Student } from "@/globals/types/student"
-import type { ApiError } from "@/infraestructure/api/api-error"
+import type { ApiError } from "@/globals/api/api-error"
 
 
 export interface UseStudent extends UseAddData<Student> {

@@ -1,8 +1,8 @@
-import SideBar from '@/globals/components/side-bar/SideBar';
-import IncomeContent from '../../components/income-content/IncomeContent';
+import SideBar from '@/shared/components/side-bar/SideBar';
+import IncomeContent from './components/income-content/IncomeContent';
 import './income-student.css'
-import ModalStudent from '../../components/modal-student/ModalIncome';
-import useStudentContext from '../../contexts/useStudent-validate';
+import useStudentContext from './context/useStudent-validate';
+import ModalStudent from './components/modal-student/ModalIncome';
 
 
 const IncomeStudentPage = () => {

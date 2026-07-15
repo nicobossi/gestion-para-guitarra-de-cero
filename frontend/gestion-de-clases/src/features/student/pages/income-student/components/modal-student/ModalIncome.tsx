@@ -1,10 +1,10 @@
 import './modal-student.css'
-import ModalHeader from '@/globals/components/modal-header/ModelHeader';
-import ModalContent from '@/globals/components/modal-content/ModalContent';
+import ModalHeader from '@/shared/components/modal-header/ModelHeader';
+import ModalContent from '@/shared/components/modal-content/ModalContent';
 import { Link } from 'react-router';
 import type { ModalIncomeProps } from './modal-student';
-import ModalContainer from '@/globals/components/modal-container/ModalContainer';
-import useStudentContext from '../../contexts/useStudent-validate';
+import ModalContainer from '@/shared/components/modal-container/ModalContainer';
+import useStudentContext from '@/features/student/pages/income-student/context/useStudent-validate';
 
 /*
     <Link to="/">Registrar Pago</Link>

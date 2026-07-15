@@ -1,4 +1,4 @@
-import ErrorContainer from "@/globals/components/error-container/ErrorContainer";
+import ErrorContainer from "@/shared/components/error-container/ErrorContainer";
 import './repeat-amount-error-container.css'
 import useFeeContext from "../../contexts/fee-validate";
 

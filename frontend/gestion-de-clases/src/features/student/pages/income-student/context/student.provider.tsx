@@ -1,9 +1,9 @@
-import useAddData from "@/globals/hooks/useAddData";
-import incomeStudent from "../services/income-student";
-import type { Student } from "@/globals/types/student";
+import useAddData from "@/shared/hooks/useAddData";
+import type { Student } from "@/shared/types/student";
 import type { UseStudent } from "../hooks/student.use";
 import StudentContext from "./student.context";
 import type { ReactNode } from "react";
+import incomeStudent from "../services/income-student";
 
 type StudentProviderProp = {
     children : ReactNode

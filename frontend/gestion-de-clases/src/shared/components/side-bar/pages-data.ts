@@ -1,4 +1,4 @@
-import { FEE_ROUTE, STUDENT_ROUTE } from "@/infraestructure/routes/routes"
+import { FEE_ROUTE, STUDENT_ROUTE } from "@/globals/routes/routes"
 import type { PageData } from "./types/page-data"
 
 

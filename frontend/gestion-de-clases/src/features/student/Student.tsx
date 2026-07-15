@@ -1,4 +1,4 @@
-import StudentProvider from './contexts/student.provider';
+import StudentProvider from './pages/income-student/context/student.provider';
 import IncomeStudentPage from './pages/income-student/IncomeStudent';
 
 

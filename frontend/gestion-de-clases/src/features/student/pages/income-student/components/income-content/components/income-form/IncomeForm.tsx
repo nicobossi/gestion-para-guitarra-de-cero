@@ -1,12 +1,11 @@
-import GenericContainer from "@/globals/components/generic-container/GenericContainer";
-import TitleContainer from "@/globals/components/title-container/TitleContainer";
-import FormContent from "@/globals/components/form-content/FormContent";
+import GenericContainer from "@/shared/components/generic-container/GenericContainer";
+import TitleContainer from "@/shared/components/title-container/TitleContainer";
+import FormContent from "@/shared/components/form-content/FormContent";
 import incomerSchema from "./form-data";
 import incomeInputsData from "./inputs-data";
-import useStudentContext from "../../contexts/useStudent-validate";
 import './income-form.css'
-import type { StudentRequestDto } from "../../adapter/request.dto";
-
+import useStudentContext from "@/features/student/pages/income-student/context/useStudent-validate";
+import type { StudentRequestDto } from "@/features/student/pages/income-student/adapter/request.dto";
 
 const StudentForm = () => {
 

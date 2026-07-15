@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { ApiError, CauseError } from "../api/api-error";
+import { ApiError, CauseError } from "../api-error";
 
 
 function handleError(error : unknown) {

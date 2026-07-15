@@ -1,5 +1,5 @@
 import { object, string, type ObjectSchema } from "yup";
-import type { StudentRequestDto } from "../../adapter/request.dto";
+import type { StudentRequestDto } from "../../../../adapter/request.dto";
 
 
 const incomerSchema : ObjectSchema<StudentRequestDto> = object().shape({

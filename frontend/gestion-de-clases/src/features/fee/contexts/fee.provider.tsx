@@ -1,6 +1,6 @@
-import useAddData from "@/globals/hooks/useAddData";
+import useAddData from "@/shared/hooks/useAddData";
 import type { UseFee } from "../hooks/fee.use";
-import type { Fee } from "@/globals/types/fee";
+import type { Fee } from "@/shared/types/fee";
 import FeeContext from "./fee.context";
 import type { ReactNode } from "react";
 import saveFee from "../services/save-fee";

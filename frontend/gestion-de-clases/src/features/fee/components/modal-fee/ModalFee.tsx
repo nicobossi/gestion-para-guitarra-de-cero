@@ -1,9 +1,9 @@
-import ModalHeader from '@/globals/components/modal-header/ModelHeader';
+import ModalHeader from '@/shared/components/modal-header/ModelHeader';
 import type { ModalFeeProps } from './modal-fee-d';
 import './modal-fee.css'
-import ModalContent from '@/globals/components/modal-content/ModalContent';
-import ModalFooter from '@/globals/components/modal-footer/ModalFooter';
-import ModalContainer from '@/globals/components/modal-container/ModalContainer';
+import ModalContent from '@/shared/components/modal-content/ModalContent';
+import ModalFooter from '@/shared/components/modal-footer/ModalFooter';
+import ModalContainer from '@/shared/components/modal-container/ModalContainer';
 import useFeeContext from '../../contexts/fee-validate';
 
 

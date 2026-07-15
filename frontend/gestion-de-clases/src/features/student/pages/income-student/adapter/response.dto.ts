@@ -1,4 +1,4 @@
-import type { Student } from "@/globals/types/student";
+import type { Student } from "@/shared/types/student";
 
 
 export type StudentResponseDto = Omit<Student, "phone" | "submissionDate"> & {

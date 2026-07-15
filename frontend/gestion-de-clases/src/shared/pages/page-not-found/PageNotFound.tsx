@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import './page-not-found.css'
-import { HOME_ROUTE } from '@/infraestructure/routes/routes';
+import { HOME_ROUTE } from '@/globals/routes/routes';
 
 
 const PageNotFoundContainer = () => {

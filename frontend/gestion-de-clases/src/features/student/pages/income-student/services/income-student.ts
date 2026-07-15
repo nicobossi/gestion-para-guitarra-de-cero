@@ -1,9 +1,9 @@
-import type { Student } from "@/globals/types/student";
-import { URL_STUDENT_INCOME } from "@/infraestructure/api/api-urls";
+import type { Student } from "@/shared/types/student";
+import { URL_STUDENT_INCOME } from "@/globals/api/api-urls";
+import api from "@/globals/api/api-client";
+import { ApiError, CauseError } from "@/globals/api/api-error";
 import requestDto from "../adapter/request.dto";
 import { responseDto, type StudentResponseDto } from "../adapter/response.dto";
-import api from "@/infraestructure/request-config/request-config";
-import { ApiError, CauseError } from "@/infraestructure/api/api-error";
 
 
 const incomeStudent = async (entrant : Student) : Promise<Student> => {

@@ -1,5 +1,5 @@
-import type { Fee } from "@/globals/types/fee";
-import { PaymentLapse } from "@/globals/types/payment-lapse";
+import type { Fee } from "@/shared/types/fee";
+import { PaymentLapse } from "@/shared/types/payment-lapse";
 
 
 
