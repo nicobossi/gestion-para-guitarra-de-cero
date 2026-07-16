@@ -9,7 +9,6 @@
 }
 
 .menu-icon path, .active_menu-icon path{
-    width: 100%;
     height: 10%;
     stroke: #FFF;
 }
