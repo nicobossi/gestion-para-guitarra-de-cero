@@ -1,14 +1,13 @@
-
-
-
-.side-bar {
-    max-width: 250px;
+.menu_side-bar, .menu_active-side-bar {
     background-color: var(--dark-color);
 }
 
-.active_side-dar {
+.menu_side-bar {
+    max-width: 250px;
+}
+
+.menu_active-side-bar {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: var(--dark-color);
 }
