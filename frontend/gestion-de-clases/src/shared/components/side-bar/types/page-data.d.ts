@@ -1,7 +1,11 @@
-import type { LinkData } from "./link-data"
+export type PageRoute = SimpleRoute | CompositeRoute
 
-
-export interface PageData {
-    pageName : string
-    links : LinkData[]
+type PageData = {
+    id: number
+    pageName: string
 }
+
+export type CompositeRoute = PageData & { links: SimpleRoute[] }
+
+export type SimpleRoute = PageData & { path: string }
+

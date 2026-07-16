@@ -1,6 +1,6 @@
-import type { PageData } from "../side-bar/types/page-data";
+import type { PageRoute } from "@/shared/components/side-bar/types/page-data"
 
 export type NavItemProps = {
-    page: PageData
+    page: PageRoute
     isActive: boolean
 }

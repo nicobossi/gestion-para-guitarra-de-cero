@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router';
 import './page-not-found.css'
-import { HOME_ROUTE } from '@/globals/routes/routes';
-
 
 const PageNotFoundContainer = () => {
     
@@ -14,7 +12,7 @@ const PageNotFoundContainer = () => {
                     <h2>404</h2>
                     <h3>No se encontró la página</h3>
                 </div>
-                <button onClick = {() => navegate(HOME_ROUTE)}>Volver al Home</button>
+                <button onClick = {() => navegate("/")}>Volver al Home</button>
             </section>
             <section className = "error-404_background">
 

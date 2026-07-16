@@ -8,8 +8,8 @@ const NavegatorPage = ({pages, isActive} : NavegatorPageProps) => {
         <section className = {isActive ? "active_navegator-container" : "navegator-container"}>
             {pages.map(page => 
                 <NavItem 
-                    page={page} 
-                    key={page.pageName}
+                    page = {page} 
+                    key = {page.id}
                     isActive = {isActive}
                 />
             )}

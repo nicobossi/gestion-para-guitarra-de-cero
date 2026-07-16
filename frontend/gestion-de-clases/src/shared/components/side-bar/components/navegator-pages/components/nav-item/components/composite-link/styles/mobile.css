@@ -18,3 +18,10 @@
 .nav-item_desciption p {
     color: #FFF;
 }
+
+.nav-item_links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

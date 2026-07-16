@@ -1,25 +1,27 @@
 import type { NavItemProps } from "./nav-item";
 import { useState } from "react";
-import './nav-item.css';
-import NavDescription from "./components/nav-description/NavDescription";
-import LinksList from "./components/link-list/LinkList";
+import LinkSimple from "./components/link-simple/LinkSimple";
+import CompositeLink from "./components/composite-link/CompositeLink";
 
-const NaveItem = ({page, isActive} : NavItemProps) => {
+const NavItem = ({page, isActive} : NavItemProps) => {
 
-    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const [isVisible, setIsVisible] = useState(false);
 
-    const changeVisible = () => setIsVisible(prevIsVisible => !prevIsVisible);
-    
+    const onActive = () => setIsVisible(prevIsVisible => !prevIsVisible);
+
     return (
-        <div className = "nav-item">
-            <NavDescription 
-                pageName = {page.pageName} 
-                changeVisible = {changeVisible} 
+        "links" in page ? 
+            <CompositeLink 
+                isVisible = {isVisible}
                 isActive = {isActive}
-            />
-            {isVisible && <LinksList page = {page} />}
-        </div>
+                page = {page} 
+                pageName = {page.pageName}  
+                onVisible = {onActive} 
+            /> :
+            <LinkSimple 
+                simpleRoute = {page} 
+            /> 
     )
 }
 
-export default NaveItem;
+export default NavItem;

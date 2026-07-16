@@ -1,6 +1,6 @@
-import type { PageData } from "../side-bar/types/page-data"
+import type { PageRoute } from "../../types/page-data"
 
 export type NavegatorPageProps = {
-    pages : PageData[]
+    pages : PageRoute[]
     isActive: boolean
 }

@@ -1,13 +1,10 @@
 import './styles/nav-description.css';
 
-const NavDescription = ({pageName, changeVisible, isActive} : NavDescriptionProps) => {
+const NavDescription = ({pageName, onVisible, isActive} : NavDescriptionProps) => {
     return (
-        <section className = "nav-item_desciption" onClick = {changeVisible}>
+        <div className = "nav-item_desciption" onClick = {onVisible}>
             <p className = {isActive ? "active_side-bar-name-page" : "side-bar-name-page"}>{pageName}</p>
-            <figure>
-                    
-            </figure>
-        </section>
+        </div>
     )
 }
 
