@@ -12,7 +12,7 @@ export abstract class DbExceptionFilter<
         const response = ctx.getResponse<Response>();
         const { status, message } = this.responseData();
         response.status(status).json({
-            message: message,
+            message,
             timestamp: new Date().toISOString(),
             path: request.url,
         });

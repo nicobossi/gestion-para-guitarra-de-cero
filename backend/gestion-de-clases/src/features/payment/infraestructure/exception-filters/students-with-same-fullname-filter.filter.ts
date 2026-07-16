@@ -1,17 +1,13 @@
-import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
+import { Catch } from '@nestjs/common';
 import { StudentsWithSameFullname } from '../../../../shared/application/exceptions/students-with-same-fullname';
-import { Request, Response } from 'express';
+import { ModelFilterException } from '../../../../shared/infraestructure/exception-filters/model/model.filter';
+import { FilterExceptionModelData } from '../../../../shared/infraestructure/exception-filters/model/model-filter-error-data';
 
 @Catch(StudentsWithSameFullname)
-export class StudentsWithSameFullnameFilter implements ExceptionFilter<StudentsWithSameFullname> {
-    catch(exception: StudentsWithSameFullname, host: ArgumentsHost) {
-        const ctx = host.switchToHttp();
-        const request = ctx.getRequest<Request>();
-        const response = ctx.getResponse<Response>();
-        return response.status(409).json({
-            message: exception.message,
-            timestamp: new Date().toISOString(),
-            path: request.url,
-        });
+export class StudentsWithSameFullnameFilter extends ModelFilterException<StudentsWithSameFullname> {
+    protected responseData(): FilterExceptionModelData {
+        return {
+            status: 409,
+        };
     }
 }
