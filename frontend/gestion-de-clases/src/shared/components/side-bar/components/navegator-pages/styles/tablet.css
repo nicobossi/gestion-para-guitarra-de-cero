@@ -1,5 +1,5 @@
 @media screen and (min-width: 768px) {
-    .menu_active-side-bar {
-        width: 0;
+    .active_navegator-container {
+        display: none;
     }
 }

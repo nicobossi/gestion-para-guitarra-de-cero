@@ -2,6 +2,7 @@ import type { NavItemProps } from "./nav-item";
 import { useState } from "react";
 import LinkSimple from "./components/link-simple/LinkSimple";
 import CompositeLink from "./components/composite-link/CompositeLink";
+import { routesStyles } from "./routes-styles";
 
 const NavItem = ({page, isActive} : NavItemProps) => {
 
@@ -12,6 +13,7 @@ const NavItem = ({page, isActive} : NavItemProps) => {
     return (
         "links" in page ? 
             <CompositeLink 
+                styles = {routesStyles}
                 isVisible = {isVisible}
                 isActive = {isActive}
                 page = {page} 
@@ -19,6 +21,8 @@ const NavItem = ({page, isActive} : NavItemProps) => {
                 onVisible = {onActive} 
             /> :
             <LinkSimple 
+                styles = {routesStyles}
+                isVisible = {isVisible}
                 simpleRoute = {page} 
             /> 
     )

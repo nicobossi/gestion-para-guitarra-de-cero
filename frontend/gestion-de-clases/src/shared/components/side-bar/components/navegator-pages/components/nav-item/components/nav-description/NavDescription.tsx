@@ -1,9 +1,9 @@
-import './styles/nav-description.css';
+import type { NavDescriptionProps } from './nav-description';
 
-const NavDescription = ({pageName, onVisible, isActive} : NavDescriptionProps) => {
+const NavDescription = ({pageName, onVisible, isActive, styles} : NavDescriptionProps) => {
     return (
         <div className = "nav-item_desciption" onClick = {onVisible}>
-            <p className = {isActive ? "active_side-bar-name-page" : "side-bar-name-page"}>{pageName}</p>
+            <p className = {styles({show: isActive ? 'on' : 'off'})}>{pageName}</p>
         </div>
     )
 }

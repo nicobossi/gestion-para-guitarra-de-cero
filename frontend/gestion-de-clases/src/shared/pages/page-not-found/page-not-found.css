@@ -22,7 +22,6 @@
 .error-404_content--errors {
     display: grid;
     place-items: center;
-    height: 70%
 }
 
 .error-404_content h2 {
