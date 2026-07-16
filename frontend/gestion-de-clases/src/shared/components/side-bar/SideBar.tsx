@@ -1,19 +1,21 @@
-import { useState } from 'react';
 import pagesData from './pages-data';
 import NavegatorPage from './components/navegator-pages/NavegatorPages';
 import MenuIcon from './components/menu-icon/MenuIcon';
 import './styles/side-bar.css';
+import type { SideBarProps } from './types/side-bar';
 
-const SideBar = () => {
-
-    const [isVisible, setIsVisible] = useState(false); 
-
-    const onVisible = () => setIsVisible(prevIsVisible => !prevIsVisible);
+const SideBar = ({onActive, isActive}: SideBarProps) => {
 
     return (
-        <aside className = {isVisible ? 'menu_active-side-bar' : 'menu_side-bar'}>
-            <MenuIcon onShow = {onVisible} isVisible = {isVisible} />
-            {isVisible && <NavegatorPage pages = {pagesData} />}
+        <aside className = {isActive ? 'menu_active-side-bar' : 'menu_side-bar'}>
+            <MenuIcon 
+                onShow = {onActive} 
+                isVisible = {isActive} 
+            />
+            <NavegatorPage 
+                isActive = {isActive} 
+                pages = {pagesData} 
+            />
         </aside>
     )   
 }

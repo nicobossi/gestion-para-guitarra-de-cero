@@ -1,0 +1,7 @@
+.side-bar-name-page {
+    display: none;    
+}
+
+.active_side-bar-name-page {
+    display: block;
+}

@@ -1,13 +1,12 @@
-import SideBar from "@/shared/components/side-bar/SideBar";
-import FeeRoutes from "./routes/routes";
+import MainContainer from '@/shared/components/main-container/MainContainer';
+import FeeRoutes from './routes/Routes';
 import './fee.css';
 
 const Fee = () => {    
     return (
-        <section className = 'fee'>
-            <SideBar />
+        <MainContainer>
             <FeeRoutes />
-        </section>
+        </MainContainer>
     )
 }
 

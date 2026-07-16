@@ -1,6 +1,4 @@
-
-
-.navegator-container {
+.navegator-container, .active_navegator-container {
     display: grid;
     place-items: center;
     width: 100%;
