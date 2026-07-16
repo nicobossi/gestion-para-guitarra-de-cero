@@ -1,14 +1,13 @@
-import { Route, Routes } from 'react-router';
-import IncomePanel from './pages/income-student/IncomeStudent';
-import { INCOME } from '@/globals/routes/student';
-
+import SideBar from '@/shared/components/side-bar/SideBar';
+import './student.css';
+import StudentRoutes from './routes/routes';
 
 const Student = () => {
-
     return (
-        <Routes>
-            <Route path = {INCOME} element = {<IncomePanel />} />
-        </Routes>
+        <section className = 'student'>
+            <SideBar />
+            <StudentRoutes />
+        </section>
     )
 }
 

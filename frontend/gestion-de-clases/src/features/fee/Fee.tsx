@@ -1,13 +1,13 @@
-import { Route, Routes } from "react-router";
-import AddFeePanel from "./pages/add-fee/AddFeePage";
-import { ADD } from "@/globals/routes/fee";
+import SideBar from "@/shared/components/side-bar/SideBar";
+import FeeRoutes from "./routes/routes";
+import './fee.css';
 
-const Fee = () => {
-    
+const Fee = () => {    
     return (
-        <Routes>
-            <Route path = {ADD} element = {<AddFeePanel />} />
-        </Routes>
+        <section className = 'fee'>
+            <SideBar />
+            <FeeRoutes />
+        </section>
     )
 }
 

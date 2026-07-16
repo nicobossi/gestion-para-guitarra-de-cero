@@ -1,4 +1,3 @@
-import SideBar from '@/shared/components/side-bar/SideBar';
 import './add-fee-page.css';
 import ModalFee from './components/modal-fee/ModalFee';
 import IncomeFee from './components/income-fee/IncomeFee';
@@ -20,7 +19,6 @@ const AddFeePage = () => {
 
     return (
         <section className = 'add-fee'>
-            <SideBar />
             {data && <ModalFee fee = {data} />}
             <IncomeFee />
         </section>
