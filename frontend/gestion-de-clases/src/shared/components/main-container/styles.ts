@@ -7,11 +7,11 @@ export const styles = cva({
     },
     variants: {
         size: {
-            grid: {
+            false: {
                 display: 'grid',
                 gridTemplateColumns: '20% 80%',
             },
-            complete: {
+            true: {
                 display: 'block'
             }
         }

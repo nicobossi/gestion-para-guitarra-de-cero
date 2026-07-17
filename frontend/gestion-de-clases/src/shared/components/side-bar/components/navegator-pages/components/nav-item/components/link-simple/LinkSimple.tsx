@@ -6,7 +6,7 @@ const ABSOLUTE_PATH = '/';
 const LinkSimple = ({isVisible, simpleRoute, styles}: LinkSimpleProps) => {
     return (
         <Link 
-            className = {styles({show: isVisible ? 'on' : 'off'})}
+            className = {styles('none', 'block', isVisible)}
             to = {ABSOLUTE_PATH + simpleRoute.path} 
             key = {simpleRoute.id}>
                 {simpleRoute.pageName}

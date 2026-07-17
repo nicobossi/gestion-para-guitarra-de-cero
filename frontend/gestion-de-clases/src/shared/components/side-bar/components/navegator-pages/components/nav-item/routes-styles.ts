@@ -1,26 +1,11 @@
-import { cva } from "@styled-system/css";
+import activeStyles, { type ActiveValue } from "@/shared/styles/active";
+import { css, cx } from "@styled-system/css";
 
-export const routesStyles = cva({
-    base: {
-        color: '#FFF'
-    },
-    variants: {
-        show: {
-            on: {
-                base: {
-                    display: 'block'
-                },
-            },
-            off: {
-                base: {
-                    display: 'none'
-                },
-                md: {
-                    display: 'block'
-                }
-            }
-        }
-    }
-});
+const routesColor = css({
+    color: '#FFF'
+})
+
+export const routesStyles = (f: ActiveValue, t: ActiveValue, is: boolean) => 
+    cx(routesColor, activeStyles(f, t)({show: is}))
 
 export type RoutesStyles = typeof routesStyles;
