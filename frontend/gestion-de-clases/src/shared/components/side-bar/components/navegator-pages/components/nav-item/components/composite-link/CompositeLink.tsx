@@ -9,8 +9,8 @@ const CompositeLink = ({page, pageName, isActive}: CompositeLinkProps) => {
     const {isActive: isVisible, onActive: onVisible} = useActive();
     
     return (
-        <div className = "nav-item">
-            <NavDescription 
+        <>
+        <NavDescription 
                 pageName = {pageName} 
                 onVisible = {onVisible} 
                 isActive = {isActive}
@@ -25,7 +25,7 @@ const CompositeLink = ({page, pageName, isActive}: CompositeLinkProps) => {
                         />
                     )}
                 </section>}
-        </div>
+        </>
     )
 }
 

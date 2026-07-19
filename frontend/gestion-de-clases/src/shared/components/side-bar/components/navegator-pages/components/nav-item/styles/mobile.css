@@ -1,0 +1,7 @@
+.nav-item_container {
+    height: 100%;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 30px
+}

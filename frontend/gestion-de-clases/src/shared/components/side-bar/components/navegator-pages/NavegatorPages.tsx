@@ -5,7 +5,7 @@ import './styles/navegator-pages.css';
 const NavegatorPage = ({pages, isActive} : NavegatorPageProps) => {
 
     return (
-        <section className = {isActive ? "active_navegator-container" : "navegator-container"}>
+        <section className = 'navegator-container'>
             {pages.map(page => 
                 <NavItem 
                     page = {page} 

@@ -11,7 +11,10 @@ export const activeStyles: ActiveStyle = {
                 display: 'block'
             },
             false: {
-                display: 'none'
+                display: {
+                    base: 'none',
+                    md: 'block'
+                }
             }
         }
     }

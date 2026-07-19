@@ -2,11 +2,23 @@ import { ADD, DASHBOARD_FEE, MAIN_ROUTE_FEE } from "@/globals/routes/fee";
 import { ATTENDANCE, DASHBOARD, INCOME, MAIN_ROUTE_STUDENT, UNSUSCRIBE } from "@/globals/routes/student";
 import type { PageRoute } from "./types/page-data";
 import { DASHBOARD_PAYMENT, EXTEND, MAIN_ROUTE_PAYMENT, NEXT_PAYMENT, REGISTER } from "@/globals/routes/payment";
+import student from '@/assets/side-bar/graduate.svg';
+import payment from '@/assets/side-bar/money-saving.svg';
+import fee from '@/assets/side-bar/mobile-app.svg';
+import home from '@/assets/side-bar/home-automation.svg';
+import cancel from '@/assets/side-bar/thesis.svg';
 
 const pagesData: PageRoute[] = [
     {
+        id: 0,
+        pageName: "Inicio",
+        icon: home,
+        path: ''
+    },
+    {
         id: 1,
         pageName: "Alumnos",
+        icon: student,
         links: [
             {
                 id: 2,
@@ -33,6 +45,7 @@ const pagesData: PageRoute[] = [
     {
         id: 5,
         pageName: "Cuotas",
+        icon: fee,
         links: [
             {
                 id: 6,
@@ -49,6 +62,7 @@ const pagesData: PageRoute[] = [
     {
         id: 8,
         pageName: "Pagos",
+        icon: payment,
         links: [
             {
                 id: 9,
@@ -75,6 +89,7 @@ const pagesData: PageRoute[] = [
     {
         id: 15,
         pageName: "Clases",
+        icon: cancel,
         path: `${MAIN_ROUTE_FEE + ADD}`
     },
 ]

@@ -4,9 +4,9 @@ import './styles/menu-icon.css';
 const MenuIcon = ({onShow, isVisible}: MenuIconProps) => {
     return (
         <svg 
-            className = {isVisible ? "active_menu-icon" : "menu-icon"}
+            className = {isVisible ? 'active_menu-icon' : 'menu-icon'}
             onClick = {onShow}
-            xmlns="http://www.w3.org/2000/svg" 
+            xmlns = "http://www.w3.org/2000/svg" 
             viewBox = "0 -10 30 50"
             fill = "none"
         >
