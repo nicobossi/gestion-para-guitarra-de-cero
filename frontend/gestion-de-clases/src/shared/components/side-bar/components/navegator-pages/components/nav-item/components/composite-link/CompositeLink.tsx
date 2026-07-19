@@ -4,14 +4,13 @@ import NavDescription from "../nav-description/NavDescription";
 import type { CompositeLinkProps } from "./composite-route"
 import './styles/composite-link.css';
 
-const CompositeLink = ({page, pageName, isActive, styles}: CompositeLinkProps) => {
+const CompositeLink = ({page, pageName, isActive}: CompositeLinkProps) => {
 
     const {isActive: isVisible, onActive: onVisible} = useActive();
     
     return (
         <div className = "nav-item">
             <NavDescription 
-                styles = {styles}
                 pageName = {pageName} 
                 onVisible = {onVisible} 
                 isActive = {isActive}
@@ -22,7 +21,6 @@ const CompositeLink = ({page, pageName, isActive, styles}: CompositeLinkProps) =
                         <LinkSimple 
                             simpleRoute = {link} 
                             key = {link.id} 
-                            styles = {styles} 
                             isVisible
                         />
                     )}

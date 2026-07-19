@@ -4,6 +4,5 @@ import type { RoutesStyles } from "../../routes-styles"
 
 export type LinkSimpleProps = {
     isVisible: boolean
-    styles: RoutesStyles
     simpleRoute: SimpleRoute
 }

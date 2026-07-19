@@ -1,20 +1,18 @@
 import { cva } from "@styled-system/css";
+import type { SystemStyleObject } from "@styled-system/types";
 
-export type ActiveValue = 'block' | 'none'
+export type ActiveStyle = {
+    false: SystemStyleObject, 
+    true: SystemStyleObject, 
+    base?: SystemStyleObject
+}
 
-export const activeStyles = (falseValue: ActiveValue, trueValue: ActiveValue) => cva({
+export const whenActiveStyles = (activeStyles: ActiveStyle) => cva({
+    base: activeStyles.base,
     variants: {
         show: {
-            true: {
-                display: trueValue
-            },
-            false: {
-                display: falseValue,
-            }
+            false: activeStyles.false,
+            true: activeStyles.true
         }
     }
 });
-
-export type ActiveStyles = typeof activeStyles;
-
-export default activeStyles;

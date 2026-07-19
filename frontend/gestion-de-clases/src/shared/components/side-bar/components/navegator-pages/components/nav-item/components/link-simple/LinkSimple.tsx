@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 import type { LinkSimpleProps } from "./link-simple";
+import { styles } from "./styles";
 
 const ABSOLUTE_PATH = '/';
 
-const LinkSimple = ({isVisible, simpleRoute, styles}: LinkSimpleProps) => {
+const LinkSimple = ({isVisible, simpleRoute}: LinkSimpleProps) => {
     return (
         <Link 
-            className = {styles('none', 'block', isVisible)}
+            className = {styles(isVisible)}
             to = {ABSOLUTE_PATH + simpleRoute.path} 
             key = {simpleRoute.id}>
                 {simpleRoute.pageName}
