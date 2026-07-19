@@ -14,14 +14,17 @@ const NavItem = ({page, isActive} : NavItemProps) => {
 }
 
 const Link = ({page, isActive}: NavItemProps) => {
-    return "links" in page ?
+    return (
+        "links" in page ?
         <CompositeLink
             isActive = {isActive}
             page = {page}
             pageName = {page.pageName} /> :
         <LinkSimple
             isVisible = {isActive}
-            simpleRoute = {page} />
+            simpleRoute = {page} 
+        />
+    )
 }
 
 

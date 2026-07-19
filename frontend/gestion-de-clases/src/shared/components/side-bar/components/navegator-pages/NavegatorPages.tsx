@@ -1,11 +1,11 @@
 import NavItem from "./components/nav-item/NavItem";
 import type { NavegatorPageProps } from "./navegator-pages";
-import './styles/navegator-pages.css';
+import { styles } from "./styles";
 
 const NavegatorPage = ({pages, isActive} : NavegatorPageProps) => {
 
     return (
-        <section className = 'navegator-container'>
+        <section className = {styles(isActive)}>
             {pages.map(page => 
                 <NavItem 
                     page = {page} 

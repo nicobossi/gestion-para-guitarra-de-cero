@@ -4,24 +4,15 @@ import { cva } from "@styled-system/css";
 const activeStyles: ActiveStyle = {
     base: {
         display: 'grid',
-        alignItems: 'center',
-        height: '20%',
-        width: {
-            base: '50%',
-            md: '100%'
-        }
+        placeItems: 'center',
+        width: '100%',
+        height: '90%',
     },
     variants: {
         show: {
             true: {
-                gridTemplateColumns: '50% 50%',
+                display: { md: 'none' }
             },
-            false: {
-                gridTemplateColumns: {
-                    base: '100% 0%',
-                    md: '50% 50%'
-                }
-            }
         }
     }
 }
