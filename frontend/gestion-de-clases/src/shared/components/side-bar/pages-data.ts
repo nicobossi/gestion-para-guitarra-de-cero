@@ -61,12 +61,12 @@ const pagesData: PageRoute[] = [
                 path: `${MAIN_ROUTE_PAYMENT + EXTEND}`
             },
             {
-                id: 9,
+                id: 11,
                 pageName: "siguiente pago",
                 path: `${MAIN_ROUTE_PAYMENT + NEXT_PAYMENT}`
             },
             {
-                id: 9,
+                id: 12,
                 pageName: "dashboard",
                 path: `${MAIN_ROUTE_PAYMENT + DASHBOARD_PAYMENT}`
             }

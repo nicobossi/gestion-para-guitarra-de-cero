@@ -1,21 +1,26 @@
-import { whenActiveStyles } from "@/shared/styles/active"
+import type { ActiveStyle } from "@/shared/styles/active";
+import { cva } from "@styled-system/css";
 
-export const activeStyles = {
+export const activeStyles: ActiveStyle = {
     base: {
         color: '#FFF'
     },
-    true: {
-        display: {
-            base: 'block',
-            md: 'none'
-        }
-    },
-    false: {
-        display: {
-            base: 'none',
-            md: 'block'
+    variants: {
+        show: {
+            true: {
+                display: {
+                    base: 'block',
+                    md: 'none'
+                }
+            },
+            false: {
+                display: {
+                    base: 'none',
+                    md: 'block'
+                }
+            }
         }
     }
-}
+};
 
-export const styles = (isActive: boolean) => whenActiveStyles(activeStyles)({ show: isActive });
+export const styles = (isActive: boolean) => cva(activeStyles)({ show: isActive });

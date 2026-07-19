@@ -1,19 +1,22 @@
+import type { ActiveStyle } from "@/shared/styles/active";
 import { cva } from "@styled-system/css";
 
-export const styles = cva({
+const mainContainer: ActiveStyle = {
     base: {
+        display: 'grid',
         width: '100vw',
         height: '100vh'
     },
     variants: {
-        size: {
-            false: {
-                display: 'grid',
-                gridTemplateColumns: '20% 80%',
-            },
+        show: {
             true: {
-                display: 'block'
+                gridTemplateColumns: '100% 0',
+            },
+            false: {
+                gridTemplateColumns: '20% 80%',
             }
         }
     }
-})
+}
+
+export const styles = (isActive: boolean) => cva(mainContainer)({ show: isActive }); 

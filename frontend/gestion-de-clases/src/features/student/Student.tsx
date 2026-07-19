@@ -1,4 +1,3 @@
-import './student.css';
 import StudentRoutes from './routes/Routes';
 import MainContainer from '@/shared/components/main-container/MainContainer';
 

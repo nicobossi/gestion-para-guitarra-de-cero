@@ -3,7 +3,6 @@ import Student from "./features/student/Student"
 import ServerErrorContainer from "./shared/pages/server-error/ServerError"
 import PageNotFoundContainer from "./shared/pages/page-not-found/PageNotFound"
 import Fee from "./features/fee/Fee"
-import '../styled-system/styles.css'
 import { STUDENT_ROUTE } from "./globals/routes/student"
 import { FEE_ROUTE } from "./globals/routes/fee"
 import { SERVER_ERROR_ROUTE } from "./globals/routes/server-error"
