@@ -6,7 +6,7 @@ import LinkSimple from "../link-simple/LinkSimple"
 
 type LinkContainerProps = {
     page: PageRoute
-    onVisible: () => void 
+    onVisible: (id: number) => void 
     isActive: boolean
 }
 
@@ -14,7 +14,7 @@ const LinkDescription = ({page, onVisible, isActive}: LinkContainerProps) => {
     return (
         <section className = {styles(isActive)}>
             {page.icon && <Icon icon = {page.icon} />}
-            <Description page = {page} isActive = {isActive} onVisible={onVisible}/>
+            <Description page = {page} isActive = {isActive} onVisible = {onVisible}/>
         </section>
     )
 }
@@ -27,7 +27,7 @@ const Description = ({page, onVisible, isActive}: LinkContainerProps) => {
                 simpleRoute = {page} 
             /> : 
             <NavDescription 
-                pageName = {page.pageName} 
+                pageName = {page} 
                 onVisible = {onVisible} 
                 isActive = {isActive} 
             />

@@ -1,18 +1,17 @@
 import type { NavItemProps } from "./nav-item";
 import CompositeLink from "./components/composite-link/CompositeLink";
-import useActive from "@/shared/hooks/useActive";
 import LinkDescription from "./components/link-description/LinkDescription";
 import type { PageRoute } from "@/shared/components/side-bar/types/page-data";
 import { styles } from "./styles";
 
-const NavItem = ({page, isActive} : NavItemProps) => {
+const NavItem = ({page, isActive, isVisible, onVisible} : NavItemProps) => {
 
-    const {isActive: isVisible, onActive: onVisible} = useActive();
+    const is = isVisible(page.id)
 
     return (
-        <div className = {styles(isVisible)}>
+        <div className = {styles(is)}>
             <LinkDescription isActive = {isActive} page = {page} onVisible = {onVisible} />
-            {isVisible && isComposite(page) && <CompositeLink isVisible = {isVisible} isActive = {isActive} page = {page} />}
+            {is && isComposite(page) && <CompositeLink isVisible = {isActive} isActive = {isActive} page = {page} />}
         </div>
     )
 }
