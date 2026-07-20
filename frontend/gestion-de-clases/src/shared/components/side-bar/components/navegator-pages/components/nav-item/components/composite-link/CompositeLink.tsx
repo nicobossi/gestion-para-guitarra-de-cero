@@ -1,17 +1,23 @@
 import type { CompositeLinkProps } from "./composite-route"
 import LinkSimple from "../link-simple/LinkSimple";
-import { styles } from "./styles";
+import { slots } from "./styles";
+import { css } from "@styled-system/css";
 
-const CompositeLink = ({page, isVisible}: CompositeLinkProps) => {    
+const CompositeLink = ({page, isVisible}: CompositeLinkProps) => {   
+    
+    const styles = slots.raw({ show: isVisible });
+
     return (
-        <section className = {styles(isVisible)}>
-            {page.links.map(link => 
-            <LinkSimple 
-                simpleRoute = {link} 
-                key = {link.id} 
-                isVisible = {isVisible}
-            />
-        )}
+        <section className = {css(styles['container'])}>
+            <div className = {css(styles['submenu'])}>
+                {page.links.map(link => 
+                <LinkSimple 
+                    simpleRoute = {link} 
+                    key = {link.id} 
+                    isVisible = {isVisible}
+                />
+            )}
+            </div>
         </section>
     )
 }

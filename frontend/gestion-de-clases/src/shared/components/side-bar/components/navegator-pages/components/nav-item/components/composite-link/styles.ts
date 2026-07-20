@@ -1,24 +1,32 @@
-import type { ActiveStyle } from "@/shared/styles/active";
-import { cva } from "@styled-system/css";
+import { sva } from "@styled-system/css";
 
-const activeStyles: ActiveStyle = {
+const activeStyles = {
+    slots: ['container', 'submenu'],
     base: {
-        width: '100%',
-        backgroundColor: '#273678',
+        container: {
+            backgroundColor: '#273678',
+        },
+        submenu: {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '50%',
+            gap: '6px'
+        }
     },
     variants: {
         show: {
             true: {
-                display: 'grid',
-                placeItems: 'center',
-                gap: '6px',
+                container: {
+                    display: 'flex',
+                    justifyContent: 'end',
+                    width: '100%',
+                }
             },
             false: {
 
             }
-
         }
     }
 }
 
-export const styles = (isVisible: boolean) => cva(activeStyles)({ show: isVisible });
+export const slots = sva(activeStyles);
