@@ -6,7 +6,6 @@ export type IconProps = {
 
 const styles = css({
     height: '100%',
-    width: '100%',
     display: 'grid',
     placeItems: 'center'
 });

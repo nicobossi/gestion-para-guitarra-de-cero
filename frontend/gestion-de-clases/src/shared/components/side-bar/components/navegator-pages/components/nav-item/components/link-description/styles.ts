@@ -5,7 +5,6 @@ const activeStyles: ActiveStyle = {
     base: {
         display: 'grid',
         alignItems: 'center',
-        gridAutoRows: '100%',
         width: '80%',
         maxWidth: '200px',
         md: {

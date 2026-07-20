@@ -1,10 +1,10 @@
 import type { CompositeLinkProps } from "./composite-route"
 import LinkSimple from "../link-simple/LinkSimple";
-import './styles.css';
+import { styles } from "./styles";
 
 const CompositeLink = ({page, isVisible}: CompositeLinkProps) => {    
     return (
-        <section className = "nav-item_links">
+        <section className = {styles(isVisible)}>
             {page.links.map(link => 
             <LinkSimple 
                 simpleRoute = {link} 

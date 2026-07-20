@@ -3,15 +3,19 @@ import { cva } from "@styled-system/css";
 
 const activeStyles: ActiveStyle = {
     base: {
+        justifyItems: 'center',
         width: '100%',
+        minHeight: '20%',
+        padding: '10%'
     },
     variants: {
         show: {
             true: {
-                md: {
-                    display: 'none'
-                }
+                backgroundColor: '#273678'
             },
+            false: {
+
+            }
         }
     }
 }

@@ -3,6 +3,8 @@ import { cva } from "@styled-system/css";
 
 export const sideBar: ActiveStyle = {
     base: {
+        display: 'grid',
+        gridTemplateRows: '20% 80%',
         backgroundColor: '#111A40' 
     },
     variants: {

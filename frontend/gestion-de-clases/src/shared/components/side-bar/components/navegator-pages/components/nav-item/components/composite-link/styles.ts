@@ -1,23 +1,24 @@
 import type { ActiveStyle } from "@/shared/styles/active";
 import { cva } from "@styled-system/css";
 
-export const activeStyles: ActiveStyle = {
+const activeStyles: ActiveStyle = {
     base: {
-        color: '#FFF'
+        width: '100%',
+        backgroundColor: '#273678',
     },
     variants: {
         show: {
             true: {
-                display: 'block'
+                display: 'grid',
+                placeItems: 'center',
+                gap: '6px',
             },
             false: {
-                display: {
-                    base: 'none',
-                    md: 'block'
-                }
+
             }
+
         }
     }
-};
+}
 
 export const styles = (isVisible: boolean) => cva(activeStyles)({ show: isVisible });
