@@ -5,10 +5,11 @@ const activeStyles: ActiveStyle = {
     base: {
         display: 'grid',
         alignItems: 'center',
-        height: '20%',
-        width: {
-            base: '50%',
-            md: '100%'
+        gridAutoRows: '100%',
+        width: '80%',
+        maxWidth: '200px',
+        md: {
+            gridTemplateColumns: '50% 50%',
         }
     },
     variants: {
@@ -17,10 +18,7 @@ const activeStyles: ActiveStyle = {
                 gridTemplateColumns: '50% 50%',
             },
             false: {
-                gridTemplateColumns: {
-                    base: '100% 0%',
-                    md: '50% 50%'
-                }
+                gridTemplateColumns: '100% 0%'
             }
         }
     }

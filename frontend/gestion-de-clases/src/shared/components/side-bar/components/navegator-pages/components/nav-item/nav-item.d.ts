@@ -4,3 +4,9 @@ export type NavItemProps = {
     page: PageRoute
     isActive: boolean
 }
+
+export type LinkProps = {
+    page: PageRoute
+    isActive: boolean
+    isVisible: boolean
+}

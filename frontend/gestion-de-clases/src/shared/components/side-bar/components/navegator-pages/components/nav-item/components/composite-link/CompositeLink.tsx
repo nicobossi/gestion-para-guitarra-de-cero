@@ -1,31 +1,18 @@
-import useActive from "@/shared/hooks/useActive";
-import LinkSimple from "../link-simple/LinkSimple";
-import NavDescription from "../nav-description/NavDescription";
 import type { CompositeLinkProps } from "./composite-route"
-import './styles/composite-link.css';
+import LinkSimple from "../link-simple/LinkSimple";
+import './styles.css';
 
-const CompositeLink = ({page, pageName, isActive}: CompositeLinkProps) => {
-
-    const {isActive: isVisible, onActive: onVisible} = useActive();
-    
+const CompositeLink = ({page, isVisible}: CompositeLinkProps) => {    
     return (
-        <>
-        <NavDescription 
-                pageName = {pageName} 
-                onVisible = {onVisible} 
-                isActive = {isActive}
+        <section className = "nav-item_links">
+            {page.links.map(link => 
+            <LinkSimple 
+                simpleRoute = {link} 
+                key = {link.id} 
+                isVisible = {isVisible}
             />
-            {isVisible && 
-                <section className = "nav-item_links">
-                    {page.links.map(link => 
-                        <LinkSimple 
-                            simpleRoute = {link} 
-                            key = {link.id} 
-                            isVisible
-                        />
-                    )}
-                </section>}
-        </>
+        )}
+        </section>
     )
 }
 

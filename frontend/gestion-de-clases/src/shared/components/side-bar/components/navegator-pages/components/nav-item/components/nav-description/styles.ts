@@ -3,6 +3,7 @@ import { cva } from "@styled-system/css";
 
 export const activeStyles: ActiveStyle = {
     base: {
+        width: '100%',
         color: '#FFF'
     },
     variants: {

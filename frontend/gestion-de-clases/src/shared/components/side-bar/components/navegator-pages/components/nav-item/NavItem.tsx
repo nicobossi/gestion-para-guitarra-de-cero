@@ -1,31 +1,22 @@
 import type { NavItemProps } from "./nav-item";
-import LinkSimple from "./components/link-simple/LinkSimple";
 import CompositeLink from "./components/composite-link/CompositeLink";
-import Icon from "@/shared/components/icon/Icon";
-import { styles } from "./styles";
+import useActive from "@/shared/hooks/useActive";
+import LinkDescription from "./components/link-description/LinkDescription";
+import './styles/nav-item.css';
+import type { PageRoute } from "@/shared/components/side-bar/types/page-data";
 
 const NavItem = ({page, isActive} : NavItemProps) => {
+
+    const {isActive: isVisible, onActive: onVisible} = useActive();
+
     return (
-        <section className = {styles(isActive)}>
-            {page.icon && <Icon icon = {page.icon} />}
-            <Link page = {page} isActive = {isActive} /> 
-        </section>
+        <div className = "nav-item_container">
+            <LinkDescription isActive = {isActive} page = {page} onVisible = {onVisible} />
+            {isVisible && isComposite(page) && <CompositeLink isVisible = {isVisible} isActive = {isActive} page = {page} />}
+        </div>
     )
 }
 
-const Link = ({page, isActive}: NavItemProps) => {
-    return (
-        "links" in page ?
-        <CompositeLink
-            isActive = {isActive}
-            page = {page}
-            pageName = {page.pageName} /> :
-        <LinkSimple
-            isVisible = {isActive}
-            simpleRoute = {page} 
-        />
-    )
-}
-
+const isComposite = (page: PageRoute) => "links" in page;
 
 export default NavItem;

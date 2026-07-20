@@ -1,6 +1,7 @@
 .navegator-container {
     display: grid;
     place-items: center;
+    grid-template-rows: repeat(5, 20%);
     width: 100%;
-    height: 90%
+    height: 90%;
 }

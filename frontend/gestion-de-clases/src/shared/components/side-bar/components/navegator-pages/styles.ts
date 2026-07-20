@@ -5,13 +5,17 @@ const activeStyles: ActiveStyle = {
     base: {
         display: 'grid',
         placeItems: 'center',
+        gridTemplateRows: 'repeat(5, 20%)',
         width: '100%',
         height: '90%',
     },
     variants: {
         show: {
             true: {
-                display: { md: 'none' }
+                display: {
+                    base: 'grid',
+                    md: 'none'
+                }
             },
         }
     }

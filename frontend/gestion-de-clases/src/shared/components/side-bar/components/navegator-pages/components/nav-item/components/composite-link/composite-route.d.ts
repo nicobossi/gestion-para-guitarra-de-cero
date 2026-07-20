@@ -3,6 +3,6 @@ import type { RoutesStyles } from "../../routes-styles"
 
 export type CompositeLinkProps = {
     page: CompositeRoute
-    pageName: string
+    isVisible: boolean
     isActive: boolean 
 }
