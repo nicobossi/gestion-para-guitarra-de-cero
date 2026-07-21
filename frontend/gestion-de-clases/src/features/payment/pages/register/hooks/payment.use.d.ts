@@ -9,5 +9,5 @@ export interface UsePayment extends UseAddData<Payment> {
     isLoading : boolean
     freshError : () => void
     freshData : () => void
-    add : (fee : Payment) => void
+    add : (payment : Payment) => void
 }

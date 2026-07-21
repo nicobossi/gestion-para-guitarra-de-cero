@@ -1,5 +1,4 @@
-import type { InputData } from "@/globals/types/input"
-
+import type { InputData } from "@/shared/types/input"
 
 export type RegisterInputProps = {
     inputData : InputData

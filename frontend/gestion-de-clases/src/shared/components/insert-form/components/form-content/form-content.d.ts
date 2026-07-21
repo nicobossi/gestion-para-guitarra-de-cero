@@ -1,8 +1,7 @@
-import type { InputData } from "@/globals/types/input"
+import type { InputData } from "@/shared/types/input"
 import type { ObjectSchema } from "yup"
 
-
-type FormContentProps = {
+export type FormContentProps = {
     schema : ObjectSchema<T>
     inputsData : InputData[] 
     isLoading : boolean
