@@ -1,4 +1,4 @@
-import type { ActiveStyle } from "@/shared/styles/active";
+import type { ActiveStyle } from "../../../../../../../../styles/active/active";
 import { cva } from "@styled-system/css";
 
 export const activeStyles: ActiveStyle = {

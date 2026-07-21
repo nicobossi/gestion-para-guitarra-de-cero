@@ -1,6 +1,6 @@
-import type { ActiveStyle } from "@/shared/styles/active";
+import type { BackgroundColor } from "@/shared/styles/colors/colors";
+import type { ActiveStyle } from "../../styles/active/active";
 import { css, cva } from "@styled-system/css";
-import type { SystemStyleObject } from "@styled-system/types";
 
 const mainContainer: ActiveStyle = {
     base: {
@@ -26,5 +26,8 @@ const mainContainer: ActiveStyle = {
     }
 }
 
-const mainContainerStyles = (isActive: boolean) => cva(mainContainer).raw({ show: isActive });
-export const styles = (isActive: boolean, colors: SystemStyleObject) => css(mainContainerStyles(isActive), colors)
+const mainContainerStyles = (isActive: boolean) => 
+    cva(mainContainer).raw({ show: isActive });
+
+export const styles = (isActive: boolean, colors: BackgroundColor) => 
+    css(mainContainerStyles(isActive), colors)

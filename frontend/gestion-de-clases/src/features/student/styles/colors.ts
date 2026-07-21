@@ -1,4 +1,4 @@
-import type { BackgroundColor } from "@/shared/styles/colors";
+import type { BackgroundColor } from "../../../shared/styles/colors/colors";
 import { css } from "@styled-system/css";
 import { token } from "@styled-system/tokens";
 
