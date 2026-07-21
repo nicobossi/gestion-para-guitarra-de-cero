@@ -1,5 +1,6 @@
 import type { ActiveStyle } from "@/shared/styles/active";
-import { cva } from "@styled-system/css";
+import { css, cva } from "@styled-system/css";
+import type { SystemStyleObject } from "@styled-system/types";
 
 const mainContainer: ActiveStyle = {
     base: {
@@ -10,7 +11,10 @@ const mainContainer: ActiveStyle = {
     variants: {
         show: {
             true: {
-                gridTemplateColumns: '100% 0',
+                gridTemplateColumns: {
+                    base: '100% 0',
+                    md: '20% 80%'
+                },
             },
             false: {
                 gridTemplateColumns: {
@@ -22,4 +26,5 @@ const mainContainer: ActiveStyle = {
     }
 }
 
-export const styles = (isActive: boolean) => cva(mainContainer)({ show: isActive }); 
+const mainContainerStyles = (isActive: boolean) => cva(mainContainer).raw({ show: isActive });
+export const styles = (isActive: boolean, colors: SystemStyleObject) => css(mainContainerStyles(isActive), colors)

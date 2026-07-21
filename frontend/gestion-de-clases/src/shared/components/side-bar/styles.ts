@@ -11,34 +11,30 @@ export const sideBar: ActiveStyle = {
     variants: {
         show: {
             true: {
-                position: 'absolute',
-                width: {
-                    base: '100vw',
-                    md: '20%'
+                position: {
+                    base: 'absolute',
+                    md: 'static'
                 },
+                width: '100%',
                 height: '100%',
             },
-            false: {
-                width: {md: 0}
-            }
         }
     }
 };
 
-export const animation: ActiveStyle = {
+export const slice: ActiveStyle = {
     variants: {
         show: {
             true: {
                 animation: `sliceInX ${token("durations.medium")} forwards`
             },
             false: {
-                animation: `sliceOutX ${token("durations.medium")} forwards`
+                animation: `sliceOutX ${token("durations.fast")} forwards`
             }
         }
     }
 };
 
-export const styles = (isActive: boolean) => css(
-    cva(sideBar).raw({ show: isActive }),
-    cva(animation).raw({ show: isActive }),
-); 
+const sideBarStyles = (isActive: boolean)   => cva(sideBar).raw({ show: isActive })
+const animationStyles = (isActive: boolean) => cva(slice).raw({ show: isActive })
+export const styles = (isActive: boolean)   => css(sideBarStyles(isActive), animationStyles(isActive)); 

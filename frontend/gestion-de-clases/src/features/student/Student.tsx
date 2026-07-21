@@ -1,9 +1,10 @@
 import StudentRoutes from './routes/Routes';
 import MainContainer from '@/shared/components/main-container/MainContainer';
+import studentColors from './styles/colors';
 
 const Student = () => {
     return (
-        <MainContainer>
+        <MainContainer css = {studentColors}>
             <StudentRoutes />
         </MainContainer>
     )
