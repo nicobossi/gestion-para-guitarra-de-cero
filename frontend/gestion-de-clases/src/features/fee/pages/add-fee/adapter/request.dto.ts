@@ -1,5 +1,5 @@
-import type { Fee } from "@/shared/types/fee";
-import { PaymentLapse } from "@/shared/types/payment-lapse";
+import type { Fee } from "../../../../../shared/domain/fee/fee";
+import { PaymentLapse } from "../../../../../shared/domain/fee/payment-lapse";
 
 
 

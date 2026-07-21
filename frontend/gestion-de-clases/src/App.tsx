@@ -7,6 +7,8 @@ import { STUDENT_ROUTE } from "./globals/routes/student"
 import { FEE_ROUTE } from "./globals/routes/fee"
 import { SERVER_ERROR_ROUTE } from "./globals/routes/server-error"
 import { PAGE_NOT_FOUND_ROUTE } from "./globals/routes/client-error"
+import { PAYMENT_ROUTE } from "./globals/routes/payment"
+import Payment from "./features/payment/Payment"
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Route index element = {<p>Home</p>} />
       <Route path = {STUDENT_ROUTE} element = {<Student />}/>
       <Route path = {FEE_ROUTE} element = {<Fee />} />
+      <Route path = {PAYMENT_ROUTE} element = {<Payment />} />
       <Route path = {SERVER_ERROR_ROUTE} element = {<ServerErrorContainer />}/>
       <Route path = {PAGE_NOT_FOUND_ROUTE} element = {<PageNotFoundContainer />} />
     </Routes>

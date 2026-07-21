@@ -1,0 +1,31 @@
+import { object, string, type ObjectSchema } from "yup";
+import type { PaymentSchema, TextPaymentMethod } from "../../../../adapter/schema";
+
+
+const paymentSchema: ObjectSchema<PaymentSchema> = object().shape({
+    completeName:
+        string(). 
+        required("El campo es requerido"),
+    amount: 
+        string().
+        required("El campo es requerido"). 
+        test(
+            "test to amount", 
+            "El monto debe ser positivo", 
+            (value : string) => Number.parseInt(value) > 0),
+    paymentDate: 
+        string(). 
+        required("El campo es requerido"). 
+        test(
+            "test to date", 
+            "El valor debe ser una fecha",
+            (value : string) => !isNaN(Date.parse(value))
+        ),
+    paymentMethod: 
+        string<TextPaymentMethod>(). 
+        required("El campo es requerido"). 
+        oneOf(["mercado pago", "efectivo"], "El método de pago puede ser solo mercado pago o efectivo").
+        transform(value => value === "mercado pago" ? 'MERCADO PAGO' : 'EFECTIVO')
+})
+
+export default paymentSchema;

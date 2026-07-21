@@ -3,7 +3,7 @@ import api from "@/globals/api/api-client";
 import { requestDto } from "../adapter/request.dto";
 import { URL_ADD_FEE } from "@/globals/api/api-urls";
 import { responseDto, type FeeResponseDto } from "../adapter/response.dto";
-import type { Fee } from "@/shared/types/fee";
+import type { Fee } from "../../../../../shared/domain/fee/fee";
 
 
 

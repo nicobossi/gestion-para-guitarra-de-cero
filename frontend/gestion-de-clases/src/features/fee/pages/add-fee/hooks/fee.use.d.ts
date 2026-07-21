@@ -1,8 +1,6 @@
 import type { UseAddData } from "@/globals/types/add-data";
-import type { Fee } from "@/globals/types/fee";
 import type { ApiError } from "@/globals/api/api-error";
-
-
+import type { Fee } from "@/shared/domain/fee/fee";
 
 export interface UseFee extends UseAddData<Fee> {
     data : Fee | null 

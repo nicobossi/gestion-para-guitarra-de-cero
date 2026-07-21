@@ -1,6 +1,4 @@
-
-
-export type Student = {
+export interface Student {
     id?: number 
     name: string,
     secondName?: string,

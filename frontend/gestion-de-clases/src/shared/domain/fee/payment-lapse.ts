@@ -1,6 +1,3 @@
-
-
-
 export const PaymentLapse = {
     MONTHLY: 'MONTHLY',
     BIWEEKLY: 'BIWEEKLY'

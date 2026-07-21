@@ -1,4 +1,4 @@
-import type { Student } from "@/shared/types/student";
+import type { Student } from "../../../../../shared/domain/student/student";
 import { URL_STUDENT_INCOME } from "@/globals/api/api-urls";
 import api from "@/globals/api/api-client";
 import { ApiError, CauseError } from "@/globals/api/api-error";

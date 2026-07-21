@@ -1,8 +1,6 @@
 import type { UseAddData } from "@/globals/types/add-data"
-import type { Student } from "@/globals/types/student"
 import type { ApiError } from "@/globals/api/api-error"
-
-
+import type { Student } from "@/shared/domain/student/student"
 export interface UseStudent extends UseAddData<Student> {
     data : Student | null 
     error : ApiError | null 

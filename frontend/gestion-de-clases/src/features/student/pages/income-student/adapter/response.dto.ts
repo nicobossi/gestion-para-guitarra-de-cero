@@ -1,4 +1,4 @@
-import type { Student } from "@/shared/types/student";
+import type { Student } from "../../../../../shared/domain/student/student";
 
 
 export type StudentResponseDto = Omit<Student, "phone" | "submissionDate"> & {

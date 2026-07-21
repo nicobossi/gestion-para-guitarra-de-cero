@@ -12,7 +12,7 @@ function SuccessModal<T>({data, title, message, close, link}: SuccessModalProps<
                 title = {title} />
             <ModalContent 
                 content = {message} />
-            <ModalFooter link = {link}/>
+            <ModalFooter link = {link} />
         </ModalContainer>
     )
 }

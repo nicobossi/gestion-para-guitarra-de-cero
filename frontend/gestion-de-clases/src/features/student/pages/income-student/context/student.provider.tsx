@@ -1,5 +1,5 @@
 import useAddData from "@/shared/hooks/useAddData";
-import type { Student } from "@/shared/types/student";
+import type { Student } from "../../../../../shared/domain/student/student";
 import type { UseStudent } from "../hooks/student.use";
 import StudentContext from "./student.context";
 import type { ReactNode } from "react";
