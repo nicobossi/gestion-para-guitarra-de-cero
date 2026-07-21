@@ -1,11 +1,12 @@
 import { sva } from "@styled-system/css";
+import { token } from "@styled-system/tokens";
 
 export const slots = sva({
     slots: ['container', 'submenu'],
     base: {
         container: {
             maxWidth: '120px',
-            animation: 'fadeIn token(durations.medium) forwards'
+            animation: `fadeIn ${token("durations.medium")} forwards`
 
         },
         submenu: {

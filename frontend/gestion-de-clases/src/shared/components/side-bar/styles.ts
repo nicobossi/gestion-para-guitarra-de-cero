@@ -1,11 +1,12 @@
 import type { ActiveStyle } from "@/shared/styles/active";
 import { cva } from "@styled-system/css";
+import { token } from "@styled-system/tokens";
 
 export const sideBar: ActiveStyle = {
     base: {
         display: 'grid',
         gridTemplateRows: '20% 80%',
-        backgroundColor: '#111A40', 
+        backgroundColor: `${token("colors.secondary")}`, 
     },
     variants: {
         show: {
@@ -15,7 +16,8 @@ export const sideBar: ActiveStyle = {
                     base: '100vw',
                     md: 0
                 },
-                height: '100vh'
+                height: '100vh',
+                animation: `sliceInX ${token("durations.medium")} forwards`
             },
         }
     }

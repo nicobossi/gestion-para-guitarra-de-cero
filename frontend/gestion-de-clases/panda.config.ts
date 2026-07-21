@@ -2,7 +2,7 @@ import { defineConfig } from "@pandacss/dev";
 import { colorsToken } from './src/globals/styles/tokens/colors';
 import { gradientsToken } from './src/globals/styles/tokens/gradients';
 import { durationsToken } from './src/globals/styles/tokens/durations';
-import { fade } from './src/globals/styles/animations/fade';
+import { animations } from './src/globals/styles/animations/animations';
 import { globals } from './src/globals/styles/globals';
 
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {
-      keyframes: fade,
+      keyframes: animations, 
       tokens: {
         colors: colorsToken,
         gradients: gradientsToken,
