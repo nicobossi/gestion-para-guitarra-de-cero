@@ -11,7 +11,7 @@ const NavItem = ({page, isActive, isVisible, onVisible} : NavItemProps) => {
     return (
         <div className = {styles(is)}>
             <LinkDescription isActive = {isActive} page = {page} onVisible = {onVisible} />
-            {is && isComposite(page) && <CompositeLink isVisible = {isActive} isActive = {isActive} page = {page} />}
+            {is && isComposite(page) && <CompositeLink isVisible = {is} isActive = {isActive} page = {page} />}
         </div>
     )
 }

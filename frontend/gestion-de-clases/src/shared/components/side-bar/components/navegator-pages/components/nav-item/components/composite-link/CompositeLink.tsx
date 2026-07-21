@@ -3,9 +3,9 @@ import LinkSimple from "../link-simple/LinkSimple";
 import { slots } from "./styles";
 import { css } from "@styled-system/css";
 
-const CompositeLink = ({page, isVisible}: CompositeLinkProps) => {   
+const CompositeLink = ({page, isVisible, isActive}: CompositeLinkProps) => {   
     
-    const styles = slots.raw({ show: isVisible });
+    const styles = slots.raw({ show: isVisible && isActive });
 
     return (
         <section className = {css(styles['container'])}>

@@ -11,7 +11,7 @@ const activeStyles: ActiveStyle = {
     variants: {
         show: {
             true: {
-                backgroundColor: '#273678'
+                background: 'linear-gradient(#273678, #111A40)'
             },
             false: {
 

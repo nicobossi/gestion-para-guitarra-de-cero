@@ -18,7 +18,7 @@ export const sideBar: ActiveStyle = {
                 height: '100vh'
             },
             false: {
-                maxWidth: '250px'
+                maxWidth: '260px'
             }
         }
     }

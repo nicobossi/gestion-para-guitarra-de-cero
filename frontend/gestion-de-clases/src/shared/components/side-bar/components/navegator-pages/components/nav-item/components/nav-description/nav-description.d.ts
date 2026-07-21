@@ -5,5 +5,4 @@ import type { CompositeRoute } from "@/shared/components/side-bar/types/page-dat
 type NavDescriptionProps = {
     pageName : CompositeRoute,
     isActive: boolean
-    onVisible : (id: number) => void
 }

@@ -12,14 +12,14 @@ type LinkContainerProps = {
 
 const LinkDescription = ({page, onVisible, isActive}: LinkContainerProps) => {
     return (
-        <section className = {styles(isActive)}>
+        <section className = {styles(isActive)} onClick = {() => onVisible(page.id)}>
             {page.icon && <Icon icon = {page.icon} />}
-            <Description page = {page} isActive = {isActive} onVisible = {onVisible}/>
+            <Description page = {page} isActive = {isActive} onVisible = {onVisible} />
         </section>
     )
 }
 
-const Description = ({page, onVisible, isActive}: LinkContainerProps) => {
+const Description = ({page, isActive}: LinkContainerProps) => {
     return (
         "path" in page ? 
             <LinkSimple 
@@ -28,7 +28,6 @@ const Description = ({page, onVisible, isActive}: LinkContainerProps) => {
             /> : 
             <NavDescription 
                 pageName = {page} 
-                onVisible = {onVisible} 
                 isActive = {isActive} 
             />
     )

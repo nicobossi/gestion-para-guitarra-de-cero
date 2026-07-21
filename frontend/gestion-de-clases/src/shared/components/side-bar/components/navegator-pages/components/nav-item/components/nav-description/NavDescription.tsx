@@ -1,9 +1,9 @@
 import type { NavDescriptionProps } from './nav-description';
 import { styles } from './styles';
 
-const NavDescription = ({pageName, onVisible, isActive} : NavDescriptionProps) => {
+const NavDescription = ({pageName, isActive} : NavDescriptionProps) => {
     return (
-        <div className = {styles(isActive)} onClick = {() => onVisible(pageName.id)}>
+        <div className = {styles(isActive)}>
             <p>{pageName.pageName}</p>
         </div>
     )
