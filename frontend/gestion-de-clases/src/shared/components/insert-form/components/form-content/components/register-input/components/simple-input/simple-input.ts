@@ -1,7 +1,7 @@
 import type { InputData } from "@/shared/types/input"
-import type { FieldValues, UseFormRegister } from "react-hook-form"
+import type { FieldError, FieldValues, UseFormRegister } from "react-hook-form"
 
-export type RegisterInputProps<T extends FieldValues> = {
+export type SimpleInputProps<T extends FieldValues> = {
     inputData : InputData
     register: UseFormRegister<T>
     error: FieldError

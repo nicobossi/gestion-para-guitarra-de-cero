@@ -14,26 +14,26 @@ const inputsData = ({fullNames, prices}: PaymentContent): InputData[] => {
         {
             id: "completeName",
             type: "select",
-            name : "completeName",
+            name: "completeName",
             placeholder: "Nombre Completo",
             elements: adapteFullNames(fullNames)
         },
         {
             id: "paymentDate",
             type: "date",
-            name : "paymentDate",
+            name: "paymentDate",
             placeholder: "Fecha de pago"
         },
         {
             id: "paymentMethod",
             type: "text",
-            name : "paymentMethod",
+            name: "paymentMethod",
             placeholder: "Método de pago",
         },
         {
             id: "amount",
             type: "select",
-            name : "amount",
+            name: "amount",
             placeholder: "Monto",
             elements: apatePrices(prices)
         },
