@@ -1,5 +1,6 @@
 .menu-icon, .active_menu-icon {
     height: 55%;
+    cursor: pointer;
 }
 
 .menu-icon {

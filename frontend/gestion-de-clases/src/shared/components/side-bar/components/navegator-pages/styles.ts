@@ -7,7 +7,7 @@ const activeStyles: ActiveStyle = {
     },
     variants: {
         show: {
-            true: {
+            false: {
                 md: {
                     display: 'none'
                 }

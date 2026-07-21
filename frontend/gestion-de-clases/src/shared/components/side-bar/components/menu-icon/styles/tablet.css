@@ -3,7 +3,7 @@
         width: 60px;
         min-width: 4%;
     }
-    .active_menu-icon path {
+    .menu-icon path {
         stroke: var(--dark-color);
     }
 }

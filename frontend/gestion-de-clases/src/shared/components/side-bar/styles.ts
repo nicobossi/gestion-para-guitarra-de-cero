@@ -1,5 +1,5 @@
 import type { ActiveStyle } from "@/shared/styles/active";
-import { cva } from "@styled-system/css";
+import { css, cva } from "@styled-system/css";
 import { token } from "@styled-system/tokens";
 
 export const sideBar: ActiveStyle = {
@@ -14,13 +14,31 @@ export const sideBar: ActiveStyle = {
                 position: 'absolute',
                 width: {
                     base: '100vw',
-                    md: 0
+                    md: '20%'
                 },
-                height: '100vh',
-                animation: `sliceInX ${token("durations.medium")} forwards`
+                height: '100%',
             },
+            false: {
+                width: {md: 0}
+            }
         }
     }
 };
 
-export const styles = (isActive: boolean) => cva(sideBar)({ show: isActive }); 
+export const animation: ActiveStyle = {
+    variants: {
+        show: {
+            true: {
+                animation: `sliceInX ${token("durations.medium")} forwards`
+            },
+            false: {
+                animation: `sliceOutX ${token("durations.medium")} forwards`
+            }
+        }
+    }
+};
+
+export const styles = (isActive: boolean) => css(
+    cva(sideBar).raw({ show: isActive }),
+    cva(animation).raw({ show: isActive }),
+); 

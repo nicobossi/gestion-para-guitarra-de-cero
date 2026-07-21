@@ -13,7 +13,10 @@ const mainContainer: ActiveStyle = {
                 gridTemplateColumns: '100% 0',
             },
             false: {
-                gridTemplateColumns: '20% 80%',
+                gridTemplateColumns: {
+                    base: '20% 80%',
+                    md: '0 100%'
+                }
             }
         }
     }

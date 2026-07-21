@@ -1,5 +1,24 @@
-import { sva } from "@styled-system/css";
+import { css, sva } from "@styled-system/css";
 import { token } from "@styled-system/tokens";
+
+const containerActive = css.raw({
+    position: 'absolute',
+    left: '35%',
+    transform: 'translate(13vw, -28%)',
+    display: 'flex',
+    justifyContent: 'end',
+    width: '120px',
+    minHeight: '120px',
+    borderRadius: '0 2vw 2vw 0',
+});
+
+const submenu = css.raw({
+    textAlign: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    borderRadius: '0 2vw 2vw 0',
+    background: 'linear-gradient(#273678, #111A40)',
+});
 
 export const slots = sva({
     slots: ['container', 'submenu'],
@@ -7,7 +26,6 @@ export const slots = sva({
         container: {
             maxWidth: '120px',
             animation: `fadeIn ${token("durations.medium")} forwards`
-
         },
         submenu: {
             display: 'flex',
@@ -23,26 +41,15 @@ export const slots = sva({
                     display: 'flex',
                     justifyContent: 'end',
                     width: '100%',
+                    md: containerActive
+                },
+                submenu: {
+                    md: submenu
                 }
             },
             false: {
-                container: {
-                    position: 'absolute',
-                    left: '35%',
-                    transform: 'translate(-15vw, -28%)',
-                    display: 'flex',
-                    justifyContent: 'end',
-                    width: '35%',
-                    minHeight: '120px',
-                    borderRadius: '0 2vw 2vw 0',
-                },
-                submenu: {
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%',
-                    borderRadius: '0 2vw 2vw 0',
-                    background: 'linear-gradient(#273678, #111A40)',
-                }
+                container: containerActive,
+                submenu: submenu
             }
         }
     }

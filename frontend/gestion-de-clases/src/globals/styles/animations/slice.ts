@@ -6,7 +6,7 @@ export const slice = defineKeyframes({
         '100%': { transform: 'translateX(0)' }
     },
     sliceOutX: {
-        '0%': { transform: 'translateX(0%)' },
-        '100%': { transform: 'translateX(-200%)' }
+        '0%': { transform: 'translateX(200%)' },
+        '100%': { transform: 'translateX(0)' }
     }
 })

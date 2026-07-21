@@ -6,7 +6,7 @@ const activeStyles: ActiveStyle = {
         justifyItems: 'center',
         width: '100%',
         minHeight: '20%',
-        padding: '10%',
+        cursor: 'pointer'
     },
     variants: {
         show: {

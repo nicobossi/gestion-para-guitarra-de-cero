@@ -9,16 +9,10 @@ export const activeStyles: ActiveStyle = {
     variants: {
         show: {
             true: {
-                display: {
-                    base: 'block',
-                    md: 'none'
-                }
+                display: 'block'
             },
             false: {
-                display: {
-                    base: 'none',
-                    md: 'block'
-                }
+                display: 'none',
             }
         }
     }
