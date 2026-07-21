@@ -4,7 +4,9 @@ export const slots = sva({
     slots: ['container', 'submenu'],
     base: {
         container: {
-            maxWidth: '120px'
+            maxWidth: '120px',
+            animation: 'fadeIn token(durations.medium) forwards'
+
         },
         submenu: {
             display: 'flex',
@@ -43,4 +45,4 @@ export const slots = sva({
             }
         }
     }
-})
+});

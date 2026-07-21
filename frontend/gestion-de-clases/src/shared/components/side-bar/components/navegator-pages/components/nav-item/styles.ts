@@ -6,16 +6,13 @@ const activeStyles: ActiveStyle = {
         justifyItems: 'center',
         width: '100%',
         minHeight: '20%',
-        padding: '10%'
+        padding: '10%',
     },
     variants: {
         show: {
             true: {
-                background: 'linear-gradient(#273678, #111A40)'
+                background: 'linear-gradient(#273678, #111A40)',
             },
-            false: {
-
-            }
         }
     }
 }
