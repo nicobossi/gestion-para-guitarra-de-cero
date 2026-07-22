@@ -1,5 +1,5 @@
-import { FullName } from '../../../../shared/domain/full-name/full-name';
-import { NumberPhone } from '../../../../shared/domain/number-phone/number-phone';
+import { FullName } from '../../../../shared/domain/value-objects/full-name/full-name';
+import { NumberPhone } from '../../../../shared/domain/value-objects/number-phone/number-phone';
 import { Calender } from '../calender/calender';
 import { Lesson } from '../lesson/lesson';
 import { StateProvider } from './state-provider';

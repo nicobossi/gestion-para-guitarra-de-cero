@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Fee } from '../../domain/fee';
 import { SqlClient } from '../../../../shared/infraestructure/persistence/sql/prisma.service';
 import { FeeMapper } from '../dto/create-fee/mapper';
-import { Price } from '../../domain/types/price';
+import { Price } from '../../../../shared/domain/entities/price';
 
 @Injectable()
 export class FeeRepository {

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Fee } from '../domain/fee';
 import { FeeRepository } from '../infraestructure/persistence/fee.repository';
 import { UnitOfWork } from '../../../shared/infraestructure/persistence/sql/unit-of-work.service';
-import { Price } from '../domain/types/price';
+import { Price } from '../../../shared/domain/entities/price';
 import { PaymentFee } from '../../../shared/application/payment-fee';
 
 @Injectable()

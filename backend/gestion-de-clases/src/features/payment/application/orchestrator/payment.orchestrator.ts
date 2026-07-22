@@ -14,6 +14,7 @@ import {
 import { Payment } from '../../domain/payment';
 import { Fee } from '../../../fee/domain/fee';
 import { Student } from '../../../student/domain/student/student';
+import { PreparePaymentRecord } from '../../domain/types/PreparePaymentRecord';
 
 @Injectable()
 export class RenewPaymentOrchestrator {
@@ -35,6 +36,12 @@ export class RenewPaymentOrchestrator {
         const fee = await this.getFee(payment);
         const renewedStudent = await this.studentService.renew(student);
         return await this.addPayment(payment, renewedStudent, fee);
+    }
+
+    async preparePaymentRecord(): Promise<PreparePaymentRecord> {
+        const fullNames = await this.studentService.getAllFullNames();
+        const prices = await this.feeService.getAmounts();
+        return { fullNames, prices };
     }
 
     private async addPayment(

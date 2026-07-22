@@ -10,7 +10,7 @@ import { StudentService } from '../application/student.service';
 import { RepeatPhoneFilter } from '../infraestructure/exception-filters/repeat-phone/repeat-phone.filter';
 import { CreateStudent } from '../infraestructure/dtos/income/request';
 import { IncomeStudent } from '../infraestructure/dtos/income/mapper';
-import { Fullname } from '../domain/types/full-name';
+import { Fullname } from '../../../shared/domain/entities/full-name';
 import { InvalidPhoneFilter } from '../infraestructure/exception-filters/invalid-phone/invalid-phone.filter';
 
 @Controller('api/student')

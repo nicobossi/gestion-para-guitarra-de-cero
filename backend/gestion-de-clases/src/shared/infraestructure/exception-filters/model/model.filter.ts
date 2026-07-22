@@ -1,7 +1,7 @@
 import { ArgumentsHost, ExceptionFilter } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { FilterExceptionModelData } from './model-filter-error-data';
-import { ModelException } from '../../../domain/model-exception/model-exception';
+import { ModelException } from '../../../domain/exceptions/model-exception';
 
 export abstract class ModelFilterException<
     T extends ModelException,

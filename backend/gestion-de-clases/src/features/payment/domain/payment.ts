@@ -1,4 +1,4 @@
-import { FullName } from '../../../shared/domain/full-name/full-name';
+import { FullName } from '../../../shared/domain/value-objects/full-name/full-name';
 import { PaymentMethod } from './payment-method';
 
 export class Payment {

@@ -18,9 +18,11 @@ describe('Unit PaymentOrchestratorTest', () => {
         renew: jest.fn(),
         getWithFullname: jest.fn(),
         getWithPhone: jest.fn(),
+        getAllFullNames: jest.fn(),
     };
     const feeService = {
         getWithAmount: jest.fn(),
+        getAmounts: jest.fn(),
     };
     const paymentService = {
         save: jest.fn(),
@@ -67,6 +69,7 @@ describe('Unit PaymentOrchestratorTest', () => {
             1,
         );
         studentService.renew.mockResolvedValue(student);
+        jest.clearAllMocks();
     });
 
     test('should find a student with your full name', async () => {
@@ -140,5 +143,29 @@ describe('Unit PaymentOrchestratorTest', () => {
             student.getPhoneNumber,
         );
         expect(addedPayment.getId).toBe(1);
+    });
+
+    test('should get a prepare payment record', async () => {
+        studentService.getAllFullNames.mockResolvedValue([
+            {
+                firstName: student.getName,
+                secondName: student.getSecondName,
+                surname: student.getSurname,
+            },
+        ]);
+        feeService.getAmounts.mockResolvedValue([
+            {
+                amount: fee.getAmount,
+                id: fee.getId,
+            },
+        ]);
+        const preparePaymentRecord = await orchestrator.preparePaymentRecord();
+        const fullName = preparePaymentRecord.fullNames[0];
+        const price = preparePaymentRecord.prices[0];
+        expect(fullName.firstName).toBe(student.getName);
+        expect(fullName.secondName).toBe(student.getSecondName);
+        expect(fullName.surname).toBe(student.getSurname);
+        expect(price.amount).toBe(fee.getAmount);
+        expect(price.id).toBe(fee.getId);
     });
 });

@@ -5,7 +5,7 @@ import { IncomeStudent } from '../dtos/income/mapper';
 import { CreateLesson } from '../dtos/renew-month/lesson-mapper';
 import { StudentWithLessons } from '../dtos/renew-month/student-mapper';
 import { Lesson } from '../../domain/lesson/lesson';
-import { Fullname } from '../../domain/types/full-name';
+import { Fullname } from '../../../../shared/domain/entities/full-name';
 
 @Injectable()
 export class StudentRepository {
