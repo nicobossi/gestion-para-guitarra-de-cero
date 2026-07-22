@@ -19,7 +19,7 @@ export type PaymentLapse = (typeof PaymentLapse)[keyof typeof PaymentLapse]
 
 export const PaymentType = {
   CASH: 'CASH',
-  MERCADO_LIBRE: 'MERCADO_LIBRE'
+  MERCADO_PAGO: 'MERCADO_PAGO'
 } as const
 
 export type PaymentType = (typeof PaymentType)[keyof typeof PaymentType]

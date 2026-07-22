@@ -10,7 +10,8 @@ const PaymentForm = () => {
     const {isLoading, add} = usePaymentContext();
     const {preparePaymentRecord} = usePreparePaymentRecord() 
 
-    return (preparePaymentRecord && 
+    return (
+        preparePaymentRecord && 
         <section className = "payment-add_form-container">
             <InsertForm 
                 title = "Pago"

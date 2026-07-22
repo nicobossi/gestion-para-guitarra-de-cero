@@ -6,7 +6,6 @@ export type RegisterPaymentSchema = {
     completeName: string
     paymentMethod: TextPaymentMethod
     paymentDate: string
-
 }
 
 export type TextPaymentMethod = "mercado pago" | "efectivo"

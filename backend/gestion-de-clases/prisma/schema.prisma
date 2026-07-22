@@ -70,5 +70,5 @@ enum PaymentLapse {
 
 enum PaymentType {
   CASH
-  MERCADO_LIBRE
+  MERCADO_PAGO
 }
