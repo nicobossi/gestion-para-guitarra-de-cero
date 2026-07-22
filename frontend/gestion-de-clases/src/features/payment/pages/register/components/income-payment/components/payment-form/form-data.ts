@@ -1,8 +1,8 @@
 import { object, string, type ObjectSchema } from "yup";
-import type { PaymentSchema, TextPaymentMethod } from "../../../../adapter/schema";
+import type { RegisterPaymentSchema, TextPaymentMethod } from "../../../../adapter/register-payment/schema";
 
 
-const paymentSchema: ObjectSchema<PaymentSchema> = object().shape({
+const paymentSchema: ObjectSchema<RegisterPaymentSchema> = object().shape({
     completeName:
         string(). 
         required("El campo es requerido"),

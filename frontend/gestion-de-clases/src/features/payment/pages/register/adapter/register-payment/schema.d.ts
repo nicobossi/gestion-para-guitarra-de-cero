@@ -1,7 +1,7 @@
 import type { PaymentMethod } from "@/shared/domain/payment/payment-method"
 import type { PaymentRequestDto } from "./request.dto"
 
-export type PaymentSchema = {
+export type RegisterPaymentSchema = {
     amount: string
     completeName: string
     paymentMethod: TextPaymentMethod

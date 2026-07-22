@@ -1,22 +1,17 @@
-import type { Price } from "@/features/payment/adapters/price/price";
-import type { FullName } from "@/features/payment/adapters/student-full-name/full-name";
 import type { InputData } from "@/shared/types/input";
-import { adapteFullNames } from "./adapters/fullname.adapter";
-import { apatePrices } from "./adapters/prices.adapter";
+import { adapteFullNames } from "../../../../adapter/full-name/fullname.adapter";
+import { apatePrices } from "../../../../adapter/prices/prices.adapter";
+import type { PreparePaymentRecord } from "./adapters/prepare-payment-record/response.dto";
 
-type PaymentContent = {
-    fullNames: FullName[]
-    prices: Price[]
-}
 
-const inputsData = ({fullNames, prices}: PaymentContent): InputData[] => {
+const inputsData = (preparePaymentRecord: PreparePaymentRecord): InputData[] => {
     return [
         {
             id: "completeName",
             type: "select",
             name: "completeName",
             placeholder: "Nombre Completo",
-            elements: adapteFullNames(fullNames)
+            elements: adapteFullNames(preparePaymentRecord.fullNames)
         },
         {
             id: "paymentDate",
@@ -35,7 +30,7 @@ const inputsData = ({fullNames, prices}: PaymentContent): InputData[] => {
             type: "select",
             name: "amount",
             placeholder: "Monto",
-            elements: apatePrices(prices)
+            elements: apatePrices(preparePaymentRecord.prices)
         },
     ]
 }
