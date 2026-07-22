@@ -3,12 +3,12 @@
 
 export class ApiError {
     private status : number 
-    private message : string 
+    private data : string 
     private cause : CauseError;
 
-    constructor(status : number, message : string, cause : CauseError) {
+    constructor(status : number, data : string, cause : CauseError) {
         this.status = status;
-        this.message = message;
+        this.data = data;
         this.cause = cause;
     }
 
@@ -17,7 +17,7 @@ export class ApiError {
     }
 
     get getMessage() : string {
-        return this.message
+        return this.data
     }
 
     setCause(cause : CauseError) {
