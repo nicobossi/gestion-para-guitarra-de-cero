@@ -132,6 +132,19 @@ describe('Integration PaymentOrchestrator', () => {
         expect(addedPayment.getId).toBe(1);
     });
 
+    test('should get a prepare payment record', async () => {
+        await studentService.income(student);
+        const addedFee = await feeService.add(fee);
+        const preparePaymentRecord = await orchestrator.preparePaymentRecord();
+        const fullName = preparePaymentRecord.fullNames[0];
+        const price = preparePaymentRecord.prices[0];
+        expect(fullName.firstName).toBe(student.getName);
+        expect(fullName.secondName).toBe(student.getSecondName);
+        expect(fullName.surname).toBe(student.getSurname);
+        expect(price.amount).toBe(fee.getAmount);
+        expect(price.id).toBe(addedFee.getId);
+    });
+
     afterEach(async () => {
         await clearSqlContainer();
     });

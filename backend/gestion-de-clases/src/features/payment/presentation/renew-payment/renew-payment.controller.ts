@@ -1,6 +1,7 @@
 import {
     Body,
     Controller,
+    Get,
     HttpCode,
     Param,
     Post,
@@ -37,5 +38,11 @@ export class RenewPaymentController {
             phoneNumber,
         );
         return AddPayment.modelToDto(renewedPayment);
+    }
+
+    @Get('prepare-payment-record')
+    @HttpCode(200)
+    async preparePaymentRecord() {
+        return await this.renewOrchestrator.preparePaymentRecord();
     }
 }
