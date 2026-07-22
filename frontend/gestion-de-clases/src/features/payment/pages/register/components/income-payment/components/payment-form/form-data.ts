@@ -1,7 +1,5 @@
 import { object, string, type ObjectSchema } from "yup";
 import type { RegisterPaymentSchema, TextPaymentMethod } from "../../../../adapter/register-payment/schema";
-import { PaymentMethod } from "@/shared/domain/payment/payment-method";
-
 
 const paymentSchema: ObjectSchema<RegisterPaymentSchema> = object().shape({
     completeName:
@@ -24,8 +22,7 @@ const paymentSchema: ObjectSchema<RegisterPaymentSchema> = object().shape({
         ),
     paymentMethod: 
         string<TextPaymentMethod>(). 
-        required("El campo es requerido"). 
-        transform(value => value === "mercado pago" ? PaymentMethod.MERCADO_PAGO : PaymentMethod.CASH)
+        required("El campo es requerido")
 })
 
 export default paymentSchema;

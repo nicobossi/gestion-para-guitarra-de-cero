@@ -3,9 +3,7 @@ import { SERVER_ERROR_ROUTE } from "@/globals/routes/routes";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-
 const useFetch = () => {
-
     const navegate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ApiError | null>(null);

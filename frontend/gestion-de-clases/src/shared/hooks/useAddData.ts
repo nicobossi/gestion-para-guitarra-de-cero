@@ -1,8 +1,6 @@
 import { useState } from "react";
 import useFetch from "./useFetch";
 
-
-
 const useAddData = <T>(income : (incomer : T) => Promise<T>) => {
     const [data, setData] = useState<T | null>(null);
     const {isLoading, error, freshError, handleFetch} = useFetch();

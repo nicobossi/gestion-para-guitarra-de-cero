@@ -1,6 +1,3 @@
-
-
-
 export interface UseAddData<T> {
     data : T | null 
     error : ApiError | null 
