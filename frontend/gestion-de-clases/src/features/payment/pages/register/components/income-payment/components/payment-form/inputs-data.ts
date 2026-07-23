@@ -1,14 +1,13 @@
 import type { InputData } from "@/shared/types/input";
 import { adapteFullNames } from "../../../../adapter/full-name/fullname.adapter";
-import { apatePrices } from "../../../../adapter/prices/prices.adapter";
+import { adaptePrices } from "../../../../adapter/prices/prices.adapter";
 import type { PreparePaymentRecord } from "./adapters/prepare-payment-record/response.dto";
-
 
 const inputsData = (preparePaymentRecord: PreparePaymentRecord): InputData[] => {
     return [
         {
             id: "completeName",
-            type: "select",
+            type: "text",
             name: "completeName",
             placeholder: "Nombre Completo",
             elements: adapteFullNames(preparePaymentRecord.fullNames)
@@ -24,13 +23,14 @@ const inputsData = (preparePaymentRecord: PreparePaymentRecord): InputData[] => 
             type: "text",
             name: "paymentMethod",
             placeholder: "Método de pago",
+            elements: [{ value: 'Mercado Pago' }, { value: 'Efectivo' }]
         },
         {
             id: "amount",
-            type: "select",
+            type: "number",
             name: "amount",
             placeholder: "Monto",
-            elements: apatePrices(preparePaymentRecord.prices)
+            elements: adaptePrices(preparePaymentRecord.prices)
         },
     ]
 }
