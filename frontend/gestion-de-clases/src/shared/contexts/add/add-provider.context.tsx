@@ -1,16 +1,16 @@
 import useAddData from "@/shared/hooks/useAddData"
 import type { JSX } from "react"
-import createAddContext from "./add.context"
-import useAddContext from "./use-add-context"
+import createUseAddData from "./add.context"
+import validateContext from "../validate"
 
 type AddProviderProps<T extends object> = {
     income: (data: T) => Promise<T>
     children: JSX.Element
 }
 
-function createAddProvider<T extends object>() {
+function createAddContext<T extends object>() {
 
-    const AddContext = createAddContext<T>();
+    const AddContext = createUseAddData<T>();
 
     function AddProvider({income, children}: AddProviderProps<T>) {
 
@@ -32,9 +32,9 @@ function createAddProvider<T extends object>() {
         )
     }
 
-    const useValidateAddContext = () => useAddContext(AddContext);
+    const useValidateAddContext = () => validateContext(AddContext);
 
     return {AddProvider, AddContext, useValidateAddContext}
 }
 
-export default createAddProvider;
+export default createAddContext;
