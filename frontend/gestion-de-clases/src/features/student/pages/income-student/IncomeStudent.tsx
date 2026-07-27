@@ -1,21 +1,21 @@
 import IncomeContent from './components/income-content/IncomeContent';
 import './income-student.css'
-import useStudentContext from './context/useStudent-validate';
 import ModalStudent from './components/modal-student/ModalIncome';
-import StudentProvider from './context/student.provider';
+import { AddStudentProvider, useValidateAddContext } from './context/add-student';
+import incomeStudent from './services/income-student';
 
 const IncomePanel = () => {
 
     return (
-        <StudentProvider>
+        <AddStudentProvider income = {incomeStudent}>
             <PageContent />
-        </StudentProvider>
+        </AddStudentProvider>
     )
 }
 
 const PageContent = () => {
 
-    const {data} = useStudentContext();
+    const { data } = useValidateAddContext();
 
     return (
         <section className = 'student-income'>

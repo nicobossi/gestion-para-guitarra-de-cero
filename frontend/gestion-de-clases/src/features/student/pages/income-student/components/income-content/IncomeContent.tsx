@@ -1,12 +1,12 @@
-import useStudentContext from '@/features/student/pages/income-student/context/useStudent-validate';
 import { CauseError } from '@/globals/api/api-error';
 import PhoneErrorContainer from './components/phone-error-container/PhoneErrorContainer';
 import StudentForm from '@/features/student/pages/income-student/components/income-content/components/income-form/IncomeForm';
+import { useValidateAddContext } from '../../context/add-student';
 
 
 const IncomeContent = () => {
 
-    const {error} = useStudentContext();
+    const { error } = useValidateAddContext();
 
     const isError = () => error?.isCause(CauseError.RepeatStudentPhone);
 

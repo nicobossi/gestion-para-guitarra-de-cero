@@ -1,12 +1,12 @@
 import './modal-student.css'
 import type { ModalIncomeProps } from './modal-student';
-import useStudentContext from '@/features/student/pages/income-student/context/useStudent-validate';
 import SuccessModal from '@/shared/components/success-modal/SuccessModal';
 import LinkNavegation from '@/shared/components/link-navegation/LinkNavegation';
+import { useValidateAddContext } from '../../context/add-student';
 
 const ModalStudent = ({student} : ModalIncomeProps) => {
 
-    const {freshData} = useStudentContext();
+    const { freshData } = useValidateAddContext();
 
     return (
         <section className = "modal-income_container">
