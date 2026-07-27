@@ -2,11 +2,14 @@ import incomerSchema from "./form-data";
 import incomeInputsData from "./inputs-data";
 import './income-form.css'
 import InsertForm from "@/shared/components/insert-form/InsertForm";
-import { useValidateAddContext } from "../../../../context/add-student";
+import type { Student } from "@/shared/domain/student/student";
 
-const StudentForm = () => {
+type StudentFormProps = {
+    isLoading: boolean
+    add: (student: Student) => void
+}
 
-    const { add, isLoading } = useValidateAddContext();
+const StudentForm = ({isLoading, add}: StudentFormProps) => {
 
     return (
         <section className = "student-income_form-container">

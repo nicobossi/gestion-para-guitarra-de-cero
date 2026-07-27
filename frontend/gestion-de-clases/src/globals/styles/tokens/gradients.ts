@@ -13,5 +13,15 @@ export const gradientsToken = defineTokens.gradients({
                 '#b89430 100%'
             ]
         }
+    },
+    student: {
+        value: {
+            type: 'linear',
+            placement: 'to right',
+            stops: [
+                '#273678 2.72%',
+                '#5D7BFF 96.57%'
+            ]
+        }
     }
 });

@@ -3,15 +3,16 @@ import PhoneErrorContainer from './components/phone-error-container/PhoneErrorCo
 import StudentForm from '@/features/student/pages/income-student/components/income-content/components/income-form/IncomeForm';
 import { useValidateAddContext } from '../../context/add-student';
 
-
 const IncomeContent = () => {
 
-    const { error } = useValidateAddContext();
+    const { error, add, isLoading, freshData } = useValidateAddContext();
 
     const isError = () => error?.isCause(CauseError.RepeatStudentPhone);
 
     return (
-        isError() ? <PhoneErrorContainer /> : <StudentForm />
+        isError() ? 
+            <PhoneErrorContainer onFresh = {freshData} /> : 
+            <StudentForm add = {add} isLoading = {isLoading} />
     )
 }
 

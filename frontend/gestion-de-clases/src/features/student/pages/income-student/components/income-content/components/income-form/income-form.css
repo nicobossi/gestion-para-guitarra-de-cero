@@ -1,6 +1,3 @@
-
-
-
 .student-income_form-container {
     display: grid;
     place-items: center;
@@ -9,12 +6,12 @@
 }
 
 .student-income_form-container .submit-button {
-    background: linear-gradient(60deg, #6879D7, #C6CAF0);
+    background: linear-gradient(88.24deg, #273678 2.72%, #5D7BFF 96.57%);
     transition: color 0.2s ease, border 0.2s ease, transform 0.3s ease;
 }
 
 .student-income_form-container .submit-button:hover {
     background: none;
-    border:2px solid #6879D7;
+    border: 2px solid #6879D7;
     color: #6879D7
 }
