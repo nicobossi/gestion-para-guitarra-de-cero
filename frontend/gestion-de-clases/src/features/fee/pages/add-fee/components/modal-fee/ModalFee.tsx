@@ -1,12 +1,12 @@
+import { useValidateAddContext } from '../../contexts/add-fee';
 import type { ModalFeeProps } from './modal-fee-d';
 import './modal-fee.css'
-import useFeeContext from '../../contexts/fee-validate';
 import SuccessModal from '@/shared/components/success-modal/SuccessModal';
 
 
 const ModalFee = ({fee} : ModalFeeProps) => {
 
-    const {freshData} = useFeeContext();
+    const {freshData} = useValidateAddContext();
 
     return (
         <section className = "modal-fee_container">

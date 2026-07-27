@@ -1,13 +1,13 @@
 import { CauseError } from "@/globals/api/api-error";
 import RepeatAmountErrorContainer from "./components/repeat-amount-error-container/RepeatAmountErrorContainer";
-import useFeeContext from "../../contexts/fee-validate";
 import FeeForm from "./components/fee-form/FeeForm";
+import { useValidateAddContext } from "../../contexts/add-fee";
 
 
 
 const IncomeFee = () => {
 
-    const {error} = useFeeContext();
+    const {error} = useValidateAddContext();
 
     const isError = () => error?.isCause(CauseError.RepeatAmount);
 

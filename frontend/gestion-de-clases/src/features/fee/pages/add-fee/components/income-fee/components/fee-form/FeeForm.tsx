@@ -1,12 +1,12 @@
 import inputsData from './inputs-data';
 import feeSchema from './form-data';
 import './fee-form.css'
-import useFeeContext from '../../../../contexts/fee-validate';
 import InsertForm from '@/shared/components/insert-form/InsertForm';
+import { useValidateAddContext } from '../../../../contexts/add-fee';
 
 const FeeForm = () => {
 
-    const {isLoading, add} = useFeeContext();
+    const {isLoading, add} = useValidateAddContext();
 
     return (
         <section className = "fee-add_form-container">
