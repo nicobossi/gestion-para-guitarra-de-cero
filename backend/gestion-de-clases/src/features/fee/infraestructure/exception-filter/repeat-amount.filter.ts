@@ -7,8 +7,15 @@ export class RepeatAmountFilter extends ModelFilterException<RepeatFieldExceptio
     protected responseData() {
         return {
             status: 409,
-            message:
-                'Una cuota no puede tener el mismo monto que otra cuota existente.',
+            title: 'Repeat Amount',
+            cause: 'REPEAT_AMOUNT',
+            errors: [
+                {
+                    field: 'amount',
+                    motive: 'Mismo valor',
+                },
+            ],
+            message: 'Ya existe una cuota con el mismo monto.',
         };
     }
 }
