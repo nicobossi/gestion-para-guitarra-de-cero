@@ -8,8 +8,8 @@ const CompositeLink = ({page, isVisible, isActive}: CompositeLinkProps) => {
     const styles = slots.raw({ show: isVisible && isActive });
 
     return (
-        <section className = {css(styles['container'])}>
-            <div className = {css(styles['submenu'])}>
+        <section className = {css(styles.container)}>
+            <div className = {css(styles.submenu)}>
                 {page.links.map(link => 
                 <LinkSimple 
                     simpleRoute = {link} 

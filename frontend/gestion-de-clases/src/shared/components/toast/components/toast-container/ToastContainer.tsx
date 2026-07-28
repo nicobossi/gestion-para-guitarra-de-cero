@@ -1,17 +1,22 @@
-import type { BackgroundColor } from "@/shared/styles/colors/colors";
-import type React from "react";
-import { toastStyles, toastSubContainer } from "./styles";
+import type { BackgroundColor } from "@/shared/styles/colors/colors"
+import { css } from "@styled-system/css"
+import { styles } from "./styles"
 
 type ToastContainerProps = {
-    css: BackgroundColor
+    bg: BackgroundColor
     isActive: boolean
     children: React.ReactNode
 }
 
-const ToastContainer = ({css, isActive, children}: ToastContainerProps) => {
+const ToastContainer = ({bg, isActive, children}: ToastContainerProps) => {
+
+    const slot = styles(isActive);
+    const container = css(slot.container, bg);
+    const subContainer = css(slot.subcontainer);
+
     return (
-        <div className = {toastStyles(isActive, css)}>
-            <div className = {toastSubContainer}>
+        <div className = {container}>
+            <div className = {subContainer}>
                 {children}
             </div>
         </div>

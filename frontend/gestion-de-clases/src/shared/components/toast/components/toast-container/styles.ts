@@ -1,34 +1,25 @@
-import type { ActiveStyle } from "@/shared/styles/active/active";
-import type { BackgroundColor } from "@/shared/styles/colors/colors";
-import { css, cva } from "@styled-system/css";
+import type { ActiveStyleSlot } from "@/shared/styles/active/active-slots";
+import { css, sva } from "@styled-system/css";
+import { token } from "@styled-system/tokens";
 
-export const toastContainer: ActiveStyle = {
-    base: {
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        display: 'grid',
-        placeItems: 'center',
-        minWidth: '265px',
-        width: {
-            base: '265px',
-            md: '26%'
-        },
-        height: '146px',
-        borderRadius: '20px'
+const toastContainer = css.raw({
+    position: 'fixed',
+    bottom: '24px',
+    right: '24px',
+    display: 'grid',
+    placeItems: 'center',
+    minWidth: '265px',
+    width: {
+        base: '265px',
+        md: '26%'
     },
-    variants: {
-        show: {
-            true: {
-                display: 'none'
-            },
-        }
-    }
-};
+    height: '14%',
+    minHeight: '146px',
+    borderRadius: '20px',
+    animation: `fadeIn ${token("durations.fast")} forwards`
+})
 
-const toastContainerStyles = (isActive: boolean) => cva(toastContainer).raw({ show: isActive });
-
-export const toastSubContainer = css({
+const toastSubContainer = css.raw({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
@@ -37,5 +28,20 @@ export const toastSubContainer = css({
     color: '#FFF'
 });
 
-export const toastStyles = (isActive: boolean, backgroundColor: BackgroundColor) => 
-    css(toastContainerStyles(isActive), backgroundColor);
+export const toastContainerSlot: ActiveStyleSlot<"container" | "subcontainer"> = {
+    slots: ["container", "subcontainer"],
+    base: {
+        container: toastContainer,
+        subcontainer: toastSubContainer
+    },
+    variants: {
+        show: {
+            true: {
+                container: { display: 'none' },
+                subcontainer: {}
+            },
+        }
+    }
+};
+
+export const styles = (is: boolean) => sva(toastContainerSlot).raw({ show: is });

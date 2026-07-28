@@ -1,4 +1,4 @@
-import type { ActiveStyle } from "../../styles/active/active";
+import type { ActiveStyle } from "../../styles/active/active-variant";
 import { css, cva } from "@styled-system/css";
 import { token } from "@styled-system/tokens";
 

@@ -23,7 +23,7 @@ const ErrorToast = ({styles, message, link, onClose}: ErrorToastProps) => {
     }
 
     return (
-        <ToastContainer css = {styles} isActive = {isActive}>
+        <ToastContainer bg = {styles} isActive = {isActive}>
             <ToastHeader 
                 title = "Error" 
                 icon = {errorIcon} 

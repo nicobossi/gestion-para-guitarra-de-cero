@@ -1,5 +1,5 @@
 import type { BackgroundColor } from "@/shared/styles/colors/colors";
-import type { ActiveStyle } from "../../styles/active/active";
+import type { ActiveStyle } from "../../styles/active/active-variant";
 import { css, cva } from "@styled-system/css";
 
 const mainContainer: ActiveStyle = {
