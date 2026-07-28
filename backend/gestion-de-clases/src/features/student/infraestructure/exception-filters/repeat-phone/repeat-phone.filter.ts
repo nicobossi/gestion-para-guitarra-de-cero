@@ -7,6 +7,14 @@ export class RepeatPhoneFilter extends ModelFilterException<RepeatFieldException
     protected responseData() {
         return {
             status: 409,
+            title: 'Repeat Phone',
+            cause: 'REPEAT_NUMBER_PHONE',
+            errors: [
+                {
+                    field: 'phone',
+                    motive: 'No se puede registrar dos veces el número de teléfono',
+                },
+            ],
             message:
                 'El número de teléfono ya está registrado para otro estudiante.',
         };
