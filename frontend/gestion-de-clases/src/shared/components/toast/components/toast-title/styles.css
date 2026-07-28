@@ -1,7 +1,7 @@
 .toast-header-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    width: 98%;
+    width: 100%;
 }
 
 .toast-header-container_title {

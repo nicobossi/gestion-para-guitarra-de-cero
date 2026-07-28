@@ -4,12 +4,16 @@ import { css, cva } from "@styled-system/css";
 
 export const toastContainer: ActiveStyle = {
     base: {
-        position: 'absolute',
-        top: '68%',
-        right: '9%',
+        position: 'fixed',
+        bottom: '24px',
+        right: '24px',
         display: 'grid',
         placeItems: 'center',
-        width: '265px',
+        minWidth: '265px',
+        width: {
+            base: '265px',
+            md: '26%'
+        },
         height: '146px',
         borderRadius: '20px'
     },
