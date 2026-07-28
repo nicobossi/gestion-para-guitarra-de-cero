@@ -7,7 +7,7 @@ const api = axios.create({
 
 api.interceptors.response.use(
     response => response,
-    (error : unknown) => handleError(error)
+    (error) => handleError(error)
 )
 
 export default api;

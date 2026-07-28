@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { ApiError, CauseError } from "../api-error";
 
 
-function handleError(error : unknown) {
+function handleError(error: unknown) {
     if(error instanceof AxiosError) {
             
         if(!error.response) {
