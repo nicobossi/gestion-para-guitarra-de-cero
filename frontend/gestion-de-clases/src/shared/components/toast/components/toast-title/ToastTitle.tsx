@@ -1,22 +1,22 @@
 import './styles.css';
 import closeIcon from '@/assets/toast/close icon.svg';
 
-type ToastTitleProps = {
+type ToastHeaderProps = {
     title: string 
     icon: string 
     onActive: () => void
 }
 
-const ToastTitle = ({title, icon, onActive}: ToastTitleProps) => {
+const ToastHeader = ({title, icon, onActive}: ToastHeaderProps) => {
     return (
-        <div className = "toast-title-container">
-            <section className = "toast-title-container_title">
+        <div className = "toast-header-container">
+            <section className = "toast-header-container_title">
                 <figure>
                     <img src = {icon} alt = "Icono para la modal" />
                 </figure>
                 <p>{title}</p>
             </section>
-            <section className = "toast-title-container_close">
+            <section className = "toast-header-container_close">
                 <figure>
                     <img src = {closeIcon} alt = "Icono para cerrar la modal" onClick = {onActive} />
                 </figure>
@@ -25,4 +25,4 @@ const ToastTitle = ({title, icon, onActive}: ToastTitleProps) => {
     )
 }
 
-export default ToastTitle;
+export default ToastHeader;

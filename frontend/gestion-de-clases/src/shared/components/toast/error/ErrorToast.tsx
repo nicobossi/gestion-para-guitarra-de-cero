@@ -1,7 +1,7 @@
 import type { AnclaLink } from "@/shared/types/link";
 import type { SystemStyleObject } from "@styled-system/types";
 import ToastContainer from "../components/toast-container/ToastContainer";
-import ToastTitle from "../components/toast-title/ToastTitle";
+import ToastHeader from "../components/toast-title/ToastTitle";
 import errorIcon from "@/assets/toast/error icon.svg";
 import useActive from "@/shared/hooks/useActive";
 import ToastMessage from "../components/toast-message/ToastMessage";
@@ -24,7 +24,7 @@ const ErrorToast = ({styles, message, link, onClose}: ErrorToastProps) => {
 
     return (
         <ToastContainer css = {styles} isActive = {isActive}>
-            <ToastTitle 
+            <ToastHeader 
                 title = "Error" 
                 icon = {errorIcon} 
                 onActive = {handleActive}

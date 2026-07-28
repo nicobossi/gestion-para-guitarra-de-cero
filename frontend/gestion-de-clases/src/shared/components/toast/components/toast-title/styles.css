@@ -1,26 +1,30 @@
-.toast-title-container {
+.toast-header-container {
     display: grid;
     grid-template-columns: 50% 50%;
     width: 98%;
 }
 
-.toast-title-container_title {
+.toast-header-container_title {
     display: flex;
     align-items: center;
     height: 100%;
     gap: 5%
 }
 
-.toast-title-container_title p {
+.toast-header-container_title p {
     font-size: 16px;
     color: #FFF;
 }
 
-.toast-title-container_title figure {
+.toast-header-container_title figure {
     height: 100%;
 }
 
-.toast-title-container_close {
+.toast-header-container_close {
     display: flex;
     justify-content: flex-end;
+}
+
+.toast-header-container_close figure img{
+    cursor: pointer;
 }
