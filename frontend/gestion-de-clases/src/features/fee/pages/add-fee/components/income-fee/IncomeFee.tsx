@@ -3,16 +3,19 @@ import RepeatAmountErrorContainer from "./components/repeat-amount-error-contain
 import FeeForm from "./components/fee-form/FeeForm";
 import { useValidateAddContext } from "../../contexts/add-fee";
 
-
-
 const IncomeFee = () => {
 
-    const {error} = useValidateAddContext();
+    const { error, freshError, isLoading, add } = useValidateAddContext();
 
     const isError = () => error?.isCause(CauseError.RepeatAmount);
 
     return (
-        isError() ? <RepeatAmountErrorContainer /> : <FeeForm />
+        isError() ? 
+            <RepeatAmountErrorContainer onError = {freshError} /> : 
+            <FeeForm 
+                add = {add} 
+                isLoading = {isLoading} 
+            />
     )
 }
 

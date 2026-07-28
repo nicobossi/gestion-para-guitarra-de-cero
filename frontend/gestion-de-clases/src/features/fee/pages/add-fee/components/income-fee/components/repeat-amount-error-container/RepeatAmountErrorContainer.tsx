@@ -1,16 +1,17 @@
 import ErrorContainer from "@/shared/components/error-container/ErrorContainer";
 import './repeat-amount-error-container.css'
-import { useValidateAddContext } from "../../../../contexts/add-fee";
 
-const RepeatAmountErrorContainer = () => {
+type RepeatAmountErrorContainerProps = {
+    onError: () => void
+}
 
-    const {freshError} = useValidateAddContext();
+const RepeatAmountErrorContainer = ({onError}: RepeatAmountErrorContainerProps) => {
 
     return (
         <div className = 'repeat-amount-error-container'>
             <ErrorContainer 
                 content = "El monto de la cuota ya se encuentra registrado"
-                onSubmit = {freshError}
+                onSubmit = {onError}
             />
         </div>
     )

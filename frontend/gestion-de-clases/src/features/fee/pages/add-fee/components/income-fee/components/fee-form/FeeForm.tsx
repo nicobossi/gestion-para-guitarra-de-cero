@@ -1,23 +1,25 @@
 import inputsData from './inputs-data';
 import feeSchema from './form-data';
-import './fee-form.css'
 import InsertForm from '@/shared/components/insert-form/InsertForm';
-import { useValidateAddContext } from '../../../../contexts/add-fee';
+import type { Fee } from '@/shared/domain/fee/fee';
+import { formStyles } from './styles';
 
-const FeeForm = () => {
+type FeeFormProps = {
+    isLoading: boolean
+    add: (fee: Fee) => void
+}
 
-    const {isLoading, add} = useValidateAddContext();
+const FeeForm = ({isLoading, add}: FeeFormProps) => {
 
     return (
-        <section className = "fee-add_form-container">
-            <InsertForm 
-                title = "Cuota"
-                schema = {feeSchema}
-                inputsData = {inputsData}
-                isLoading = {isLoading}
-                onSubmit = {add}
-            />
-        </section>
+        <InsertForm 
+            title = "Cuota"
+            schema = {feeSchema}
+            inputsData = {inputsData}
+            isLoading = {isLoading}
+            onSubmit = {add}
+            styles = {formStyles}
+        />
     )
 }
 

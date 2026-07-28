@@ -1,8 +1,9 @@
-import './add-fee-page.css';
 import ModalFee from './components/modal-fee/ModalFee';
 import IncomeFee from './components/income-fee/IncomeFee';
 import saveFee from './services/save-fee';
 import { FeeProvider, useValidateAddContext } from './contexts/add-fee';
+import AddPanelContainer from '@/shared/components/add-panel-container/AddPanelContainer';
+import panelStyles from './styles';
 
 const AddFeePanel = () => {
 
@@ -18,10 +19,10 @@ const AddFeePage = () => {
     const { data } = useValidateAddContext();
 
     return (
-        <section className = 'add-fee'>
+        <AddPanelContainer css = {panelStyles}>
             {data && <ModalFee fee = {data} />}
             <IncomeFee />
-        </section>
+        </AddPanelContainer>
     )
 }
 
