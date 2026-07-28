@@ -7,7 +7,7 @@ const IncomeContent = () => {
 
     const { error, add, isLoading, freshData } = useValidateAddContext();
 
-    const isError = () => error?.isCause(CauseError.RepeatStudentPhone);
+    const isError = () => error && error.isCause(CauseError.RepeatStudentPhone);
 
     return (
         <>
