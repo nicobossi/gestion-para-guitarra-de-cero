@@ -1,5 +1,7 @@
+import ErrorToast from '@/shared/components/toast/error/ErrorToast'
 import './phone-error-container.css'
-import ErrorToast from '@/shared/components/error-container/ErrorContainer'
+import { css } from '@styled-system/css'
+import { token } from '@styled-system/tokens'
 
 type PhoneErrorContainerProps = {
     onFresh: () => void
@@ -8,12 +10,12 @@ type PhoneErrorContainerProps = {
 const PhoneErrorMessage = ({onFresh}: PhoneErrorContainerProps) => {
 
     return (
-        <div className = 'phone-error-container'>
-            <ErrorToast 
-                content = "El celular ya se encuentra agendado por otro estudiante"
-                onSubmit = {onFresh}
-            />
-        </div>
+        <ErrorToast 
+            styles = {css.raw({ backgroundColor: token("colors.primary") })}
+            message = "El número de celular ingresado está registrado para otro estudiante, actualice el telefono del estudiante antiguo."
+            link = {{ linkDescription: "actualizar telefono", route: ""}}
+            onClose = {onFresh}
+        />
     )
 }
 

@@ -10,9 +10,10 @@ const IncomeContent = () => {
     const isError = () => error?.isCause(CauseError.RepeatStudentPhone);
 
     return (
-        isError() ? 
-            <PhoneErrorMessage onFresh = {freshData} /> : 
+        <>
             <StudentForm add = {add} isLoading = {isLoading} />
+            {isError() && <PhoneErrorMessage onFresh = {freshData} />}
+        </>
     )
 }
 
