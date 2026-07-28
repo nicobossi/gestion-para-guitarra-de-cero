@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import type { AddContext } from "./add/add.context";
 
-function validateContext<T extends object>(context: AddContext<T>) {
+function validateContext<T extends object, K>(context: AddContext<T, K>) {
     const contextValue = useContext(context);
 
     if(!contextValue) {

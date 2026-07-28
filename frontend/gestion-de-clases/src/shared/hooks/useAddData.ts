@@ -1,11 +1,11 @@
 import { useState } from "react";
 import useFetch from "./useFetch";
 
-const useAddData = <T>(income : (incomer : T) => Promise<T>) => {
+const useAddData = <T, K>(income : (incomer : K) => Promise<T>) => {
     const [data, setData] = useState<T | null>(null);
     const {isLoading, error, freshError, handleFetch} = useFetch();
 
-    const add = async (incomer : T) : Promise<void>=> {
+    const add = async (incomer : K) : Promise<void>=> {
 
         handleFetch(
             async () => setData(await income(incomer)),

@@ -2,7 +2,6 @@ import type { PreparePaymentRecord } from "../adapters/prepare-payment-record/re
 import getPreparePaymentRecord from "../services/prepare-payment-record";
 import { useEffect, useState } from "react";
 
-
 const usePreparePaymentRecord = () => {
     const [preparePaymentRecord, setPreparePaymentRecord] = useState<PreparePaymentRecord | null>(null);
 

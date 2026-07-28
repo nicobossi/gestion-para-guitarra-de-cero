@@ -1,12 +1,6 @@
-import type { Student } from "../../../../../shared/domain/student/student"
+import type { Incomer } from "./incomer";
 
-
-export type StudentRequestDto = Omit<Student, "submissionDate" | "phone" | "id"> & {
-    phone: string
-    submissionDate: string
-}
-
-const requestDto = (student : Student) : StudentRequestDto => {
+const requestDto = (student : Incomer) => {
     return {
         name: student.name,
         secondName: student.secondName,

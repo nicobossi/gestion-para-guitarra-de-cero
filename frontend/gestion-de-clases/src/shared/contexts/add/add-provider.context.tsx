@@ -3,16 +3,16 @@ import type { JSX } from "react"
 import createUseAddData from "./add.context"
 import validateContext from "../validate"
 
-type AddProviderProps<T extends object> = {
-    income: (data: T) => Promise<T>
+type AddProviderProps<T extends object, K> = {
+    income: (data: K) => Promise<T>
     children: JSX.Element
 }
 
-function createAddContext<T extends object>() {
+function createAddContext<T extends object, K>() {
 
-    const AddContext = createUseAddData<T>();
+    const AddContext = createUseAddData<T, K>();
 
-    function AddProvider({income, children}: AddProviderProps<T>) {
+    function AddProvider({income, children}: AddProviderProps<T, K>) {
 
     const {data, error, freshError, freshData, isLoading, add} = useAddData(income);
 

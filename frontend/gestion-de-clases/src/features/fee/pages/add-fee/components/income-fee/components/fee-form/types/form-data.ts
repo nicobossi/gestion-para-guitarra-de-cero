@@ -1,8 +1,7 @@
 import { object, string, type ObjectSchema } from "yup";
-import type { FeeSchema } from "../../pages/add-fee/adapter/schema";
+import type { AddFee } from "./schema";
 
-
-const feeSchema : ObjectSchema<FeeSchema> = object().shape({
+const feeSchema : ObjectSchema<AddFee> = object().shape({
     amount: 
         string().
         required("El campo es requerido"). 

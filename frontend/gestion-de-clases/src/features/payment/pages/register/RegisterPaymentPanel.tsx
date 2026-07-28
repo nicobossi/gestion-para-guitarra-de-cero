@@ -5,7 +5,6 @@ import { AddPaymentProvider, useValidateAddContext } from "./contexts/add-paymen
 import registerPayment from "./services/register-payment";
 
 const RegisterPaymentPanel = () => {
-
     return (
         <AddPaymentProvider income = {registerPayment}>
             <RegisterPaymentPage />

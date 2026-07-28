@@ -1,8 +1,8 @@
+import type { Incomer } from "@/features/student/pages/income-student/adapter/incomer/incomer";
 import { object, string, type ObjectSchema } from "yup";
-import type { StudentRequestDto } from "../../../../../adapter/request.dto";
 
 
-const incomerSchema : ObjectSchema<StudentRequestDto> = object().shape({
+const incomerSchema : ObjectSchema<Incomer> = object().shape({
     name: 
         string().
         required("el campo es requerido").
