@@ -1,7 +1,8 @@
 import { ArgumentsHost, ExceptionFilter } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { FilterExceptionModelData } from './model-filter-error-data';
 import { ModelException } from '../../../domain/exceptions/model-exception';
+import { ErrorData } from '../error-data';
+import { randomUUID } from 'crypto';
 
 export abstract class ModelFilterException<
     T extends ModelException,
@@ -10,13 +11,17 @@ export abstract class ModelFilterException<
         const ctx = host.switchToHttp();
         const request = ctx.getRequest<Request>();
         const response = ctx.getResponse<Response>();
-        const { message, status } = this.responseData();
+        const { title, cause, message, status, errors } = this.responseData();
         response.status(status).json({
-            message: message ? message : exception.message,
-            timestamp: new Date().toISOString(),
+            title,
+            message,
+            cause,
             path: request.url,
+            errors,
+            id: randomUUID(),
+            timestamp: new Date().toISOString(),
         });
     }
 
-    protected abstract responseData(): FilterExceptionModelData;
+    protected abstract responseData(): ErrorData;
 }
