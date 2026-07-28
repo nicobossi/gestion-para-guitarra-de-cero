@@ -3,7 +3,7 @@ import GenericContainer from "./components/generic-container/GenericContainer";
 import TitleContainer from "./components/title-container/TitleContainer";
 import type { InsertFormProps } from "./insert-form";
 
-function InsertForm<T> ({title, schema, inputsData, isLoading, onSubmit}: InsertFormProps<T>) {
+function InsertForm<T> ({title, schema, inputsData, isLoading, onSubmit, styles}: InsertFormProps<T>) {
     return (
         <GenericContainer>
             <TitleContainer title = {title} />
@@ -11,7 +11,9 @@ function InsertForm<T> ({title, schema, inputsData, isLoading, onSubmit}: Insert
                 schema = {schema}
                 inputsData = {inputsData} 
                 isLoading = {isLoading}
-                onSubmit = {onSubmit} />
+                onSubmit = {onSubmit} 
+                styles = {styles}
+            />
         </GenericContainer>
     )
 }

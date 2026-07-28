@@ -7,7 +7,7 @@ import RegisterInput from "./components/register-input/RegisterInput";
 import SumbitButton from "./components/submit-button/SubmitButton";
 
 
-function FormContent<T extends AnyObject>({schema, inputsData, isLoading, onSubmit} : FormContentProps) {
+function FormContent<T extends AnyObject>({schema, inputsData, isLoading, styles, onSubmit} : FormContentProps) {
 
     const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)});
 
@@ -24,7 +24,10 @@ function FormContent<T extends AnyObject>({schema, inputsData, isLoading, onSubm
                     error = {errors[input.name]}
                     />
                 )}
-            <SumbitButton isLoading = {isLoading}/> 
+            <SumbitButton 
+                isLoading = {isLoading} 
+                styles = {styles} 
+            /> 
             </form>
         </div>
     )
