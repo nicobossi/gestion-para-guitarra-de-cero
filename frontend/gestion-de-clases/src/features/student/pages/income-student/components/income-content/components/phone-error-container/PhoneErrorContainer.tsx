@@ -1,15 +1,15 @@
 import './phone-error-container.css'
-import ErrorContainer from '@/shared/components/error-container/ErrorContainer'
+import ErrorToast from '@/shared/components/error-container/ErrorContainer'
 
 type PhoneErrorContainerProps = {
     onFresh: () => void
 }
 
-const PhoneErrorContainer = ({onFresh}: PhoneErrorContainerProps) => {
+const PhoneErrorMessage = ({onFresh}: PhoneErrorContainerProps) => {
 
     return (
         <div className = 'phone-error-container'>
-            <ErrorContainer 
+            <ErrorToast 
                 content = "El celular ya se encuentra agendado por otro estudiante"
                 onSubmit = {onFresh}
             />
@@ -17,4 +17,4 @@ const PhoneErrorContainer = ({onFresh}: PhoneErrorContainerProps) => {
     )
 }
 
-export default PhoneErrorContainer;
+export default PhoneErrorMessage;

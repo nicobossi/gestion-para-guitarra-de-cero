@@ -1,12 +1,12 @@
 import incomerSchema from "./schema/form-data";
 import incomeInputsData from "./types/inputs-data";
 import InsertForm from "@/shared/components/insert-form/InsertForm";
-import type { Student } from "@/shared/domain/student/student";
 import formStyle from "./styles";
+import type { Incomer } from "../../../../adapter/incomer/incomer";
 
 type StudentFormProps = {
     isLoading: boolean
-    add: (student: Student) => void
+    add: (student: Incomer) => void
 }
 
 const StudentForm = ({isLoading, add}: StudentFormProps) => {

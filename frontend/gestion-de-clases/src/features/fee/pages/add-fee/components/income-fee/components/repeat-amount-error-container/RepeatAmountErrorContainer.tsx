@@ -1,4 +1,4 @@
-import ErrorContainer from "@/shared/components/error-container/ErrorContainer";
+import ErrorToast from "@/shared/components/error-container/ErrorContainer";
 import './repeat-amount-error-container.css'
 
 type RepeatAmountErrorContainerProps = {
@@ -9,7 +9,7 @@ const RepeatAmountErrorContainer = ({onError}: RepeatAmountErrorContainerProps) 
 
     return (
         <div className = 'repeat-amount-error-container'>
-            <ErrorContainer 
+            <ErrorToast 
                 content = "El monto de la cuota ya se encuentra registrado"
                 onSubmit = {onError}
             />
