@@ -1,26 +1,29 @@
-import inputsData from './inputs-data';
+import inputsData from './types/inputs-data';
 import InsertForm from '@/shared/components/insert-form/InsertForm';
-import usePaymentContext from '../../../../contexts/payment-validate';
-import paymentSchema from './form-data';
-import './payment-form.css'
+import paymentSchema from './types/form-data';
 import usePreparePaymentRecord from './hooks/use-prepare-payment-record';
+import type { Payment } from '@/shared/domain/payment/payment';
+import { formStyles } from './styles';
 
-const PaymentForm = () => {
+type PaymentFormProps = {
+    isLoading: boolean 
+    add: (payment: Payment) => void
+}
 
-    const {isLoading, add} = usePaymentContext();
+const PaymentForm = ({isLoading, add}: PaymentFormProps) => {
+
     const {preparePaymentRecord} = usePreparePaymentRecord() 
 
     return (
         preparePaymentRecord && 
-        <section className = "payment-add_form-container">
-            <InsertForm 
-                title = "Pago"
-                schema = {paymentSchema}
-                inputsData = {inputsData(preparePaymentRecord)}
-                isLoading = {isLoading}
-                onSubmit = {add}
-            />
-        </section>
+        <InsertForm 
+            title = "Pago"
+            schema = {paymentSchema}
+            inputsData = {inputsData(preparePaymentRecord)}
+            isLoading = {isLoading}
+            onSubmit = {add}
+            styles = {formStyles}
+        />
     )
 }
 

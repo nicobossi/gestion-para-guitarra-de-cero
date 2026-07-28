@@ -1,26 +1,27 @@
+import AddPanelContainer from "@/shared/components/add-panel-container/AddPanelContainer";
 import IncomePayment from "./components/income-payment/IncomePayment";
 import ModalPayment from "./components/modal-payment/ModalPayment";
-import usePaymentContext from "./contexts/payment-validate";
-import PaymentProvider from "./contexts/payment.provider";
+import { AddPaymentProvider, useValidateAddContext } from "./contexts/add-payment";
+import registerPayment from "./services/register-payment";
 
 const RegisterPaymentPanel = () => {
 
     return (
-        <PaymentProvider>
+        <AddPaymentProvider income = {registerPayment}>
             <RegisterPaymentPage />
-        </PaymentProvider>
+        </AddPaymentProvider>
     )
 }
 
 const RegisterPaymentPage = () => {
 
-    const {data} = usePaymentContext();
+    const { data } = useValidateAddContext();
 
     return (
-        <section className = 'register-payment'>
+        <AddPanelContainer>
             {data && <ModalPayment payment = {data} />}
             <IncomePayment />
-        </section>
+        </AddPanelContainer>
     )
 }
 

@@ -1,11 +1,11 @@
-import usePaymentContext from '../../contexts/payment-validate';
 import type { ModalPaymentProps } from './modal-payment';
 import SuccessModal from '@/shared/components/success-modal/SuccessModal';
 import './modal-payment.css';
+import { useValidateAddContext } from '../../contexts/add-payment';
 
 const ModalPayment = ({payment} : ModalPaymentProps) => {
 
-    const {freshData} = usePaymentContext();
+    const {freshData} = useValidateAddContext();
 
     return (
         <section className = "modal-payment_container">

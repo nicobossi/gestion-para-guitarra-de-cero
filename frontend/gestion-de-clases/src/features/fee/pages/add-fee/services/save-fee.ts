@@ -5,8 +5,6 @@ import { URL_ADD_FEE } from "@/globals/api/api-urls";
 import { responseDto, type FeeResponseDto } from "../adapter/response.dto";
 import type { Fee } from "../../../../../shared/domain/fee/fee";
 
-
-
 const saveFee = async (fee : Fee) : Promise<Fee> => {
 
     try {

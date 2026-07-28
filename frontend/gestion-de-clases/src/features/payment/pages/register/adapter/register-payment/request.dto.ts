@@ -1,10 +1,12 @@
-import type { RegisterPaymentSchema, TextPaymentMethod } from "./schema";
+import type { TextPaymentMethod } from "./schema";
 import { PaymentMethod } from "@/shared/domain/payment/payment-method";
 import type { PaymentRequest } from "./types/request";
 import adapteCompleteName from "@/features/payment/adapters/student-full-name/request";
+import type { Payment } from "@/shared/domain/payment/payment";
 
-export function adapteRegistePaymentRequest(payment: RegisterPaymentSchema): PaymentRequest {
+export function adapteRegistePaymentRequest(payment: Payment): PaymentRequest {
     const {firstName, secondName, surname} = adapteCompleteName(payment.completeName);
+    
     return {
         name: firstName,
         surname: surname,

@@ -1,5 +1,5 @@
 import { object, string, type ObjectSchema } from "yup";
-import type { RegisterPaymentSchema, TextPaymentMethod } from "../../../../adapter/register-payment/schema";
+import type { RegisterPaymentSchema, TextPaymentMethod } from "../../../../../adapter/register-payment/schema";
 
 const paymentSchema: ObjectSchema<RegisterPaymentSchema> = object().shape({
     completeName:
