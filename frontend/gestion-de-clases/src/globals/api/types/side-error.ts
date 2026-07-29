@@ -1,0 +1,1 @@
+export type SideError = 'Client' | 'Server' | 'Uknow'

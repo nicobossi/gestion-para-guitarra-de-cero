@@ -1,4 +1,4 @@
-import { CauseError } from "@/globals/api/api-error";
+import { CauseError } from "../../../../../../globals/api/errors/api-error";
 import RepeatAmountErrorContainer from "./components/repeat-amount-error-container/RepeatAmountErrorContainer";
 import FeeForm from "./components/fee-form/FeeForm";
 import { useValidateAddContext } from "../../contexts/add-fee";

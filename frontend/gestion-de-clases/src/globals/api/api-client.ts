@@ -1,13 +1,10 @@
 import axios from "axios";
-import handleError from "./services/handle-error.service";
+import responseMiddleware from "./middlewares/response";
 
 const api = axios.create({
     baseURL: "http://localhost:3000"
 })
 
-api.interceptors.response.use(
-    response => response,
-    (error) => handleError(error)
-)
+responseMiddleware(api);
 
 export default api;

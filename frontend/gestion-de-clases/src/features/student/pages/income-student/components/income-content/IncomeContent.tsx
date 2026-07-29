@@ -1,4 +1,4 @@
-import { CauseError } from '@/globals/api/api-error';
+import { CauseError } from '../../../../../../globals/api/errors/api-error';
 import PhoneErrorMessage from './components/phone-error-container/PhoneErrorContainer';
 import StudentForm from '@/features/student/pages/income-student/components/income-content/components/income-form/IncomeForm';
 import { useValidateAddContext } from '../../context/add-student';

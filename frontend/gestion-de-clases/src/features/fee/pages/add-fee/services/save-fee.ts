@@ -1,4 +1,4 @@
-import { ApiError, CauseError } from "@/globals/api/api-error";
+import { ApiError, CauseError } from "../../../../../globals/api/errors/api-error";
 import api from "@/globals/api/api-client";
 import { requestDto } from "../adapter/income-fee/request.dto";
 import { URL_ADD_FEE } from "@/globals/api/api-urls";

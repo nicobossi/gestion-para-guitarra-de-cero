@@ -1,4 +1,4 @@
-import { CauseError, type ApiError } from "@/globals/api/api-error";
+import { CauseError, type ApiError } from "../../globals/api/errors/api-error";
 import { SERVER_ERROR_ROUTE } from "@/globals/routes/routes";
 import { useState } from "react";
 import { useNavigate } from "react-router";

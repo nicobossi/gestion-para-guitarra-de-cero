@@ -1,4 +1,4 @@
-import type { ApiError } from "@/globals/api/api-error"
+import type { ApiError } from "../../globals/api/errors/api-error"
 
 export interface UseAddData<T extends object, K> {
     data : T | null 

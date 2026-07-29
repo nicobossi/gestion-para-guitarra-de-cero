@@ -1,5 +1,5 @@
 import api from "@/globals/api/api-client";
-import { ApiError, CauseError } from "@/globals/api/api-error";
+import { ApiError, CauseError } from "../../../../../globals/api/errors/api-error";
 import { URL_RENEW_PAYMENT } from "@/globals/api/api-urls";
 import type { Payment } from "@/shared/domain/payment/payment";
 import type { RegisterPaymentSchema } from "../adapter/register-payment/schema";

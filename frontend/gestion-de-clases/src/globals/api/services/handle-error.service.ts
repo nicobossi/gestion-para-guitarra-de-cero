@@ -1,28 +1,12 @@
 import { AxiosError } from "axios";
-import { ApiError, CauseError } from "../api-error";
+import { ApiError } from "../errors/api-error";
+import type { ErrorResponse } from "../types/error-response";
+import createApiError from "../errors/create-api-error";
 
-
-function handleError(error: unknown) {
-    if(error instanceof AxiosError) {
-            
-        if(!error.response) {
-            const apiError = new ApiError(500, error.message, CauseError.Server);
-            return Promise.reject(apiError);
-        }
-    
-        const status = error.response.status
-    
-        if(status >= 400 && status < 500) {
-            const apiError = new ApiError(status, error.response.data, CauseError.Client);
-            return Promise.reject(apiError);
-        }
-    
-        if(status >= 500) {
-            const apiError = new ApiError(status, error.response.data, CauseError.Server);
-            return Promise.reject(apiError);
-        }
-    }
-    else return Promise.reject(error);
+function handleError(error: AxiosError<ErrorResponse>): Promise<ApiError> | undefined {
+    const { status, data } = error.response!
+    const apiError = createApiError(status, data);
+    return Promise.reject(apiError);
 }
 
 export default handleError;
