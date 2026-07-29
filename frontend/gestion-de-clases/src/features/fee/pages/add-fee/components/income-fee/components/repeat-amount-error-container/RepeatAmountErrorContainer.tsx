@@ -1,5 +1,6 @@
-import ErrorToast from "@/shared/components/error-container/ErrorContainer";
+import ErrorToast from '@/shared/components/toast/error/ErrorToast'
 import './repeat-amount-error-container.css'
+import { css } from '@styled-system/css'
 
 type RepeatAmountErrorContainerProps = {
     onError: () => void
@@ -8,12 +9,11 @@ type RepeatAmountErrorContainerProps = {
 const RepeatAmountErrorContainer = ({onError}: RepeatAmountErrorContainerProps) => {
 
     return (
-        <div className = 'repeat-amount-error-container'>
-            <ErrorToast 
-                content = "El monto de la cuota ya se encuentra registrado"
-                onSubmit = {onError}
-            />
-        </div>
+        <ErrorToast 
+            message = "El monto de la cuota ya se encuentra registrado"
+            styles = {css.raw({ bg: '#3B3B40'})}
+            onClose = {onError}
+        />
     )
 }
 

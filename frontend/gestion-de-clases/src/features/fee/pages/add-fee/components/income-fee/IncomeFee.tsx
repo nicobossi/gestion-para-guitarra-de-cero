@@ -10,12 +10,10 @@ const IncomeFee = () => {
     const isError = () => error?.isCause(ModelCause.RepeatAmount);
 
     return (
-        isError() ? 
-            <RepeatAmountErrorContainer onError = {freshError} /> : 
-            <FeeForm 
-                add = {add} 
-                isLoading = {isLoading} 
-            />
+        <>
+            <FeeForm add = {add} isLoading = {isLoading} />
+            {isError() && <RepeatAmountErrorContainer onError = {freshError} />}
+        </>
     )
 }
 
