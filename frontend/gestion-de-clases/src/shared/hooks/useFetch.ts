@@ -1,4 +1,4 @@
-import { CauseError, type ApiError } from "../../globals/api/errors/api-error";
+import type { ApiError } from "@/globals/api/errors/api-error";
 import { SERVER_ERROR_ROUTE } from "@/globals/routes/routes";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -29,8 +29,8 @@ const useFetch = () => {
     function handleError(error : ApiError, untrack : () => void) {
         setIsLoading(false);
         untrack();
-        if(error.isCause(CauseError.Client)) console.log(error); 
-        if(error.isCause(CauseError.Server)) navegate("/" + SERVER_ERROR_ROUTE) 
+        if(error.sideError() === 'Client') console.log(error); 
+        if(error.sideError() === 'Server') navegate("/" + SERVER_ERROR_ROUTE) 
         setError(error); 
     }
 
