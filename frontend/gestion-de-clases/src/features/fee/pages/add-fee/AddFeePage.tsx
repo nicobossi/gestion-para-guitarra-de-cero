@@ -1,4 +1,4 @@
-import ModalFee from './components/modal-fee/ModalFee';
+import SuccessAddFee from './components/success-add-fee/SuccessAddFee';
 import IncomeFee from './components/income-fee/IncomeFee';
 import saveFee from './services/save-fee';
 import { FeeProvider, useValidateAddContext } from './contexts/add-fee';
@@ -19,7 +19,7 @@ const AddFeePage = () => {
 
     return (
         <AddPanelContainer>
-            {data && <ModalFee fee = {data} />}
+            {data && <SuccessAddFee fee = {data} />}
             <IncomeFee />
         </AddPanelContainer>
     )
