@@ -16,7 +16,7 @@ const toastContainer = css.raw({
     height: '14%',
     minHeight: '146px',
     borderRadius: '20px',
-    animation: `fadeIn ${token("durations.fast")} forwards`
+    animation: `sliceInY ${token("durations.medium")} forwards`
 })
 
 const toastSubContainer = css.raw({
@@ -37,7 +37,9 @@ export const toastContainerSlot: ActiveStyleSlot<"container" | "subcontainer"> =
     variants: {
         show: {
             true: {
-                container: { display: 'none' },
+                container: { 
+                    display: 'none' 
+                },
                 subcontainer: {}
             },
         }
