@@ -1,4 +1,6 @@
-export type FilterExceptionDbData = {
-    status: number;
-    message: string;
-};
+import { ErrorData } from '../error-data';
+
+export type FilterExceptionDbData = Omit<
+    ErrorData,
+    'title' | 'errors' | 'cause'
+>;
