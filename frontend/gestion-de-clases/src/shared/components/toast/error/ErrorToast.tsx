@@ -10,7 +10,7 @@ type ErrorToastProps = {
     link?: AnclaLink
     message: string
     styles: SystemStyleObject
-    onClose: () => void
+    onClose?: () => void
 }
 
 const ErrorToast = ({styles, message, link, onClose}: ErrorToastProps) => {
@@ -19,7 +19,7 @@ const ErrorToast = ({styles, message, link, onClose}: ErrorToastProps) => {
 
     function handleActive() {
         onActive();
-        onClose();
+        onClose && onClose();
     }
 
     return (

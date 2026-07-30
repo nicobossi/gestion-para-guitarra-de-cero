@@ -2,7 +2,7 @@ import ErrorToast from "@/shared/components/toast/error/ErrorToast";
 import { css } from "@styled-system/css";
 
 type StudentWithSameNameContainerProps = {
-    onFresh: () => void
+    onFresh?: () => void
 }
 
 const StudentWithSameNameContainer = ({onFresh}: StudentWithSameNameContainerProps) => {

@@ -5,14 +5,14 @@ import { ModelCause } from "@/globals/api/types/cause";
 
 const IncomeFee = () => {
 
-    const { error, freshError, isLoading, add } = useValidateAddContext();
+    const { error, freshData, isLoading, add } = useValidateAddContext();
 
     const isError = () => error?.isCause(ModelCause.RepeatAmount);
 
     return (
         <>
             <FeeForm add = {add} isLoading = {isLoading} />
-            {isError() && <RepeatAmountErrorContainer onError = {freshError} />}
+            {isError() && <RepeatAmountErrorContainer onError = {freshData} />}
         </>
     )
 }

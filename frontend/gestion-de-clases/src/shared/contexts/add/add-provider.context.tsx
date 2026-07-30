@@ -14,12 +14,11 @@ function createAddContext<T extends object, K>() {
 
     function AddProvider({income, children}: AddProviderProps<T, K>) {
 
-    const {data, error, freshError, freshData, isLoading, add} = useAddData(income);
+    const {data, error, freshData, isLoading, add} = useAddData(income);
 
     const value = {
         data,
         error,
-        freshError,
         freshData,
         isLoading,
         add
