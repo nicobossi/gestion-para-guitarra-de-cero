@@ -1,4 +1,3 @@
-import './modal-student.css'
 import type { ModalIncomeProps } from './modal-student';
 import SuccessModal from '@/shared/components/success-modal/SuccessModal';
 import LinkNavegation from '@/shared/components/link-navegation/LinkNavegation';
@@ -13,15 +12,13 @@ const ModalStudent = ({student} : ModalIncomeProps) => {
     const gradient = css.raw({ bg: token("gradients.student") });
 
     return (
-        <section className = "modal-income_container">
-            <SuccessModal 
-                title = 'Alumno ingresado'
-                message = {`El ingrestante ${student.name} ${student.secondName ?? ''} ${student.surname} se registro como un nuevo alumno ¿Desea registrar su pago?`}
-                close = {freshData}
-                bg = {gradient}
-                link = {(styles: SystemStyleObject) => <LinkNavegation path = '' message = 'registrar pago' styles = {styles}/>} 
-            />
-        </section>
+        <SuccessModal 
+            title = 'Alumno ingresado'
+            message = {`El ingrestante ${student.name} ${student.secondName ?? ''} ${student.surname} se registro como un nuevo alumno`}
+            close = {freshData}
+            bg = {gradient}
+            link = {(styles: SystemStyleObject) => <LinkNavegation path = '' message = 'registrar pago' styles = {styles}/>} 
+        />
     )
 }
 
