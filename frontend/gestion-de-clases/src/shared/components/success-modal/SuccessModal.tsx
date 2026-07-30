@@ -24,7 +24,7 @@ function SuccessModal<T>({title, message, bg, close, link}: SuccessModalProps<T>
                     onSubmit = {handleActive}
                     content = {title} />
                 <section className = {content}>{message}</section>
-                <ModalFooter link = {link} />
+                <ModalFooter link = {link} bg = {bg}/>
             </div>
         </div>,
         document.body

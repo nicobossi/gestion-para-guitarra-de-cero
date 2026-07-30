@@ -1,5 +1,6 @@
 import type { ActiveStyle } from "@/shared/styles/active/active-variant";
 import { css, cva, sva } from "@styled-system/css";
+import { token } from "@styled-system/tokens";
 
 const modal: ActiveStyle = {
     base: {
@@ -10,13 +11,17 @@ const modal: ActiveStyle = {
         placeItems: 'center',
         width: '100vw',
         height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        background: 'rgba(0, 0, 0, 0.3)',
+        backdropFilter: 'blur(3px)',
     },
     variants: {
         show: {
             true: {
-                display: 'none',
+                animation: `fadeOut ${token("durations.medium")} forwards`
             },
+            false: {
+                animation: `fadeIn ${token("durations.medium")} forwards`
+            }
         }
     }
 };

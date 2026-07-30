@@ -1,11 +1,12 @@
 import { Link } from "react-router";
 import type { LinkNavegationProps } from "./link-navegation";
 import './link-navegation.css';
+import { css } from "@styled-system/css";
 
-const LinkNavegation = ({message, path}: LinkNavegationProps) => {
+const LinkNavegation = ({message, styles, path}: LinkNavegationProps) => {
     return (
-        <div className = "link-container">
-            <Link to={"/" + path}>{message}</Link>
+        <div className = {css(styles)}>
+            <Link className = {css({ color: '#FFF'})} to = {"/" + path}>{message}</Link>
         </div>
     )
 }

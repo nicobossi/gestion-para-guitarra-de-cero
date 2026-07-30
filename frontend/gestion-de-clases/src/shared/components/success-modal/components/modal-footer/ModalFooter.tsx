@@ -1,18 +1,25 @@
 import { Link } from 'react-router';
-import './modal-footer.css'
 import type { JSX } from 'react';
+import type { SystemStyleObject } from '@styled-system/types';
+import { button, styles } from './styles';
+import { css } from '@styled-system/css';
 
 type ModalFooterProps = {
-    link?: () => JSX.Element
+    link?: (css: SystemStyleObject) => JSX.Element
+    bg: SystemStyleObject
 }
 
-const ModalFooter = ({link}: ModalFooterProps) => {
+const ModalFooter = ({link, bg}: ModalFooterProps) => {
+
+    const {footer, button: buttomHome, text} = styles(css.raw({ border: '0.5px solid #666' }))();
+    const buttonParam = button
+
     return (
-        <footer className = "modal-navegate">
-            <div className = "home-link">
-                <Link to="/">Volver al Home</Link>
+        <footer className = {footer}>
+            <div className = {buttomHome}>
+                <Link className = {text} to="/">Inicio</Link>
             </div>
-            {link && link()}
+            {link && link(css.raw(buttonParam, bg))}
         </footer>
     )
 }
