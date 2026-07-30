@@ -11,7 +11,7 @@ const ModalPayment = ({payment} : ModalPaymentProps) => {
         <section className = "modal-payment_container">
             <SuccessModal 
                 data = {payment}
-                title = 'Cuota ingresada'
+                title = 'Pago ingresada'
                 message = {`El pago de $${payment.amount} para el alumno ${payment.name} ${payment.surname } fue registrado exitosamente ¿Desea volver al home?`}
                 close = {freshData}
             />

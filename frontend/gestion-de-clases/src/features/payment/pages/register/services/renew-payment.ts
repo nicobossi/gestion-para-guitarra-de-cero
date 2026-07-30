@@ -6,7 +6,7 @@ import { adapteRegistePaymentRequest } from "../adapter/register-payment/request
 import { adapteRegisterPaymentRespone } from "../adapter/register-payment/response.dto";
 import type { PaymentRequest } from "../adapter/register-payment/types/request";
 
-const renewPayment = async (payment: RegisterPaymentSchema, phone?: string) : Promise<Payment> => {
+const registerPayment = async (payment: RegisterPaymentSchema, phone?: string) : Promise<Payment> => {
     if(phone) {
         const newPayment = await api.post<PaymentRequest>(URL_REINTENT_PAYMENT(phone), adapteRegistePaymentRequest(payment));
         return adapteRegisterPaymentRespone(newPayment.data);
@@ -17,4 +17,4 @@ const renewPayment = async (payment: RegisterPaymentSchema, phone?: string) : Pr
     }
 }
 
-export default renewPayment;
+export default registerPayment;

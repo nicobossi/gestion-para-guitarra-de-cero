@@ -14,18 +14,19 @@ const IncomePayment = () => {
     const isError = error && error.isCause(ModelCause.StudentWithSameName);
 
     function handleAdd(paymentSchema: RegisterPaymentSchema) {
-        setSchema(paymentSchema);
         add(paymentSchema);
+        setSchema(paymentSchema);
     }
 
-    return (
-        <>
-            {schema && isError ? 
-                <ReintentIncomePayment isLoading = {isLoading} add = {add} schema = {schema} /> : 
-                <PaymentForm isLoading = {isLoading} add = {handleAdd} />}
-            {isError && <StudentWithSameNameContainer />}
-        </>
-    )
+    if(isError && schema) {
+        return (
+            <>
+                <ReintentIncomePayment isLoading = {isLoading} add = {add} schema = {schema} /> 
+                <StudentWithSameNameContainer />
+            </>
+        )
+    }
+    else return <PaymentForm isLoading = {isLoading} add = {handleAdd} />
 }
 
 export default IncomePayment;
