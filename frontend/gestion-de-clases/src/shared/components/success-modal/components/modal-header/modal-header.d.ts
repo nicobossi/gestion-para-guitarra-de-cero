@@ -2,7 +2,7 @@ import type { BackgroundColor } from "@/shared/styles/colors/colors"
 
 
 export type ModalHeaderProps = {
-    title : string
+    content : string
     css: BackgroundColor
     onSubmit : () => void
 } 

@@ -1,11 +1,9 @@
 import useActive from "@/shared/hooks/useActive";
-import ModalContainer from "../modal-container/ModalContainer";
-import ModalContent from "./components/modal-content/ModalContent";
 import ModalFooter from "./components/modal-footer/ModalFooter";
 import ModalHeader from "./components/modal-header/ModelHeader";
-import { styles } from "./styles";
 import type { SuccessModalProps } from "./success.modal";
 import { createPortal } from "react-dom";
+import { styles } from "./styles";
 
 function SuccessModal<T>({title, message, bg, close, link}: SuccessModalProps<T>) {
 
@@ -16,17 +14,18 @@ function SuccessModal<T>({title, message, bg, close, link}: SuccessModalProps<T>
         close();
     }
 
+    const {modal, container, content} = styles(isActive)();
+
     return createPortal(
-        <div className = {styles(isActive)}>
-            <ModalContainer>
+        <div className = {modal}>
+            <div className = {container}>
                 <ModalHeader 
                     css = {bg}
                     onSubmit = {handleActive}
-                    title = {title} />
-                <ModalContent 
-                    content = {message} />
+                    content = {title} />
+                <section className = {content}>{message}</section>
                 <ModalFooter link = {link} />
-            </ModalContainer>
+            </div>
         </div>,
         document.body
     )

@@ -1,13 +1,22 @@
 import type { ModalHeaderProps } from './modal-header';
 import { styles } from './styles';
+import closePath from '@/assets/toast/close icon.svg'
 
-const ModalHeader = ({title, css, onSubmit} : ModalHeaderProps) => {
+const ModalHeader = ({content, css, onSubmit} : ModalHeaderProps) => {
+
+    const { header, container, title, closeIcon } = styles(css)();
 
     return (
-        <header className = {styles(css)}>
-            <div>
-                <h3>{title}</h3>
-                <button onClick = {onSubmit}>Cancelar</button>
+        <header className = {header}>
+            <div className = {container}>
+                <h3 className = {title}>{content}</h3>
+                <figure className = {closeIcon} >
+                    <img 
+                        src = {closePath} 
+                        alt = "Icono de cierre para la modal" 
+                        onClick = {onSubmit} 
+                    />
+                </figure>
             </div>
         </header>
     )

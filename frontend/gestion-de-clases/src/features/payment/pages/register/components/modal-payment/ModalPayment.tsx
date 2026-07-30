@@ -10,8 +10,8 @@ const ModalPayment = ({payment} : ModalPaymentProps) => {
 
     return (
         <SuccessModal 
-            title = 'Pago ingresada'
-            message = {`El pago de $${payment.amount} para el alumno ${payment.name} ${payment.surname } fue registrado exitosamente ¿Desea volver al home?`}
+            title = 'PAGO REGISTRADO'
+            message = {`El pago de $${payment.amount} para el alumno ${payment.name} ${payment.surname } fue registrado exitosamente`}
             close = {freshData}
             bg = {css.raw({ bg: token("gradients.payment") })}
         />
