@@ -1,21 +1,20 @@
 import type { ModalPaymentProps } from './modal-payment';
 import SuccessModal from '@/shared/components/success-modal/SuccessModal';
-import './modal-payment.css';
 import { useValidateAddContext } from '../../contexts/add-payment';
+import { css } from '@styled-system/css';
+import { token } from '@styled-system/tokens';
 
 const ModalPayment = ({payment} : ModalPaymentProps) => {
 
     const {freshData} = useValidateAddContext();
 
     return (
-        <section className = "modal-payment_container">
-            <SuccessModal 
-                data = {payment}
-                title = 'Pago ingresada'
-                message = {`El pago de $${payment.amount} para el alumno ${payment.name} ${payment.surname } fue registrado exitosamente ¿Desea volver al home?`}
-                close = {freshData}
-            />
-        </section>
+        <SuccessModal 
+            title = 'Pago ingresada'
+            message = {`El pago de $${payment.amount} para el alumno ${payment.name} ${payment.surname } fue registrado exitosamente ¿Desea volver al home?`}
+            close = {freshData}
+            bg = {css.raw({ bg: token("gradients.payment") })}
+        />
     )
 }
 

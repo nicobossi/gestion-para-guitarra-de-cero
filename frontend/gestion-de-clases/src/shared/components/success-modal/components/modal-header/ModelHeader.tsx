@@ -1,11 +1,10 @@
 import type { ModalHeaderProps } from './modal-header';
-import './modal-header.css'
+import { styles } from './styles';
 
-
-const ModalHeader = ({title, onSubmit} : ModalHeaderProps) => {
+const ModalHeader = ({title, css, onSubmit} : ModalHeaderProps) => {
 
     return (
-        <header className = "modal_header">
+        <header className = {styles(css)}>
             <div>
                 <h3>{title}</h3>
                 <button onClick = {onSubmit}>Cancelar</button>

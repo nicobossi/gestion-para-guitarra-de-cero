@@ -2,10 +2,9 @@ import './modal-container.css'
 import type ModalContainerProps from "./modal-container";
 
 
-function ModalContainer<T>({data, children} : ModalContainerProps<T>) {
-    
+function ModalContainer<T>({children} : ModalContainerProps<T>) {
     return (
-        <div className = {data ? "modal-container_active" : "modal-container_disable"}>
+        <div className = {"modal-container_active"}>
             {children}
         </div>
     )
