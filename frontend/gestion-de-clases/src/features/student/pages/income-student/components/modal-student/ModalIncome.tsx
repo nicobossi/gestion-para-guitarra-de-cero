@@ -5,6 +5,7 @@ import { useValidateAddContext } from '../../context/add-student';
 import { css } from '@styled-system/css';
 import { token } from '@styled-system/tokens';
 import type { SystemStyleObject } from '@styled-system/types';
+import { MAIN_ROUTE_PAYMENT, REGISTER } from '@/globals/routes/payment';
 
 const ModalStudent = ({student} : ModalIncomeProps) => {
 
@@ -17,7 +18,7 @@ const ModalStudent = ({student} : ModalIncomeProps) => {
             message = {`El ingrestante ${student.name} ${student.secondName ?? ''} ${student.surname} se registro como un nuevo alumno`}
             close = {freshData}
             bg = {gradient}
-            link = {(styles: SystemStyleObject) => <LinkNavegation path = '' message = 'registrar pago' styles = {styles}/>} 
+            link = {(styles: SystemStyleObject) => <LinkNavegation path = {`${MAIN_ROUTE_PAYMENT}${REGISTER}`} message = 'registrar pago' styles = {styles} />} 
         />
     )
 }

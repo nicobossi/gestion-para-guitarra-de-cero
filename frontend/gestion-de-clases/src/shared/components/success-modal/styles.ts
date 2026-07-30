@@ -40,7 +40,7 @@ const content = css.raw({
     display: 'grid',
     placeItems: 'center',
     placeSelf: 'center',
-    width: '90%',
+    width: '80%',
     height: '100%',
 });
 
